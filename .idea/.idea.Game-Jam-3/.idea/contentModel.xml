@@ -7,8 +7,16 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Collectables" t="Include">
+            <e p="Collectable.cs" t="Include" />
+          </e>
           <e p="Cycles" t="Include">
             <e p="CyclesManager.cs" t="Include" />
+          </e>
+          <e p="EventsExample.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="Inventory.cs" t="Include" />
+            <e p="Player.cs" t="Include" />
           </e>
           <e p="Singleton.cs" t="Include" />
         </e>

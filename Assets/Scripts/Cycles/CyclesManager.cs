@@ -1,32 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 
-
-public enum Cycles {Day, Twilight, Night}
-
-public class CyclesManager : MonoBehaviour
+// enum that represents the type of cycles in the game.
+public enum Cycles
 {
+    Day,
+    Magic,
+    Night
+}
 
-    [SerializeField] private SerializedDictionary<Cycles, float> cyclesDurations =
-        new SerializedDictionary<Cycles, float>
-        {
-            {Cycles.Day, 10f}, {Cycles.Twilight, 5f}, {Cycles.Night, 10f}
-        };
+// updates the current game cycle.
+public class CyclesManager : Singleton<CyclesManager>
+{
+    [SerializeField] public UnityEvent<Cycles> onCycleChange;
+    [SerializeField] private SerializedDictionary<Cycles, float> cyclesDurations;
 
-    private float currentTime;
+    [Tooltip("Initial game mode")] [SerializeField]
+    private Cycles currentTimeMode; // Serialized to be able to determine the initial mode.
 
-    
+    private float currentTimeCount;
+    private float initialTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        initialTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        IncrementTime();
+        TrackMode();
+    }
+
+    // increments the time counter of the current game mode, by the time elapsed from the last incrementation.
+    private void IncrementTime()
+    {
+        currentTimeCount += Time.time - (currentTimeCount + initialTime);
+    }
+
+    // tracks the mode of the game, and changes it if the time has come.
+    private void TrackMode()
+    {
+        if (!(currentTimeCount >= cyclesDurations[currentTimeMode])) return;
+        initialTime += cyclesDurations[currentTimeMode];
+        currentTimeCount = 0;
+        switch (currentTimeMode)
+        {
+            case Cycles.Day:
+                currentTimeMode = Cycles.Night;
+                onCycleChange?.Invoke(Cycles.Night);
+                break;
+            case Cycles.Night:
+                currentTimeMode = Cycles.Magic;
+                onCycleChange?.Invoke(Cycles.Magic);
+                break;
+            case Cycles.Magic:
+                currentTimeMode = Cycles.Day;
+                onCycleChange?.Invoke(Cycles.Day);
+                break;
+        }
     }
 }

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 
-// enum that represents the type of cycles in the game.
+// represents the type of cycles in the game.
 public enum Cycles
 {
     Day,
@@ -65,5 +63,11 @@ public class CyclesManager : Singleton<CyclesManager>
                 onCycleChange?.Invoke(Cycles.Day);
                 break;
         }
+    }
+
+    // returns the time count of the current game cycle.
+    public float GetTimeInCurrentCycle()
+    {
+        return currentTimeCount;
     }
 }

@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a01050b8-2665-47ef-9f82-eeb2f4d2fc47" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-Jam-3/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-Jam-3/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Game-Jam-3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Game-Jam-3/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Elran Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Elran Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cycles/CyclesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cycles/CyclesManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +62,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609498718042</updated>
-      <workItem from="1609498725191" duration="5717000" />
+      <workItem from="1609498725191" duration="6502000" />
     </task>
     <servers />
   </component>

@@ -1,33 +1,36 @@
+using System;
 using Player;
+using Selections;
 using UnityEngine;
 
 namespace Collectables
 {
+    [RequireComponent(typeof(Selections.Selectable))]
     public class Collectable : MonoBehaviour
     {
+        internal static Action<Collectable> OnCollected;
         [SerializeField] private ResourcesType collectableType;
+        [SerializeField] private int quantity;
         
-        
+        private Selectable selectable;
+
         public ResourcesType CollectableType => collectableType;
-        
-        private int quantity;
-        
-        public int Collect()
+        public int Quantity => quantity;
+
+        private void Start()
         {
-            
-            
-            return 0;
+            selectable = GetComponent<Selectable>();
+            selectable.onThisSelected.AddListener(Collect);
         }
 
-        public void EnterHighlight()
+        private void Collect()
         {
+            OnCollected?.Invoke(this);
+            // TODO: Collection animation / particle?
             
+            selectable.Deselect();
+            Destroy(gameObject);
         }
 
-        public void ExitHighlight()
-        {
-            
-        }
-        
     }
 }

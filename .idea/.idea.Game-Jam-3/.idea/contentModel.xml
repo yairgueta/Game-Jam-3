@@ -10,6 +10,9 @@
           <e p="Collectables" t="Include">
             <e p="Collectable.cs" t="Include" />
           </e>
+          <e p="Cycles" t="Include">
+            <e p="CyclesManager.cs" t="Include" />
+          </e>
           <e p="EventsExample.cs" t="Include" />
           <e p="miri" t="Include">
             <e p="MirisCollectible.cs" t="Include" />

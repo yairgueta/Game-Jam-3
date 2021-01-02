@@ -39,13 +39,5 @@ namespace Player
         }
 
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Collectible"))
-            {
-                MirisCollectible col = other.gameObject.GetComponent<MirisCollectible>();
-                col.GetNearPlayer();
-            }
-        }
     }
 }

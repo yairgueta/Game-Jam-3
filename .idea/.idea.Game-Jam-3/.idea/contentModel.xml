@@ -9,6 +9,7 @@
         <e p="Scripts" t="Include">
           <e p="Collectables" t="Include">
             <e p="Collectable.cs" t="Include" />
+            <e p="CollectablesAnimation.cs" t="Include" />
           </e>
           <e p="Cycles" t="Include">
             <e p="CyclesManager.cs" t="Include" />

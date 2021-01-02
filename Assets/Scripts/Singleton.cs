@@ -24,7 +24,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
 	{
 		get
 		{
-			Debug.Log("created");
 			if ( instance == null )
 			{
 				instance = FindObjectOfType<T> ();

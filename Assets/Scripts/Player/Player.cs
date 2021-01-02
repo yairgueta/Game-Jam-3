@@ -10,6 +10,7 @@ namespace Player
         [SerializeField] private float speed;
         private Rigidbody2D rb;
         private Vector2 moveVelocity;
+        private int lives = 5;
 
 
         void Start()
@@ -36,6 +37,20 @@ namespace Player
         private void FixedUpdate()
         {
             rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+        }
+
+        private void ReduceLife()
+        {
+            lives--;
+            if (lives == 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            
         }
 
 

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
@@ -14,7 +16,12 @@ public enum Cycles
 public class CyclesManager : Singleton<CyclesManager>
 {
     [SerializeField] public UnityEvent<Cycles> onCycleChange;
-    [SerializeField] private SerializedDictionary<Cycles, float> cyclesDurations;
+    private Dictionary<Cycles, float> cyclesDurations = new Dictionary<Cycles, float>()
+    {
+        {Cycles.Day, 10f},
+        {Cycles.Night, 5f},
+        {Cycles.Magic, 2f},
+    };
 
     [Tooltip("Initial game mode")] [SerializeField]
     private Cycles currentTimeMode; // Serialized to be able to determine the initial mode.
@@ -27,6 +34,7 @@ public class CyclesManager : Singleton<CyclesManager>
     void Start()
     {
         initialTime = Time.time;
+        onCycleChange?.Invoke(currentTimeMode);
     }
 
     // Update is called once per frame
@@ -68,6 +76,7 @@ public class CyclesManager : Singleton<CyclesManager>
     // returns the time count of the current game cycle.
     public float GetTimeInCurrentCycle()
     {
-        return currentTimeCount;
+        return (currentTimeCount) / cyclesDurations[currentTimeMode];
+        //TODO: Improve performance here!
     }
 }

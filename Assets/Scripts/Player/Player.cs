@@ -39,10 +39,10 @@ namespace Player
             rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
         }
 
-        private void ReduceLife()
+        public void ReduceLife(int damage)
         {
-            lives--;
-            if (lives == 0)
+            lives-= damage;
+            if (lives <= 0)
             {
                 Die();
             }
@@ -50,7 +50,8 @@ namespace Player
 
         private void Die()
         {
-            
+            //todo: what happens
+            Debug.Log("player is dead");
         }
 
 

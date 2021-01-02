@@ -10,11 +10,16 @@
           <e p="Collectables" t="Include">
             <e p="Collectable.cs" t="Include" />
           </e>
+          <e p="Cycles" t="Include">
+            <e p="CyclesManager.cs" t="Include" />
+          </e>
           <e p="EventsExample.cs" t="Include" />
           <e p="Player" t="Include">
             <e p="Inventory.cs" t="Include" />
             <e p="Player.cs" t="Include" />
           </e>
+          <e p="Selectable.cs" t="Include" />
+          <e p="SelectionManager.cs" t="Include" />
           <e p="Singleton.cs" t="Include" />
         </e>
       </e>

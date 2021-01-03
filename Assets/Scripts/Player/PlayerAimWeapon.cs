@@ -8,6 +8,7 @@ public class PlayerAimWeapon : MonoBehaviour
 
     private Transform aimTransform;
     private Transform aimGunEndPoinTransform;
+    private bool ableToShoot = true;
     
     public event EventHandler<OnShootEventArgs> OnSoot; 
     public class OnShootEventArgs : EventArgs
@@ -25,8 +26,12 @@ public class PlayerAimWeapon : MonoBehaviour
 
     void Update()
     {
-        Aiming();
-        Shooting();
+        if (ableToShoot)
+        {
+            Aiming();
+            Shooting();
+        }
+
     }
 
     private Vector3 GetMousePos()

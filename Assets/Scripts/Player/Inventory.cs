@@ -14,7 +14,8 @@ namespace Player
     
     public class Inventory : MonoBehaviour
     {
-        private Dictionary<ResourcesType, int> collectablesQuantityMap; 
+        private Dictionary<ResourcesType, int> collectablesQuantityMap;
+
         private void Start()
         {
             CollectablesManager.Instance.onCollected.AddListener(CollectedResource);

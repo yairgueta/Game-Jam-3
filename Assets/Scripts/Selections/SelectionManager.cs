@@ -27,7 +27,7 @@ namespace Selections
 
         private void NewSelected(Selectable selected)
         {
-            if (selected == currentSelected) return;
+            // if (selected == currentSelected) return;
             
             if (currentSelected != null)
             {

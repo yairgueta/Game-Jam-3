@@ -1,15 +1,22 @@
 using System;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace Player
 {
     public class PlayerAimWeapon : MonoBehaviour
     {
-
+        [SerializeField] private LayerMask shootingLayerMask;
+        
         private Transform aimTransform;
         private Transform aimGunEndPoinTransform;
         private bool ableToShoot = true;
-    
+        private Camera mainCamera;
+        private Vector3 mousePosition;
+
         public event EventHandler<OnShootEventArgs> OnSoot; 
         public class OnShootEventArgs : EventArgs
         { 
@@ -19,6 +26,7 @@ namespace Player
 
         private void Awake()
         {
+            mainCamera = Camera.main;
             aimTransform = transform.Find("Aim");
             aimGunEndPoinTransform = aimTransform.Find("GunEndPos");
         }
@@ -36,7 +44,7 @@ namespace Player
 
         private Vector3 GetMousePos()
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
             return mousePosition;
         }
@@ -45,7 +53,7 @@ namespace Player
         // aiming the gun at the direction og the mouse
         private void Aiming()
         {
-            Vector3 mousePosition = GetMousePos();
+            mousePosition = GetMousePos();
             Vector3 aimDirection = (mousePosition - transform.position).normalized;
             // angle in radians converted to angle in deg
             float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
@@ -69,17 +77,17 @@ namespace Player
 
         private void Shooting()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!Input.GetMouseButtonDown(0)) return;
+            
+            var hit = Physics2D.Raycast(mousePosition, Vector3.forward, 15f, shootingLayerMask);
+            if (hit || EventSystem.current.IsPointerOverGameObject(-1)) return;
+            
+            OnSoot?.Invoke(this, new OnShootEventArgs
             {
-                Vector3 mousePosition = GetMousePos();
-
-                OnSoot?.Invoke(this, new OnShootEventArgs
-                {
-                    gunEndPointPos = aimGunEndPoinTransform.position,
-                    shootPosition = mousePosition,
+                gunEndPointPos = aimGunEndPoinTransform.position,
+                shootPosition = mousePosition,
                     
-                });
-            }
+            });
         }
     
     

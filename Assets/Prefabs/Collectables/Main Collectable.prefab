@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3440497857532448212}
   - component: {fileID: 4437600841816292468}
   - component: {fileID: 4437600841816292466}
-  m_Layer: 0
-  m_Name: trees_10
+  m_Layer: 7
+  m_Name: Main Collectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

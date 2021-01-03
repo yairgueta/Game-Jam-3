@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Collectables;
 using UnityEngine;
 
 namespace Player
@@ -54,6 +55,14 @@ namespace Player
             Debug.Log("player is dead");
         }
 
-
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            other.GetComponent<Collectable>()?.EnableCollecting(true);
+        }
+        
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            other.GetComponent<Collectable>()?.EnableCollecting(false);
+        }
     }
 }

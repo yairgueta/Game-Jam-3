@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using DG.Tweening;
 
 namespace Cycles
 {
@@ -19,7 +20,9 @@ namespace Cycles
 
         private void ModifyGlobalLight(Color lightColor)
         {
-            globalLight.color = lightColor;
+            
+            globalLight.color.
+                // = lightColor;
         }
 
     }

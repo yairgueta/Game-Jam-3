@@ -21,7 +21,7 @@ namespace Cycles
         private void ModifyGlobalLight(Color lightColor)
         {
             
-            globalLight.color.
+            // globalLight.color.
                 // = lightColor;
         }
 

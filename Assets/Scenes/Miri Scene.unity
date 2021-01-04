@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 271848110}
   - component: {fileID: 271848112}
   - component: {fileID: 271848111}
+  - component: {fileID: 271848113}
   m_Layer: 5
   m_Name: Collectibles
   m_TagString: Untagged
@@ -945,6 +946,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271848109}
   m_CullTransparentMesh: 1
+--- !u!114 &271848113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271848109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1337ac5b7b43142a8fd544d2572ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  woodText: {fileID: 1381029074}
+  rockText: {fileID: 1795620747}
+  mushroomText: {fileID: 585143710}
 --- !u!1 &322269860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,7 +1667,7 @@ GameObject:
   - component: {fileID: 585143711}
   - component: {fileID: 585143710}
   m_Layer: 5
-  m_Name: X (1)
+  m_Name: MushroomCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3682,7 +3698,7 @@ GameObject:
   - component: {fileID: 1381029075}
   - component: {fileID: 1381029074}
   m_Layer: 5
-  m_Name: X (1)
+  m_Name: woodCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4796,7 +4812,7 @@ GameObject:
   - component: {fileID: 1795620748}
   - component: {fileID: 1795620747}
   m_Layer: 5
-  m_Name: X (1)
+  m_Name: Rockcount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

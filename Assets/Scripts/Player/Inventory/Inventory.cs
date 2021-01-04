@@ -12,9 +12,10 @@ namespace Player
         Mushroom,
     }
     
-    public class Inventory : MonoBehaviour
+    public class Inventory : Singleton<Inventory>
     {
         private Dictionary<ResourcesType, int> collectablesQuantityMap;
+        public event Action<Dictionary<ResourcesType, int>> OnInventoryChange; 
 
         private void Start()
         {
@@ -29,11 +30,14 @@ namespace Player
         {
             Debug.Log("Collected " + collectable.Quantity + " " + collectable.CollectableType + "s");
             collectablesQuantityMap[collectable.CollectableType] += collectable.Quantity;
+            OnInventoryChange?.Invoke(collectablesQuantityMap);
         }
 
         private void UseResource(ResourcesType type, int quantity)
         {
             collectablesQuantityMap[type] -= quantity;
+            OnInventoryChange?.Invoke(collectablesQuantityMap);
+
         }
         
     }

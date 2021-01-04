@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3440497857532448212, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: collectableType
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

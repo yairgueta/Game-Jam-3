@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     private Transform target;
     private EnemyMode enemyMode;
     private IDamageable attackedObject;
+    private bool isAttackedObjectDead;
 
     private Seeker seeker;
     private Rigidbody2D rb;
@@ -174,6 +175,7 @@ public class Enemy : MonoBehaviour
         enemyMode = mode;
         target = newTarget;
         attackedObject = toAttack;
+        isAttackedObjectDead = false;
     }
 
     
@@ -195,4 +197,5 @@ public class Enemy : MonoBehaviour
                 other.gameObject.GetComponent<IDamageable>());
         }
     }
+    
 }

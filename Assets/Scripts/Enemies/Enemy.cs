@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Pathfinding;
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
     private Transform target;
     private EnemyMode enemyMode;
     private IDamageable attackedObject;
-    private bool isAttackedObjectDead;
+    private bool shouldChangeTarget;
 
     private Seeker seeker;
     private Rigidbody2D rb;
@@ -149,14 +150,13 @@ public class Enemy : MonoBehaviour
     // attacks a damageable target.
     private void Attack(IDamageable damageable)
     {
-        var isDead = damageable.IsDead();
-        if (!isDead && Vector2.Distance(rb.position, target.position) <= attackDistance && canAttack)
+        if (!shouldChangeTarget && Vector2.Distance(rb.position, target.position) <= attackDistance && canAttack)
         {
             damageable.TakeDamage(attackPower);
             canAttack = false;
             StartCoroutine(DelayAttack());
         }
-        else if (isDead)
+        else if (shouldChangeTarget)
         {
             StartFollow();
         }
@@ -175,7 +175,7 @@ public class Enemy : MonoBehaviour
         enemyMode = mode;
         target = newTarget;
         attackedObject = toAttack;
-        isAttackedObjectDead = false;
+        shouldChangeTarget = false;
     }
 
     
@@ -197,5 +197,20 @@ public class Enemy : MonoBehaviour
                 other.gameObject.GetComponent<IDamageable>());
         }
     }
-    
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Wall") && enemyMode == EnemyMode.AttackWall)
+        {
+            shouldChangeTarget = true;
+        }
+        else if (other.gameObject.CompareTag("Player") && enemyMode == EnemyMode.AttackPlayer)
+        {
+            shouldChangeTarget = true;
+        }
+        else if (other.gameObject.CompareTag("Sheep") && enemyMode == EnemyMode.AttackSheep)
+        {
+            shouldChangeTarget = true;
+        }
+    }
 }

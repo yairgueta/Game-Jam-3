@@ -1,10 +1,11 @@
 using System;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Selections
 {
-    [RequireComponent(typeof(SpriteRenderer), typeof(Collider))]
+    [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
     public class Selectable : MonoBehaviour
     {
         internal static Action<Selectable> OnSelected;
@@ -20,10 +21,15 @@ namespace Selections
         private Material originalMaterial;
         private bool isSelected;
 
-        private void Start()
+        private bool interactable;
+        private bool hasEnteredAndChanged;
+
+        private void Awake()
         {
             isSelected = false;
-            
+            interactable = true;
+            hasEnteredAndChanged = false;
+
             if (!overMaterial) overMaterial = SelectionManager.Instance.DefaultOverMaterial;
             if (!selectedMaterial) selectedMaterial = SelectionManager.Instance.DefaultSelectedMaterial;
             if (!clickedDownMaterial) clickedDownMaterial = SelectionManager.Instance.DefaultClickedDownMaterial;
@@ -32,28 +38,54 @@ namespace Selections
             originalMaterial = sr.material;
         }
 
+        private void Start()
+        {
+            
+        }
+
         private void OnMouseEnter()
         {
+            if (!interactable)
+            {
+                hasEnteredAndChanged = false;
+                return;
+            }
             sr.material = overMaterial;
+            hasEnteredAndChanged = true;
+        }
+
+        private void OnMouseOver()
+        {
+            if (!interactable)
+            {
+                hasEnteredAndChanged = false;
+                return;
+            }
+            if (hasEnteredAndChanged) return;
+            if (interactable) sr.material = overMaterial;
+            hasEnteredAndChanged = true;
         }
 
         private void OnMouseExit()
         {
-            sr.material = isSelected? selectedMaterial : originalMaterial;
+            if (interactable) sr.material = isSelected? selectedMaterial : originalMaterial;
+            hasEnteredAndChanged = false;
         }
 
         private void OnMouseDown()
         {
-            sr.material = clickedDownMaterial;
+            if (interactable) sr.material = clickedDownMaterial;
         }
 
         private void OnMouseUp()
         {
-            OnSelected?.Invoke(this);
+            if (interactable) OnSelected?.Invoke(this);
         }
 
         internal void Select()
         {
+            if (!interactable) Debug.LogWarning("Selected uninteractable object: " + gameObject.name);
+            
             sr.material = selectedMaterial;
             isSelected = true;
             onThisSelected?.Invoke();
@@ -63,6 +95,13 @@ namespace Selections
         {
             sr.material = originalMaterial;
             isSelected = false;
+        }
+
+        public void SetInteractable(bool isOn)
+        {
+            if (isSelected && !isOn) Deselect();
+            sr.material = originalMaterial;
+            interactable = isOn;
         }
     }
 }

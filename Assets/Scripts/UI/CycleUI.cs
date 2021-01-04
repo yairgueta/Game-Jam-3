@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cycles;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -9,19 +10,22 @@ namespace UI
 {
     public class CycleUI : MonoBehaviour
     {
-        [Header("Attributes")]
-        [SerializeField] private List<CycleToColor> cyclesToColor;
+        [Header("Attributes")] 
+        [SerializeField] private Color dayTimeColor, nightTimeColor, magicTimeColor;
 
         [Header("References")]
         [SerializeField] private Image radialTimer;
 
-        private void Awake()
+        private void Start()
         {
-            CyclesManager.Instance.onCycleChange.AddListener(cycle =>
-            {
-                radialTimer.color = cyclesToColor.Find(ctc => ctc.cycle == cycle).color;
-                Debug.Log(cycle);
-            });
+            CyclesManager.Instance.onDayTimeEnter.AddListener(() => ChangeTimerColor(dayTimeColor));
+            CyclesManager.Instance.onNightTimeEnter.AddListener(() => ChangeTimerColor(nightTimeColor));
+            CyclesManager.Instance.onMagicTimeEnter.AddListener(() => ChangeTimerColor(magicTimeColor));
+        }
+
+        private void ChangeTimerColor(Color color)
+        {
+            radialTimer.color = color;
         }
 
         private void Update()
@@ -29,11 +33,5 @@ namespace UI
             radialTimer.fillAmount = 1 - CyclesManager.Instance.GetTimeInCurrentCycle();
         }
         
-        [Serializable]
-        public struct CycleToColor
-        {
-            public Cycles cycle;
-            public Color color;
-        }
     }
 }

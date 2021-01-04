@@ -2,81 +2,69 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 
 // represents the type of cycles in the game.
-public enum Cycles
-{
-    Day,
-    Magic,
-    Night
-}
+
 
 // updates the current game cycle.
-public class CyclesManager : Singleton<CyclesManager>
+namespace Cycles
 {
-    [SerializeField] public UnityEvent<Cycles> onCycleChange;
-    private Dictionary<Cycles, float> cyclesDurations = new Dictionary<Cycles, float>()
+    public class CyclesManager : Singleton<CyclesManager>
     {
-        {Cycles.Day, 10f},
-        {Cycles.Night, 5f},
-        {Cycles.Magic, 2f},
-    };
-
-    [Tooltip("Initial game mode")] [SerializeField]
-    private Cycles currentTimeMode; // Serialized to be able to determine the initial mode.
-
-    private float currentTimeCount;
-    private float initialTime;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        initialTime = Time.time;
-        onCycleChange?.Invoke(currentTimeMode);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        IncrementTime();
-        TrackMode();
-    }
-
-    // increments the time counter of the current game mode, by the time elapsed from the last incrementation.
-    private void IncrementTime()
-    {
-        currentTimeCount += Time.time - (currentTimeCount + initialTime);
-    }
-
-    // tracks the mode of the game, and changes it if the time has come.
-    private void TrackMode()
-    {
-        if (!(currentTimeCount >= cyclesDurations[currentTimeMode])) return;
-        initialTime += cyclesDurations[currentTimeMode];
-        currentTimeCount = 0;
-        switch (currentTimeMode)
+        private enum Cycle
         {
-            case Cycles.Day:
-                currentTimeMode = Cycles.Night;
-                onCycleChange?.Invoke(Cycles.Night);
-                break;
-            case Cycles.Night:
-                currentTimeMode = Cycles.Magic;
-                onCycleChange?.Invoke(Cycles.Magic);
-                break;
-            case Cycles.Magic:
-                currentTimeMode = Cycles.Day;
-                onCycleChange?.Invoke(Cycles.Day);
-                break;
+            Day,
+            Magic,
+            Night
         }
-    }
+    
+        [SerializeField] public UnityEvent onDayTimeEnter;
+        [SerializeField] public UnityEvent onNightTimeEnter;
+        [SerializeField] public UnityEvent onMagicTimeEnter;
 
-    // returns the time count of the current game cycle.
-    public float GetTimeInCurrentCycle()
-    {
-        return (currentTimeCount) / cyclesDurations[currentTimeMode];
-        //TODO: Improve performance here!
+        private Dictionary<Cycle, float> cyclesDurations;
+        private Cycle currentCycle;
+        private float timer;
+
+
+        void Start()
+        {
+            cyclesDurations = new Dictionary<Cycle, float>
+            {
+                {Cycle.Day, 10f},
+                {Cycle.Night, 5f},
+                {Cycle.Magic, 2f},
+            };
+            currentCycle = Cycle.Day;
+            onDayTimeEnter.Invoke();
+        }
+        
+        private void Update()
+        {
+            timer -= Time.deltaTime;
+            if (timer > 0) return;
+            switch (currentCycle)
+            {
+                case Cycle.Day:
+                    currentCycle = Cycle.Night;
+                    onNightTimeEnter?.Invoke();
+                    break;
+                case Cycle.Night:
+                    currentCycle = Cycle.Magic;
+                    onMagicTimeEnter?.Invoke();
+                    break;
+                case Cycle.Magic:
+                    currentCycle = Cycle.Day;
+                    onDayTimeEnter?.Invoke();
+                    break;
+            }
+            timer = cyclesDurations[currentCycle];
+        }
+
+        // returns the time count of the current game cycle.
+        public float GetTimeInCurrentCycle()
+        {
+            return timer / cyclesDurations[currentCycle];
+        }
     }
 }

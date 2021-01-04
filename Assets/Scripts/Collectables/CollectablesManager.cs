@@ -9,7 +9,7 @@ namespace Collectables
         
         void Start()
         {
-            Collectable.OnCollected += c => onCollected?.Invoke(c);
+            Collectable.OnCollected += c => this.onCollected?.Invoke(c);
         }
     }
 }

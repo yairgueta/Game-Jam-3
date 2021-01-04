@@ -18,7 +18,7 @@ namespace Selections
 
         public Selectable CurrentSelected => currentSelected;
         private Selectable currentSelected;
-
+        
         private void Start()
         {
             currentSelected = null;
@@ -27,10 +27,13 @@ namespace Selections
 
         private void NewSelected(Selectable selected)
         {
+            // if (selected == currentSelected) return;
+            
             if (currentSelected != null)
             {
                 currentSelected.Deselect();
             }
+            
 
             currentSelected = selected;
             currentSelected.Select();

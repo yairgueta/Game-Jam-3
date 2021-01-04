@@ -21,6 +21,7 @@ namespace Collectables
         {
             selectable = GetComponent<Selectable>();
             selectable.onThisSelected.AddListener(Collect);
+            EnableCollecting(false);
         }
 
         private void Collect()
@@ -30,6 +31,11 @@ namespace Collectables
             
             selectable.Deselect();
             Destroy(gameObject);
+        }
+
+        public void EnableCollecting(bool b)
+        {
+            selectable.SetInteractable(b);
         }
 
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Collectables;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player
 {
@@ -15,29 +16,32 @@ namespace Player
     public class Inventory : Singleton<Inventory>
     {
         private Dictionary<ResourcesType, int> collectablesQuantityMap;
-        public event Action<Dictionary<ResourcesType, int>> OnInventoryChange; 
+        public Action<ResourcesType, int> OnInventoryChange;
 
-        private void Start()
+        protected override void Awake()
         {
-            CollectablesManager.Instance.onCollected.AddListener(CollectedResource);
-            collectablesQuantityMap = new Dictionary<ResourcesType, int>()
+            base.Awake();
+            collectablesQuantityMap = new Dictionary<ResourcesType, int>
             {
                 {ResourcesType.Wood, 0}, {ResourcesType.Rock, 0}, {ResourcesType.Mushroom, 0}
             };
         }
 
-        private void CollectedResource(Collectable collectable)
+        private void Start()
         {
-            Debug.Log("Collected " + collectable.Quantity + " " + collectable.CollectableType + "s");
+            CollectablesManager.Instance.onResourceCollected += CollectedResource;
+        }
+
+        private void CollectedResource(ResourceCollectable collectable)
+        {
             collectablesQuantityMap[collectable.CollectableType] += collectable.Quantity;
-            OnInventoryChange?.Invoke(collectablesQuantityMap);
+            OnInventoryChange?.Invoke(collectable.CollectableType, collectablesQuantityMap[collectable.CollectableType]);
         }
 
         private void UseResource(ResourcesType type, int quantity)
         {
             collectablesQuantityMap[type] -= quantity;
-            OnInventoryChange?.Invoke(collectablesQuantityMap);
-
+            OnInventoryChange?.Invoke(type, collectablesQuantityMap[type]);
         }
         
     }

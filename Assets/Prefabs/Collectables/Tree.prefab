@@ -7,25 +7,85 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9102804922476469697, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: quantity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570978300321235829, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_Size.x
+      value: 1.6414418
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570978300321235829, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66573864
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570978300321235829, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0051686764
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570978300321235829, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.014463037
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570978300321235829, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570978300321235829, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570978300321235829, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.7216667
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570978300321235829, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.7504437
+      objectReference: {fileID: 0}
     - target: {fileID: 3440497857532448212, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: quantity
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Size.x
-      value: 0.6493627
+      value: 1.5637226
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Size.y
-      value: 0.27038985
+      value: 0.25937343
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Offset.x
-      value: -0.01958388
+      value: -0.014075756
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Offset.y
-      value: 0.05906284
+      value: -0.07129753
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.7216667
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.7504437
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437600841816292468, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1589980029981978151, guid: 2e8746e6d9ed94aa6a55162888e98db8, type: 3}
+    - target: {fileID: 4437600841816292468, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292469, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_RootOrder

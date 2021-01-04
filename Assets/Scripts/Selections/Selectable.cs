@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,8 +9,6 @@ namespace Selections
     [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
     public class Selectable : MonoBehaviour
     {
-        internal static Action<Selectable> OnSelected;
-
         public UnityEvent onThisSelected;
         
         [Header("Materials (keep null for defaults)")]
@@ -36,11 +35,6 @@ namespace Selections
         
             sr = GetComponent<SpriteRenderer>();
             originalMaterial = sr.material;
-        }
-
-        private void Start()
-        {
-            
         }
 
         private void OnMouseEnter()
@@ -79,7 +73,7 @@ namespace Selections
 
         private void OnMouseUp()
         {
-            if (interactable) OnSelected?.Invoke(this);
+            if (interactable) SelectionManager.Instance.NewSelected(this);
         }
 
         internal void Select()

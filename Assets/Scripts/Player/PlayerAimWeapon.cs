@@ -26,11 +26,10 @@ namespace Player
 
         private void Awake()
         {
-            mainCamera = Camera.main;
             aimTransform = transform.Find("Aim");
             aimGunEndPoinTransform = aimTransform.Find("GunEndPos");
+            mainCamera = Camera.main;
         }
-
 
         void Update()
         {

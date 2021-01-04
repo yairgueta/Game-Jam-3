@@ -8,6 +8,7 @@ namespace Cycles
     {
 
         [Header("Global Light Preferences")] 
+        [SerializeField] private float coloringDuration = .5f;
         [SerializeField] private Light2D globalLight;
         [SerializeField] private Color dayLightColor, nightLightColor, magicLightColor;
 
@@ -20,9 +21,7 @@ namespace Cycles
 
         private void ModifyGlobalLight(Color lightColor)
         {
-            
-            // globalLight.color.
-                // = lightColor;
+            DOTween.To(() => globalLight.color, c => globalLight.color = c, lightColor, coloringDuration);
         }
 
     }

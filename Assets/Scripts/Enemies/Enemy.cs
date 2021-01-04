@@ -1,198 +1,200 @@
 using System.Collections;
-using UnityEngine;
 using Pathfinding;
+using UnityEngine;
 
-// an enemy in the game.
-public class Enemy : MonoBehaviour
+namespace Enemies
 {
-    private enum EnemyMode {Walking, AttackPlayer, AttackWall, AttackSheep}
-    
-    private const int FollowPlayer = 0;
-    private const int FollowWalls = 1;
-    
-    [SerializeField] float speed = 0.01f;
-    [SerializeField] private float nextWaypointDistance = 3f;
-    [SerializeField] private int attackPower;
-    [SerializeField] private Transform enemyGFX;
-    [SerializeField] private Transform wallsPosition;
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private float attackDistance = 3f;
-    [SerializeField] private float changeTargetRate = 5f;
-
-    private Path currentPath;
-    private int currentWaypoint = 0;
-    private Transform target;
-    private EnemyMode enemyMode;
-    private IDamageable attackedObject;
-
-    private Seeker seeker;
-    private Rigidbody2D rb;
-    private Vector3 initialEnemyScale;
-    private float pathRepeatRate = .5f;
-    private bool canAttack = true;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class Enemy : MonoBehaviour
     {
-        seeker = GetComponent<Seeker>();
-        rb = GetComponent<Rigidbody2D>();
-        initialEnemyScale = enemyGFX.localScale;
-
-        StartFollow();
-        InvokeRepeating(nameof(UpdateTarget), changeTargetRate, changeTargetRate);
-    }
+        private enum EnemyMode {Walking, AttackPlayer, AttackWall, AttackSheep}
     
-    void FixedUpdate()
-    {
-        if (currentPath == null) return;
-        MoveToNextTarget();
-        if (enemyMode != EnemyMode.Walking)
+        private const int FollowPlayer = 0;
+        private const int FollowWalls = 1;
+    
+        [SerializeField] float speed = 0.01f;
+        [SerializeField] private float nextWaypointDistance = 3f;
+        [SerializeField] private int attackPower;
+        [SerializeField] private Transform enemyGFX;
+        [SerializeField] private Transform wallsPosition;
+        [SerializeField] private Transform playerTransform;
+        [SerializeField] private float attackDistance = 3f;
+        [SerializeField] private float changeTargetRate = 5f;
+
+        private Path currentPath;
+        private int currentWaypoint = 0;
+        private Transform target;
+        private EnemyMode enemyMode;
+        private IDamageable attackedObject;
+
+        private Seeker seeker;
+        private Rigidbody2D rb;
+        private Vector3 initialEnemyScale;
+        private float pathRepeatRate = .5f;
+        private bool canAttack = true;
+
+
+        // Start is called before the first frame update
+        void Start()
         {
-            Attack(attackedObject);
+            seeker = GetComponent<Seeker>();
+            rb = GetComponent<Rigidbody2D>();
+            initialEnemyScale = enemyGFX.localScale;
+
+            StartFollow();
+            InvokeRepeating(nameof(UpdateTarget), changeTargetRate, changeTargetRate);
         }
-    }
-
-    // starts to follow current target.
-    private void StartFollow()
-    {
-        enemyMode = EnemyMode.Walking;
-        ChooseTarget();
-        FindPath();
-    }
     
-    // chooses a new target to follow.
-    private void ChooseTarget()
-    {
-        var followIndicator = UnityEngine.Random.Range(FollowPlayer, FollowWalls + 1);
-        if (followIndicator == FollowPlayer)
+        void FixedUpdate()
         {
-            target = playerTransform;
-            return;
+            if (currentPath == null) return;
+            MoveToNextTarget();
+            if (enemyMode != EnemyMode.Walking)
+            {
+                Attack(attackedObject);
+            }
         }
-        target = wallsPosition;
-    }
 
-    // finds a path to the current target.
-    private void FindPath()
-    {
-        InvokeRepeating(nameof(UpdatePath), 0f, pathRepeatRate);
-        seeker.StartPath(rb.position, target.position, OnPathComplete);
-    }
-    
-    // updates the path to the current target.
-    private void UpdatePath()
-    {
-        if (seeker.IsDone())
+        // starts to follow current target.
+        private void StartFollow()
         {
+            enemyMode = EnemyMode.Walking;
+            ChooseTarget();
+            FindPath();
+        }
+    
+        // chooses a new target to follow.
+        private void ChooseTarget()
+        {
+            var followIndicator = UnityEngine.Random.Range(FollowPlayer, FollowWalls + 1);
+            if (followIndicator == FollowPlayer)
+            {
+                target = playerTransform;
+                return;
+            }
+            target = wallsPosition;
+        }
+
+        // finds a path to the current target.
+        private void FindPath()
+        {
+            InvokeRepeating(nameof(UpdatePath), 0f, pathRepeatRate);
             seeker.StartPath(rb.position, target.position, OnPathComplete);
         }
-    }
-
-    // called when the last path has been completed.
-    private void OnPathComplete(Path path)
-    {
-        if (path.error) return;
-        currentPath = path;
-        currentWaypoint = 0; // to start at the beginning of the new path. 
-    }
-
-    // moves the enemy towards the new target.
-    private void MoveToNextTarget()
-    {
-        if (currentWaypoint >= currentPath.vectorPath.Count) return;
-        Vector2 direction = ((Vector2) currentPath.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed;
-        rb.velocity = force;
-        float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
-
-        if (distance < nextWaypointDistance)
+    
+        // updates the path to the current target.
+        private void UpdatePath()
         {
-            currentWaypoint++;
-        }
-
-        if (force.x >= Mathf.Epsilon)
-        {
-            enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-        }
-        else if (force.x <= Mathf.Epsilon)
-        {
-            enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-        }
-    }
-
-    // updates the target every "changeTargetRate" time according to the nearest target to the enemy.
-    private void UpdateTarget()
-    {
-        // if (enemyMode != EnemyMode.Walking) return;
-        var wallsDistance = Vector2.Distance(wallsPosition.position, rb.position);
-        var playerDistance = Vector2.Distance(playerTransform.position, rb.position);
-        if (target.position == playerTransform.position && wallsDistance < playerDistance)
-        {
-            target = wallsPosition;
-            if (enemyMode != EnemyMode.AttackPlayer)
+            if (seeker.IsDone())
             {
-                enemyMode = EnemyMode.Walking;
+                seeker.StartPath(rb.position, target.position, OnPathComplete);
             }
         }
-        else if(playerDistance < wallsDistance)
+
+        // called when the last path has been completed.
+        private void OnPathComplete(Path path)
         {
-            target = playerTransform;
-            if (enemyMode != EnemyMode.AttackWall)
+            if (path.error) return;
+            currentPath = path;
+            currentWaypoint = 0; // to start at the beginning of the new path. 
+        }
+
+        // moves the enemy towards the new target.
+        private void MoveToNextTarget()
+        {
+            if (currentWaypoint >= currentPath.vectorPath.Count) return;
+            Vector2 direction = ((Vector2) currentPath.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * speed;
+            rb.velocity = force;
+            float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
+
+            if (distance < nextWaypointDistance)
             {
-                enemyMode = EnemyMode.Walking;
+                currentWaypoint++;
+            }
+
+            if (force.x >= Mathf.Epsilon)
+            {
+                enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+            }
+            else if (force.x <= Mathf.Epsilon)
+            {
+                enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
             }
         }
-    }
 
-    // attacks a damageable target.
-    private void Attack(IDamageable damageable)
-    {
-        var isDead = damageable.IsDead();
-        if (!isDead && Vector2.Distance(rb.position, target.position) <= attackDistance && canAttack)
+        // updates the target every "changeTargetRate" time according to the nearest target to the enemy.
+        private void UpdateTarget()
         {
-            damageable.TakeDamage(attackPower);
-            canAttack = false;
-            StartCoroutine(DelayAttack());
+            // if (enemyMode != EnemyMode.Walking) return;
+            var wallsDistance = Vector2.Distance(wallsPosition.position, rb.position);
+            var playerDistance = Vector2.Distance(playerTransform.position, rb.position);
+            if (target.position == playerTransform.position && wallsDistance < playerDistance)
+            {
+                target = wallsPosition;
+                if (enemyMode != EnemyMode.AttackPlayer)
+                {
+                    enemyMode = EnemyMode.Walking;
+                }
+            }
+            else if(playerDistance < wallsDistance)
+            {
+                target = playerTransform;
+                if (enemyMode != EnemyMode.AttackWall)
+                {
+                    enemyMode = EnemyMode.Walking;
+                }
+            }
         }
-        else if (isDead)
+
+        // attacks a damageable target.
+        private void Attack(IDamageable damageable)
         {
-            StartFollow();
+            var isDead = damageable.IsDead();
+            if (!isDead && Vector2.Distance(rb.position, target.position) <= attackDistance && canAttack)
+            {
+                damageable.TakeDamage(attackPower);
+                canAttack = false;
+                StartCoroutine(DelayAttack());
+            }
+            else if (isDead)
+            {
+                StartFollow();
+            }
         }
-    }
 
-    // delays the attack rate.
-    private IEnumerator DelayAttack()
-    {
-        yield return new WaitForSeconds(3f);
-        canAttack = true;
-    }
+        // delays the attack rate.
+        private IEnumerator DelayAttack()
+        {
+            yield return new WaitForSeconds(3f);
+            canAttack = true;
+        }
 
-    // sets the target to a target that enemy collided with.
-    private void SetCollisionTarget(Transform newTarget, EnemyMode mode, IDamageable toAttack)
-    {
-        enemyMode = mode;
-        target = newTarget;
-        attackedObject = toAttack;
-    }
+        // sets the target to a target that enemy collided with.
+        private void SetCollisionTarget(Transform newTarget, EnemyMode mode, IDamageable toAttack)
+        {
+            enemyMode = mode;
+            target = newTarget;
+            attackedObject = toAttack;
+        }
 
     
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Wall"))
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackWall,
-                other.gameObject.GetComponent<IDamageable>());
-        }
-        else if (other.gameObject.CompareTag("Player"))
-        {
-            SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackPlayer, 
-                other.gameObject.GetComponent<IDamageable>());
-        }
-        else if (other.gameObject.CompareTag("Sheep"))
-        {
-            SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackSheep,
-                other.gameObject.GetComponent<IDamageable>());
+            if (other.gameObject.CompareTag("Wall"))
+            {
+                SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackWall,
+                    other.gameObject.GetComponent<IDamageable>());
+            }
+            else if (other.gameObject.CompareTag("Player"))
+            {
+                SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackPlayer, 
+                    other.gameObject.GetComponent<IDamageable>());
+            }
+            else if (other.gameObject.CompareTag("Sheep"))
+            {
+                SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackSheep,
+                    other.gameObject.GetComponent<IDamageable>());
+            }
         }
     }
 }

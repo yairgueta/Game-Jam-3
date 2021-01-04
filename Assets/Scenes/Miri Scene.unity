@@ -2760,7 +2760,7 @@ SpriteRenderer:
   m_SortingLayerID: -2078224777
   m_SortingLayer: -1
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: dbf1e3767d24b4b728832c70e749cac4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4aab8f9a8edf84512a8afed02bf554dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5445,13 +5445,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5050817412316269426, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050817412316269426, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050817412316269428, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050817413433495186, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050817413433495186, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 5050817413598364808, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5050817413598364808, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.09
+      value: -5.07
       objectReference: {fileID: 0}
     - target: {fileID: 5050817413598364808, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
       propertyPath: m_LocalPosition.y

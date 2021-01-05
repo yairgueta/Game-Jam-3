@@ -30,7 +30,7 @@ namespace UI
 
         private void Update()
         {
-            radialTimer.fillAmount = 1 - CyclesManager.Instance.GetTimeInCurrentCycle();
+            radialTimer.fillAmount = 1 - CyclesManager.Instance.GetRemainingTime();
         }
         
     }

@@ -22,18 +22,14 @@ namespace Selections
         private void Start()
         {
             currentSelected = null;
-            Selectable.OnSelected += NewSelected;
         }
 
-        private void NewSelected(Selectable selected)
+        internal void NewSelected(Selectable selected)
         {
-            // if (selected == currentSelected) return;
-            
             if (currentSelected != null)
             {
                 currentSelected.Deselect();
             }
-            
 
             currentSelected = selected;
             currentSelected.Select();

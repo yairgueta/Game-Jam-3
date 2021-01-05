@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Collectables;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player
 {
@@ -14,13 +15,18 @@ namespace Player
         private Vector2 moveVelocity;
         private Vector2 moveDirection;
         private Vector2 lastMoveDirection;
-        private int lives = 5;
+        private float curLives = 3;
+        private float maxLives = 5;
+       
+        public UnityEvent<float> OnLivesChange;
+
 
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-
+            CollectablesManager.Instance.onHealthFlowerCollected += CollectedHealthFlower;
+            
         }
 
         void Update()
@@ -28,6 +34,7 @@ namespace Player
             PlayerMovement();
             Animate();
         }
+        
         
         
         
@@ -60,13 +67,24 @@ namespace Player
         }
         
 
-        public void ReduceLife(int damage)
+        public void UpdateLife(float damage)
         {
-            lives-= damage;
-            if (lives <= 0)
+            curLives += damage;
+            if (curLives <= 0)
             {
                 Die();
             }
+
+            if (curLives > maxLives)
+            {
+                curLives = maxLives;
+            }
+            OnLivesChange?.Invoke(curLives);
+        }
+
+        private void CollectedHealthFlower(HealthFlower flower)
+        {
+            UpdateLife(1);
         }
 
         private void Die()

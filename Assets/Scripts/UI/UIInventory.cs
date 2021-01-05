@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Player;
 using UnityEngine;
@@ -16,11 +17,20 @@ namespace UI
             Inventory.Instance.OnInventoryChange += UpdateResources;
         }
 
-        private void UpdateResources(Dictionary<ResourcesType, int> dict)
+        private void UpdateResources(ResourcesType t, int q)
         {
-            woodText.text = dict[ResourcesType.Wood].ToString();
-            rockText.text = dict[ResourcesType.Rock].ToString();
-            mushroomText.text = dict[ResourcesType.Mushroom].ToString();
+            switch (t)
+            {
+                case ResourcesType.Wood:
+                    woodText.text = q.ToString();
+                    break;
+                case ResourcesType.Rock:
+                    rockText.text = q.ToString();
+                    break;
+                case ResourcesType.Mushroom:
+                    mushroomText.text = q.ToString();
+                    break;
+            }
         }
     }
 }

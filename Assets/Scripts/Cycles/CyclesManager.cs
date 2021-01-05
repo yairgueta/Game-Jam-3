@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// represents the type of cycles in the game.
-
-
-// updates the current game cycle.
 namespace Cycles
 {
     public class CyclesManager : Singleton<CyclesManager>
@@ -19,23 +15,36 @@ namespace Cycles
         }
     
         [SerializeField] public UnityEvent onDayTimeEnter;
+        [SerializeField] public UnityEvent onDayTimeExit;
+        
         [SerializeField] public UnityEvent onNightTimeEnter;
+        [SerializeField] public UnityEvent onNightTimeExit;
+        
         [SerializeField] public UnityEvent onMagicTimeEnter;
-
+        [SerializeField] public UnityEvent onMagicTimeExit;
+        
         private Dictionary<Cycle, float> cyclesDurations;
         private Cycle currentCycle;
         private float timer;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            onNightTimeEnter.AddListener(()=>onDayTimeExit?.Invoke());
+            onMagicTimeEnter.AddListener(()=>onNightTimeExit?.Invoke());
+            onDayTimeEnter.AddListener(()=>onMagicTimeExit?.Invoke());
+        }
 
         void Start()
         {
             cyclesDurations = new Dictionary<Cycle, float>
             {
-                {Cycle.Day, 10f},
-                {Cycle.Night, 5f},
-                {Cycle.Magic, 2f},
+                {Cycle.Day, 7f},
+                {Cycle.Night, 6f},
+                {Cycle.Magic, 5f},
             };
             currentCycle = Cycle.Day;
+            timer = cyclesDurations[currentCycle];
             onDayTimeEnter.Invoke();
         }
         
@@ -61,8 +70,7 @@ namespace Cycles
             timer = cyclesDurations[currentCycle];
         }
 
-        // returns the time count of the current game cycle.
-        public float GetTimeInCurrentCycle()
+        public float GetRemainingTime()
         {
             return timer / cyclesDurations[currentCycle];
         }

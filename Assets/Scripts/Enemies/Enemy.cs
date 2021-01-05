@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamageable
     
     [SerializeField] float speed = 0.01f;
     [SerializeField] private float nextWaypointDistance = 3f;
-    [SerializeField] private int attackPower;
+    [SerializeField] private int attackPower = 1;
     [SerializeField] private Transform enemyGFX;
     [SerializeField] private Transform wallsPosition;
     [SerializeField] private Transform playerTransform;
@@ -47,10 +47,12 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     
     void FixedUpdate()
-    {
-        if (currentPath == null) return;
-        MoveToNextTarget();
-        if (enemyMode != EnemyMode.Walking)
+    { 
+        if (currentPath != null)
+        {
+            MoveToNextTarget();
+        }
+        if (enemyMode != EnemyMode.Walking && attackedObject != null)
         {
             Attack(attackedObject);
         }
@@ -117,11 +119,11 @@ public class Enemy : MonoBehaviour, IDamageable
                 currentWaypoint++;
             }
 
-            if (force.x >= Mathf.Epsilon)
+            if (force.x > 0.1f)
             {
                 enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
             }
-            else if (force.x <= Mathf.Epsilon)
+            else if (force.x < 0.1f)
             {
                 enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
             }
@@ -130,7 +132,7 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
         }
-        else
+        else if (target.position.x > transform.position.x)
         {
             enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
         }
@@ -148,7 +150,7 @@ public class Enemy : MonoBehaviour, IDamageable
             target = wallsPosition;
             if (enemyMode != EnemyMode.AttackPlayer)
             {
-                enemyMode = EnemyMode.Walking;
+                enemyMode = EnemyMode.AttackWall;
             }
         }
         else if(playerDistance < wallsDistance)
@@ -156,7 +158,7 @@ public class Enemy : MonoBehaviour, IDamageable
             target = playerTransform;
             if (enemyMode != EnemyMode.AttackWall)
             {
-                enemyMode = EnemyMode.Walking;
+                enemyMode = EnemyMode.AttackPlayer;
             }
         }
     }
@@ -164,7 +166,7 @@ public class Enemy : MonoBehaviour, IDamageable
     // attacks a damageable target.
     private void Attack(IDamageable damageable)
     {
-        if (!shouldChangeTarget && Vector2.Distance(rb.position, target.position) <= attackDistance && canAttack)
+        if (!shouldChangeTarget && canAttack && Vector2.Distance(rb.position, target.position) <= attackDistance)
         {
             damageable.TakeDamage(attackPower);
             canAttack = false;
@@ -209,21 +211,23 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackWall,
-                other.gameObject.GetComponent<IDamageable>());
-        }
-        else if (other.gameObject.CompareTag("Player"))
+        
+        if (other.gameObject.CompareTag("Player"))
         {
             SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackPlayer, 
                 other.gameObject.GetComponent<IDamageable>());
         }
-        else if (other.gameObject.CompareTag("Sheep"))
-        {
-            SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackSheep,
-                other.gameObject.GetComponent<IDamageable>());
-        }
+        //todo: uncomment the following lines after sheep and wall implement idamageable.
+        // else if (other.gameObject.CompareTag("Sheep"))
+        // {
+        //     SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackSheep,
+        //         other.gameObject.GetComponent<IDamageable>());
+        // }
+        // else if (other.gameObject.CompareTag("Wall"))
+        // {
+        //     SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackWall,
+        //         other.gameObject.GetComponent<IDamageable>());
+        // }
     }
 
     private void OnCollisionExit2D(Collision2D other)

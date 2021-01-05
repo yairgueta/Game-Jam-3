@@ -204,6 +204,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Die()
     {
         Debug.Log("enemy died");
+        health = 5f; //TODO: delete
     }
 
     private void OnCollisionEnter2D(Collision2D other)

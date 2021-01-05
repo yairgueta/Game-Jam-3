@@ -188,7 +188,7 @@ public class Enemy : MonoBehaviour, IDamageable
         shouldChangeTarget = false;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DamageTakerTester : MonoBehaviour, IDamageable
 {
-    private int lifePoints = 10;
+    private float lifePoints = 10;
     private bool isDead;
 
     public bool IsDead()
@@ -13,7 +13,7 @@ public class DamageTakerTester : MonoBehaviour, IDamageable
         return isDead;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         lifePoints -= damage;
         if (lifePoints <= 0)
@@ -22,7 +22,7 @@ public class DamageTakerTester : MonoBehaviour, IDamageable
         }
     }
 
-    public int GetLifePoints()
+    public float GetLifePoints()
     {
         return lifePoints;
     }

@@ -126,10 +126,14 @@ public class Enemy : MonoBehaviour, IDamageable
                 enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
             }
         }
-        // else if (target.position.x < transform.position.x)
-        // {
-        //     
-        // }
+        else if (target.position.x < transform.position.x)
+        {
+            enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+        }
+        else
+        {
+            enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+        }
         
     }
 

@@ -202,3 +202,4 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   attackDistance: 3
   changeTargetRate: 5
+  health: 5

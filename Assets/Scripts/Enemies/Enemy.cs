@@ -4,7 +4,7 @@ using UnityEngine;
 using Pathfinding;
 
 // an enemy in the game.
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     private enum EnemyMode {Walking, AttackPlayer, AttackWall, AttackSheep}
     
@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float attackDistance = 3f;
     [SerializeField] private float changeTargetRate = 5f;
+    [SerializeField] private float health = 5f;
 
     private Path currentPath;
     private int currentWaypoint = 0;
@@ -105,22 +106,27 @@ public class Enemy : MonoBehaviour
         if (currentWaypoint >= currentPath.vectorPath.Count) return;
         Vector2 direction = ((Vector2) currentPath.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed;
-        rb.velocity = force;
-        float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
+        var distanceToTarget = Vector2.Distance(rb.position, playerTransform.position);
+        if (distanceToTarget >= 2f)
+        {
+            rb.velocity = force;
+            float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
 
-        if (distance < nextWaypointDistance)
-        {
-            currentWaypoint++;
-        }
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
 
-        if (force.x >= Mathf.Epsilon)
-        {
-            enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+            if (force.x >= Mathf.Epsilon)
+            {
+                enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+            }
+            else if (force.x <= Mathf.Epsilon)
+            {
+                enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+            }
         }
-        else if (force.x <= Mathf.Epsilon)
-        {
-            enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-        }
+        
     }
 
     // updates the target every "changeTargetRate" time according to the nearest target to the enemy.
@@ -178,7 +184,20 @@ public class Enemy : MonoBehaviour
         shouldChangeTarget = false;
     }
 
-    
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("enemy died");
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Wall"))

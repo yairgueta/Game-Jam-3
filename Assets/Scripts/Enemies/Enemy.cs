@@ -119,11 +119,11 @@ public class Enemy : MonoBehaviour, IDamageable
                 currentWaypoint++;
             }
 
-            if (force.x >= Mathf.Epsilon)
+            if (force.x > 0.1f)
             {
                 enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
             }
-            else if (force.x <= Mathf.Epsilon)
+            else if (force.x < 0.1f)
             {
                 enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
             }

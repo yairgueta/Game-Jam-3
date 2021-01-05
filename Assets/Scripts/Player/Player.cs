@@ -82,7 +82,7 @@ namespace Player
             OnLivesChange?.Invoke(curLives);
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             UpdateLife(-damage);
         }

@@ -30,9 +30,11 @@ namespace Player
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy"))
+            Enemy enemy = other.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                other.gameObject.SetActive(false);
+                enemy.TakeDamage(1);
+                // other.gameObject.SetActive(false);
                 Destroy(gameObject);
             }
         }

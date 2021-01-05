@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 namespace Player
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IDamageable
     {
         [SerializeField] private float speed;
         [SerializeField] private Animator anim;
@@ -81,6 +81,12 @@ namespace Player
             }
             OnLivesChange?.Invoke(curLives);
         }
+
+        public void TakeDamage(float damage)
+        {
+            UpdateLife(-damage);
+        }
+
 
         private void CollectedHealthFlower(HealthFlower flower)
         {

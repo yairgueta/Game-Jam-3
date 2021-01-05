@@ -3,6 +3,6 @@
 public interface IDamageable
 {
     // reduces life according to the damage.
-    public void TakeDamage(int damage);
+    public void TakeDamage(float damage);
 
 }

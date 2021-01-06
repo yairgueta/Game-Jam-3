@@ -10,6 +10,7 @@ namespace Selections
     public class Selectable : MonoBehaviour
     {
         public UnityEvent onThisSelected;
+        public float DragTime { get; private set; }
         
         [Header("Materials (keep null for defaults)")]
         [SerializeField] private Material overMaterial = null;
@@ -18,8 +19,10 @@ namespace Selections
 
         private SpriteRenderer sr;
         private Material originalMaterial;
-        private bool isSelected;
 
+        private float startDragTime;
+        
+        private bool isSelected;
         private bool interactable;
         private bool hasEnteredAndChanged;
 
@@ -69,11 +72,19 @@ namespace Selections
         private void OnMouseDown()
         {
             if (interactable) sr.material = clickedDownMaterial;
+            startDragTime = Time.time;
+            DragTime = 0;
         }
 
         private void OnMouseUp()
         {
             if (interactable) SelectionManager.Instance.NewSelected(this);
+            DragTime = -1;
+        }
+
+        private void OnMouseDrag()
+        {
+            DragTime = Time.time - startDragTime;
         }
 
         internal void Select()

@@ -358,8 +358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 405cf34a87a9c42f98d206e50b1ca1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  maxLives: 5
+  inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
+  playerSettings: {fileID: 11400000, guid: 141c5082e39704a47abbc9bda72a2d9f, type: 2}
   onLivesChange:
     m_PersistentCalls:
       m_Calls: []
@@ -375,7 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269e7d0d5effd9242a13074f6bec70b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
   shootingLayerMask:
     serializedVersion: 2
     m_Bits: 224

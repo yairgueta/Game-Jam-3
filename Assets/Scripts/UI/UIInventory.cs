@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Player;
+using Player.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,20 +15,19 @@ namespace UI
     
         void Start()
         {
-            Inventory.Instance.OnInventoryChange += UpdateResources;
         }
 
-        private void UpdateResources(ResourcesType t, int q)
+        private void UpdateResources(ResourceType t, int q)
         {
             switch (t)
             {
-                case ResourcesType.Wood:
+                case ResourceType.Wood:
                     woodText.text = q.ToString();
                     break;
-                case ResourcesType.Rock:
+                case ResourceType.Rock:
                     rockText.text = q.ToString();
                     break;
-                case ResourcesType.Mushroom:
+                case ResourceType.Mushroom:
                     mushroomText.text = q.ToString();
                     break;
             }

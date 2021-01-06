@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1487155873700659692}
   - component: {fileID: 3951353342111568052}
   - component: {fileID: 9057731624663721879}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LIfeFlower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

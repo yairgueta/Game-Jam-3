@@ -1,7 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Collectables;
+using Player.Inventory;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,65 +8,52 @@ namespace Player
 {
     public class Player : MonoBehaviour, IDamageable
     {
+        [SerializeField] private InventoryObject inventory;
         [SerializeField] private float speed;
-        [SerializeField] private Animator anim;
+        [SerializeField] private float maxLives = 5;
+        
         private Rigidbody2D rb;
-        private Vector2 moveVelocity;
-        private Vector2 moveDirection;
-        private Vector2 lastMoveDirection;
-        private float curLives = 3;
-        private float maxLives = 5;
-       
-        public UnityEvent<float> OnLivesChange;
 
+        public InventoryObject Inventory => inventory;
+        public Vector2 MoveDirection { get; private set; }
+        public Vector2 LastMoveDirection { get; private set; }
+        private float curLives;
 
+        public UnityEvent<float> onLivesChange;
 
-        void Start()
+        private void Awake()
+        {
+            inventory.Setup();
+        }
+
+        private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             CollectablesManager.Instance.onHealthFlowerCollected += CollectedHealthFlower;
-            
+            curLives = 1;
         }
 
-        void Update()
+        private void Update()
         {
             PlayerMovement();
-            Animate();
         }
         
-        
-        
-        
-        // movement of a player
         private void PlayerMovement()
         {
             var moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if ((moveInput.x == 0 && moveInput.y == 0) && moveDirection.x != 0 || moveDirection.y !=0)
+            if ((moveInput.x == 0 && moveInput.y == 0) && MoveDirection.x != 0 || MoveDirection.y !=0)
             {
-                lastMoveDirection = moveDirection;
+                LastMoveDirection = MoveDirection;
             }
-            moveDirection = moveInput.normalized;
-            moveVelocity =  moveDirection * speed;
+            MoveDirection = moveInput.normalized;
         }
-    
 
         private void FixedUpdate()
         {
-            rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * MoveDirection);
         }
 
-        private void Animate()
-        {
-            anim.SetFloat("AnimMoveX", moveDirection.x);
-            anim.SetFloat("AnimMoveY", moveDirection.y);
-            anim.SetFloat("AnimMoveMagnitude", moveDirection.magnitude);
-            anim.SetFloat("AnimLastMoveX", lastMoveDirection.x);
-            anim.SetFloat("AnimLastMoveY", lastMoveDirection.y);
-
-        }
-        
-
-        public void UpdateLife(float damage)
+        private void UpdateLife(float damage)
         {
             curLives += damage;
             if (curLives <= 0)
@@ -79,7 +65,7 @@ namespace Player
             {
                 curLives = maxLives;
             }
-            OnLivesChange?.Invoke(curLives);
+            onLivesChange?.Invoke(curLives / maxLives);
         }
 
         public void TakeDamage(float damage)
@@ -90,6 +76,7 @@ namespace Player
 
         private void CollectedHealthFlower(HealthFlower flower)
         {
+            //TODO: mashu aher
             UpdateLife(1);
         }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Reflection;
+using Player.Inventory;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,10 +8,12 @@ using UnityEngine.UIElements;
 
 namespace Player
 {
+    [RequireComponent(typeof(Player))]
     public class PlayerAimWeapon : MonoBehaviour
     {
         [SerializeField] private LayerMask shootingLayerMask;
         
+        private Player player;
         private Transform aimTransform;
         private Transform aimGunEndPoinTransform;
         private bool ableToShoot = true;
@@ -28,6 +31,7 @@ namespace Player
         {
             aimTransform = transform.Find("Aim");
             aimGunEndPoinTransform = aimTransform.Find("GunEndPos");
+            player = GetComponent<Player>();
             mainCamera = Camera.main;
         }
 
@@ -38,7 +42,6 @@ namespace Player
                 Aiming();
                 Shooting();
             }
-
         }
 
         private Vector3 GetMousePos()
@@ -77,7 +80,7 @@ namespace Player
         private void Shooting()
         {
             if (!Input.GetMouseButtonDown(0)) return;
-            
+            if (!player.Inventory.ConsumeItem(ResourceType.Mushroom, 1)) return;
             var hit = Physics2D.Raycast(mousePosition, Vector3.forward, 15f, shootingLayerMask);
             if (hit || EventSystem.current.IsPointerOverGameObject(-1)) return;
             
@@ -88,12 +91,5 @@ namespace Player
                     
             });
         }
-    
-    
-    
-    
-    
-    
-    
     }
 }

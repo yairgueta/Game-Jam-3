@@ -1,5 +1,6 @@
 using System;
 using Player;
+using Player.Inventory;
 using UnityEngine;
 
 namespace Collectables
@@ -7,10 +8,10 @@ namespace Collectables
     [RequireComponent(typeof(Collectable))]
     public class ResourceCollectable : MonoBehaviour
     {
-        [SerializeField] private ResourcesType collectableType;
+        [SerializeField] private ResourceType collectableType;
         [SerializeField] private int quantity;
         
-        public ResourcesType CollectableType => collectableType;
+        public ResourceType CollectableType => collectableType;
         public int Quantity => quantity;
 
         private void Start()

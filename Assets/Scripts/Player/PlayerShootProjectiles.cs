@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = System.Object;
+using Player.Inventory;
 
 namespace Player
 {
     public class PlayerShootProjectiles : MonoBehaviour
     {
-
         [SerializeField] private int pooledAmount;
-        private GameObject[] bulletsList;
         [SerializeField] private GameObject pooledObject;
-        private GameObject curBullet;
         
-
+        private GameObject[] bulletsList;
+        private GameObject curBullet;
 
         private void Awake()
         {
@@ -46,7 +45,5 @@ namespace Player
             curBullet.SetActive(true);
             curBullet.transform.GetComponent<Bullet>().Setup(shootDirection);
         }
-
-
     }
 }

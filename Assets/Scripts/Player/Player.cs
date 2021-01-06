@@ -10,17 +10,15 @@ namespace Player
     public class Player : MonoBehaviour, IDamageable
     {
         [SerializeField] private InventoryObject inventory;
-        [SerializeField] private float speed;
-        [SerializeField] private float maxLives = 5;
+        [SerializeField] private PlayerSettingsObject playerSettings;
         
-        private Rigidbody2D rb;
-
         public InventoryObject Inventory => inventory;
         public Vector2 MoveDirection { get; private set; }
         public Vector2 LastMoveDirection { get; private set; }
-        private float curLives;
-
         public UnityEvent<float> onLivesChange;
+
+        private Rigidbody2D rb;
+
 
         private void Awake()
         {
@@ -30,12 +28,7 @@ namespace Player
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            CollectablesManager.Instance.onHealthFlowerCollected += CollectedHealthFlower;
-            curLives = 1;
-
-            inventory[ResourceType.Mushroom] += 11;
-            inventory[ResourceType.Mushroom] -= 11;
-            
+            playerSettings.curHealth = playerSettings.maxHealth;
         }
 
         private void Update()
@@ -55,22 +48,18 @@ namespace Player
 
         private void FixedUpdate()
         {
-            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * MoveDirection);
+            rb.MovePosition(rb.position + playerSettings.speed * Time.fixedDeltaTime * MoveDirection);
         }
 
         private void UpdateLife(float damage)
         {
-            curLives += damage;
-            if (curLives <= 0)
-            {
-                Die();
-            }
-
-            if (curLives > maxLives)
-            {
-                curLives = maxLives;
-            }
-            onLivesChange?.Invoke(curLives / maxLives);
+            playerSettings.curHealth += damage;
+            if (playerSettings.curHealth <= 0) Die();
+            
+            playerSettings.curHealth = playerSettings.maxHealth;
+            playerSettings.curHealth = Mathf.Clamp(playerSettings.curHealth, 0, playerSettings.maxHealth);
+            
+            // onLivesChange?.Invoke(curLives / maxLives);
         }
 
         public void TakeDamage(float damage)
@@ -78,17 +67,9 @@ namespace Player
             UpdateLife(-damage);
         }
 
-
-        private void CollectedHealthFlower(HealthFlower flower)
-        {
-            //TODO: mashu aher
-            UpdateLife(1);
-        }
-
         private void Die()
         {
-            //todo: what happens
-            Debug.Log("player is dead");
+            playerSettings.onDeath.Raise();
         }
 
         private void OnTriggerEnter2D(Collider2D other)

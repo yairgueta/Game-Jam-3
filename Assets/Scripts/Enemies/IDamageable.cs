@@ -1,8 +1,10 @@
 
 // an interfaces to be implemented by objects that can take damage.
-public interface IDamageable
+namespace Enemies
 {
-    // reduces life according to the damage.
-    public void TakeDamage(float damage);
+    public interface IDamageable
+    {
+        public void TakeDamage(float damage);
 
+    }
 }

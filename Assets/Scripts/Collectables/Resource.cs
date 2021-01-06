@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Collectables
 {
     [RequireComponent(typeof(Collectable))]
-    public class ResourceCollectable : MonoBehaviour
+    public class Resource : MonoBehaviour
     {
         [SerializeField] private ResourceType collectableType;
         [SerializeField] private int quantity;

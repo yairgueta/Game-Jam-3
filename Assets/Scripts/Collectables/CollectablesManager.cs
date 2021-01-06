@@ -7,7 +7,7 @@ namespace Collectables
 {
     public class CollectablesManager : Singleton<CollectablesManager>
     {
-        public Action<ResourceCollectable> onResourceCollected;
+        public Action<Resource> onResourceCollected;
         public Action<HealthFlower> onHealthFlowerCollected;
 
         public Transform resourcesParent, flowersParent;

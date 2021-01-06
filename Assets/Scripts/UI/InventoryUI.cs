@@ -7,13 +7,12 @@ using TMPro;
 
 namespace UI
 {
-    public class UIInventory : MonoBehaviour
+    public class InventoryUI : MonoBehaviour
     {
-        [SerializeField] private InventoryObject invetory;
+        [SerializeField] private InventoryObject inventory;
         [SerializeField] private TMP_Text woodText;
         [SerializeField] private TMP_Text rockText;
         [SerializeField] private TMP_Text mushroomText;
-        private Sequence lackAnimation;
 
         private TMP_Text TypeToText(ResourceType type)
         {
@@ -32,7 +31,7 @@ namespace UI
         
         public void WarnLackOfResource(EventArgs args)
         {
-            var t = ((InventoryObject.ResourceArg) args).type;
+            var t = ((InventoryObject.CollectingArgs) args).type;
             var lack = TypeToText(t);
             
             DOTween.Kill(t, true);
@@ -45,20 +44,20 @@ namespace UI
 
         public void UpdateResources(EventArgs args)
         {
-            var tArgs = args as InventoryObject.ResourceArg;
+            var tArgs = args as InventoryObject.CollectingArgs;
             
             if (tArgs == null)
             {
-                woodText.text = invetory[ResourceType.Wood].ToString();
-                rockText.text = invetory[ResourceType.Rock].ToString();
-                mushroomText.text = invetory[ResourceType.Mushroom].ToString();
+                woodText.text = inventory[ResourceType.Wood].ToString();
+                rockText.text = inventory[ResourceType.Rock].ToString();
+                mushroomText.text = inventory[ResourceType.Mushroom].ToString();
             }
             else
             {
                 var type = tArgs.type;
                 var tmpText = TypeToText(type);
                 DOTween.Kill(type, true);
-                tmpText.text = invetory[type].ToString();
+                tmpText.text = inventory[type].ToString();
                 if (tArgs.isIncreasing > 0)
                     tmpText.gameObject.transform.DOScale(1.2f * Vector3.one, .25f).SetLoops(2, LoopType.Yoyo).SetId(type);
                 else if (tArgs.isIncreasing < 0)

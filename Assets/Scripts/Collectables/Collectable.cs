@@ -8,7 +8,7 @@ namespace Collectables
     [RequireComponent(typeof(Selections.Selectable))]
     public class Collectable : MonoBehaviour
     {
-        internal Action onThisCollected;
+        [SerializeField] private CollectableObject collectableObject;
         private Selectable selectable;
         
         private void Start()
@@ -20,9 +20,7 @@ namespace Collectables
 
         private void Collect()
         {
-            onThisCollected?.Invoke();
-            // TODO: Collection animation / particle?
-            
+            collectableObject.OnCollected();
             selectable.Deselect();
             Destroy(gameObject);
         }

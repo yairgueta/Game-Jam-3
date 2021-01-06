@@ -32,6 +32,10 @@ namespace Player
             rb = GetComponent<Rigidbody2D>();
             CollectablesManager.Instance.onHealthFlowerCollected += CollectedHealthFlower;
             curLives = 1;
+
+            inventory[ResourceType.Mushroom] += 11;
+            inventory[ResourceType.Mushroom] -= 11;
+            
         }
 
         private void Update()

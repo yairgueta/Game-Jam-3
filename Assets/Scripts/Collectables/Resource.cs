@@ -5,19 +5,20 @@ using UnityEngine;
 
 namespace Collectables
 {
-    [RequireComponent(typeof(Collectable))]
-    public class Resource : MonoBehaviour
+    [CreateAssetMenu(menuName = "Collectables/Resource")]
+    public class Resource : CollectableObject
     {
+        [SerializeField] private InventoryObject playerInventory;
         [SerializeField] private ResourceType collectableType;
         [SerializeField] private int quantity;
         
         public ResourceType CollectableType => collectableType;
         public int Quantity => quantity;
 
-        private void Start()
+        public override void OnCollected()
         {
-            GetComponent<Collectable>().onThisCollected += () => CollectablesManager.Instance.onResourceCollected?.Invoke(this);
-            transform.parent = CollectablesManager.Instance.resourcesParent;
+            base.OnCollected();
+            playerInventory[collectableType] += quantity;
         }
     }
 }

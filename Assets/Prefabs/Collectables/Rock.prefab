@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: collectableType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3440497857532448212, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: collectableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 28e0846f0cbe34332a4d0cfc007bfcac, type: 2}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Size.x
       value: 0.9216159

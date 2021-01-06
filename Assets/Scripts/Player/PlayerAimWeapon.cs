@@ -82,7 +82,14 @@ namespace Player
             if (!Input.GetMouseButtonDown(0)) return;
             var hit = Physics2D.Raycast(mousePosition, Vector3.forward, 15f, shootingLayerMask);
             if (hit || EventSystem.current.IsPointerOverGameObject(-1)) return;
-            if (!player.Inventory.ConsumeItem(ResourceType.Mushroom, 1)) return;
+            try
+            {
+                player.Inventory[ResourceType.Mushroom]--;
+            }
+            catch (Exception e)
+            {
+                return;
+            }
             
             OnSoot?.Invoke(this, new OnShootEventArgs
             {

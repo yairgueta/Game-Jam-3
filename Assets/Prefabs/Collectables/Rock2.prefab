@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.0122651
       objectReference: {fileID: 0}
+    - target: {fileID: 2267019470761529751, guid: 424c960cccdac4649907119b6b788d96, type: 3}
+      propertyPath: collectableObject
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b879c3a164ef47dca2f577ed5347cea, type: 2}
     - target: {fileID: 3559356113881710204, guid: 424c960cccdac4649907119b6b788d96, type: 3}
       propertyPath: quantity
       value: 3

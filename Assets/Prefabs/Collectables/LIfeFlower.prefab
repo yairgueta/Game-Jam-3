@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7314786169369704157}
   - component: {fileID: 1487155873700659692}
   - component: {fileID: 3951353342111568052}
-  - component: {fileID: 9057731624663721879}
   m_Layer: 7
   m_Name: LIfeFlower
   m_TagString: Untagged
@@ -142,15 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c5f21cad21b4119928c5e9ac37b224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9057731624663721879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 304431532306990816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84beaea25e3049aaa7f68cb1a3e43de6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  collectableObject: {fileID: 11400000, guid: c8c2e34c72d76495898fce7089ad8eb6, type: 2}

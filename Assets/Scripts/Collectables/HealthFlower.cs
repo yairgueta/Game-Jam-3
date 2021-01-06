@@ -3,18 +3,13 @@ using UnityEngine;
 
 namespace Collectables
 {
-    [RequireComponent(typeof(Collectable))]
-    public class HealthFlower : MonoBehaviour
+    [CreateAssetMenu(menuName = "Collectables/Flower_@@")]
+    public class HealthFlower : CollectableObject
     {
-        private void Start()
+        
+        public override void OnCollected()
         {
-            GetComponent<Collectable>().onThisCollected += () => CollectFlower();
-            transform.parent = CollectablesManager.Instance.flowersParent;
-        }
-
-        private void CollectFlower()
-        {
-            CollectablesManager.Instance.onHealthFlowerCollected?.Invoke(this);
+            base.OnCollected();
         }
     }
 }

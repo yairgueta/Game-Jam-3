@@ -15,7 +15,14 @@ namespace Player.Inventory
     [CreateAssetMenu]
     public class InventoryObject : ScriptableObject
     {
-        [SerializeField] private GameEvent onChange, onOutOfResources;
+        [Header("Initial Quantities")] 
+        [SerializeField] private int initWood;
+        [SerializeField] private int initRock;
+        [SerializeField] private int initMushroom;
+
+        [Header("Inventory Things")]
+        [SerializeField] private GameEvent onChange;
+        [SerializeField] private GameEvent onOutOfResources;
         [SerializeField] private SerializedDictionary<ResourceType, int> quantityMap;
         
         private void Awake()
@@ -27,45 +34,43 @@ namespace Player.Inventory
         {
             quantityMap = new SerializedDictionary<ResourceType, int>
             {
-                {ResourceType.Wood, 0}, {ResourceType.Rock, 0}, {ResourceType.Mushroom, 10}
+                {ResourceType.Wood, initWood}, {ResourceType.Rock, initRock}, {ResourceType.Mushroom, initMushroom}
             };
             onChange.Raise();
         }
 
-        public void AddItem(ResourceType type, int count)
+        public int this[ResourceType t]
         {
-            quantityMap[type] += count;
-            onChange.Raise(new ResourceArg(type, 1));
-        }
-
-        public bool ConsumeItem(ResourceType type, int count)
-        {
-            var currentCount = quantityMap[type];
-            if (currentCount < count)
+            get => quantityMap[t];
+            set
             {
-                onOutOfResources.Raise(new ResourceArg(type));
-                return false;
+                if (value < 0)
+                {
+                    onOutOfResources.Raise(new CollectingArgs(t));
+                    throw new InventoryOutOfResource();
+                }
+                var difference = value - quantityMap[t];
+                quantityMap[t] = value;
+                onChange.Raise(new CollectingArgs(t, difference));
             }
-            quantityMap[type] -= count;
-            onChange.Raise(new ResourceArg(type, -1));
-            return true;
-        }
+        } 
 
-        public int this[ResourceType t] => quantityMap[t];
+        #region Classes
 
-        #region Event Arguments Class
-        public class ResourceArg : EventArgs
+        public class InventoryOutOfResource : Exception { }
+        
+        public class CollectingArgs : EventArgs
         {
             public readonly ResourceType type;
             public readonly int isIncreasing;
 
-            public ResourceArg(ResourceType type)
+            public CollectingArgs(ResourceType type)
             {
                 this.type = type;
                 isIncreasing = 0;
             }
 
-            public ResourceArg(ResourceType type, int isIncreasing)
+            public CollectingArgs(ResourceType type, int isIncreasing)
             {
                 this.type = type;
                 this.isIncreasing = Mathf.Clamp(isIncreasing, -1, 1);

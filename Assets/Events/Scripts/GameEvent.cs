@@ -4,15 +4,13 @@ using UnityEngine;
 
 namespace Events
 {
-    [CreateAssetMenu(menuName = "Events/new GameEvent", order = 0)]
+    [CreateAssetMenu(menuName = "New Event", fileName = "Event@New Event", order = 0)]
     public class GameEvent : ScriptableObject
     {
         private readonly HashSet<GameEventListener> listeners = new HashSet<GameEventListener>();
 
-        public void Raise(EventArgs args = null)
+        public void Raise(object args = null)
         {
-            args ??= EventArgs.Empty;
-
             foreach (var listener in listeners)
             {
                 listener.OnEventRaised(args);
@@ -28,7 +26,5 @@ namespace Events
         {
             listeners.Remove(listener);
         }
-        
-        
     }
 }

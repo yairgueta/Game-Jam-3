@@ -1,10 +1,6 @@
 using System;
-using System.Reflection;
-using Player.Inventory;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 namespace Player
 {
@@ -20,7 +16,8 @@ namespace Player
         private Camera mainCamera;
         private Vector3 mousePosition;
 
-        public event EventHandler<OnShootEventArgs> OnSoot; 
+        // public event EventHandler<OnShootEventArgs> OnSoot; 
+        public Action<Vector3, Vector3> onSoot; 
         public class OnShootEventArgs : EventArgs
         { 
             public Vector3 gunEndPointPos;
@@ -37,11 +34,9 @@ namespace Player
 
         void Update()
         {
-            if (ableToShoot)
-            {
-                Aiming();
-                Shooting();
-            }
+            if (!ableToShoot) return;
+            Aiming();
+            Shooting();
         }
 
         private Vector3 GetMousePos()
@@ -63,14 +58,7 @@ namespace Player
         
             // rotate the gun to the right direction
             Vector3 aimLocalScale = Vector3.one;
-            if (angle > 90 || angle < -90)
-            {
-                aimLocalScale.y = -1f;
-            }
-            else
-            {
-                aimLocalScale.y = +1f;
-            }
+            aimLocalScale.y = angle > 90 || angle < -90 ? -1f : +1f;
 
             aimTransform.localScale = aimLocalScale;
 
@@ -82,21 +70,10 @@ namespace Player
             if (!Input.GetMouseButtonDown(0)) return;
             var hit = Physics2D.Raycast(mousePosition, Vector3.forward, 15f, shootingLayerMask);
             if (hit || EventSystem.current.IsPointerOverGameObject(-1)) return;
-            try
-            {
-                player.Inventory[ResourceType.Mushroom]--;
-            }
-            catch (Exception e)
-            {
-                return;
-            }
             
-            OnSoot?.Invoke(this, new OnShootEventArgs
-            {
-                gunEndPointPos = aimGunEndPoinTransform.position,
-                shootPosition = mousePosition,
-                    
-            });
+            if (!player.PlayerSettings.UpdateMana(-player.PlayerSettings.bulletManaCost)) return;
+            
+            onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
         }
     }
 }

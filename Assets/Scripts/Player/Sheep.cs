@@ -34,6 +34,7 @@ namespace Player
         {
             if (status.HasFlag(Status.Empty)) return;
             if (selectable.DragTime >= 0) DisplayBeingCollected();
+            else collectionDisplay.fillAmount = 0;
             if (selectable.DragTime >= sheepSettings.timeToCollect) GetCollected();
         }
         

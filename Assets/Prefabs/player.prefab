@@ -360,9 +360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
   playerSettings: {fileID: 11400000, guid: 141c5082e39704a47abbc9bda72a2d9f, type: 2}
-  onLivesChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5050817413598364852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,8 +387,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b34949e43e6bc4aa95d8f4aad6b3d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledAmount: 0
-  pooledObject: {fileID: 0}
+  pooledAmount: 10
+  pooledObjectPrefab: {fileID: 5211568865569893879, guid: dfd160921c0510d47b6587743a054fbc, type: 3}
 --- !u!50 &5050817413598364854
 Rigidbody2D:
   serializedVersion: 4

@@ -40,7 +40,7 @@ namespace Cycles
             cyclesDurations = new Dictionary<Cycle, float>
             {
                 {Cycle.Day, 7f},
-                {Cycle.Night, 6f},
+                {Cycle.Night, 600f},
                 {Cycle.Magic, 5f},
             };
             currentCycle = Cycle.Day;

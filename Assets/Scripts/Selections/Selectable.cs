@@ -71,19 +71,22 @@ namespace Selections
 
         private void OnMouseDown()
         {
-            if (interactable) sr.material = clickedDownMaterial;
+            if (!interactable) return;
+            sr.material = clickedDownMaterial;
             startDragTime = Time.time;
             DragTime = 0;
         }
 
         private void OnMouseUp()
         {
-            if (interactable) SelectionManager.Instance.NewSelected(this);
+            if (!interactable) return;
+            SelectionManager.Instance.NewSelected(this);
             DragTime = -1;
         }
 
         private void OnMouseDrag()
         {
+            if (!interactable) return;
             DragTime = Time.time - startDragTime;
         }
 

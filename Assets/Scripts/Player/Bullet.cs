@@ -1,22 +1,35 @@
 using System;
 using Enemies;
+using Events;
 using UnityEngine;
 
 namespace Player
 {
     public class Bullet : MonoBehaviour
     {
-        [SerializeField] private float bulletSpeed = 100f;
+        private Rigidbody2D rb2d;
+        private GameEvent onExplosionEvent;
+        private float power;
 
-        public void Setup(Vector3 shootingDirection)
+        private void Awake()
         {
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            rb.AddForce(shootingDirection * bulletSpeed, ForceMode2D.Impulse);
-            Invoke("Disable", 1f);   
+            rb2d = GetComponent<Rigidbody2D>();
+            gameObject.SetActive(false);
         }
 
-        void Disable()
+        public void Setup(Vector3 shootingDirection, float speed, float duration, GameEvent explosionEvent, float _power)
         {
+            gameObject.SetActive(true);
+            onExplosionEvent = explosionEvent;
+            power = _power;
+            
+            rb2d.AddForce(shootingDirection * speed, ForceMode2D.Impulse);
+            Invoke(nameof(Disable), duration);   
+        }
+
+        public void Disable()
+        {
+            onExplosionEvent.Raise(this);
             gameObject.SetActive(false);
         }
 
@@ -27,14 +40,15 @@ namespace Player
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(1);
-                Disable();
-            }
+            var enemy = other.GetComponent<Enemy>();
+            if (enemy == null) return;
+            enemy.TakeDamage(power);
+            Disable();
         }
-        
 
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            Disable();
+        }
     }
 }

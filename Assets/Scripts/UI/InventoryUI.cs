@@ -29,7 +29,7 @@ namespace UI
             }
         }
         
-        public void WarnLackOfResource(EventArgs args)
+        public void WarnLackOfResource(object args)
         {
             var t = ((InventoryObject.CollectingArgs) args).type;
             var lack = TypeToText(t);
@@ -42,11 +42,9 @@ namespace UI
                 .SetId(t);
         }
 
-        public void UpdateResources(EventArgs args)
+        public void UpdateResources(object args)
         {
-            var tArgs = args as InventoryObject.CollectingArgs;
-            
-            if (tArgs == null)
+            if (!(args is InventoryObject.CollectingArgs tArgs))
             {
                 woodText.text = inventory[ResourceType.Wood].ToString();
                 rockText.text = inventory[ResourceType.Rock].ToString();

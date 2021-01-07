@@ -47,7 +47,7 @@ namespace Player.Inventory
                 if (value < 0)
                 {
                     onOutOfResources.Raise(new CollectingArgs(t));
-                    throw new InventoryOutOfResource();
+                    throw new InventoryOutOfResourceException();
                 }
                 var difference = value - quantityMap[t];
                 quantityMap[t] = value;
@@ -57,9 +57,9 @@ namespace Player.Inventory
 
         #region Classes
 
-        public class InventoryOutOfResource : Exception { }
+        public class InventoryOutOfResourceException : Exception { }
         
-        public class CollectingArgs : EventArgs
+        public class CollectingArgs
         {
             public readonly ResourceType type;
             public readonly int isIncreasing;

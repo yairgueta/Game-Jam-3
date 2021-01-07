@@ -1,49 +1,56 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
+using Events;
 using UnityEngine;
-using Object = System.Object;
-using Player.Inventory;
+using UnityEngine.Events;
 
 namespace Player
 {
     public class PlayerShootProjectiles : MonoBehaviour
     {
         [SerializeField] private int pooledAmount;
-        [SerializeField] private GameObject pooledObject;
-        
-        private GameObject[] bulletsList;
-        private GameObject curBullet;
+        [SerializeField] private GameObject pooledObjectPrefab;
+
+        private Queue<Bullet> bulletsPool;
+        private Player player;
 
         private void Awake()
         {
-            GetComponent<PlayerAimWeapon>().OnSoot += PlayerSootProjectiles_OnSoot;
+            bulletsPool = new Queue<Bullet>();
+
+            GetComponent<PlayerAimWeapon>().onSoot += PlayerSootProjectiles_OnSoot;
+            player = GetComponent<Player>();
         }
 
         private void Start()
         {
-            bulletsList = new GameObject[pooledAmount];
+            var listener = gameObject.AddComponent<GameEventListener>();
+            listener.InitEvent(player.PlayerSettings.onBulletExplode);
+            listener.response.AddListener(o => bulletsPool.Enqueue((Bullet)o));
+            
             for (int i = 0; i < pooledAmount; i++)
             {
-                GameObject bullet = Instantiate(pooledObject);
-                bullet.SetActive(false);
-                bulletsList[i] = bullet;
+                var bulletPrefab = Instantiate(pooledObjectPrefab);
+                var bullet = bulletPrefab.GetComponent<Bullet>();
+                bulletsPool.Enqueue(bullet);
             }
         }
         
         
-        private void PlayerSootProjectiles_OnSoot(Object sender, PlayerAimWeapon.OnShootEventArgs e)
+        private void PlayerSootProjectiles_OnSoot(Vector3 gunEndPointPos, Vector3 shootPosition)
         {
-            for (int i = 0; i < pooledAmount; i++)
+            if (bulletsPool.Count == 0)
             {
-                if (!bulletsList[i].activeInHierarchy)
-                {
-                    curBullet = bulletsList[i];
-                }
+                Debug.LogWarning("Bullet Pool is Empty");
+                return;
             }
-            curBullet.transform.position = e.gunEndPointPos;
-            Vector3 shootDirection = (e.shootPosition - e.gunEndPointPos).normalized;
-            curBullet.SetActive(true);
-            curBullet.transform.GetComponent<Bullet>().Setup(shootDirection);
+            
+            var bullet = bulletsPool.Dequeue();
+            bullet.transform.position = gunEndPointPos;
+            var shootDirection = (shootPosition - gunEndPointPos).normalized;
+            
+            bullet.Setup(shootDirection, player.PlayerSettings.bulletSpeed, player.PlayerSettings.bulletDuration, 
+                player.PlayerSettings.onBulletExplode, player.PlayerSettings.bulletPower);
         }
     }
 }

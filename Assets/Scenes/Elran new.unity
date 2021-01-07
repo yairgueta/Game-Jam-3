@@ -3121,6 +3121,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4955538467400542041, guid: 11e43c5e3d3743443861afb2ec204b87, type: 3}
+      propertyPath: data.dataString
+      value: UEsDBBQAAAgIAAAQIewfa4O5awIAABQFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1zmzAQ/SseneuMIHZsemuJ4/SQj4nbyYWLjBajsZAYScR2Mv7vXQkw1L2AePv19u2KLyKUrSF32qyN4E+aA/k+If5Mvk0G4yMc2U6rjfiE3uddcFd6JxZ83pgTGvHIh1ldgTMi/6F20jtTBBslCm2qFd9Bqq2zCBdMWkCT0c5HK4S+JuSIr2niQ054ihf+9ImnhE7OeMxBOTAj1+hmTimNFtGiC6EBoHF8N+9ClzfJLEpuZ6spXYYkjcolq2rgvqMh1+1tXzUKbgp77Tx8X7mWUtiOKHGnOgiRsto22CY6cMGw8cAuuvG5ShC70vmE4/CXorDgOl0MO90Lgwq2eclP3cpaMbtvmX0w2QQKy0Vg1SZ9+s8+bUkXRlePfd2I+hquFPn+jZ1yZt1I9zF8P6IeBDowuWdbCe8lqGe9NrpRHI3OND60sRDfD5+X1tIS8v2At1SvwKYeFO/H3A/Z93AO3R9TKaptGOesBTZSB8XDboDB2fxCwmFzbJcCUc/ij4XfbDdesc7wIIx1aOq6VJ7eVjfGu5JV0Mx307hUGwUB7kjXoJh0p1dM465HeGUblb2yPDB/mbrina2/I1chAR78Kb0yverDZVi21IcnsOVL46RQMJD2hmfUKdVKtRs21qQP2zSmYPkobNcI/u9qkaQokmgezWdJTJdRHE9ni4jCAp+zOz6Hu4SE3RMK+2TytSXayYNTU0NyhXvW/2Mma8PqsO3csMNafFZ6TFCoQm9yA6Be2hQX5mCwCl5MvuICFdqAc0KFgZOvjEid74Fnl5pZaHV1dIZlQ5aM1OJDO49kJA1/lYycyfkvUEsDBBQAAAgIAAAQIezcQ+v0bAAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrSSZVqapaGpoamJpZGBhaGRka6JuaFBqjmQNDFLMU01s1SKBaovqSxI9UvMTYXoCUgsyUjLzEvJzEvXcy/KTHEHGa0UWwsAUEsBAi0AFAAACAgAABAh7B9rg7lrAgAAFAUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAABAh7NxD6/RsAAAAeAAAAAkAJAAAAAAAAAAAAAAAuAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABvAwAAAAA=
+      objectReference: {fileID: 0}
     - target: {fileID: 4955538467400542046, guid: 11e43c5e3d3743443861afb2ec204b87, type: 3}
       propertyPath: m_Name
       value: A Star
@@ -5059,6 +5063,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1667441342324272322, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: m_Radius
+      value: 0.784995
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667441342324272322, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667441342324272322, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.35309464
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667441342324272322, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.29326147
+      objectReference: {fileID: 0}
     - target: {fileID: 1667441342324272324, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
       propertyPath: wallsPosition
       value: 
@@ -5071,7 +5091,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1667441342324272322, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
 --- !u!4 &1962964754 stripped
 Transform:
@@ -5382,6 +5403,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+--- !u!1 &2071830521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1667441341712273183, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+  m_PrefabInstance: {fileID: 1953448542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &2071830524
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071830521}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.22457981, y: -0.21965253}
+  serializedVersion: 2
+  m_Radius: 0.86972797
 --- !u!4 &2122016875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6638235558202263003, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}

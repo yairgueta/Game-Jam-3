@@ -6,175 +6,48 @@ namespace Enemies
 {
     public class Enemy : MonoBehaviour, IDamageable
     {
-        private enum EnemyMode {Walking, AttackPlayer, AttackWall, AttackSheep}
-    
-        private const int FollowPlayer = 0;
-        private const int FollowWalls = 1;
-    
-        [SerializeField] float speed = 0.01f;
-        [SerializeField] private float nextWaypointDistance = 3f;
-        [SerializeField] private int attackPower = 1;
-        [SerializeField] private Transform enemyGFX;
-        [SerializeField] private Transform wallsPosition;
-        [SerializeField] private Transform playerTransform;
-        [SerializeField] private float attackDistance = 3f;
-        [SerializeField] private float changeTargetRate = 5f;
-        [SerializeField] private float health = 5f;
-
-        private Path currentPath;
-        private int currentWaypoint = 0;
-        private Transform target;
-        private EnemyMode enemyMode;
+        [SerializeField] private EnemySettings enemySettings;
         private IDamageable attackedObject;
         private bool shouldChangeTarget;
-
-        private Seeker seeker;
-        private Rigidbody2D rb;
-        private Vector3 initialEnemyScale;
-        private float pathRepeatRate = .5f;
         private bool canAttack = true;
+        private EnemyMovement enemyMovement;
 
 
         // Start is called before the first frame update
         void Start()
         {
-            seeker = GetComponent<Seeker>();
-            rb = GetComponent<Rigidbody2D>();
-            initialEnemyScale = enemyGFX.localScale;
-
-            StartFollow();
-            InvokeRepeating(nameof(UpdateTarget), changeTargetRate, changeTargetRate);
+            enemyMovement = GetComponent<EnemyMovement>();
+            InvokeRepeating(nameof(UpdateTarget), enemySettings.changeTargetRate, enemySettings.changeTargetRate);
         }
     
         void FixedUpdate()
-        { 
-            if (currentPath != null)
-            {
-                MoveToNextTarget();
-            }
-            if (enemyMode != EnemyMode.Walking && attackedObject != null)
+        {
+            if (enemySettings.enemyMode != Mode.Walking && attackedObject != null)
             {
                 Attack(attackedObject);
             }
-        }
-
-        // starts to follow current target.
-        private void StartFollow()
-        {
-            enemyMode = EnemyMode.Walking;
-            ChooseTarget();
-            FindPath();
-        }
-    
-        // chooses a new target to follow.
-        private void ChooseTarget()
-        {
-            var followIndicator = UnityEngine.Random.Range(FollowPlayer, FollowWalls + 1);
-            if (followIndicator == FollowPlayer)
-            {
-                target = playerTransform;
-                return;
-            }
-            target = wallsPosition;
-        }
-
-        // finds a path to the current target.
-        private void FindPath()
-        {
-            InvokeRepeating(nameof(UpdatePath), 0f, pathRepeatRate);
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
-        }
-    
-        // updates the path to the current target.
-        private void UpdatePath()
-        {
-            if (seeker.IsDone())
-            {
-                seeker.StartPath(rb.position, target.position, OnPathComplete);
-            }
-        }
-
-        // called when the last path has been completed.
-        private void OnPathComplete(Path path)
-        {
-            if (path.error) return;
-            currentPath = path;
-            currentWaypoint = 0; // to start at the beginning of the new path. 
-        }
-
-        // moves the enemy towards the new target.
-        private void MoveToNextTarget()
-        {
-            if (currentWaypoint >= currentPath.vectorPath.Count) return;
-            Vector2 direction = ((Vector2) currentPath.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * speed;
-            var distanceToTarget = Vector2.Distance(rb.position, target.position);
-            rb.velocity = force;
-            float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
-
-            if (distance < nextWaypointDistance)
-            {
-                currentWaypoint++;
-            }
-
-            if (target.position.x > transform.position.x)
-            {
-                enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            }
-            else if (target.position.x < transform.position.x)
-            {
-                enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            }
-            // if (distanceToTarget >= 2f)
-            // {
-            //     rb.velocity = force;
-            //     float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
-            //
-            //     if (distance < nextWaypointDistance)
-            //     {
-            //         currentWaypoint++;
-            //     }
-            //
-            //     if (target.position.x > transform.position.x)
-            //     {
-            //         enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            //     }
-            //     else if (target.position.x < transform.position.x)
-            //     {
-            //         enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            //     }
-            // }
-            // else if (target.position.x < transform.position.x)
-            // {
-            //     enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            // }
-            // else if (target.position.x > transform.position.x)
-            // {
-            //     enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            // }
-        
         }
 
         // updates the target every "changeTargetRate" time according to the nearest target to the enemy.
         private void UpdateTarget()
         {
             // if (enemyMode != EnemyMode.Walking) return;
-            var wallsDistance = Vector2.Distance(wallsPosition.position, rb.position);
-            var playerDistance = Vector2.Distance(playerTransform.position, rb.position);
-            if (target.position == playerTransform.position && wallsDistance < playerDistance)
+            var wallsDistance = Vector2.Distance(enemyMovement.wallsPosition.position, enemyMovement.rb.position);
+            var playerDistance = Vector2.Distance(enemyMovement.playerTransform.position, enemyMovement.rb.position);
+            if (enemySettings.target.position == enemyMovement.playerTransform.position && wallsDistance < playerDistance)
             {
-                target = wallsPosition;
-                if (enemyMode != EnemyMode.AttackPlayer)
+                enemySettings.target = enemyMovement.wallsPosition;
+                if (enemySettings.enemyMode != Mode.AttackPlayer)
                 {
-                    enemyMode = EnemyMode.AttackWall;
+                    enemySettings.enemyMode = Mode.AttackWall;
                 }
             }
             else if(playerDistance < wallsDistance)
             {
-                target = playerTransform;
-                if (enemyMode != EnemyMode.AttackWall)
+                enemySettings.target = enemyMovement.playerTransform;
+                if (enemySettings.enemyMode != Mode.AttackWall)
                 {
-                    enemyMode = EnemyMode.AttackPlayer;
+                    enemySettings.enemyMode = Mode.AttackPlayer;
                 }
             }
         }
@@ -182,15 +55,16 @@ namespace Enemies
         // attacks a damageable target.
         private void Attack(IDamageable damageable)
         {
-            if (!shouldChangeTarget && canAttack && Vector2.Distance(rb.position, target.position) <= attackDistance)
+            if (!shouldChangeTarget && canAttack && Vector2.Distance(enemyMovement.rb.position, 
+                enemySettings.target.position) <= enemySettings.attackDistance)
             {
-                damageable.TakeDamage(attackPower);
+                damageable.TakeDamage(enemySettings.attackPower);
                 canAttack = false;
                 StartCoroutine(DelayAttack());
             }
             else if (shouldChangeTarget)
             {
-                StartFollow();
+                enemyMovement.StartFollow();
             }
         }
 
@@ -202,35 +76,24 @@ namespace Enemies
         }
 
         // sets the target to a target that enemy collided with.
-        private void SetCollisionTarget(Transform newTarget, EnemyMode mode, IDamageable toAttack)
+        private void SetCollisionTarget(Transform newTarget, Mode mode, IDamageable toAttack)
         {
-            enemyMode = mode;
-            target = newTarget;
+            enemySettings.enemyMode = mode;
+            enemySettings.target = newTarget;
             attackedObject = toAttack;
             shouldChangeTarget = false;
         }
 
         public void TakeDamage(float damage)
         {
-            health -= damage;
-            if (health <= 0)
-            {
-                Die();
-            }
-        }
-
-        private void Die()
-        {
-            Debug.Log("enemy died");
-            health = 5f; //TODO: delete
+            enemySettings.UpdateLife(damage);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-        
             if (other.gameObject.CompareTag("Player"))
             {
-                SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackPlayer, 
+                SetCollisionTarget(other.gameObject.transform, Mode.AttackPlayer, 
                     other.gameObject.GetComponent<IDamageable>());
             }
             //todo: uncomment the following lines after sheep and wall implement idamageable.
@@ -248,15 +111,15 @@ namespace Enemies
 
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Wall") && enemyMode == EnemyMode.AttackWall)
+            if (other.gameObject.CompareTag("Wall") && enemySettings.enemyMode != Mode.AttackWall)
             {
                 shouldChangeTarget = true;
             }
-            else if (other.gameObject.CompareTag("Player") && enemyMode == EnemyMode.AttackPlayer)
+            else if (other.gameObject.CompareTag("Player") && enemySettings.enemyMode != Mode.AttackPlayer)
             {
                 shouldChangeTarget = true;
             }
-            else if (other.gameObject.CompareTag("Sheep") && enemyMode == EnemyMode.AttackSheep)
+            else if (other.gameObject.CompareTag("Sheep") && enemySettings.enemyMode != Mode.AttackSheep)
             {
                 shouldChangeTarget = true;
             }

@@ -109,33 +109,49 @@ namespace Enemies
             Vector2 direction = ((Vector2) currentPath.vectorPath[currentWaypoint] - rb.position).normalized;
             Vector2 force = direction * speed;
             var distanceToTarget = Vector2.Distance(rb.position, target.position);
-            if (distanceToTarget >= 2f)
+            rb.velocity = force;
+            float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
+
+            if (distance < nextWaypointDistance)
             {
-                rb.velocity = force;
-                float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
+                currentWaypoint++;
+            }
 
-                if (distance < nextWaypointDistance)
-                {
-                    currentWaypoint++;
-                }
-
-                if (force.x > 0.1f)
-                {
-                    enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-                }
-                else if (force.x < 0.1f)
-                {
-                    enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-                }
+            if (target.position.x > transform.position.x)
+            {
+                enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
             }
             else if (target.position.x < transform.position.x)
             {
                 enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
             }
-            else if (target.position.x > transform.position.x)
-            {
-                enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            }
+            // if (distanceToTarget >= 2f)
+            // {
+            //     rb.velocity = force;
+            //     float distance = Vector2.Distance(rb.position, currentPath.vectorPath[currentWaypoint]);
+            //
+            //     if (distance < nextWaypointDistance)
+            //     {
+            //         currentWaypoint++;
+            //     }
+            //
+            //     if (target.position.x > transform.position.x)
+            //     {
+            //         enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+            //     }
+            //     else if (target.position.x < transform.position.x)
+            //     {
+            //         enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+            //     }
+            // }
+            // else if (target.position.x < transform.position.x)
+            // {
+            //     enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+            // }
+            // else if (target.position.x > transform.position.x)
+            // {
+            //     enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+            // }
         
         }
 

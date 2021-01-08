@@ -50,6 +50,7 @@ MonoBehaviour:
   onThisSelected:
     m_PersistentCalls:
       m_Calls: []
+  onNewSelection: {fileID: 11400000, guid: 59fd63c51de132a4197c64fd4ffde55e, type: 2}
   overMaterial: {fileID: 0}
   clickedDownMaterial: {fileID: 0}
   selectedMaterial: {fileID: 0}

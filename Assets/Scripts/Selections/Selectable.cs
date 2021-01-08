@@ -1,5 +1,6 @@
 using System;
 using System.Security.Cryptography;
+using Events;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,6 +11,7 @@ namespace Selections
     public class Selectable : MonoBehaviour
     {
         public UnityEvent onThisSelected;
+        public GameEvent onNewSelection;
         public float DragTime { get; private set; }
         
         [Header("Materials (keep null for defaults)")]
@@ -97,6 +99,7 @@ namespace Selections
             sr.material = selectedMaterial;
             isSelected = true;
             onThisSelected?.Invoke();
+            onNewSelection.Raise(gameObject);
         }
         
         public void Deselect()

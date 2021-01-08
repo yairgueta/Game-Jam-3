@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4310957693348009090, guid: 30837691f612e42db884a98441b4c850, type: 3}
+      propertyPath: onNewSelection
+      value: 
+      objectReference: {fileID: 11400000, guid: 59fd63c51de132a4197c64fd4ffde55e, type: 2}
     - target: {fileID: 4310957693348009093, guid: 30837691f612e42db884a98441b4c850, type: 3}
       propertyPath: m_Name
-      value: Gates@level1@01 (1)
+      value: Gates@level1@01
       objectReference: {fileID: 0}
     - target: {fileID: 4310957693348009093, guid: 30837691f612e42db884a98441b4c850, type: 3}
       propertyPath: m_TagString

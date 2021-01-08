@@ -9,15 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4af539b1311b6349b3c23223e5fc94a, type: 3}
-  m_Name: Enemy Settings
+  m_Script: {fileID: 11500000, guid: 14f6c0bd4b6343a7b1991030906566b4, type: 3}
+  m_Name: Event@Enemy
   m_EditorClassIdentifier: 
-  attackPower: 1
-  attackDistance: 3
-  changeTargetRate: 5
-  health: 5
-  pathRepeatRate: 0.5
-  speed: 1
-  nextWaypointDistance: 3
-  target: {fileID: 0}
-  enemyMode: 1

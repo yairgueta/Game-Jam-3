@@ -1,24 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
 public enum Mode {Walking, AttackPlayer, AttackWall, AttackSheep}
 public class EnemyMovement : MonoBehaviour
 {
+    private const int FollowPlayer = 0;
+    private const int FollowWalls = 1;
+    
+    [SerializeField] private EnemySettings enemySettings;
+    [SerializeField] private Transform enemyGFX;
+    
     public Rigidbody2D rb;
     public Transform wallsPosition;
     public Transform playerTransform;
     
-    private const int FollowPlayer = 0;
-    private const int FollowWalls = 1;
-
-    [SerializeField] private EnemySettings enemySettings;
-
-
     private int currentWaypoint = 0;
     private Path currentPath;
-    [SerializeField] private Transform enemyGFX;
     private Vector3 initialEnemyScale;
     private Seeker seeker;
     
@@ -91,15 +88,18 @@ public class EnemyMovement : MonoBehaviour
             {
                 currentWaypoint++;
             }
-
-            if (enemySettings.target.position.x > transform.position.x)
-            {
-                enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            }
-            else if (enemySettings.target.position.x < transform.position.x)
-            {
-                enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
-            }
-        
+            UpdateDirection();
         }
+
+    private void UpdateDirection()
+    {
+        if (enemySettings.target.position.x > transform.position.x)
+        {
+            enemyGFX.localScale = new Vector3(-initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+        }
+        else if (enemySettings.target.position.x < transform.position.x)
+        {
+            enemyGFX.localScale = new Vector3(initialEnemyScale.x, initialEnemyScale.y, initialEnemyScale.z);
+        }
+    }
 }

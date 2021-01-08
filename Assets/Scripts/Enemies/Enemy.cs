@@ -1,5 +1,4 @@
 using System.Collections;
-using Pathfinding;
 using UnityEngine;
 
 namespace Enemies
@@ -7,11 +6,11 @@ namespace Enemies
     public class Enemy : MonoBehaviour, IDamageable
     {
         [SerializeField] private EnemySettings enemySettings;
+
         private IDamageable attackedObject;
         private bool shouldChangeTarget;
         private bool canAttack = true;
         private EnemyMovement enemyMovement;
-
 
         // Start is called before the first frame update
         void Start()
@@ -19,7 +18,7 @@ namespace Enemies
             enemyMovement = GetComponent<EnemyMovement>();
             InvokeRepeating(nameof(UpdateTarget), enemySettings.changeTargetRate, enemySettings.changeTargetRate);
         }
-    
+
         void FixedUpdate()
         {
             if (enemySettings.enemyMode != Mode.Walking && attackedObject != null)
@@ -31,10 +30,12 @@ namespace Enemies
         // updates the target every "changeTargetRate" time according to the nearest target to the enemy.
         private void UpdateTarget()
         {
-            // if (enemyMode != EnemyMode.Walking) return;
-            var wallsDistance = Vector2.Distance(enemyMovement.wallsPosition.position, enemyMovement.rb.position);
-            var playerDistance = Vector2.Distance(enemyMovement.playerTransform.position, enemyMovement.rb.position);
-            if (enemySettings.target.position == enemyMovement.playerTransform.position && wallsDistance < playerDistance)
+            var wallsDistance = Vector2.Distance(enemyMovement.wallsPosition.position,
+                enemyMovement.rb.position);
+            var playerDistance = Vector2.Distance(enemyMovement.playerTransform.position,
+                enemyMovement.rb.position);
+            if (enemySettings.target.position == enemyMovement.playerTransform.position &&
+                wallsDistance < playerDistance)
             {
                 enemySettings.target = enemyMovement.wallsPosition;
                 if (enemySettings.enemyMode != Mode.AttackPlayer)
@@ -42,7 +43,7 @@ namespace Enemies
                     enemySettings.enemyMode = Mode.AttackWall;
                 }
             }
-            else if(playerDistance < wallsDistance)
+            else if (playerDistance < wallsDistance)
             {
                 enemySettings.target = enemyMovement.playerTransform;
                 if (enemySettings.enemyMode != Mode.AttackWall)
@@ -55,7 +56,7 @@ namespace Enemies
         // attacks a damageable target.
         private void Attack(IDamageable damageable)
         {
-            if (!shouldChangeTarget && canAttack && Vector2.Distance(enemyMovement.rb.position, 
+            if (!shouldChangeTarget && canAttack && Vector2.Distance(enemyMovement.rb.position,
                 enemySettings.target.position) <= enemySettings.attackDistance)
             {
                 damageable.TakeDamage(enemySettings.attackPower);
@@ -93,9 +94,10 @@ namespace Enemies
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                SetCollisionTarget(other.gameObject.transform, Mode.AttackPlayer, 
+                SetCollisionTarget(other.gameObject.transform, Mode.AttackPlayer,
                     other.gameObject.GetComponent<IDamageable>());
             }
+
             //todo: uncomment the following lines after sheep and wall implement idamageable.
             // else if (other.gameObject.CompareTag("Sheep"))
             // {

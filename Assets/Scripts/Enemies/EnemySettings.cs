@@ -9,6 +9,7 @@ public class EnemySettings : ScriptableObject
     public float attackDistance = 3f;
     public float health = 5f;
     public float speed = 15f;
+    public float attackDelay = 3f;
 
     [Header("AI Attributes")]
     public float nextWaypointDistance = 3f;

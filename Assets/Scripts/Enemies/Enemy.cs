@@ -72,7 +72,7 @@ namespace Enemies
         // delays the attack rate.
         private IEnumerator DelayAttack()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(enemySettings.attackDelay);
             canAttack = true;
         }
 

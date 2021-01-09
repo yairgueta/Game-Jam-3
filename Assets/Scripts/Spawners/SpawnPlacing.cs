@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +10,11 @@ public class SpawnPlacing : MonoBehaviour
     public void Initialize()
     {
         var unitSize = spawnSettings.spawnUnitSize;
-        for (float row = spawnSettings.minGameY; row < spawnSettings.maxGameY; row += unitSize)
+        for (var row = spawnSettings.minGameY; row < spawnSettings.maxGameY; row += unitSize)
         {
-            for (float col = spawnSettings.minGameX; col < spawnSettings.maxGameX; col += unitSize)
+            for (var col = spawnSettings.minGameX; col < spawnSettings.maxGameX; col += unitSize)
             {
-                Vector2 currentPosition = new Vector2(col, row);
+                var currentPosition = new Vector2(col, row);
                 if (IsVacant(currentPosition) && !IsInDeadZone(currentPosition))
                 {
                     vacantPositions.Add(currentPosition);
@@ -33,13 +31,12 @@ public class SpawnPlacing : MonoBehaviour
 
     public bool RemovePosition(Vector2 position)
     {
-        return vacantPositions.Remove(new Vector2(FindUnitSizeRoundedForX(position.x),
-            FindUnitSizeRoundedForY(position.y)));
+        return vacantPositions.Remove(FindUnitSizeRounded(new Vector2(position.x, position.y)));
     }
 
     public bool AddPosition(Vector2 position)
     {
-        var toAdd = new Vector2(FindUnitSizeRoundedForX(position.x), FindUnitSizeRoundedForY(position.y));
+        var toAdd = FindUnitSizeRounded(new Vector2(position.x, position.y));
         if (IsVacant(toAdd))
         {
             vacantPositions.Add(toAdd);
@@ -64,21 +61,16 @@ public class SpawnPlacing : MonoBehaviour
         return boxCollision.collider == null;
     }
 
-    public float FindUnitSizeRoundedForX(float num)
+    private Vector2 FindUnitSizeRounded(Vector2 position)
     {
         var minX = spawnSettings.minGameX;
-        var unitSize = spawnSettings.spawnUnitSize;
-        return minX + Mathf.Round((Mathf.Abs(num - minX)) / unitSize) * unitSize;
-    }
-    
-    
-    public float FindUnitSizeRoundedForY(float num)
-    {
         var minY = spawnSettings.minGameY;
         var unitSize = spawnSettings.spawnUnitSize;
-        return minY + Mathf.Round((Mathf.Abs(num - minY)) / unitSize) * unitSize;
+        var xResult = minX + Mathf.Round((Mathf.Abs(position.x - minX)) / unitSize) * unitSize;
+        var yResult = minY + Mathf.Round((Mathf.Abs(position.y - minY)) / unitSize) * unitSize;
+        return new Vector2(xResult, yResult);
     }
-    
+
     private Vector2 GetRandomPositionInSquare(Vector2 position)
     {
         var xResult = UnityEngine.Random.Range(position.x, position.x + spawnSettings.spawnUnitSize);

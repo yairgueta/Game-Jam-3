@@ -28,13 +28,12 @@ public class SpawnerTest : MonoBehaviour
             Debug.DrawLine(new Vector3(pos.x - 5f, pos.y, 0f), new Vector3(pos.x + 5f, pos.y, 0f), Color.green, 10f);
             Debug.DrawLine(new Vector3(pos.x, pos.y - 5f, 0f), new Vector3(pos.x, pos.y +5f, 0f), Color.green, 10f);
         }
-
+        
         if (Input.GetKey(KeyCode.A))
         {
             var check = toCheck.position;
             Debug.Log(_spawnPlacing.RemovePosition(check));
             Debug.Log(_spawnPlacing.AddPosition(check));
-            Debug.Log(new Vector2(_spawnPlacing.FindUnitSizeRoundedForX(check.x), _spawnPlacing.FindUnitSizeRoundedForY(check.y)));
         }
     }
 }

@@ -1,12 +1,14 @@
+using System;
+using Events;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Selections
 {
-    public class SelectionManager : Singleton<SelectionManager>
+    [CreateAssetMenu]
+    public class SelectionManager : ScriptableObject
     {
-        public UnityEvent<Selectable> onNewSelection;
-        
+        public static SelectionManager Instance { get; private set; }
+
         [Header("Default selection materials")]
         [SerializeField] private Material defaultOverMaterial;
         [SerializeField] private Material defaultClickedDownMaterial;
@@ -16,25 +18,30 @@ namespace Selections
         public Material DefaultClickedDownMaterial => defaultClickedDownMaterial;
         public Material DefaultSelectedMaterial => defaultSelectedMaterial;
 
+
+        public GameEvent onSelectionChanged;
         public Selectable CurrentSelected => currentSelected;
         private Selectable currentSelected;
-        
-        private void Start()
+
+        private void OnEnable()
         {
             currentSelected = null;
+            Instance = this;
         }
 
         internal void NewSelected(Selectable selected)
         {
-            if (currentSelected != null)
-            {
-                currentSelected.Deselect();
-            }
-
+            Deselect();
             currentSelected = selected;
-            currentSelected.Select();
-            onNewSelection?.Invoke(currentSelected);
+            currentSelected.Select(); 
+            onSelectionChanged.Raise();
         }
-    
+
+        public void Deselect()
+        {
+            if (currentSelected != null) currentSelected.Deselect();
+            currentSelected = null;
+            onSelectionChanged.Raise();
+        }
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4310957693348009088}
   - component: {fileID: 4310957693348009091}
   - component: {fileID: 4310957693348009090}
+  - component: {fileID: 6224921998276698802}
   m_Layer: 6
   m_Name: Gates@level1@.Main
   m_TagString: Untagged
@@ -98,10 +99,10 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.37}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.46201813, y: 0.23779994}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.3962277, y: 1.82}
     newSize: {x: 1.3962277, y: 1.82}
     adaptiveTilingThreshold: 0.5
@@ -127,10 +128,10 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.37}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.46201813, y: 0.23779994}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.3962277, y: 1.82}
     newSize: {x: 1.3962277, y: 1.82}
     adaptiveTilingThreshold: 0.5
@@ -155,10 +156,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onThisSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  onNewSelection: {fileID: 11400000, guid: 59fd63c51de132a4197c64fd4ffde55e, type: 2}
   overMaterial: {fileID: 0}
   clickedDownMaterial: {fileID: 0}
   selectedMaterial: {fileID: 0}
+--- !u!114 &6224921998276698802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310957693348009093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ad4d3da2a35f74ea6a3cec5e75c366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
+  grades:
+  - {fileID: 11400000, guid: ac8055c561d39b4498c9a17129a6f8c6, type: 2}
+  - {fileID: 11400000, guid: 4578b99b9953e4e14a8e49953ab94d19, type: 2}
+  - {fileID: 11400000, guid: de80836afaa254be8ac2f6c7de3cb96e, type: 2}
+  - {fileID: 11400000, guid: c1bbf498e214e4e599b49428f39bfec8, type: 2}
+  onWallUpgraded: {fileID: 11400000, guid: 8541f0a01a7d3414bae0318ef997c937, type: 2}

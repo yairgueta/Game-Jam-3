@@ -6,6 +6,7 @@ namespace Player
     [CreateAssetMenu(menuName = "Settings/Player Settings", order = 0)]
     public class PlayerSettingsObject : ScriptableObject
     {
+        //TODO: make them private?
         [Header("Attributes")]
         public float speed = 10f;
         public float maxHealth = 50f;

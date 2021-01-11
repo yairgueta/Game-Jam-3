@@ -10,8 +10,6 @@ namespace Selections
     [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
     public class Selectable : MonoBehaviour
     {
-        public UnityEvent onThisSelected;
-        public GameEvent onNewSelection;
         public float DragTime { get; private set; }
         
         [Header("Materials (keep null for defaults)")]
@@ -33,13 +31,16 @@ namespace Selections
             isSelected = false;
             interactable = true;
             hasEnteredAndChanged = false;
+            sr = GetComponent<SpriteRenderer>();
+            originalMaterial = sr.material;
+        }
 
+        private void Start()
+        {
             if (!overMaterial) overMaterial = SelectionManager.Instance.DefaultOverMaterial;
             if (!selectedMaterial) selectedMaterial = SelectionManager.Instance.DefaultSelectedMaterial;
             if (!clickedDownMaterial) clickedDownMaterial = SelectionManager.Instance.DefaultClickedDownMaterial;
-        
-            sr = GetComponent<SpriteRenderer>();
-            originalMaterial = sr.material;
+            
         }
 
         private void OnMouseEnter()
@@ -98,11 +99,9 @@ namespace Selections
             
             sr.material = selectedMaterial;
             isSelected = true;
-            onThisSelected?.Invoke();
-            onNewSelection.Raise(gameObject);
         }
         
-        public void Deselect()
+        internal void Deselect()
         {
             sr.material = originalMaterial;
             isSelected = false;

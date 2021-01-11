@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sheep Settings
   m_EditorClassIdentifier: 
   sheeps: []
-  awake: {fileID: 2386829148169348373, guid: a380f81f696334b0b9fa50b8a63bda0b, type: 3}
-  sleep: {fileID: 4023140143598439481, guid: a380f81f696334b0b9fa50b8a63bda0b, type: 3}
-  emptyAwake: {fileID: 2386829148169348373, guid: a380f81f696334b0b9fa50b8a63bda0b, type: 3}
-  emptySleep: {fileID: 4023140143598439481, guid: a380f81f696334b0b9fa50b8a63bda0b, type: 3}
+  awake: {fileID: -2548003363665265101, guid: e39124e06e8d04084af83165f44841a9, type: 3}
+  sleep: {fileID: -7611891846122961728, guid: e39124e06e8d04084af83165f44841a9, type: 3}
+  emptyAwake: {fileID: 768730410249273722, guid: e39124e06e8d04084af83165f44841a9, type: 3}
+  emptySleep: {fileID: 7640251648590994544, guid: e39124e06e8d04084af83165f44841a9, type: 3}
   timeToCollect: 1.5

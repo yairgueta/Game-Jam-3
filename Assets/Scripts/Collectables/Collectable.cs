@@ -14,14 +14,14 @@ namespace Collectables
         private void Start()
         {
             selectable = GetComponent<Selectable>();
-            selectable.onThisSelected.AddListener(Collect);
+            // selectable.onThisSelected.AddListener(Collect);
             EnableCollecting(false);
         }
 
         private void Collect()
         {
             collectableObject.OnCollected();
-            selectable.Deselect();
+            SelectionManager.Instance.Deselect();
             Destroy(gameObject);
         }
 

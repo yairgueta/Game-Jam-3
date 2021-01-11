@@ -1,80 +1,88 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Events;
+using Player.Inventory;
+using Selections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Object = UnityEngine.Object;
 
-public class UpgradeUI : MonoBehaviour
+namespace Upgrader
 {
-    public WallLevel wallLevel;
-
-    [SerializeField] private GameObject upgradePanel;
-    [SerializeField] private Button upgradeBtn;
-    public TMP_Text woodAmount;
-    public TMP_Text rockAmount;
-    public TMP_Text description;
-    public Image image;
-    private Upgrader upgrader;
-    
-    
-    
-    public void WallSelection(object args)
+    public class UpgradeUI : MonoBehaviour
     {
-        upgradePanel.SetActive(true);
-        GameObject wall = (GameObject) args;
-        upgrader = wall.GetComponent<Upgrader>();    // todo: change
-        SetLevel(upgrader.GetCurWallLeve());
-        if (!upgrader.CheckIfCanUpgrade())
+        [SerializeField] private GameEvent onNewSelection;
+        [SerializeField] private InventoryObject inventory;
+    
+        [SerializeField] private GameObject upgradePanel;
+        [SerializeField] private Button upgradeBtn;
+        [SerializeField] private TMP_Text woodAmount;
+        [SerializeField] private TMP_Text rockAmount;
+        [SerializeField] private TMP_Text description;
+        [SerializeField] private Image image;
+    
+        private void Start()
         {
-            upgradeBtn.GetComponent<Image>().color = Color.grey;
-            upgradeBtn.interactable = false;
+            var listener = gameObject.AddComponent<GameEventListener>();
+            listener.InitEvent(onNewSelection);
+            listener.response.AddListener(o => OnNewSelection_Response());
         }
 
-    }
+        private void OnNewSelection_Response()
+        {
+            Debug.Log("miri");
+            if (SelectionManager.Instance.CurrentSelected == null) 
+            {
+                upgradePanel.SetActive(false);
+                return;
+            }
+            var upgradable = SelectionManager.Instance.CurrentSelected.GetComponent<Upgradable>();
+            if (upgradable == null)
+            {
+                upgradePanel.SetActive(false);
+                return;
+            }
+            upgradePanel.SetActive(true);
+            SetUp(upgradable);
+        }
 
-    private void ResetPanel()
-    {
-        upgradeBtn.GetComponent<Image>().color = Color.white;
-        upgradeBtn.interactable = true;
-        woodAmount.color = Color.white;
-        rockAmount.color = Color.white;
+        private void SetUp(Upgradable upgradable)
+        {
+            Debug.Log("Set up" );
+            Debug.Log(SelectionManager.Instance.CurrentSelected);
+            upgradeBtn.interactable = true;
+            upgradeBtn.onClick.RemoveAllListeners();
+            upgradeBtn.onClick.AddListener(() =>
+            {
+                upgradable.Upgrade();
+                ClosePanel();
+            });
 
-    }
-    
-    private void SetLevel(WallLevel level)
-    {
-        wallLevel = level;
-        SetUp();
-    }
+            var upgradableObject = upgradable.GetNextGradeAttributes();
+            woodAmount.text = upgradableObject.requiredWoods.ToString();
+            rockAmount.text = upgradableObject.requiredRocks.ToString();
+            description.text = upgradableObject.description;
+            image.sprite = upgradableObject.sprite;
 
-    private void SetUp()
-    {
-        woodAmount.text = wallLevel.requiredWoods.ToString();
-        rockAmount.text = wallLevel.requiredRocks.ToString();
-        description.text = wallLevel.description;
-        image.sprite = wallLevel.sprite;
-        ResetPanel();
-    }
+            woodAmount.color = Color.white;
+            rockAmount.color = Color.white;
 
-    public void WoodLack()
-    {
-        woodAmount.color = Color.red;
-    }
-    
-    public void RockLack()
-    {
-        rockAmount.color = Color.red;
-    }
+            if (inventory[ResourceType.Wood] < upgradableObject.requiredWoods)
+            {
+                woodAmount.color = Color.red;
+                upgradeBtn.interactable = false;
+            }
 
-    public void Upgrade()
-    {
-        upgrader.UpgradeWall();
-    }
+            if (inventory[ResourceType.Rock] < upgradableObject.requiredRocks)
+            {
+                rockAmount.color = Color.red;
+                upgradeBtn.interactable = false;
+            }
+        }
 
-    public void CloseUpdatePanel()
-    {
-        upgradePanel.SetActive(false);
+        public void ClosePanel()
+        {
+            Debug.Log("closed");
+            SelectionManager.Instance.Deselect();
+            Debug.Log(SelectionManager.Instance.CurrentSelected);
+        }
     }
 }

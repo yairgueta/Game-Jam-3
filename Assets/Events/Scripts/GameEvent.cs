@@ -8,6 +8,7 @@ namespace Events
     public class GameEvent : ScriptableObject
     {
         private readonly HashSet<GameEventListener> listeners = new HashSet<GameEventListener>();
+        public  IEnumerable<GameEventListener> Listeners => listeners;
 
         public void Raise(object args = null)
         {

@@ -1,25 +1,16 @@
 fileFormatVersion: 2
-guid: a380f81f696334b0b9fa50b8a63bda0b
+guid: 6b40d07fc72014016a562314bf992760
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8816547992204491917
-    second: SheepDesigin_V1_3
+      213: -4194667523201390664
+    second: trees 1_0
   - first:
-      213: -6618249819603337005
-    second: SheepDesigin_V1_4
+      213: -8254255944879317007
+    second: trees 1_1
   - first:
-      213: 3408846418397380859
-    second: SheepDesigin_V1_5
-  - first:
-      213: -4260509445620248594
-    second: SheepDesigin_V1_6
-  - first:
-      213: 4023140143598439481
-    second: SheepDesigin_V1_7
-  - first:
-      213: 2386829148169348373
-    second: SheepDesigin_V1_8
+      213: 4413586379794099501
+    second: trees 1_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -64,7 +55,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 700
+  spritePixelsToUnits: 400
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,127 +112,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SheepDesigin_V1_3
+      name: trees 1_0
       rect:
         serializedVersion: 2
-        x: 130
-        y: 1616
-        width: 915
-        height: 1339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 267
+        y: 99
+        width: 850
+        height: 1755
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 373c77b205455a580800000000000000
-      internalID: -8816547992204491917
+      spriteID: 8b7a6b8ac1c89c5c0800000000000000
+      internalID: -4194667523201390664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SheepDesigin_V1_4
+      name: trees 1_1
       rect:
         serializedVersion: 2
-        x: 1164
-        y: 1616
-        width: 919
-        height: 1339
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1399
+        y: 96
+        width: 990
+        height: 1912
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d000c3aad04724a0800000000000000
-      internalID: -6618249819603337005
+      spriteID: 1ffdf4873fdf27d80800000000000000
+      internalID: -8254255944879317007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SheepDesigin_V1_5
+      name: trees 1_2
       rect:
         serializedVersion: 2
-        x: 2299
-        y: 1618
-        width: 948
-        height: 1338
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2750
+        y: 60
+        width: 981
+        height: 1657
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf04076b1c7ae4f20800000000000000
-      internalID: 3408846418397380859
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SheepDesigin_V1_6
-      rect:
-        serializedVersion: 2
-        x: 3406
-        y: 1613
-        width: 948
-        height: 1340
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eefcb9b7b31afd4c0800000000000000
-      internalID: -4260509445620248594
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SheepDesigin_V1_7
-      rect:
-        serializedVersion: 2
-        x: 729
-        y: 437
-        width: 1179
-        height: 1013
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93c8cc425a015d730800000000000000
-      internalID: 4023140143598439481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SheepDesigin_V1_8
-      rect:
-        serializedVersion: 2
-        x: 2217
-        y: 432
-        width: 1180
-        height: 1118
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 515ae2cd678bf1120800000000000000
-      internalID: 2386829148169348373
+      spriteID: d2d2121ad65304d30800000000000000
+      internalID: 4413586379794099501
       vertices: []
       indices: 
       edges: []
@@ -258,7 +186,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 1
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

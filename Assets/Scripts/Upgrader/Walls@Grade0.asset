@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4398f5600c08dff4996cc4f06caa32ab, type: 3}
-  m_Name: WallLevel1
+  m_Name: Walls@Grade0
   m_EditorClassIdentifier: 
   sprite: {fileID: 5218092282149787072, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
-  curLevel: 1
-  wallPower: 2
-  isDamaged: 0
-  description: upgrade level 1
+  description: upgrade level 0
+  garde: 0
+  healthPoints: 0
   requiredWoods: 2
   requiredRocks: 3

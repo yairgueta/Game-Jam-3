@@ -92,23 +92,14 @@ namespace Enemies
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                SetCollisionTarget(other.gameObject.transform, Mode.AttackPlayer,
-                    other.gameObject.GetComponent<IDamageable>());
-            }
-
-            //todo: uncomment the following lines after sheep and wall implement idamageable.
-            // else if (other.gameObject.CompareTag("Sheep"))
-            // {
-            //     SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackSheep,
-            //         other.gameObject.GetComponent<IDamageable>());
-            // }
-            // else if (other.gameObject.CompareTag("Wall"))
-            // {
-            //     SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackWall,
-            //         other.gameObject.GetComponent<IDamageable>());
-            // }
+            var hit = other.gameObject.GetComponent<IDamageable>();
+            if (hit == null) return;
+            Attack(hit);   
+            // hit.TakeDamage(enemySettings.attackPower);
+         
+            // SetCollisionTarget(other.gameObject.transform, EnemyMode.AttackWall,
+            // other.gameObject.GetComponent<IDamageable>());
+            
         }
 
         private void OnCollisionExit2D(Collision2D other)

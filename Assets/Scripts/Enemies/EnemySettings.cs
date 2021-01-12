@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySettings : ScriptableObject
 {
     [Header("Attributes")]
-    public int attackPower = 1;
+    public float attackPower = 1;
     public float attackDistance = 3f;
     public float health = 5f;
     public float speed = 15f;

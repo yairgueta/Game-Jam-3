@@ -14,7 +14,7 @@ namespace Player
         private static readonly int AnimLastMoveX = Animator.StringToHash("AnimLastMoveX");
         private static readonly int AnimLastMoveY = Animator.StringToHash("AnimLastMoveY");
 
-        private void Start()
+        private void Awake()
         {
             anim = GetComponent<Animator>();
         }

@@ -25,10 +25,7 @@ namespace Player.Inventory
         [SerializeField] private GameEvent onOutOfResources;
         [SerializeField] private SerializedDictionary<ResourceType, int> quantityMap;
         
-        private void Awake()
-        {
-            Setup();
-        }
+        
 
         public void Setup()
         {

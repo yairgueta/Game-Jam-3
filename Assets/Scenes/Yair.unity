@@ -2049,6 +2049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock Display
       objectReference: {fileID: 0}
+    - target: {fileID: 5040356672631298178, guid: d20ddc05e4f13477c82db531490f0e53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5040356672631298181, guid: d20ddc05e4f13477c82db531490f0e53, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4384,6 +4388,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 315e8164702dc457f8450e0bbf439b07, type: 3}
+--- !u!114 &1276809155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5050817413598364809, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
+  m_PrefabInstance: {fileID: 1921680003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405cf34a87a9c42f98d206e50b1ca1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1279190697 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7408568662195309066, guid: 45eb40fe04f7c400fa777e1c8ab9ee22, type: 3}
@@ -6598,6 +6613,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 424c960cccdac4649907119b6b788d96, type: 3}
+--- !u!1 &1920778173 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5040356672631298178, guid: d20ddc05e4f13477c82db531490f0e53, type: 3}
+  m_PrefabInstance: {fileID: 345353294758319472}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1921680003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6653,13 +6673,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
+    - target: {fileID: 5284003018911465283, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1276809155}
     - target: {fileID: 8853982132114320783, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8853982132114320783, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.13
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
@@ -6720,6 +6744,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+--- !u!1 &1934395447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5040356672631298178, guid: d20ddc05e4f13477c82db531490f0e53, type: 3}
+  m_PrefabInstance: {fileID: 575244980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1940845555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6781,6 +6810,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1023162987646982211, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
   m_PrefabInstance: {fileID: 1249200562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1966889453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5040356672631298178, guid: d20ddc05e4f13477c82db531490f0e53, type: 3}
+  m_PrefabInstance: {fileID: 3136573670441971125}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1966907188
 GameObject:
@@ -7456,6 +7490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wood Display
       objectReference: {fileID: 0}
+    - target: {fileID: 5040356672631298178, guid: d20ddc05e4f13477c82db531490f0e53, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5040356672631298181, guid: d20ddc05e4f13477c82db531490f0e53, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -7680,9 +7718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1337ac5b7b43142a8fd544d2572ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodDisplay: {fileID: 0}
-  rockDisplay: {fileID: 0}
-  mushroomDisplay: {fileID: 0}
+  woodDisplay: {fileID: 1966889453}
+  rockDisplay: {fileID: 1934395447}
+  mushroomDisplay: {fileID: 1920778173}
 --- !u!1 &7959453264298388985
 GameObject:
   m_ObjectHideFlags: 0

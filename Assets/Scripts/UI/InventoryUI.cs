@@ -16,12 +16,19 @@ namespace UI
         private InventoryObject inventory;
         private TMP_Text woodText, rockText, mushroomText;
 
+        private void Awake()
+        {
+            woodText = woodDisplay.GetComponentInChildren<TMP_Text>();
+            Debug.Log(woodText);
+            Debug.Log(woodText.text);
+            rockText = rockDisplay.GetComponentInChildren<TMP_Text>();
+            mushroomText = mushroomDisplay.GetComponentInChildren<TMP_Text>();
+        }
+
         private void Start()
         {
             inventory = PlayerController.CurrentInventory;
-            woodText = woodDisplay.GetComponentInChildren<TMP_Text>();
-            rockText = rockDisplay.GetComponentInChildren<TMP_Text>();
-            mushroomText = mushroomDisplay.GetComponentInChildren<TMP_Text>();
+            
         }
 
         private TMP_Text TypeToText(ResourceType type)
@@ -54,6 +61,7 @@ namespace UI
 
         public void UpdateResources(object args)
         {
+            if (inventory == null) return;
             if (!(args is InventoryObject.CollectingArgs tArgs))
             {
                 woodText.text = inventory[ResourceType.Wood].ToString();

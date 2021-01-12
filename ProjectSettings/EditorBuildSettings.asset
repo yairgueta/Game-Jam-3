@@ -5,13 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/OpenMenu.unity
     guid: 62d3abaaef9b01744afc1923baf61ad7
   - enabled: 1
     path: Assets/Scenes/miri.unity
-    guid: cf149292f44d7314c9cc031e87d35fa8
+    guid: f9921ac417caa4b43aafce95fb9414fb
   m_configObjects: {}

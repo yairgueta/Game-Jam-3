@@ -13,23 +13,15 @@ namespace UI
         [SerializeField] private GameObject rockDisplay;
         [SerializeField] private GameObject mushroomDisplay;
         
-        private InventoryObject inventory;
         private TMP_Text woodText, rockText, mushroomText;
 
         private void Awake()
         {
             woodText = woodDisplay.GetComponentInChildren<TMP_Text>();
-            Debug.Log(woodText);
-            Debug.Log(woodText.text);
             rockText = rockDisplay.GetComponentInChildren<TMP_Text>();
             mushroomText = mushroomDisplay.GetComponentInChildren<TMP_Text>();
         }
-
-        private void Start()
-        {
-            inventory = PlayerController.CurrentInventory;
-            
-        }
+        
 
         private TMP_Text TypeToText(ResourceType type)
         {
@@ -61,7 +53,7 @@ namespace UI
 
         public void UpdateResources(object args)
         {
-            if (inventory == null) return;
+            var inventory = PlayerController.CurrentInventory;
             if (!(args is InventoryObject.CollectingArgs tArgs))
             {
                 woodText.text = inventory[ResourceType.Wood].ToString();
@@ -79,6 +71,10 @@ namespace UI
                 else if (tArgs.isIncreasing < 0)
                     tmpText.gameObject.transform.DOScaleY(.8f, .18f).SetLoops(2, LoopType.Yoyo).SetId(type);
             }
+            
+            woodDisplay.SetActive(inventory[ResourceType.Wood] != 0);
+            rockDisplay.SetActive(inventory[ResourceType.Rock] != 0);
+            mushroomDisplay.SetActive(inventory[ResourceType.Mushroom] != 0);
         }
     }
 }

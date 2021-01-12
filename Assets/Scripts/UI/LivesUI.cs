@@ -1,4 +1,4 @@
-using System.Globalization;
+using Player;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +6,11 @@ namespace UI
 {
     public class LivesUI : MonoBehaviour
     {
-        [SerializeField] private Text livesText;
-        
-        public void ShowLives(float lives)
+        [SerializeField] private Image filler;
+
+        public void RefreshHealthBar()
         {
-            livesText.text = Mathf.FloorToInt(lives).ToString();
+            filler.fillAmount = PlayerController.PlayerSettings.curHealth / PlayerController.PlayerSettings.maxHealth;
         }
     }
 }

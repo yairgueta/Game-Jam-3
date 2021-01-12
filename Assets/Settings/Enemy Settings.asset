@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: Enemy Settings
   m_EditorClassIdentifier: 
   attackPower: 1
-  attackDistance: 3
-  changeTargetRate: 5
   health: 5
-  pathRepeatRate: 0.5
   speed: 1
   nextWaypointDistance: 3
-  target: {fileID: 0}
-  enemyMode: 1
+  pathRepeatRate: 0.5
+  onDeath: {fileID: 11400000, guid: 906630ade5ebeda4a84d087379978e65, type: 2}

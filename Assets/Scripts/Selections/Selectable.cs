@@ -10,6 +10,7 @@ namespace Selections
     [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
     public class Selectable : MonoBehaviour
     {
+        public Action onThisSelected;
         public float DragTime { get; private set; }
         
         [Header("Materials (keep null for defaults)")]
@@ -84,6 +85,7 @@ namespace Selections
         {
             if (!interactable) return;
             SelectionManager.Instance.NewSelected(this);
+            onThisSelected?.Invoke();
             DragTime = -1;
         }
 

@@ -1,4 +1,3 @@
-using System;
 using Events;
 using UnityEngine;
 
@@ -7,7 +6,19 @@ namespace Selections
     [CreateAssetMenu]
     public class SelectionManager : ScriptableObject
     {
-        public static SelectionManager Instance { get; private set; }
+        public static SelectionManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = Resources.LoadAll<SelectionManager>("")[0];
+                }
+                return _instance;
+            } 
+        }
+
+        private static SelectionManager _instance;
 
         [Header("Default selection materials")]
         [SerializeField] private Material defaultOverMaterial;
@@ -26,7 +37,6 @@ namespace Selections
         private void OnEnable()
         {
             currentSelected = null;
-            Instance = this;
         }
 
         internal void NewSelected(Selectable selected)

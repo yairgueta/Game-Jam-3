@@ -57,6 +57,11 @@ namespace Upgrader
             });
 
             var upgradableObject = upgradable.GetNextGradeAttributes();
+            if (upgradableObject == null)
+            {
+                ClosePanel();
+                return;
+            }
             woodAmount.text = upgradableObject.requiredWoods.ToString();
             rockAmount.text = upgradableObject.requiredRocks.ToString();
             description.text = upgradableObject.description;

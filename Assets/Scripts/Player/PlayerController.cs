@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour, IDamageable
+    public class PlayerController : MonoBehaviour, IEnemyDamage
     {
         public static InventoryObject CurrentInventory { get; private set; }
         public static PlayerSettingsObject PlayerSettings { get; private set; }

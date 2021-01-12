@@ -5,7 +5,7 @@ using Enemies;
 using UnityEngine;
 using Upgrader;
 
-public class Wall : MonoBehaviour, IDamageable
+public class Wall : MonoBehaviour, IEnemyDamage
 {
     [SerializeField] private Collider2D wallCollider;
     private Upgradable upgradable;

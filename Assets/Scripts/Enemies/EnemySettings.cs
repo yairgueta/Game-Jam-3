@@ -16,10 +16,6 @@ public class EnemySettings : ScriptableObject
     public float pathRepeatRate = .5f;
     public float changeTargetRate = 5f;
 
-    [Header("Follow Attributes")]
-    public Transform target;
-    public Mode enemyMode;
-
     [Header("Events")] 
     public GameEvent onDeath;
 

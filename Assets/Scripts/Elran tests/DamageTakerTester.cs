@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Enemies;
 using UnityEngine;
 
-public class DamageTakerTester : MonoBehaviour, IDamageable
+public class DamageTakerTester : MonoBehaviour, IEnemyDamage
 {
     private float lifePoints = 10;
     private bool isDead;

@@ -1,18 +1,28 @@
 using System;
 using DG.Tweening;
+using Player;
 using Player.Inventory;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 namespace UI
 {
     public class InventoryUI : MonoBehaviour
     {
-        [SerializeField] private InventoryObject inventory;
-        [SerializeField] private TMP_Text woodText;
-        [SerializeField] private TMP_Text rockText;
-        [SerializeField] private TMP_Text mushroomText;
+        [SerializeField] private GameObject woodDisplay;
+        [SerializeField] private GameObject rockDisplay;
+        [SerializeField] private GameObject mushroomDisplay;
+        
+        private InventoryObject inventory;
+        private TMP_Text woodText, rockText, mushroomText;
+
+        private void Start()
+        {
+            inventory = PlayerController.CurrentInventory;
+            woodText = woodDisplay.GetComponentInChildren<TMP_Text>();
+            rockText = rockDisplay.GetComponentInChildren<TMP_Text>();
+            mushroomText = mushroomDisplay.GetComponentInChildren<TMP_Text>();
+        }
 
         private TMP_Text TypeToText(ResourceType type)
         {

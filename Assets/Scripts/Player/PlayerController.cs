@@ -1,3 +1,4 @@
+using System;
 using Collectables;
 using Enemies;
 using Player.Inventory;
@@ -5,21 +6,30 @@ using UnityEngine;
 
 namespace Player
 {
-    public class Player : MonoBehaviour, IDamageable
+    public class PlayerController : MonoBehaviour, IDamageable
     {
+        public static InventoryObject CurrentInventory { get; private set; }
+        public static PlayerSettingsObject PlayerSettings { get; private set; }
         [SerializeField] private InventoryObject inventory;
         [SerializeField] private PlayerSettingsObject playerSettings;
 
-        public PlayerSettingsObject PlayerSettings => playerSettings;
         public Vector2 MoveDirection { get; private set; }
         public Vector2 LastMoveDirection { get; private set; }
         private Rigidbody2D rb;
 
-
-        private void Awake()
+        private void OnEnable()
         {
             inventory.Setup();
+            CurrentInventory = inventory;
+            PlayerSettings = playerSettings;
         }
+
+        private void OnDisable()
+        {
+            CurrentInventory = null;
+            PlayerSettings = null;
+        }
+
 
         private void Start()
         {

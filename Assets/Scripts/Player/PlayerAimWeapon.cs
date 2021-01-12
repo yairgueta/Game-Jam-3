@@ -4,31 +4,22 @@ using UnityEngine.EventSystems;
 
 namespace Player
 {
-    [RequireComponent(typeof(Player))]
+    [RequireComponent(typeof(PlayerController))]
     public class PlayerAimWeapon : MonoBehaviour
     {
         [SerializeField] private LayerMask shootingLayerMask;
         
-        private Player player;
         private Transform aimTransform;
         private Transform aimGunEndPoinTransform;
         private bool ableToShoot = true;
         private Camera mainCamera;
         private Vector3 mousePosition;
-
-        // public event EventHandler<OnShootEventArgs> OnSoot; 
-        public Action<Vector3, Vector3> onSoot; 
-        public class OnShootEventArgs : EventArgs
-        { 
-            public Vector3 gunEndPointPos;
-            public Vector3 shootPosition;
-        }
-
+        public Action<Vector3, Vector3> onSoot;
+        
         private void Awake()
         {
             aimTransform = transform.Find("Aim");
             aimGunEndPoinTransform = aimTransform.Find("GunEndPos");
-            player = GetComponent<Player>();
             mainCamera = Camera.main;
         }
 
@@ -71,7 +62,7 @@ namespace Player
             var hit = Physics2D.Raycast(mousePosition, Vector3.forward, 15f, shootingLayerMask);
             if (hit || EventSystem.current.IsPointerOverGameObject(-1)) return;
             
-            if (!player.PlayerSettings.UpdateMana(-player.PlayerSettings.bulletManaCost)) return;
+            if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)) return;
             
             onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
         }

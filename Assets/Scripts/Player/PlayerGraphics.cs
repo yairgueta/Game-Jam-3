@@ -5,7 +5,7 @@ namespace Player
 {
     public class PlayerGraphics : MonoBehaviour
     {
-        [SerializeField] private Player player;
+        [SerializeField] private PlayerController playerController;
     
         private Animator anim;
         private static readonly int AnimMoveX = Animator.StringToHash("AnimMoveX");
@@ -26,11 +26,11 @@ namespace Player
     
         private void Animate()
         {
-            anim.SetFloat(AnimMoveX, player.MoveDirection.x);
-            anim.SetFloat(AnimMoveY, player.MoveDirection.y);
-            anim.SetFloat(AnimMoveMagnitude, player.MoveDirection.sqrMagnitude);
-            anim.SetFloat(AnimLastMoveX, player.LastMoveDirection.x);
-            anim.SetFloat(AnimLastMoveY, player.LastMoveDirection.y);
+            anim.SetFloat(AnimMoveX, playerController.MoveDirection.x);
+            anim.SetFloat(AnimMoveY, playerController.MoveDirection.y);
+            anim.SetFloat(AnimMoveMagnitude, playerController.MoveDirection.sqrMagnitude);
+            anim.SetFloat(AnimLastMoveX, playerController.LastMoveDirection.x);
+            anim.SetFloat(AnimLastMoveY, playerController.LastMoveDirection.y);
         }
     }
 }

@@ -19,9 +19,9 @@ namespace Player
 
         private void OnEnable()
         {
-            inventory.Setup();
             CurrentInventory = inventory;
             PlayerSettings = playerSettings;
+            inventory.Setup();
         }
 
         private void OnDisable()

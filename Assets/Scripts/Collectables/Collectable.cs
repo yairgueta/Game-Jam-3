@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Collectables
 {
-    [RequireComponent(typeof(Selections.Selectable))]
+    [RequireComponent(typeof(Selectable))]
     public class Collectable : MonoBehaviour
     {
         [SerializeField] private CollectableObject collectableObject;
@@ -14,7 +14,7 @@ namespace Collectables
         private void Start()
         {
             selectable = GetComponent<Selectable>();
-            // selectable.onThisSelected.AddListener(Collect);
+            selectable.onThisSelected += Collect;
             EnableCollecting(false);
         }
 

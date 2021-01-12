@@ -39,9 +39,9 @@ namespace Cycles
         {
             cyclesDurations = new Dictionary<Cycle, float>
             {
-                {Cycle.Day, 7f},
-                {Cycle.Night, 600f},
-                {Cycle.Magic, 5f},
+                {Cycle.Day, 20f},
+                {Cycle.Night, 15f},
+                {Cycle.Magic, 7f},
             };
             currentCycle = Cycle.Day;
             timer = cyclesDurations[currentCycle];

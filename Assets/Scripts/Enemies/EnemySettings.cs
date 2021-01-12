@@ -1,36 +1,36 @@
 using Events;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Settings/Enemy Settings")]
-public class EnemySettings : ScriptableObject
+namespace Enemies
 {
-    [Header("Attributes")]
-    public float attackPower = 1;
-    public float attackDistance = 3f;
-    public float health = 5f;
-    public float speed = 15f;
-    public float attackDelay = 3f;
-
-    [Header("AI Attributes")]
-    public float nextWaypointDistance = 3f;
-    public float pathRepeatRate = .5f;
-    public float changeTargetRate = 5f;
-
-    [Header("Events")] 
-    public GameEvent onDeath;
-
-    public void UpdateLife(float damage)
+    [CreateAssetMenu(menuName = "Settings/Enemy Settings")]
+    public class EnemySettings : ScriptableObject
     {
-        health -= damage;
-        if (health <= 0)
+        [Header("Attributes")]
+        public float attackPower = 1;
+        public float health = 5f;
+        public float speed = 15f;
+
+        [Header("AI Attributes")]
+        public float nextWaypointDistance = 3f;
+        public float pathRepeatRate = .5f;
+
+        [Header("Events")] 
+        public GameEvent onDeath;
+
+        public void UpdateLife(float damage)
         {
-            Die();
+            health -= damage;
+            if (health <= 0)
+            {
+                Die();
+            }
         }
-    }
 
-    private void Die()
-    {
-        onDeath.Raise();
-        health = 5f; //TODO: delete
+        private void Die()
+        {
+            onDeath.Raise();
+            health = 5f; //TODO: delete
+        }
     }
 }

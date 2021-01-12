@@ -23,7 +23,6 @@ public class Wall : MonoBehaviour, IEnemyDamage
 
     private void Update()
     {
-        Debug.Log("cur health update"+curHealth);
         // Debug.Log("grade: "+upgradable.GetCurGradeAttributes().garde);
         // Debug.Log("grade: "+upgradable.GetCurGradeAttributes().healthPoints);
 

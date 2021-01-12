@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using Pathfinding;
 using UnityEngine;
 
@@ -10,19 +8,18 @@ namespace Enemies
     {
         [SerializeField] private EnemySettings enemySettings;
 
-        private IEnemyDamage attackedObject;
-        // private bool shouldChangeTarget;
-        // private bool canAttack = true;
-        private EnemyMovement enemyMovement;
-
+        private AIPath aiPath;
         private Mode mode;
         private IEnemyDamage currentAttacked;
 
+        
+        private Animator animator;
+        private readonly int attackAnimationID = Animator.StringToHash("Attack");
+        private readonly int moveAnimationID = Animator.StringToHash("Move");
         void Start()
         {
-            enemyMovement = GetComponent<EnemyMovement>();
-            // InvokeRepeating(nameof(UpdateTarget), enemy
-            // Settings.changeTargetRate, enemySettings.changeTargetRate);
+            aiPath = GetComponent<AIPath>();
+            animator = GetComponent<Animator>();
             mode = Mode.Walking;
         }
 
@@ -31,62 +28,35 @@ namespace Enemies
             switch (mode)
             {
                 case Mode.Attacking:
-                    //animation//
+                    aiPath.canMove = false;
+                    aiPath.canSearch = false;
+                    if (currentAttacked == null) WalkMode();
                     break;
                 case Mode.Walking:
-                    //animation
-                    enemyMovement.Move();
+                    aiPath.canMove = true;
+                    aiPath.canSearch = true;
                     break;
             }
         }
 
-        // updates the target every "changeTargetRate" time according to the nearest target to the enemy.
-        // private void UpdateTarget()
-        // {
-        //     var wallsDistance = Vector2.Distance(enemyMovement.wallsPosition.position,
-        //         enemyMovement.rb.position);
-        //     var playerDistance = Vector2.Distance(enemyMovement.playerTransform.position,
-        //         enemyMovement.rb.position);
-        //     if (enemySettings.target.position == enemyMovement.playerTransform.position &&
-        //         wallsDistance < playerDistance)
-        //     {
-        //         enemySettings.target = enemyMovement.wallsPosition;
-        //         if (enemySettings.enemyMode != Mode.AttackPlayer)
-        //         {
-        //             enemySettings.enemyMode = Mode.AttackWall;
-        //         }
-        //     }
-        //     else if (playerDistance < wallsDistance)
-        //     {
-        //         enemySettings.target = enemyMovement.playerTransform;
-        //         if (enemySettings.enemyMode != Mode.AttackWall)
-        //         {
-        //             enemySettings.enemyMode = Mode.AttackPlayer;
-        //         }
-        //     }
-        // }
-
-        // attacks a damageable target.
-        private void Attack()
+        private void AttackMode()
         {
-            currentAttacked.TakeDamage(enemySettings.attackPower);
+            if (mode == Mode.Attacking) return;
+            mode = Mode.Attacking;
+            animator.SetTrigger(attackAnimationID);
         }
 
-        // delays the attack rate.
-        // private IEnumerator DelayAttack()
-        // {
-        //     yield return new WaitForSeconds(enemySettings.attackDelay);
-        //     canAttack = true;
-        // }
-
-        // sets the target to a target that enemy collided with.
-        // private void SetCollisionTarget(Transform newTarget, Mode mode, IDamageable toAttack)
-        // {
-        //     enemySettings.enemyMode = mode;
-        //     enemySettings.target = newTarget;
-        //     attackedObject = toAttack;
-        //     shouldChangeTarget = false;
-        // }
+        private void WalkMode()
+        {
+            if (mode == Mode.Walking) return;
+            mode = Mode.Walking;
+            animator.SetTrigger(moveAnimationID);
+        }
+        
+        private void Attack()
+        {
+            currentAttacked?.TakeDamage(enemySettings.attackPower);
+        }
 
         public void TakeDamage(float damage)
         {
@@ -98,17 +68,15 @@ namespace Enemies
             if (mode == Mode.Attacking) return;
             var hit = other.gameObject.GetComponent<IEnemyDamage>();
             if (hit == null) return;
-            mode = Mode.Attacking;
+            AttackMode();
             currentAttacked = hit;
         }
 
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (other.gameObject.GetComponent<IEnemyDamage>() == currentAttacked)
-            {
-                currentAttacked = null;
-                mode = Mode.Walking;
-            }
+            if (other.gameObject.GetComponent<IEnemyDamage>() != currentAttacked) return;
+            currentAttacked = null;
+            WalkMode();
         }
     }
 }

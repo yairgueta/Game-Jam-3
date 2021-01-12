@@ -13,40 +13,40 @@ namespace Upgrader
         [SerializeField] private UpgradableObject[] grades;
         public Action onUpgrade;
         private SpriteRenderer sr;
-        private int curLevel;
+        private int curGrade;
 
         
-        private void Start()
+        private void Awake()
         {
-            curLevel = 1;
+            curGrade = 1;
             sr = GetComponent<SpriteRenderer>();
         }
 
         public UpgradableObject GetNextGradeAttributes()
         {
-            return curLevel == grades.Length-1 ? null : grades[curLevel+1];
+            return curGrade == grades.Length-1 ? null : grades[curGrade+1];
         }
 
         public void Upgrade()
         {
-            curLevel++;
+            curGrade++;
 
-            sr.sprite = grades[curLevel].sprite;
-            inventory[ResourceType.Wood] -= grades[curLevel].requiredWoods;
-            inventory[ResourceType.Rock] -= grades[curLevel].requiredRocks;
+            sr.sprite = grades[curGrade].sprite;
+            inventory[ResourceType.Wood] -= grades[curGrade].requiredWoods;
+            inventory[ResourceType.Rock] -= grades[curGrade].requiredRocks;
             onUpgrade?.Invoke();
             
         }
 
-        public void ReduceToLevel(int level)
+        public void ReduceToGrade(int grade)
         {
-            curLevel = level;
-            sr.sprite = grades[curLevel].sprite;
+            curGrade = grade;
+            sr.sprite = grades[curGrade].sprite;
         }
         
         public UpgradableObject GetCurGradeAttributes()
         {
-            return grades[curLevel];
+            return grades[curGrade];
         }
         
     }

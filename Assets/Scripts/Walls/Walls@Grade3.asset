@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 5218092282149787072, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
   description: upgrade level 3
-  garde: 0
-  healthPoints: 0
+  garde: 3
+  healthPoints: 4
   requiredWoods: 2
   requiredRocks: 3

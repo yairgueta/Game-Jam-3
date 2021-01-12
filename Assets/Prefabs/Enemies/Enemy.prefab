@@ -195,10 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d41e1b63239b04eaf92d1ea689baea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPower: 1
-  attackDistance: 3
-  changeTargetRate: 5
-  health: 5
+  enemySettings: {fileID: 11400000, guid: d95f1b722aafef446aba0a9a0e3c85af, type: 2}
 --- !u!114 &990548970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,11 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0feb864559a9fce489007d287644d941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySettings: {fileID: 11400000, guid: d95f1b722aafef446aba0a9a0e3c85af, type: 2}
+  enemyGFX: {fileID: 1667441341712273180}
   rb: {fileID: 1667441342324272325}
   wallsPosition: {fileID: 0}
   playerTransform: {fileID: 0}
-  target: {fileID: 0}
-  enemyMode: 0
-  speed: 1
-  nextWaypointDistance: 3
-  enemyGFX: {fileID: 1667441341712273180}

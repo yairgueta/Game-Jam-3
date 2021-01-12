@@ -1,3 +1,4 @@
+using System;
 using Events;
 using Player.Inventory;
 using Selections;
@@ -10,10 +11,10 @@ namespace Upgrader
     {
         [SerializeField] private InventoryObject inventory;
         [SerializeField] private UpgradableObject[] grades;
-        public GameEvent onWallUpgraded;
-
+        public Action onUpgrade;
         private SpriteRenderer sr;
         private int curLevel;
+
         
         private void Start()
         {
@@ -33,7 +34,20 @@ namespace Upgrader
             sr.sprite = grades[curLevel].sprite;
             inventory[ResourceType.Wood] -= grades[curLevel].requiredWoods;
             inventory[ResourceType.Rock] -= grades[curLevel].requiredRocks;
-            onWallUpgraded.Raise(gameObject);
+            onUpgrade?.Invoke();
+            
         }
+
+        public void ReduceToLevel(int level)
+        {
+            curLevel = level;
+            sr.sprite = grades[curLevel].sprite;
+        }
+        
+        public UpgradableObject GetCurGradeAttributes()
+        {
+            return grades[curLevel];
+        }
+        
     }
 }

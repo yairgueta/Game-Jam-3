@@ -5,74 +5,60 @@ using UnityEngine.Events;
 
 namespace Cycles
 {
-    public class CyclesManager : Singleton<CyclesManager>
+    public class CyclesManager : MonoBehaviour
     {
-        private enum Cycle
-        {
-            Day,
-            Magic,
-            Night
-        }
-    
-        [SerializeField] public UnityEvent onDayTimeEnter;
-        [SerializeField] public UnityEvent onDayTimeExit;
+        public static CyclesManager Instance { get; private set; }
+
+
+        [HideInInspector] [SerializeField] private int[] cyclesOrder = {0,1,2};
+        [SerializeField] private CycleObject daySettings;
+        [SerializeField] private CycleObject nightSettings;
+        [SerializeField] private CycleObject eclipseSettings;
         
-        [SerializeField] public UnityEvent onNightTimeEnter;
-        [SerializeField] public UnityEvent onNightTimeExit;
-        
-        [SerializeField] public UnityEvent onMagicTimeEnter;
-        [SerializeField] public UnityEvent onMagicTimeExit;
-        
-        private Dictionary<Cycle, float> cyclesDurations;
-        private Cycle currentCycle;
+        private CycleObject currentCycle;
         private float timer;
 
-        protected override void Awake()
+        private void OnEnable()
         {
-            base.Awake();
-            onNightTimeEnter.AddListener(()=>onDayTimeExit?.Invoke());
-            onMagicTimeEnter.AddListener(()=>onNightTimeExit?.Invoke());
-            onDayTimeEnter.AddListener(()=>onMagicTimeExit?.Invoke());
+            Instance = this;
         }
 
-        void Start()
+        private void OnDisable()
         {
-            cyclesDurations = new Dictionary<Cycle, float>
-            {
-                {Cycle.Day, 20f},
-                {Cycle.Night, 15f},
-                {Cycle.Magic, 7f},
-            };
-            currentCycle = Cycle.Day;
-            timer = cyclesDurations[currentCycle];
-            onDayTimeEnter.Invoke();
+            Instance = null;
         }
-        
+
+        private void Start()
+        {
+            timer = 0;
+        }
+
         private void Update()
         {
             timer -= Time.deltaTime;
             if (timer > 0) return;
-            switch (currentCycle)
-            {
-                case Cycle.Day:
-                    currentCycle = Cycle.Night;
-                    onNightTimeEnter?.Invoke();
-                    break;
-                case Cycle.Night:
-                    currentCycle = Cycle.Magic;
-                    onMagicTimeEnter?.Invoke();
-                    break;
-                case Cycle.Magic:
-                    currentCycle = Cycle.Day;
-                    onDayTimeEnter?.Invoke();
-                    break;
-            }
-            timer = cyclesDurations[currentCycle];
+            // switch (currentCycle)
+            // {
+            //     case Cycle.Day:
+            //         currentCycle = Cycle.Night;
+            //         onNightTimeEnter?.Invoke();
+            //         break;
+            //     case Cycle.Night:
+            //         currentCycle = Cycle.Magic;
+            //         onMagicTimeEnter?.Invoke();
+            //         break;
+            //     case Cycle.Magic:
+            //         currentCycle = Cycle.Day;
+            //         onDayTimeEnter?.Invoke();
+            //         break;
+            // }
+            // timer = cyclesDurations[currentCycle];
         }
 
         public float GetRemainingTime()
         {
-            return timer / cyclesDurations[currentCycle];
+            // return timer / cyclesDurations[currentCycle];
+            return 0;
         }
     }
 }

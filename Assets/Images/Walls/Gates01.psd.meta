@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f136875e7690475b9c6001e68ea56fe
+guid: d99e8910a98374047b8cfb2370875372
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -118,7 +118,7 @@ TextureImporter:
       name: Gates01_0
       rect:
         serializedVersion: 2
-        x: 509
+        x: 521
         y: 1031
         width: 698
         height: 910
@@ -139,7 +139,7 @@ TextureImporter:
       name: Gates01_1
       rect:
         serializedVersion: 2
-        x: 1843
+        x: 1855
         y: 971
         width: 698
         height: 909
@@ -160,7 +160,7 @@ TextureImporter:
       name: Gates01_2
       rect:
         serializedVersion: 2
-        x: 166
+        x: 178
         y: 71
         width: 699
         height: 910
@@ -181,8 +181,8 @@ TextureImporter:
       name: Gates01_3
       rect:
         serializedVersion: 2
-        x: 1616
-        y: 30
+        x: 1628
+        y: 34
         width: 698
         height: 910
       alignment: 7
@@ -210,7 +210,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
+  pSDShowRemoveMatteOption: 1
   userData: 
   assetBundleName: 
   assetBundleVariant: 

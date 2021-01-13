@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class SpawnPlacing : MonoBehaviour
 {
-    [SerializeField] private SpawnSettings spawnSettings;
+    public SpawnSettings spawnSettings;
 
     private readonly List<Vector2> vacantPositions = new List<Vector2>();
-
-    private void Start()
-    {
-        Initialize();
-    }
 
     public void Initialize()
     {

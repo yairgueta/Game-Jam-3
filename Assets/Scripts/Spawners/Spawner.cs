@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,31 +10,36 @@ public class Spawner : MonoBehaviour
     private int spawnIndex = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         spawnPlacing = GetComponent<SpawnPlacing>();
+        positionsToSpawn = new List<Vector2>();
+        spawnPlacing.Initialize();
         Initialize();
         
     }
-
+    
     private void Initialize()
     {
         foreach (var toSpawn in spawnArray)
         {
             positionsToSpawn.Add(spawnPlacing.GetVacantPosition());
+            
         }
-
         spawnIndex = 0;
     }
 
     public void SpawnGameObject()
     {
-        if (spawnIndex == spawnArray.Length)
+        if (spawnIndex == spawnArray.Length - 1)
         {
             Initialize();
         }
-
         spawnArray[spawnIndex].transform.position = positionsToSpawn[spawnIndex];
+        if (spawnPlacing.spawnSettings.updateSpotsAfterSpawn)
+        {
+            spawnPlacing.RemovePosition(spawnArray[spawnIndex].transform.position);
+        }
         spawnIndex++;
     }
 

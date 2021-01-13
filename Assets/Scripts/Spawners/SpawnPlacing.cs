@@ -5,7 +5,7 @@ public class SpawnPlacing : MonoBehaviour
 {
     [SerializeField] private SpawnSettings spawnSettings;
 
-    private List<Vector2> vacantPositions = new List<Vector2>();
+    private readonly List<Vector2> vacantPositions = new List<Vector2>();
 
     public void Initialize()
     {
@@ -48,6 +48,7 @@ public class SpawnPlacing : MonoBehaviour
 
     private bool IsInDeadZone(Vector2 position)
     {
+        if (!spawnSettings.useDeadZone) return false;
         return spawnSettings.deadZoneMinX < position.x && position.x < spawnSettings.deadZoneMaxX &&
                position.y > spawnSettings.deadZoneMinY && position.y < spawnSettings.deadZoneMaxY;
     }
@@ -77,5 +78,4 @@ public class SpawnPlacing : MonoBehaviour
         var yResult = UnityEngine.Random.Range(position.y, position.y + spawnSettings.spawnUnitSize);
         return new Vector2(xResult, yResult);
     }
-    
 }

@@ -19,4 +19,5 @@ public class SpawnSettings : ScriptableObject
 
     [Header("Attributes")] 
     public float spawnUnitSize;
+    public bool useDeadZone;
 }

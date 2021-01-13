@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4398f5600c08dff4996cc4f06caa32ab, type: 3}
+  m_Name: WallLevel1
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 5218092282149787072, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
+  curLevel: 1
+  wallPower: 2
+  isDamaged: 0
+  description: upgrade level 1
+  requiredWoods: 2
+  requiredRocks: 3

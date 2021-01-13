@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Events;
+using Player;
 using UnityEngine;
 
 public class SheepSpawner : MonoBehaviour

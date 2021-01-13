@@ -11,15 +11,13 @@ namespace UI
     {
         [SerializeField] private GameObject woodDisplay;
         [SerializeField] private GameObject rockDisplay;
-        [SerializeField] private GameObject mushroomDisplay;
         
-        private TMP_Text woodText, rockText, mushroomText;
+        private TMP_Text woodText, rockText;
 
         private void Awake()
         {
             woodText = woodDisplay.GetComponentInChildren<TMP_Text>();
             rockText = rockDisplay.GetComponentInChildren<TMP_Text>();
-            mushroomText = mushroomDisplay.GetComponentInChildren<TMP_Text>();
         }
         
 
@@ -31,8 +29,6 @@ namespace UI
                     return woodText;
                 case ResourceType.Rock:
                     return rockText;
-                case ResourceType.Mushroom:
-                    return mushroomText;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -58,7 +54,6 @@ namespace UI
             {
                 woodText.text = inventory[ResourceType.Wood].ToString();
                 rockText.text = inventory[ResourceType.Rock].ToString();
-                mushroomText.text = inventory[ResourceType.Mushroom].ToString();
             }
             else
             {
@@ -74,7 +69,6 @@ namespace UI
             
             woodDisplay.SetActive(inventory[ResourceType.Wood] != 0);
             rockDisplay.SetActive(inventory[ResourceType.Rock] != 0);
-            mushroomDisplay.SetActive(inventory[ResourceType.Mushroom] != 0);
         }
     }
 }

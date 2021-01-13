@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8818792873079490846}
   - component: {fileID: 8658954503622150367}
   - component: {fileID: 2129088181951487613}
+  - component: {fileID: 188377173}
+  - component: {fileID: 188377174}
   m_Layer: 0
   m_Name: SheepSpawner
   m_TagString: Untagged
@@ -64,6 +66,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnSettings: {fileID: 11400000, guid: b3fc663242b69b943903e2aca2a6a959, type: 2}
+--- !u!114 &188377173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5803296997644010592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecea9ef926df985428c80edbb147bdce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sheepSpawnerObject: {fileID: 0}
+  mushroomCollectable: {fileID: 11400000, guid: f4d2f7ac12fffec4f97c04206c05a94a, type: 2}
+--- !u!114 &188377174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5803296997644010592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deec871e1e04428b9e2e79c82b3f636a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 188377173}
+        m_TargetAssemblyTypeName: SheepSpawner, Assembly-CSharp
+        m_MethodName: SpawnNewSheep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7133171762576416092
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +153,10 @@ PrefabInstance:
     - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_Name
       value: Sheep (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6638235558202263003, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_RootOrder
@@ -177,6 +225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheep (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6638235558202263003, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -243,6 +295,10 @@ PrefabInstance:
     - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_Name
       value: Sheep (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6638235558202263003, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_RootOrder
@@ -311,6 +367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheep (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6638235558202263003, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -377,6 +437,10 @@ PrefabInstance:
     - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_Name
       value: Sheep (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6638235558202263003, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_RootOrder

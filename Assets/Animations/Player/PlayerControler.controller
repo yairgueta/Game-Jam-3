@@ -140,9 +140,9 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 18ba3814e74a4ab4c9b03a761a9a0904, type: 2}
+    m_Motion: {fileID: 7400000, guid: 8c5009fe67953374898c78eb42de9f20, type: 2}
     m_Threshold: 0
-    m_Position: {x: 1, y: 0}
+    m_Position: {x: 0, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
@@ -150,15 +150,15 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 18ba3814e74a4ab4c9b03a761a9a0904, type: 2}
     m_Threshold: 0.14285715
-    m_Position: {x: 1, y: -1}
+    m_Position: {x: 1, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 8c5009fe67953374898c78eb42de9f20, type: 2}
+    m_Motion: {fileID: 7400000, guid: 18ba3814e74a4ab4c9b03a761a9a0904, type: 2}
     m_Threshold: 0.2857143
-    m_Position: {x: 0, y: -1}
+    m_Position: {x: 1, y: -1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
@@ -203,7 +203,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: AnimLastMoveX
+  m_BlendParameter: tMoveXstMoveX
   m_BlendParameterY: AnimLastMoveY
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -221,7 +221,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -8120883524290125767}
-    m_Position: {x: 354.0327, y: 41.549286, z: 0}
+    m_Position: {x: 350, y: 40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6956102733493234999}
     m_Position: {x: 490, y: 140, z: 0}

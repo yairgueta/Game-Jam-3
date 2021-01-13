@@ -8,9 +8,9 @@ namespace Player
     public class PlayerAimWeapon : MonoBehaviour
     {
         [SerializeField] private LayerMask shootingLayerMask;
+        [SerializeField] private Transform aimGunEndPoinTransform;
         
         private Transform aimTransform;
-        private Transform aimGunEndPoinTransform;
         private bool ableToShoot = true;
         private Camera mainCamera;
         private Vector3 mousePosition;
@@ -19,7 +19,6 @@ namespace Player
         private void Awake()
         {
             aimTransform = transform.Find("Aim");
-            aimGunEndPoinTransform = aimTransform.Find("GunEndPos");
             mainCamera = Camera.main;
         }
 

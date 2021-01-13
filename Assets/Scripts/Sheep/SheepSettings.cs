@@ -12,5 +12,7 @@ namespace Player
         public Sprite awake, sleep;
         public Sprite emptyAwake, emptySleep;
         public float timeToCollect;
+        public int manaAddition;
+        public float fillTime;
     }
 }

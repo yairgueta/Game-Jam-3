@@ -107,6 +107,7 @@ namespace Selections
         {
             sr.material = originalMaterial;
             isSelected = false;
+            DragTime = -1;
         }
 
         public void SetInteractable(bool isOn)
@@ -114,6 +115,7 @@ namespace Selections
             if (isSelected && !isOn) Deselect();
             sr.material = originalMaterial;
             interactable = isOn;
+            DragTime = -1;
         }
     }
 }

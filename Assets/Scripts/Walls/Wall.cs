@@ -11,7 +11,6 @@ public class Wall : MonoBehaviour, IEnemyDamage
     private Upgradable upgradable;
     private float curHealth;
 
-    private bool temp = true;
     
     void Start()
     {
@@ -21,32 +20,14 @@ public class Wall : MonoBehaviour, IEnemyDamage
     }
 
 
-    private void Update()
-    {
-        // Debug.Log("grade: "+upgradable.GetCurGradeAttributes().garde);
-        // Debug.Log("grade: "+upgradable.GetCurGradeAttributes().healthPoints);
-
-
-        // //todo: delede function
-        // if (Input.GetKeyUp(KeyCode.Space) && temp)
-        // {
-        //     TakeDamage(10);
-        // }
-    }
-
     public void TakeDamage(float damage)
     {
-        Debug.Log("cur health before atack"+curHealth);
-        // Debug.Log("level: "+upgradable.GetCurGradeAttributes().garde);
-
         curHealth -= damage;
         if (curHealth <= 0)
         {
             upgradable.ReduceToGrade(0);
             wallCollider.enabled = false;
         }
-        Debug.Log("cur health take damage"+curHealth);
-        Debug.Log("level: "+upgradable.GetCurGradeAttributes().garde);
 
     }
 
@@ -54,7 +35,6 @@ public class Wall : MonoBehaviour, IEnemyDamage
     {
         curHealth = upgradable.GetCurGradeAttributes().healthPoints;
         wallCollider.enabled = true;
-        Debug.Log("cur health ON UPGRADE"+curHealth);
     }
 
 

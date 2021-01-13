@@ -18,3 +18,5 @@ MonoBehaviour:
   emptyAwake: {fileID: 768730410249273722, guid: e39124e06e8d04084af83165f44841a9, type: 3}
   emptySleep: {fileID: 7640251648590994544, guid: e39124e06e8d04084af83165f44841a9, type: 3}
   timeToCollect: 1.5
+  manaAddition: 20
+  fillTime: 5

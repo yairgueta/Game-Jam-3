@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Selections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ namespace Player
         [SerializeField] private Image collectionDisplay;
         private SpriteRenderer sr;
         private Selectable selectable;
+
         
         [Flags]
         private enum Status
@@ -19,6 +21,7 @@ namespace Player
             None = 0,
             Awake = 1,
             Empty = 2,
+            CanShear = 3,
         }
 
         private Status status;
@@ -32,10 +35,12 @@ namespace Player
 
         private void Update()
         {
+            
             if (status.HasFlag(Status.Empty)) return;
             if (selectable.DragTime >= 0) DisplayBeingCollected();
             else collectionDisplay.fillAmount = 0;
             if (selectable.DragTime >= sheepSettings.timeToCollect) GetCollected();
+
         }
         
         private void OnEnable()
@@ -50,17 +55,21 @@ namespace Player
 
         private void GetCollected()
         {
-            //TODO
+            PlayerController.PlayerSettings.UpdateMana(sheepSettings.manaAddition);
             status |= Status.Empty;
             RefreshSprite();
             collectionDisplay.fillAmount = 0;
             selectable.SetInteractable(false);
+            Invoke(nameof(Refill), sheepSettings.fillTime);
+
         }
+        
 
         public void Refill()
         {
             status &= ~Status.Empty;
             RefreshSprite();
+            selectable.SetInteractable(true);
         }
 
         private void DisplayBeingCollected()

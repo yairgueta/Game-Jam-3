@@ -28,7 +28,6 @@ namespace Upgrader
 
         private void OnNewSelection_Response()
         {
-            Debug.Log("miri");
             if (SelectionManager.Instance.CurrentSelected == null) 
             {
                 upgradePanel.SetActive(false);
@@ -46,8 +45,7 @@ namespace Upgrader
 
         private void SetUp(Upgradable upgradable)
         {
-            Debug.Log("Set up" );
-            Debug.Log(SelectionManager.Instance.CurrentSelected);
+            // Debug.Log(SelectionManager.Instance.CurrentSelected);
             upgradeBtn.interactable = true;
             upgradeBtn.onClick.RemoveAllListeners();
             upgradeBtn.onClick.AddListener(() =>
@@ -85,9 +83,8 @@ namespace Upgrader
 
         public void ClosePanel()
         {
-            Debug.Log("closed");
             SelectionManager.Instance.Deselect();
-            Debug.Log(SelectionManager.Instance.CurrentSelected);
+            // Debug.Log(SelectionManager.Instance.CurrentSelected);
         }
     }
 }

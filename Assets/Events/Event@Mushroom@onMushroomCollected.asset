@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb4034f472f19d64c84ce1e16fc4b23f, type: 3}
-  m_Name: MushroomCollectable
+  m_Script: {fileID: 11500000, guid: 14f6c0bd4b6343a7b1991030906566b4, type: 3}
+  m_Name: Event@Mushroom@onMushroomCollected
   m_EditorClassIdentifier: 
-  onCollectedUnityEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onMushroomCollect: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}

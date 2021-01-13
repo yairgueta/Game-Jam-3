@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb4034f472f19d64c84ce1e16fc4b23f, type: 3}
-  m_Name: New Mushroom Collectable
+  m_Name: MushroomCollectable
   m_EditorClassIdentifier: 
   onCollectedUnityEvent:
     m_PersistentCalls:
       m_Calls: []
-  sheepPrefab: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
-  pos: {x: -1.43, y: 1.42, z: 0}
+  onMushroomCollect: {fileID: 0}

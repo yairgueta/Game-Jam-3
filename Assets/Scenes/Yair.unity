@@ -18594,6 +18594,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1125349255}
     m_Modifications:
+    - target: {fileID: 3568486434700134734, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5541047728772551231, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
       propertyPath: m_Name
       value: Sheep (1)
@@ -18642,7 +18650,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3568486434700134734, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
 --- !u!1001 &1926278054
 PrefabInstance:

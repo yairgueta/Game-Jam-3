@@ -39,6 +39,10 @@ namespace Player
             if (status.HasFlag(Status.Empty)) return;
             if (selectable.DragTime >= 0) DisplayBeingCollected();
             else collectionDisplay.fillAmount = 0;
+            if (PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon)
+            {
+                return;
+            }
             if (selectable.DragTime >= sheepSettings.timeToCollect) GetCollected();
 
         }
@@ -60,8 +64,14 @@ namespace Player
             RefreshSprite();
             collectionDisplay.fillAmount = 0;
             selectable.SetInteractable(false);
-            Invoke(nameof(Refill), sheepSettings.fillTime);
+            // Invoke(nameof(Refill), sheepSettings.fillTime);
+            StartCoroutine(WaitWhileShearing());
+        }
 
+        IEnumerator WaitWhileShearing()
+        {
+            yield return new WaitForSeconds(sheepSettings.fillTime);
+            Refill();
         }
         
 

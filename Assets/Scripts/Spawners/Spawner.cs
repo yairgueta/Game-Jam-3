@@ -31,11 +31,12 @@ public class Spawner : MonoBehaviour
 
     public void SpawnGameObject()
     {
-        if (spawnIndex == spawnArray.Length - 1)
+        if (spawnIndex == spawnArray.Length)
         {
             Initialize();
         }
         spawnArray[spawnIndex].transform.position = positionsToSpawn[spawnIndex];
+        spawnArray[spawnIndex].SetActive(true);
         if (spawnPlacing.spawnSettings.updateSpotsAfterSpawn)
         {
             spawnPlacing.RemovePosition(spawnArray[spawnIndex].transform.position);

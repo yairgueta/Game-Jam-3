@@ -20,6 +20,6 @@ MonoBehaviour:
   deadZoneMinY: 0
   deadZoneMaxX: 0
   deadZoneMaxY: 0
-  spawnUnitSize: 0.05
+  spawnUnitSize: 0.1
   useDeadZone: 0
   updateSpotsAfterSpawn: 1

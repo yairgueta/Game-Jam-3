@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Collectables;
@@ -7,12 +8,15 @@ using UnityEngine;
 
 public class MushroomCollectable : CollectableObject
 {
-    [SerializeField] private GameObject sheepPrefab;
-    [SerializeField] private Vector3 pos;
+    [SerializeField] private Spawner spawner;
+
+    private void OnEnable()
+    {
+        spawner = GameObject.Find("SheepSpawner").GetComponent<Spawner>();
+    }
+
     public override void OnCollected()
     {
-        // find place in sheep spawner and instantiate there
-        
-        // Instantiate(sheepPrefab, pos, Quaternion.identity);
+        spawner.SpawnGameObject();
     }
 }

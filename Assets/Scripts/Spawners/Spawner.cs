@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] spawnArray;
-    [SerializeField] private SpawnPlacing spawnPlacing;
+    private SpawnPlacing spawnPlacing;
 
     private List<Vector2> positionsToSpawn;
     private int spawnIndex = 0;
@@ -13,7 +13,9 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spawnPlacing = GetComponent<SpawnPlacing>();
         Initialize();
+        
     }
 
     private void Initialize()

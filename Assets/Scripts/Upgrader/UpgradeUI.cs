@@ -1,7 +1,9 @@
 using Events;
+using Player;
 using Player.Inventory;
 using Selections;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +20,7 @@ namespace Upgrader
         [SerializeField] private TMP_Text rockAmount;
         [SerializeField] private TMP_Text description;
         [SerializeField] private Image image;
+        [SerializeField] private double crackedPercentage = 0.2;
     
         private void Start()
         {
@@ -45,7 +48,6 @@ namespace Upgrader
 
         private void SetUp(Upgradable upgradable)
         {
-            // Debug.Log(SelectionManager.Instance.CurrentSelected);
             upgradeBtn.interactable = true;
             upgradeBtn.onClick.RemoveAllListeners();
             upgradeBtn.onClick.AddListener(() =>
@@ -63,7 +65,7 @@ namespace Upgrader
             woodAmount.text = upgradableObject.requiredWoods.ToString();
             rockAmount.text = upgradableObject.requiredRocks.ToString();
             description.text = upgradableObject.description;
-            image.sprite = upgradableObject.sprite;
+            image.sprite = upgradableObject.completeSprites[upgradableObject.spriteIndex];
 
             woodAmount.color = Color.white;
             rockAmount.color = Color.white;
@@ -81,10 +83,11 @@ namespace Upgrader
             }
         }
 
+ 
+
         public void ClosePanel()
         {
             SelectionManager.Instance.Deselect();
-            // Debug.Log(SelectionManager.Instance.CurrentSelected);
         }
     }
 }

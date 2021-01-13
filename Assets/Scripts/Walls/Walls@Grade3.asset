@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4398f5600c08dff4996cc4f06caa32ab, type: 3}
   m_Name: Walls@Grade3
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 129e8967e235d4b24ab7aee4d91bc54d, type: 3}
+  completeSprites:
+  - {fileID: 21300000, guid: 129e8967e235d4b24ab7aee4d91bc54d, type: 3}
+  crackedSprited:
+  - {fileID: 21300000, guid: 67fd3d084e53143f3b082b85069a88b5, type: 3}
+  spriteIndex: 0
   description: upgrade level 3
   garde: 3
   healthPoints: 30

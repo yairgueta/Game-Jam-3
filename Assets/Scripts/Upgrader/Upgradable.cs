@@ -3,6 +3,8 @@ using Events;
 using Player.Inventory;
 using Selections;
 using UnityEngine;
+using System.Collections;
+using Random = UnityEngine.Random;
 
 namespace Upgrader
 {
@@ -14,6 +16,7 @@ namespace Upgrader
         public Action onUpgrade;
         private SpriteRenderer sr;
         private int curGrade;
+        private int spriteIndex;
 
         
         private void Awake()
@@ -30,8 +33,10 @@ namespace Upgrader
         public void Upgrade()
         {
             curGrade++;
-
-            sr.sprite = grades[curGrade].sprite;
+            UpgradableObject current = grades[curGrade];
+            spriteIndex = Random.Range(0, current.completeSprites.Length);
+            current.spriteIndex = spriteIndex;
+            sr.sprite = current.completeSprites[spriteIndex];
             inventory[ResourceType.Wood] -= grades[curGrade].requiredWoods;
             inventory[ResourceType.Rock] -= grades[curGrade].requiredRocks;
             onUpgrade?.Invoke();
@@ -41,7 +46,10 @@ namespace Upgrader
         public void ReduceToGrade(int grade)
         {
             curGrade = grade;
-            sr.sprite = grades[curGrade].sprite;
+            UpgradableObject current = grades[curGrade];
+            spriteIndex = Random.Range(0, current.completeSprites.Length);
+            current.spriteIndex = spriteIndex;
+            sr.sprite = current.completeSprites[spriteIndex];
         }
         
         public UpgradableObject GetCurGradeAttributes()

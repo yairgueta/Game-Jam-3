@@ -22,9 +22,9 @@ MonoBehaviour:
   - {fileID: 5986293577970895832, guid: 821a32dddbe404a3ba32ae6e8b2dc621, type: 3}
   - {fileID: 8652895354714682181, guid: 821a32dddbe404a3ba32ae6e8b2dc621, type: 3}
   - {fileID: -8218510926705459213, guid: 821a32dddbe404a3ba32ae6e8b2dc621, type: 3}
-  spriteIndex: 0
+  spriteIndex: 2
   description: upgrade level 1
   garde: 1
-  healthPoints: 10
+  healthPoints: 80
   requiredWoods: 2
   requiredRocks: 3

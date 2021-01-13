@@ -20,7 +20,6 @@ namespace Upgrader
         [SerializeField] private TMP_Text rockAmount;
         [SerializeField] private TMP_Text description;
         [SerializeField] private Image image;
-        [SerializeField] private double crackedPercentage = 0.2;
     
         private void Start()
         {

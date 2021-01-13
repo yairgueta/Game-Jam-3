@@ -21,6 +21,6 @@ MonoBehaviour:
   spriteIndex: 0
   description: upgrade level 2
   garde: 2
-  healthPoints: 20
+  healthPoints: 80
   requiredWoods: 2
   requiredRocks: 3

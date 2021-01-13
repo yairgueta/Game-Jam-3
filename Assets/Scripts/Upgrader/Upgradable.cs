@@ -51,6 +51,11 @@ namespace Upgrader
             current.spriteIndex = spriteIndex;
             sr.sprite = current.completeSprites[spriteIndex];
         }
+
+        public void Cracked()
+        {
+            sr.sprite = grades[curGrade].crackedSprited[spriteIndex];
+        }
         
         public UpgradableObject GetCurGradeAttributes()
         {

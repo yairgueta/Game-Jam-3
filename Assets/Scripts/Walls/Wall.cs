@@ -10,6 +10,7 @@ public class Wall : MonoBehaviour, IEnemyDamage
     [SerializeField] private Collider2D wallCollider;
     private Upgradable upgradable;
     private float curHealth;
+    [SerializeField] private double crackedPercentage = 0.5;
 
     
     void Start()
@@ -23,6 +24,10 @@ public class Wall : MonoBehaviour, IEnemyDamage
     public void TakeDamage(float damage)
     {
         curHealth -= damage;
+        if (curHealth/upgradable.GetCurGradeAttributes().healthPoints < crackedPercentage)
+        {
+            upgradable.Cracked();
+        }
         if (curHealth <= 0)
         {
             upgradable.ReduceToGrade(0);

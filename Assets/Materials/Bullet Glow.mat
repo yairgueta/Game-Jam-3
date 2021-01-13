@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Collectable
-  m_Shader: {fileID: -6465566751694194690, guid: 765e97ffb42e45b448f10444a5a60d13, type: 3}
+  m_Name: Bullet Glow
+  m_Shader: {fileID: -6465566751694194690, guid: c2d40d42347d34e5c80532b05fe1177a, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,16 +19,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_ef408befe1054d17968f3a66cade933f:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Emission:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3bf831c632833c24eb63df60a923ffc4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -43,11 +39,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - Vector1_8fbcd6943bf548aabadc1add3a2fddb3: 0.9999
-    - Vector1_b0d584ff5083496782c828ddf36744b2: 0.99
+    m_Floats: []
     m_Colors:
-    - Color_265128edadaf48ada37c146199646127: {r: 0.0007314645, g: 0.00017233456, b: 0, a: 0}
-    - Color_37ef706f7bad4ee69d930d92735f29be: {r: 9.734288, g: 2.089559, b: 0.81543773, a: 0}
-    - Color_a0d5e7a73c3e445b82ad660a85b5231f: {r: 0.7264151, g: 0.6836848, b: 0, a: 0.6}
+    - Color_1256EBB7: {r: 0.6901961, g: 9.286275, b: 11.98431, a: 0}
   m_BuildTextureStacks: []

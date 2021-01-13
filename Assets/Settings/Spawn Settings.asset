@@ -21,3 +21,4 @@ MonoBehaviour:
   deadZoneMaxX: 10.2
   deadZoneMaxY: 7.6
   spawnUnitSize: 15
+  useDeadZone: 1

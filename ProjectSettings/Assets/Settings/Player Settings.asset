@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5811730a5be24b66ae2efd51b9cc8432, type: 3}
+  m_Name: Player Settings
+  m_EditorClassIdentifier: 
+  speed: 5
+  maxHealth: 50
+  maxMana: 100
+  initialMana: 70
+  bulletManaCost: 5
+  bulletSpeed: 10
+  bulletDuration: 1.42
+  curHealth: 50
+  curMana: 70
+  onDeath: {fileID: 11400000, guid: ce7896d81791f41a5a2433c723a31a3e, type: 2}
+  onHealthChange: {fileID: 11400000, guid: a3853c4fbc09b4fcdb96ae73da19454d, type: 2}
+  onManaChange: {fileID: 11400000, guid: 02a796ea9269b4c0b941b1dbd4e51e43, type: 2}
+  onOutOfMana: {fileID: 11400000, guid: 15a1f8fde2558478fa3aa99b631f1b05, type: 2}
+  onBulletExplode: {fileID: 11400000, guid: 1d6eda70405af4d93b8301c7eb30f686, type: 2}

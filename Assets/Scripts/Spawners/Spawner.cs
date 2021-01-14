@@ -52,4 +52,9 @@ public class Spawner : MonoBehaviour
             SpawnGameObject();
         }
     }
+
+    public void SpawnableDeath(Spawnable spawnable)
+    {
+        
+    }
 }

@@ -1,9 +1,7 @@
 using System;
-using Events;
 using Player.Inventory;
 using Selections;
 using UnityEngine;
-using System.Collections;
 using Random = UnityEngine.Random;
 
 namespace Upgrader

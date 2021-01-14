@@ -10,7 +10,7 @@ public class Wall : MonoBehaviour, IEnemyDamage
     [SerializeField] private Collider2D wallCollider;
     private Upgradable upgradable;
     private float curHealth;
-    [SerializeField] private double crackedPercentage = 0.5;
+    [SerializeField] private float crackedPercentage = 0.5f;
 
     
     void Start()

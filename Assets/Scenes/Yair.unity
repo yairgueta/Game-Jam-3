@@ -1813,10 +1813,10 @@ MonoBehaviour:
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 2
   m_FillAmount: 1
   m_FillClockwise: 0
-  m_FillOrigin: 2
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &202571001
@@ -6738,8 +6738,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 6146782616825927046, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}
-  m_Type: 3
+  m_Sprite: {fileID: 1302723820812287101, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7827,6 +7827,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f7d887eb3c5c4416f997738a87f014af, type: 3}
+    - target: {fileID: 1023162987646982269, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023162987646982269, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.338
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023162987646982270, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023162987646982270, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.338
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
 --- !u!1001 &761174380
@@ -10744,19 +10760,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1636320973501941693, guid: e5f3b68d5a8634daa8c09c84866c007d, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.3962277
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 1636320973501941693, guid: e5f3b68d5a8634daa8c09c84866c007d, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.818
+      value: 1.338
       objectReference: {fileID: 0}
     - target: {fileID: 1636320973501941694, guid: e5f3b68d5a8634daa8c09c84866c007d, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.3962277
+      value: 1.37
       objectReference: {fileID: 0}
     - target: {fileID: 1636320973501941694, guid: e5f3b68d5a8634daa8c09c84866c007d, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.818
+      value: 1.338
       objectReference: {fileID: 0}
     - target: {fileID: 1636320973501941695, guid: e5f3b68d5a8634daa8c09c84866c007d, type: 3}
       propertyPath: m_Sprite
@@ -11347,12 +11363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d46e649f6aa6408298440f181398519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayUI: {fileID: 6146782616825927046, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}
-  nightUI: {fileID: 1302723820812287101, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}
-  eclipseUI: {fileID: -5733780330723738835, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}
-  dayFiller: {fileID: 6146782616825927046, guid: 20baab6ab77374f3eadc0d654299e3bf, type: 3}
-  nightFiller: {fileID: 1302723820812287101, guid: 20baab6ab77374f3eadc0d654299e3bf, type: 3}
-  eclipseFiller: {fileID: -5733780330723738835, guid: 20baab6ab77374f3eadc0d654299e3bf, type: 3}
   radialTimer: {fileID: 629481408}
   filler: {fileID: 202571000}
 --- !u!222 &1115952749
@@ -16873,6 +16883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1764340773}
   - component: {fileID: 1764340772}
+  - component: {fileID: 1764340774}
   - component: {fileID: 1764340775}
   m_Layer: 0
   m_Name: Game Manager
@@ -16894,9 +16905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cyclesOrder: 000000000100000002000000
-  daySettings: {fileID: 0}
-  nightSettings: {fileID: 0}
-  eclipseSettings: {fileID: 0}
+  cyclesSettings:
+  - {fileID: 11400000, guid: 24a8b63a4494e483aa5d40adc8d20b50, type: 2}
+  - {fileID: 11400000, guid: d2783c2e4e1a54004ac8cbcdbf7f9942, type: 2}
+  - {fileID: 11400000, guid: f3aa03adc7e24465eb0349623e4b4fdb, type: 2}
 --- !u!4 &1764340773
 Transform:
   m_ObjectHideFlags: 0
@@ -16911,6 +16923,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1764340774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764340771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e1a275ff0a4b83a535cb3aeda86746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationDuration: 0.5
 --- !u!114 &1764340775
 MonoBehaviour:
   m_ObjectHideFlags: 0

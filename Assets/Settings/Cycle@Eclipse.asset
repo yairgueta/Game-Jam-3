@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437e989f123845f38e967c351c8399a6, type: 3}
   m_Name: Cycle@Eclipse
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 1
   globalLightColor: {r: 0.6698113, g: 0.21800463, b: 0.5398581, a: 0}
   globalLightIntensity: 0.6
   onCycleStart: {fileID: 11400000, guid: ced196fe55eb94eaca4c25ab594ec604, type: 2}
   onCycleEnd: {fileID: 11400000, guid: 660bda67326474a828ff51e5d2126210, type: 2}
-  UITimer: {fileID: -5733780330723738835, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}
-  UITimerFiller: {fileID: -5733780330723738835, guid: 20baab6ab77374f3eadc0d654299e3bf, type: 3}
+  uiTimer: {fileID: -5733780330723738835, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}
+  uiTimerFiller: {fileID: -5733780330723738835, guid: 20baab6ab77374f3eadc0d654299e3bf, type: 3}
+  fillMethod: 4
+  fillOrigin: 2

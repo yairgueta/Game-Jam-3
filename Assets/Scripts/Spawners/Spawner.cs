@@ -4,7 +4,8 @@ using UnityEngine.Serialization;
 
 public class Spawner : MonoBehaviour
 {
-    [FormerlySerializedAs("spawnArray")] [SerializeField] private Queue<Spawnable> spawnQueue;
+    [SerializeField] private Spawnable[] spawnArray;
+    private Queue<Spawnable> spawnQueue;
     private SpawnPlacing spawnPlacing;
 
     // Start is called before the first frame update
@@ -12,6 +13,10 @@ public class Spawner : MonoBehaviour
     {
         spawnPlacing = GetComponent<SpawnPlacing>();
         spawnPlacing.Initialize();
+        foreach (var spawnable in spawnArray)
+        {
+            spawnQueue.Enqueue(spawnable);
+        }
     }
 
     public void SpawnGameObject()
@@ -39,5 +44,6 @@ public class Spawner : MonoBehaviour
         if (!spawnPlacing.spawnSettings.updateSpotsAfterSpawn) return;
         spawnPlacing.AddPosition(spawnable.transform.position);
         spawnQueue.Enqueue(spawnable);
+        spawnable.gameObject.SetActive(false);
     }
 }

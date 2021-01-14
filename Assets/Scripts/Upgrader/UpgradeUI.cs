@@ -15,6 +15,7 @@ namespace Upgrader
         [SerializeField] private InventoryObject inventory;
     
         [SerializeField] private GameObject upgradePanel;
+        [SerializeField] private GameObject maxGradePanel;
         [SerializeField] private Button upgradeBtn;
         [SerializeField] private TMP_Text woodAmount;
         [SerializeField] private TMP_Text rockAmount;
@@ -33,12 +34,21 @@ namespace Upgrader
             if (SelectionManager.Instance.CurrentSelected == null) 
             {
                 upgradePanel.SetActive(false);
+                maxGradePanel.SetActive(false);
                 return;
             }
             var upgradable = SelectionManager.Instance.CurrentSelected.GetComponent<Upgradable>();
             if (upgradable == null)
             {
                 upgradePanel.SetActive(false);
+                return;
+            }
+            var upgradableObject = upgradable.GetNextGradeAttributes();
+            
+            
+            if (upgradableObject == null)
+            {
+                maxGradePanel.SetActive(true);
                 return;
             }
             upgradePanel.SetActive(true);
@@ -49,6 +59,7 @@ namespace Upgrader
         {
             upgradeBtn.interactable = true;
             upgradeBtn.onClick.RemoveAllListeners();
+            
             upgradeBtn.onClick.AddListener(() =>
             {
                 upgradable.Upgrade();
@@ -56,11 +67,8 @@ namespace Upgrader
             });
 
             var upgradableObject = upgradable.GetNextGradeAttributes();
-            if (upgradableObject == null)
-            {
-                ClosePanel();
-                return;
-            }
+            
+            
             woodAmount.text = upgradableObject.requiredWoods.ToString();
             rockAmount.text = upgradableObject.requiredRocks.ToString();
             description.text = upgradableObject.description;

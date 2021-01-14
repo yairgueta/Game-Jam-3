@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b46280fa37532416b928b74934e7d0fe, type: 3}
-  m_Name: Yairs sheep
+  m_Name: Yairs sheep 1
   m_EditorClassIdentifier: 
   sheeps: []
   awake: {fileID: 0}

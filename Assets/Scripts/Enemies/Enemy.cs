@@ -18,6 +18,7 @@ namespace Enemies
         private readonly int moveAnimationID = Animator.StringToHash("Move");
         void Start()
         {
+            GetComponent<Seeker>().graphMask = GraphMask.FromGraphName("Enemy Graph");
             aiPath = GetComponent<AIPath>();
             animator = GetComponent<Animator>();
             mode = Mode.Walking;

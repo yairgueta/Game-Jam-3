@@ -17,5 +17,5 @@ MonoBehaviour:
   speed: 1
   nextWaypointDistance: 3
   pathRepeatRate: 0.5
-  targetRefreshTime: 1
+  targetRefreshTime: 5
   onDeath: {fileID: 11400000, guid: 906630ade5ebeda4a84d087379978e65, type: 2}

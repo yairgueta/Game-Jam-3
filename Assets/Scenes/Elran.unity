@@ -5799,6 +5799,7 @@ MonoBehaviour:
   onNewSelection: {fileID: 11400000, guid: 59fd63c51de132a4197c64fd4ffde55e, type: 2}
   inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
   upgradePanel: {fileID: 1188781462}
+  maxGradePanel: {fileID: 0}
   upgradeBtn: {fileID: 686751883}
   woodAmount: {fileID: 492246001}
   rockAmount: {fileID: 952425358}

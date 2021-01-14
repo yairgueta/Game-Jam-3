@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using Collectables;
+using Enemies;
 using Selections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,12 +9,13 @@ using Selectable = Selections.Selectable;
 
 namespace Player
 {
-    public class Sheep : MonoBehaviour
+    public class Sheep : MonoBehaviour, IEnemyDamage
     {
         [SerializeField] private SheepSettings sheepSettings;
         [SerializeField] private Image collectionDisplay;
         private SpriteRenderer sr;
         private Selectable selectable;
+        private float health;
 
         
         [Flags]
@@ -21,7 +24,7 @@ namespace Player
             None = 0,
             Awake = 1,
             Empty = 2,
-            CanShear = 3,
+            Glow = 4,
         }
 
         private Status status;
@@ -31,6 +34,8 @@ namespace Player
             sr = GetComponent<SpriteRenderer>();
             selectable = GetComponent<Selectable>();
             status |= Status.Awake;
+            health = sheepSettings.maxHealth;
+
         }
 
         private void Update()
@@ -67,6 +72,7 @@ namespace Player
             // Invoke(nameof(Refill), sheepSettings.fillTime);
             StartCoroutine(WaitWhileShearing());
         }
+        
 
         IEnumerator WaitWhileShearing()
         {
@@ -91,6 +97,10 @@ namespace Player
         {
             switch (status)
             {
+                case Status.Glow:
+                case Status.Glow | Status.Awake:
+                    sr.sprite = sheepSettings.glowSheep;
+                    break;
                 case Status.Awake | Status.Empty:
                     sr.sprite = sheepSettings.emptyAwake;
                     break;
@@ -106,6 +116,23 @@ namespace Player
             }
         }
 
+        public void SetGlow(bool toGlow)
+        {
+            selectable.SetInteractable(toGlow);
+            if (toGlow)
+            {
+                status |= Status.Glow;
+            }
+            else
+            {
+                status &= ~Status.Glow;
+            }
+            RefreshSprite();
+
+            // status ^= (Status.Awake & (Status)toGlow);
+
+        }
+
         public void Sleep()
         {
             status &= ~Status.Awake;
@@ -116,6 +143,20 @@ namespace Player
         {
             status |= Status.Awake;
             RefreshSprite();
+        }
+
+        public void TakeDamage(float damage)
+        {
+            health -= damage;
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

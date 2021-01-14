@@ -9,7 +9,7 @@ using Selectable = Selections.Selectable;
 
 namespace Player
 {
-    public class Sheep : MonoBehaviour, IEnemyDamage
+    public class Sheep : Spawnable, IEnemyDamage
     {
         [SerializeField] private SheepSettings sheepSettings;
         [SerializeField] private Image collectionDisplay;

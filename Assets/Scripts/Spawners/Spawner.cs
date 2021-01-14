@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Spawnable[] spawnArray;
-    private Queue<Spawnable> spawnQueue;
+    private Queue<Spawnable> spawnQueue = new Queue<Spawnable>();
     private SpawnPlacing spawnPlacing;
 
     // Start is called before the first frame update
@@ -44,6 +44,6 @@ public class Spawner : MonoBehaviour
         if (!spawnPlacing.spawnSettings.updateSpotsAfterSpawn) return;
         spawnPlacing.AddPosition(spawnable.transform.position);
         spawnQueue.Enqueue(spawnable);
-        spawnable.gameObject.SetActive(false);
+        // spawnable.gameObject.SetActive(false);
     }
 }

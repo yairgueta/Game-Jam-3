@@ -14,6 +14,7 @@ namespace Enemies
         [Header("AI Attributes")]
         public float nextWaypointDistance = 3f;
         public float pathRepeatRate = .5f;
+        public float targetRefreshTime = 5f;
 
         [Header("Events")] 
         public GameEvent onDeath;

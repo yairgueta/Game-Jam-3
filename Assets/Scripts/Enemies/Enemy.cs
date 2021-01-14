@@ -12,10 +12,8 @@ namespace Enemies
         private AIPath aiPath;
         private Mode mode;
         private IEnemyDamage currentAttacked;
-        private Transform gfxTransform;
-        
+        private Vector3 gfxScale;
 
-        
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
@@ -25,7 +23,7 @@ namespace Enemies
             aiPath = GetComponent<AIPath>();
             animator = GetComponent<Animator>();
             mode = Mode.Walking;
-            gfxTransform = enemyGFX.transform;
+            gfxScale = enemyGFX.transform.localScale;
         }
 
         private void Update()
@@ -71,14 +69,14 @@ namespace Enemies
 
         private void ManageDirection()
         {
-            var scale = gfxTransform.localScale;
-            if (aiPath.desiredVelocity.x >= Mathf.Epsilon)
+            var gfxTransform = enemyGFX.transform;
+            if (aiPath.desiredVelocity.x >= 0.01f)
             {
-                gfxTransform.localScale = new Vector3( scale.x, scale.y, scale.z);
+                gfxTransform.localScale = new Vector3( -gfxScale.x, gfxScale.y, gfxScale.z);
             }
-            if (aiPath.desiredVelocity.x <= -Mathf.Epsilon)
+            if (aiPath.desiredVelocity.x <= -0.01f)
             {
-                gfxTransform.localScale = new Vector3( -scale.x, scale.y, scale.z);
+                gfxTransform.localScale = new Vector3( gfxScale.x, gfxScale.y, gfxScale.z);
             }
         }
 

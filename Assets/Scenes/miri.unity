@@ -15597,6 +15597,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SheepSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8658954503622150367, guid: 7256eab57fdd70b4096c3705b76ce3e5, type: 3}
+      propertyPath: spawnAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658954503622150367, guid: 7256eab57fdd70b4096c3705b76ce3e5, type: 3}
+      propertyPath: spawnablePrefab
+      value: 
+      objectReference: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
     - target: {fileID: 8818792873079490846, guid: 7256eab57fdd70b4096c3705b76ce3e5, type: 3}
       propertyPath: m_RootOrder
       value: 16

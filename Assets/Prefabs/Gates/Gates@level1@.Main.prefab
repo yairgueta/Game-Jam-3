@@ -174,10 +174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
   grades:
-  - {fileID: 11400000, guid: ac8055c561d39b4498c9a17129a6f8c6, type: 2}
-  - {fileID: 11400000, guid: 4578b99b9953e4e14a8e49953ab94d19, type: 2}
-  - {fileID: 11400000, guid: de80836afaa254be8ac2f6c7de3cb96e, type: 2}
-  - {fileID: 11400000, guid: c1bbf498e214e4e599b49428f39bfec8, type: 2}
+  - {fileID: 11400000, guid: 7fac7bf326d92244b821109c16d1f4bc, type: 2}
+  - {fileID: 11400000, guid: 579ca1141e2d784479bf701140ed5014, type: 2}
+  - {fileID: 11400000, guid: 6f6ff02af6169744595e9717d5f49c0f, type: 2}
+  - {fileID: 11400000, guid: 4fc191a85bacfb1449cc67c4366eaf8f, type: 2}
 --- !u!114 &6206620531621183856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +191,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallCollider: {fileID: 4310957693348009091}
+  crackedPercentage: 0.5

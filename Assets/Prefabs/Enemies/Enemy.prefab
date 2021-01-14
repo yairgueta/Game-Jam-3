@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 1667441342324272320}
   - component: {fileID: 1667441342324272325}
   - component: {fileID: 1667441342324272324}
-  - component: {fileID: 990548970}
   - component: {fileID: 1586172379}
   - component: {fileID: 1586172380}
   - component: {fileID: 1586172381}
@@ -155,22 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySettings: {fileID: 11400000, guid: d95f1b722aafef446aba0a9a0e3c85af, type: 2}
---- !u!114 &990548970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667441342324272327}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0feb864559a9fce489007d287644d941, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  enemySettings: {fileID: 11400000, guid: d95f1b722aafef446aba0a9a0e3c85af, type: 2}
-  enemyGFX: {fileID: 1667441341712273180}
-  rb: {fileID: 1667441342324272325}
 --- !u!114 &1586172379
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,7 +41,6 @@ namespace Selections
             if (!overMaterial) overMaterial = SelectionManager.Instance.DefaultOverMaterial;
             if (!selectedMaterial) selectedMaterial = SelectionManager.Instance.DefaultSelectedMaterial;
             if (!clickedDownMaterial) clickedDownMaterial = SelectionManager.Instance.DefaultClickedDownMaterial;
-            
         }
 
         private void OnMouseEnter()
@@ -63,8 +62,10 @@ namespace Selections
                 return;
             }
             if (hasEnteredAndChanged) return;
-            if (interactable) sr.material = overMaterial;
+            if (!interactable) return;
+            sr.material = overMaterial; 
             hasEnteredAndChanged = true;
+
         }
 
         private void OnMouseExit()
@@ -116,6 +117,7 @@ namespace Selections
             sr.material = originalMaterial;
             interactable = isOn;
             DragTime = -1;
+            hasEnteredAndChanged = false;
         }
     }
 }

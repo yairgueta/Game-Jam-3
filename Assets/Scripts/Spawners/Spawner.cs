@@ -1,47 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject[] spawnArray;
+    [FormerlySerializedAs("spawnArray")] [SerializeField] private Queue<Spawnable> spawnQueue;
     private SpawnPlacing spawnPlacing;
 
-    private List<Vector2> positionsToSpawn;
-    private int spawnIndex = 0;
-
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         spawnPlacing = GetComponent<SpawnPlacing>();
-        positionsToSpawn = new List<Vector2>();
         spawnPlacing.Initialize();
-        Initialize();
-        
-    }
-    
-    private void Initialize()
-    {
-        foreach (var toSpawn in spawnArray)
-        {
-            positionsToSpawn.Add(spawnPlacing.GetVacantPosition());
-            
-        }
-        spawnIndex = 0;
     }
 
     public void SpawnGameObject()
     {
-        if (spawnIndex == spawnArray.Length)
-        {
-            Initialize();
-        }
-        spawnArray[spawnIndex].transform.position = positionsToSpawn[spawnIndex];
-        spawnArray[spawnIndex].SetActive(true);
+        var toSpawn = spawnQueue.Dequeue();
+        toSpawn.transform.position = spawnPlacing.GetVacantPosition();
+        toSpawn.gameObject.SetActive(true);
         if (spawnPlacing.spawnSettings.updateSpotsAfterSpawn)
         {
-            spawnPlacing.RemovePosition(spawnArray[spawnIndex].transform.position);
+            spawnPlacing.RemovePosition(toSpawn.transform.position);
         }
-        spawnIndex++;
     }
 
     public void SpawnNumberOfGameObjects(int num)
@@ -55,6 +36,8 @@ public class Spawner : MonoBehaviour
 
     public void SpawnableDeath(Spawnable spawnable)
     {
-        
+        if (!spawnPlacing.spawnSettings.updateSpotsAfterSpawn) return;
+        spawnPlacing.AddPosition(spawnable.transform.position);
+        spawnQueue.Enqueue(spawnable);
     }
 }

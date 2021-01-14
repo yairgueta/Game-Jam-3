@@ -17,7 +17,7 @@ MonoBehaviour:
   sleep: {fileID: -4098054099620941013, guid: fbef710a29b5147ba8bb63a40ac6185f, type: 3}
   emptyAwake: {fileID: 21300000, guid: 85bde0d944014aa46ab3e4ab0d2b90e2, type: 3}
   emptySleep: {fileID: 0}
-  glowSheep: {fileID: -8403577120292615673, guid: e39124e06e8d04084af83165f44841a9, type: 3}
+  glowSheep: {fileID: 21300000, guid: 8213366a2c0f42a45bcb889ab6e7098e, type: 3}
   timeToCollect: 11.95
   manaAddition: 6
   fillTime: 0

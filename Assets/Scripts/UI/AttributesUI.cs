@@ -1,6 +1,4 @@
-using System;
 using System.Reflection;
-using Pathfinding;
 using UnityEngine;
 
 namespace UI
@@ -14,7 +12,9 @@ namespace UI
         {
             GUILayout.Space(100);
             // GUILayout.BeginHorizontal();
-            view = GUILayout.BeginScrollView(view, GUIStyle.none, new GUIStyle{alignment = TextAnchor.UpperLeft},GUILayout.Width(Screen.width*.15f), GUILayout.Height(Screen.height*.75f));
+            GUILayout.BeginHorizontal();
+            GUILayout.Space(100);
+            view = GUILayout.BeginScrollView(view, GUIStyle.none, new GUIStyle{},GUILayout.Width(Screen.width*.15f), GUILayout.Height(Screen.height*.75f));
             foreach (var settings in settingsObjects)
             {
                 // GUILayout.BeginVertical();
@@ -24,15 +24,16 @@ namespace UI
                     GUILayout.Label(f.Name);
                 }
 
-                PropertyInfo[] propeties = settings.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
-                foreach (var p in propeties)
+                PropertyInfo[] properties = settings.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                foreach (var p in properties)
                 {
                     GUILayout.Label(p.Name);
                 }
                 // GUILayout.EndVertical();
             }
-            // GUILayout.EndHorizontal();
+
             GUILayout.EndScrollView();
+            GUILayout.EndHorizontal();
         }
     }
 }

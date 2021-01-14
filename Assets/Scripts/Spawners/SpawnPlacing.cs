@@ -79,4 +79,12 @@ public class SpawnPlacing : MonoBehaviour
         var yResult = UnityEngine.Random.Range(position.y, position.y + spawnSettings.spawnUnitSize);
         return new Vector2(xResult, yResult);
     }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawLine(new Vector3(spawnSettings.minGameX, spawnSettings.minGameY), new Vector3(spawnSettings.minGameX, spawnSettings.maxGameY));
+        Gizmos.DrawLine(new Vector3(spawnSettings.minGameX, spawnSettings.minGameY), new Vector3(spawnSettings.maxGameX, spawnSettings.minGameY));
+        Gizmos.DrawLine(new Vector3(spawnSettings.maxGameX, spawnSettings.minGameY), new Vector3(spawnSettings.maxGameX, spawnSettings.maxGameY));
+        Gizmos.DrawLine(new Vector3(spawnSettings.minGameX, spawnSettings.maxGameX), new Vector3(spawnSettings.maxGameX, spawnSettings.maxGameY));
+    }
 }

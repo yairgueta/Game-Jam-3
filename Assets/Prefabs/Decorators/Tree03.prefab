@@ -95,6 +95,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree03
       objectReference: {fileID: 0}
+    - target: {fileID: 3746518634596322355, guid: fffe2d6e342c24cb1b7a1d83f89d1add, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4413586379794099501, guid: 6b40d07fc72014016a562314bf992760, type: 3}
+    - target: {fileID: 7376920379518542779, guid: fffe2d6e342c24cb1b7a1d83f89d1add, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4413586379794099501, guid: 6b40d07fc72014016a562314bf992760, type: 3}
     - target: {fileID: 7675846022689414674, guid: fffe2d6e342c24cb1b7a1d83f89d1add, type: 3}
       propertyPath: m_Size.x
       value: 9.809999

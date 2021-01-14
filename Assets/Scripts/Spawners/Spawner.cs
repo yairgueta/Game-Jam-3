@@ -4,7 +4,8 @@ using UnityEngine.Serialization;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Spawnable[] spawnArray;
+    [SerializeField] private GameObject spawnablePrefab;
+    [SerializeField] private int spawnAmount;
     private Queue<Spawnable> spawnQueue = new Queue<Spawnable>();
     private SpawnPlacing spawnPlacing;
 
@@ -13,9 +14,10 @@ public class Spawner : MonoBehaviour
     {
         spawnPlacing = GetComponent<SpawnPlacing>();
         spawnPlacing.Initialize();
-        foreach (var spawnable in spawnArray)
+        for (var i = 0; i < spawnAmount; i++)
         {
-            spawnQueue.Enqueue(spawnable);
+            var toSpawn = Instantiate(spawnablePrefab);
+            spawnQueue.Enqueue(toSpawn.GetComponent<Spawnable>());
         }
     }
 

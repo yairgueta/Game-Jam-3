@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     private SpawnPlacing spawnPlacing;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         spawnPlacing = GetComponent<SpawnPlacing>();
         spawnPlacing.Initialize();

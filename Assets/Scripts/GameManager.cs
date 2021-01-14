@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager>
 {
     private void Update()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.Space))
         {
             Restart();
         }

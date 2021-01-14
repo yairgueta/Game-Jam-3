@@ -7,13 +7,18 @@ using UnityEngine;
 public class SheepSpawner : MonoBehaviour
 {
 
-    [SerializeField] private Spawner sheepSpawnerObject;
+    private Spawner sheepSpawnerObject;
     [SerializeField] private MushroomCollectable mushroomCollectable;
-    
+
+    [SerializeField] private int sheepAmount;
 
     void Start()
     {
         sheepSpawnerObject = GetComponent<Spawner>();
+        for (int i = 0; i < sheepAmount; i++)
+        {
+            sheepSpawnerObject.SpawnGameObject();
+        }
     }
 
 

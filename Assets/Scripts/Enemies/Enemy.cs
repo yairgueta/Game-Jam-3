@@ -7,10 +7,13 @@ namespace Enemies
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private EnemySettings enemySettings;
+        [SerializeField] private GameObject enemyGFX;
 
         private AIPath aiPath;
         private Mode mode;
         private IEnemyDamage currentAttacked;
+        private Transform gfxTransform;
+        
 
         
         private Animator animator;
@@ -22,6 +25,7 @@ namespace Enemies
             aiPath = GetComponent<AIPath>();
             animator = GetComponent<Animator>();
             mode = Mode.Walking;
+            gfxTransform = enemyGFX.transform;
         }
 
         private void Update()
@@ -38,6 +42,7 @@ namespace Enemies
                     aiPath.canSearch = true;
                     break;
             }
+            ManageDirection();
         }
 
         private void AttackMode()
@@ -62,6 +67,19 @@ namespace Enemies
         public void TakeDamage(float damage)
         {
             enemySettings.UpdateLife(damage);
+        }
+
+        private void ManageDirection()
+        {
+            var scale = gfxTransform.localScale;
+            if (aiPath.desiredVelocity.x >= Mathf.Epsilon)
+            {
+                gfxTransform.localScale = new Vector3( scale.x, scale.y, scale.z);
+            }
+            if (aiPath.desiredVelocity.x <= -Mathf.Epsilon)
+            {
+                gfxTransform.localScale = new Vector3( -scale.x, scale.y, scale.z);
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)

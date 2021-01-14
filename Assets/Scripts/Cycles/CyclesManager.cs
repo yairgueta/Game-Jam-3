@@ -9,13 +9,16 @@ namespace Cycles
     {
         public static CyclesManager Instance { get; private set; }
 
-
-        [HideInInspector] [SerializeField] private int[] cyclesOrder = {0,1,2};
-        [SerializeField] private CycleObject daySettings;
-        [SerializeField] private CycleObject nightSettings;
-        [SerializeField] private CycleObject eclipseSettings;
+        public IEnumerable<CycleObject> CyclesSettings => cyclesSettings;
+        public CycleObject DaySettings => cyclesSettings[0];
+        public CycleObject NightSettings => cyclesSettings[1];
+        public CycleObject EclipseSettings => cyclesSettings[2];
         
+        
+        [HideInInspector][SerializeField] private List<int> cyclesOrder = new List<int>{0,1,2};
+        [HideInInspector][SerializeField] private CycleObject[] cyclesSettings;
         private CycleObject currentCycle;
+        private Queue<CycleObject> cyclesQueue;
         private float timer;
 
         private void OnEnable()
@@ -30,35 +33,36 @@ namespace Cycles
 
         private void Start()
         {
-            timer = 0;
+            var orderedCycles = new []{cyclesSettings[cyclesOrder[0]], cyclesSettings[cyclesOrder[1]], cyclesSettings[cyclesOrder[2]]};
+            for (var i = 0; i < 3; i++)
+                orderedCycles[i].OnCycleEnd = orderedCycles[(i + 1) % 3].OnCycleStart;
+            cyclesQueue = new Queue<CycleObject>(orderedCycles);
+            ProgressCycle();
         }
 
         private void Update()
         {
             timer -= Time.deltaTime;
             if (timer > 0) return;
-            // switch (currentCycle)
-            // {
-            //     case Cycle.Day:
-            //         currentCycle = Cycle.Night;
-            //         onNightTimeEnter?.Invoke();
-            //         break;
-            //     case Cycle.Night:
-            //         currentCycle = Cycle.Magic;
-            //         onMagicTimeEnter?.Invoke();
-            //         break;
-            //     case Cycle.Magic:
-            //         currentCycle = Cycle.Day;
-            //         onDayTimeEnter?.Invoke();
-            //         break;
-            // }
-            // timer = cyclesDurations[currentCycle];
+            ProgressCycle();
         }
 
-        public float GetRemainingTime()
+
+        private void ProgressCycle()
         {
-            // return timer / cyclesDurations[currentCycle];
-            return 0;
+            currentCycle = cyclesQueue.Dequeue();
+            cyclesQueue.Enqueue(currentCycle);
+            timer = currentCycle.Duration;
+            currentCycle.OnCycleStart.Raise();
         }
+        
+        private void OnGUI()
+        {
+            GUILayout.Space(50);
+            GUILayout.Label(currentCycle.name + ": " + Math.Round(timer, 2));
+            // cyclesSettings[0].Duration = float.TryParse(GUILayout.TextField(cyclesSettings[0].Duration.ToString()), out float x) ? x: 0 ;
+        }
+
+        public float TimePercentage => timer / currentCycle.Duration;
     }
 }

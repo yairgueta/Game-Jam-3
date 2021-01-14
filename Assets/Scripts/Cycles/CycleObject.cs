@@ -1,9 +1,11 @@
+using System;
 using Events;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Cycles
 {
-    [CreateAssetMenu(menuName = "Settings/Cycle Settings", fileName = "Cycle@New Cycle")]
+    [CreateAssetMenu(menuName = "Settings/Cycle Settings", fileName = "Cycle@New Cycle")][Serializable]
     public class CycleObject : ScriptableObject
     {
         public Color GlobalLightColor => globalLightColor;
@@ -13,27 +15,38 @@ namespace Cycles
             get => duration;
             set => duration = value;
         }
-        public GameEvent OnCycleStart => onCycleStart;
         
+        public GameEvent OnCycleStart => onCycleStart;
         public GameEvent OnCycleEnd
         {
             get => onCycleEnd;
             set => onCycleEnd = value;
         }
+
+        public Sprite UITimer => uiTimer;
+        public Sprite UITimerFiller => uiTimerFiller;
+        public Image.FillMethod FillMethod => fillMethod;
+        public Image.Origin90 FillOrigin => fillOrigin;
+
+
         [Header("General Settings")]
         [SerializeField] private float duration;
-        
+
         [Header("Global Light")] 
         [SerializeField] private Color globalLightColor;
         [SerializeField] private float globalLightIntensity;
+
 
         [Header("Events")] 
         [SerializeField] private GameEvent onCycleStart;
         [SerializeField] private GameEvent onCycleEnd;
 
+
         [Header("UI")] 
-        [SerializeField] private Sprite UITimer;
-        [SerializeField] private Sprite UITimerFiller;
+        [SerializeField] private Sprite uiTimer;
+        [SerializeField] private Sprite uiTimerFiller;
+        [SerializeField] private Image.FillMethod fillMethod;
+        [SerializeField] private Image.Origin90 fillOrigin;
 
     }
 }

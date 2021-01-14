@@ -1,4 +1,5 @@
 using Cycles;
+using Events;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,51 +7,31 @@ namespace UI
 {
     public class CycleUI : MonoBehaviour
     {
-        [Header("Attributes")] 
-        [SerializeField] private Sprite dayUI;
-        [SerializeField] private Sprite nightUI;
-        [SerializeField] private Sprite eclipseUI;
-        
-        [SerializeField] private Sprite dayFiller;
-        [SerializeField] private Sprite nightFiller;
-        [SerializeField] private Sprite eclipseFiller;
-        
-        
         [Header("References")]
         [SerializeField] private Image radialTimer;
         [SerializeField] private Image filler;
 
         private void Start()
         {
-        //     CyclesManager.Instance.onDayTimeEnter.AddListener(() =>
-        //     {
-        //         filler.fillMethod = Image.FillMethod.Radial90;
-        //         ChangeTimerColor(dayUI, dayFiller);
-        //         filler.fillOrigin = (int) Image.Origin90.BottomLeft;
-        //     });
-        //     CyclesManager.Instance.onNightTimeEnter.AddListener(() =>
-        //     {
-        //         filler.fillMethod = Image.FillMethod.Radial90;
-        //         ChangeTimerColor(nightUI, nightFiller);
-        //         filler.fillOrigin = (int) Image.Origin90.BottomRight;
-        //     });
-        //     CyclesManager.Instance.onMagicTimeEnter.AddListener(() =>
-        //     {
-        //         ChangeTimerColor(eclipseUI, eclipseFiller);
-        //         filler.fillMethod = Image.FillMethod.Radial360;
-        //         filler.fillOrigin = (int) Image.Origin360.Top;
-        //     });
-        }
+            foreach (var cycle in CyclesManager.Instance.CyclesSettings)
+            {
+                var listener = gameObject.AddComponent<GameEventListener>();
+                listener.InitEvent(cycle.OnCycleStart);
+                listener.response.AddListener(o =>
+                {
+                    radialTimer.sprite = cycle.UITimer;
+                    filler.sprite = cycle.UITimerFiller;
 
-        private void ChangeTimerColor(Sprite UI, Sprite _filler)
-        {
-            radialTimer.sprite = UI;
-            filler.sprite = _filler;
+                    filler.fillMethod = cycle.FillMethod;
+                    filler.fillOrigin = (int) cycle.FillOrigin;
+                    filler.fillAmount = 0;
+                });
+            }
         }
 
         private void Update()
         {
-            // filler.fillAmount = 1 - CyclesManagerObject.Instance.GetRemainingTime();
+            filler.fillAmount = 1 - CyclesManager.Instance.TimePercentage;
         }
         
     }

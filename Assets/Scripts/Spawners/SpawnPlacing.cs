@@ -82,6 +82,7 @@ public class SpawnPlacing : MonoBehaviour
     
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.blue;
         Gizmos.DrawLine(new Vector3(spawnSettings.minGameX, spawnSettings.minGameY), new Vector3(spawnSettings.minGameX, spawnSettings.maxGameY));
         Gizmos.DrawLine(new Vector3(spawnSettings.minGameX, spawnSettings.minGameY), new Vector3(spawnSettings.maxGameX, spawnSettings.minGameY));
         Gizmos.DrawLine(new Vector3(spawnSettings.maxGameX, spawnSettings.minGameY), new Vector3(spawnSettings.maxGameX, spawnSettings.maxGameY));

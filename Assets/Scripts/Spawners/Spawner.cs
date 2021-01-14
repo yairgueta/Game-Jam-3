@@ -17,8 +17,14 @@ public class Spawner : MonoBehaviour
         spawnPlacing.Initialize();
         for (var i = 0; i < spawnAmount; i++)
         {
-            var toSpawn = Instantiate(spawnablePrefab);
-            spawnQueue.Enqueue(toSpawn.GetComponent<Spawnable>());
+            var toSpawn = Instantiate(spawnablePrefab).GetComponent<Spawnable>();
+            if (toSpawn == null)
+            {
+                Debug.LogWarning(gameObject.name+" cannot spawn");
+                return;
+            }
+            toSpawn.Spawn(this);
+            toSpawn.gameObject.SetActive(false);
         }
     }
 
@@ -47,7 +53,6 @@ public class Spawner : MonoBehaviour
         if (!spawnPlacing.spawnSettings.updateSpotsAfterSpawn) return;
         spawnPlacing.AddPosition(spawnable.transform.position);
         spawnQueue.Enqueue(spawnable);
-        // spawnable.gameObject.SetActive(false);
     }
 
     

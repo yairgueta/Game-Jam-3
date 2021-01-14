@@ -5,11 +5,6 @@ public abstract class Spawnable : MonoBehaviour
 
     private Spawner spawner;
 
-    private void Awake()
-    {
-        gameObject.SetActive(false);
-    }
-
     internal void Spawn(Spawner spawner)
     {
         this.spawner = spawner;
@@ -17,6 +12,6 @@ public abstract class Spawnable : MonoBehaviour
 
     protected virtual void OnDisable()
     {
-        spawner.SpawnableDeath(this);
+        spawner?.SpawnableDeath(this);
     }
 }

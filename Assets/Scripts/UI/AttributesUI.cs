@@ -14,7 +14,7 @@ namespace UI
         {
             GUILayout.Space(100);
             // GUILayout.BeginHorizontal();
-            view = GUILayout.BeginScrollView(view, GUIStyle.none, new GUIStyle{alignment = TextAnchor.MiddleLeft},GUILayout.Width(Screen.width*.15f), GUILayout.Height(Screen.height*.75f));
+            view = GUILayout.BeginScrollView(view, GUIStyle.none, new GUIStyle{alignment = TextAnchor.UpperLeft},GUILayout.Width(Screen.width*.15f), GUILayout.Height(Screen.height*.75f));
             foreach (var settings in settingsObjects)
             {
                 // GUILayout.BeginVertical();

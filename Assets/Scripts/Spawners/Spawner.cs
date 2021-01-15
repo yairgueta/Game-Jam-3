@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Pathfinding;
+using Pathfinding.Util;
 using UnityEngine;
 
 namespace Spawners
@@ -36,6 +38,9 @@ namespace Spawners
         internal void SpawnableDeath(Spawnable spawnable)
         {
             queuePool.Enqueue(spawnable);
+            spawnable.takenNodes.ForEach(g => g.Walkable = true);
+            ListPool<GraphNode>.Release(spawnable.takenNodes);
+            spawnable.takenNodes = null;
         }
 
         public void SpawnRandom()
@@ -47,7 +52,8 @@ namespace Spawners
             }
             var p = queuePool.Dequeue();
             p.gameObject.SetActive(true);
-            randomizer.RandomizeObjectPosition(p.gameObject);
+            randomizer.RandomizeObjectPosition(p);
+            p.takenNodes.ForEach(g => g.Walkable = false);
         }
     }
 }

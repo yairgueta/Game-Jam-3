@@ -86,8 +86,11 @@ namespace Selections
 
         private void OnMouseUp()
         {
+            Debug.Log("1");
             if (!interactable) return;
             SelectionManager.Instance.NewSelected(this);
+            Debug.Log("2");
+
             onThisSelected?.Invoke();
             DragTime = -1;
         }

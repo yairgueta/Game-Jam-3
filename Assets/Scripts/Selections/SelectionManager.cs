@@ -43,7 +43,10 @@ namespace Selections
         {
             Deselect();
             currentSelected = selected;
+            Debug.Log("1currentSelected"+currentSelected);
             currentSelected.Select(); 
+            Debug.Log("2currentSelected"+currentSelected);
+
             onSelectionChanged.Raise();
         }
 

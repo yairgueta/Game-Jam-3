@@ -3,6 +3,7 @@ using System.Collections;
 using Collectables;
 using Enemies;
 using Selections;
+using Spawners;
 using UnityEngine;
 using UnityEngine.UI;
 using Selectable = Selections.Selectable;
@@ -29,10 +30,11 @@ namespace Player
 
         private Status status;
         
-        private void Start()
+        private void Awake()
         {
             sr = GetComponent<SpriteRenderer>();
-            selectable = GetComponent<Selectable>();
+            selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
+            
             status |= Status.Awake;
             health = sheepSettings.maxHealth;
 

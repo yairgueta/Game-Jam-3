@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4437600841816292469}
-  - component: {fileID: 4437600841816292471}
   - component: {fileID: 3440497857532448212}
   - component: {fileID: 4437600841816292468}
   - component: {fileID: 4437600841816292466}
@@ -35,21 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4437600841816292471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4437600841816292470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
-  selectedMaterial: {fileID: 0}
 --- !u!114 &3440497857532448212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1855253820417902224}
   - component: {fileID: 2855592476626253213}
+  - component: {fileID: 6242651891182942055}
   m_Layer: 7
   m_Name: Selectable Trigger
   m_TagString: Untagged
@@ -197,3 +182,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.12, y: 1.29}
   m_EdgeRadius: 0
+--- !u!114 &6242651891182942055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6283487624253829655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overMaterial: {fileID: 0}
+  clickedDownMaterial: {fileID: 0}
+  selectedMaterial: {fileID: 0}

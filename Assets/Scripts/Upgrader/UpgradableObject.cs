@@ -10,7 +10,6 @@ namespace Upgrader
         public Sprite[] crackedSprited;
         public int spriteIndex;
         public String description;
-        public int garde;
         public float healthPoints;
         public int requiredWoods;
         public int requiredRocks;

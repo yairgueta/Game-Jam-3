@@ -6,7 +6,6 @@ using Random = UnityEngine.Random;
 
 namespace Upgrader
 {
-    [RequireComponent(typeof(Selectable))]
     public class Upgradable : MonoBehaviour
     {
         [SerializeField] private InventoryObject inventory;

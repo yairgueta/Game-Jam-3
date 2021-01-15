@@ -68,7 +68,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6638235558202263003}
   - component: {fileID: 5483443218546135773}
-  - component: {fileID: 523138372}
   - component: {fileID: 6638235558202263002}
   - component: {fileID: 4944617384279111632}
   - component: {fileID: 757032522092799463}
@@ -111,21 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
   collectionDisplay: {fileID: 5541047728772551231}
---- !u!114 &523138372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638235558202263001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
-  selectedMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
 --- !u!212 &6638235558202263002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -408,8 +392,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7929012824422207289}
   - component: {fileID: 7642438018368888869}
+  - component: {fileID: 9111579467553497497}
   m_Layer: 7
-  m_Name: GameObject
+  m_Name: Selectable Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,3 +440,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4878843, y: 1.2018037}
   m_EdgeRadius: 0
+--- !u!114 &9111579467553497497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060475387069777209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overMaterial: {fileID: 0}
+  clickedDownMaterial: {fileID: 0}
+  selectedMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}

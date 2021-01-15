@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Spawners;
 using UnityEngine;
 
 public class SpawnerTest : MonoBehaviour
 {
     // private SpawnPlacing _spawnPlacing;
     // [SerializeField] private Transform toCheck;
-    private Spawner spawner;
+    private Spawner2 spawner;
     
     // Debug.DrawLine(new Vector3(currentPosition.x - 5f, currentPosition.y, 0f), new Vector3( currentPosition.x + 5f,  currentPosition.y, 0f), Color.green, 100f);
     // Debug.DrawLine(new Vector3( currentPosition.x,  currentPosition.y - 5f, 0f), new Vector3( currentPosition.x,  currentPosition.y +5f, 0f), Color.green, 100f);
@@ -17,7 +18,7 @@ public class SpawnerTest : MonoBehaviour
     {
         // _spawnPlacing = GetComponent<SpawnPlacing>();
         // _spawnPlacing.Initialize();
-        spawner = GetComponent<Spawner>();
+        spawner = GetComponent<Spawner2>();
     }
 
     // Update is called once per frame

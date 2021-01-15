@@ -2,12 +2,13 @@ using System;
 using System.Security.Cryptography;
 using Events;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Selections
 {
-    [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
+    [RequireComponent(typeof(Collider2D))]
     public class Selectable : MonoBehaviour
     {
         public Action onThisSelected;
@@ -32,12 +33,13 @@ namespace Selections
             isSelected = false;
             interactable = true;
             hasEnteredAndChanged = false;
-            sr = GetComponent<SpriteRenderer>();
-            originalMaterial = sr.material;
         }
 
         private void Start()
         {
+            sr = GetComponentInParent<SpriteRenderer>() ?? GetComponent<SpriteRenderer>() ?? GetComponentInChildren<SpriteRenderer>();
+            originalMaterial = sr.material;
+            
             if (!overMaterial) overMaterial = SelectionManager.Instance.DefaultOverMaterial;
             if (!selectedMaterial) selectedMaterial = SelectionManager.Instance.DefaultSelectedMaterial;
             if (!clickedDownMaterial) clickedDownMaterial = SelectionManager.Instance.DefaultClickedDownMaterial;

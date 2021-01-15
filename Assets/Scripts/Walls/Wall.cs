@@ -40,6 +40,7 @@ public class Wall : MonoBehaviour, IEnemyDamage
     {
         curHealth = upgradable.GetCurGradeAttributes().healthPoints;
         wallCollider.enabled = true;
+        wallCollider.enabled = true;
     }
 
 

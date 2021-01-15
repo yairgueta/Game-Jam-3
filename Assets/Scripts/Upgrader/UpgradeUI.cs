@@ -31,10 +31,10 @@ namespace Upgrader
 
         private void OnNewSelection_Response()
         {
-            Debug.Log("current selected from ui:   "+SelectionManager.Instance.CurrentSelected );
+            // Debug.Log("current selected from ui:   "+SelectionManager.Instance.CurrentSelected );
             if (SelectionManager.Instance.CurrentSelected == null) 
             {
-                Debug.Log("here");
+                // Debug.Log("here");
 
                 upgradePanel.SetActive(false);
                 maxGradePanel.SetActive(false);
@@ -43,7 +43,7 @@ namespace Upgrader
             var upgradable = SelectionManager.Instance.CurrentSelected.GetComponentInParent<Upgradable>();
             if (upgradable == null)
             {
-                Debug.Log("here2");
+                // Debug.Log("here2");
 
                 upgradePanel.SetActive(false);
                 return;
@@ -53,7 +53,7 @@ namespace Upgrader
             
             if (upgradableObject == null)
             {
-                Debug.Log("here3");
+                // Debug.Log("here3");
 
                 maxGradePanel.SetActive(true);
                 return;

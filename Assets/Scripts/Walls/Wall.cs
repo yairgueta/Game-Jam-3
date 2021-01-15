@@ -5,41 +5,36 @@ using Enemies;
 using UnityEngine;
 using Upgrader;
 
-public class Wall : MonoBehaviour, IEnemyDamage
+public class Wall : MonoBehaviour
 {
     [SerializeField] private Collider2D wallCollider;
     private Upgradable upgradable;
-    private float curHealth;
-    [SerializeField] private float crackedPercentage = 0.5f;
+    private Fixable fixable;
 
     
     void Start()
     {
         upgradable = GetComponent<Upgradable>();
-        curHealth = upgradable.GetCurGradeAttributes().healthPoints;
+        fixable = GetComponent<Fixable>();
+        OnUpgrade();
         upgradable.onUpgrade += OnUpgrade;
+        fixable.onWallBreak += OnBreak;
     }
 
-
-    public void TakeDamage(float damage)
+    private void OnBreak()
     {
-        curHealth -= damage;
-        if (curHealth/upgradable.GetCurGradeAttributes().healthPoints < crackedPercentage)
-        {
-            upgradable.Cracked();
-        }
-        if (curHealth <= 0)
-        {
-            upgradable.ReduceToGrade(0);
-            wallCollider.enabled = false;
-        }
-
+        upgradable.ReduceToGrade(0);
+        wallCollider.enabled = false;
     }
+    
 
     public void OnUpgrade()    
     {
-        curHealth = upgradable.GetCurGradeAttributes().healthPoints;
-        wallCollider.enabled = true;
+        var gradeAttributes = upgradable.GetCurGradeAttributes();
+        var prevGrade = upgradable.GetPreviousGradeAttributes();
+        
+        fixable.SetUp(gradeAttributes.healthPoints, upgradable.GetCompleteSprite(), upgradable.GetCrackedSprite(),
+            prevGrade.requiredWoods, prevGrade.requiredRocks);
         wallCollider.enabled = true;
     }
 

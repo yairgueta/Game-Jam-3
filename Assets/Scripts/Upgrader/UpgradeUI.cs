@@ -1,3 +1,4 @@
+using System;
 using Events;
 using Player;
 using Player.Inventory;
@@ -17,11 +18,12 @@ namespace Upgrader
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private GameObject maxGradePanel;
         [SerializeField] private Button upgradeBtn;
+        [SerializeField] private Button fixBtn;
         [SerializeField] private TMP_Text woodAmount;
         [SerializeField] private TMP_Text rockAmount;
         [SerializeField] private TMP_Text description;
         [SerializeField] private Image image;
-    
+        [SerializeField] private String fixDescription = "would you like to fix?";
         private void Start()
         {
             var listener = gameObject.AddComponent<GameEventListener>();
@@ -31,30 +33,60 @@ namespace Upgrader
 
         private void OnNewSelection_Response()
         {
-            // Debug.Log("current selected from ui:   "+SelectionManager.Instance.CurrentSelected );
             if (SelectionManager.Instance.CurrentSelected == null) 
             {
-                // Debug.Log("here");
-
                 upgradePanel.SetActive(false);
                 maxGradePanel.SetActive(false);
                 return;
             }
+            
+            var fixable = SelectionManager.Instance.CurrentSelected.GetComponentInParent<Fixable>();
+            if (fixable != null)
+            {
+                if (fixable.ShouldFix())
+                {
+                    Fixing(fixable);
+                    return;
+                }
+            }
+            
             var upgradable = SelectionManager.Instance.CurrentSelected.GetComponentInParent<Upgradable>();
             if (upgradable == null)
             {
-                // Debug.Log("here2");
-
                 upgradePanel.SetActive(false);
                 return;
             }
-            var upgradableObject = upgradable.GetNextGradeAttributes();
+
+            Upgrading(upgradable);
+        }
+
+        private void Fixing(Fixable fixable)
+        {
+            upgradePanel.SetActive(true);
+            upgradeBtn.gameObject.SetActive(false);
+            fixBtn.gameObject.SetActive(true);
             
+            fixBtn.interactable = true;
+            fixBtn.onClick.RemoveAllListeners();
+            fixBtn.onClick.AddListener(() =>
+            {
+                fixable.Fix();
+                ClosePanel();
+            });
+
+            var requiredWoods = fixable.RequiredWoodsPercentage();
+            var requiredRocks = fixable.RequiredRocksPercentage();
+            
+            SetUpTexts(requiredWoods, requiredRocks, fixDescription, fixable.GetCompleteSprite());
+        }
+
+        
+        private void Upgrading(Upgradable upgradable)
+        {
+            var upgradableObject = upgradable.GetNextGradeAttributes();
             
             if (upgradableObject == null)
             {
-                // Debug.Log("here3");
-
                 maxGradePanel.SetActive(true);
                 return;
             }
@@ -64,9 +96,11 @@ namespace Upgrader
 
         private void SetUp(Upgradable upgradable)
         {
+            upgradeBtn.gameObject.SetActive(true);
+            fixBtn.gameObject.SetActive(false);
+            
             upgradeBtn.interactable = true;
             upgradeBtn.onClick.RemoveAllListeners();
-            
             upgradeBtn.onClick.AddListener(() =>
             {
                 upgradable.Upgrade();
@@ -75,22 +109,28 @@ namespace Upgrader
 
             var upgradableObject = upgradable.GetNextGradeAttributes();
             
-            
-            woodAmount.text = upgradableObject.requiredWoods.ToString();
-            rockAmount.text = upgradableObject.requiredRocks.ToString();
-            description.text = upgradableObject.description;
-            image.sprite = upgradableObject.completeSprites[upgradableObject.spriteIndex];
+            SetUpTexts(upgradableObject.requiredWoods, upgradableObject.requiredRocks,upgradableObject.description, 
+                upgradableObject.completeSprites[upgradableObject.spriteIndex]);
+        }
+
+
+        private void SetUpTexts(int woods, int rocks, String desc, Sprite sprite)
+        {
+            woodAmount.text = woods.ToString();
+            rockAmount.text = rocks.ToString();
+            description.text = desc;
+            image.sprite = sprite;
 
             woodAmount.color = Color.white;
             rockAmount.color = Color.white;
 
-            if (inventory[ResourceType.Wood] < upgradableObject.requiredWoods)
+            if (inventory[ResourceType.Wood] < woods)
             {
                 woodAmount.color = Color.red;
                 upgradeBtn.interactable = false;
             }
 
-            if (inventory[ResourceType.Rock] < upgradableObject.requiredRocks)
+            if (inventory[ResourceType.Rock] < rocks)
             {
                 rockAmount.color = Color.red;
                 upgradeBtn.interactable = false;

@@ -22,9 +22,16 @@ namespace Upgrader
             sr = GetComponent<SpriteRenderer>();
         }
 
-        public UpgradableObject GetNextGradeAttributes()
+
+
+        public Sprite GetCompleteSprite()
         {
-            return curGrade == grades.Length-1 ? null : grades[curGrade+1];
+            return grades[curGrade].completeSprites[spriteIndex];
+        }
+        
+        public Sprite GetCrackedSprite()
+        {
+            return grades[curGrade].crackedSprited[spriteIndex];
         }
 
         public void Upgrade()
@@ -49,14 +56,24 @@ namespace Upgrader
             sr.sprite = current.completeSprites[spriteIndex];
         }
 
-        public void Cracked()
-        {
-            sr.sprite = grades[curGrade].crackedSprited[spriteIndex];
-        }
+        // public void Cracked()
+        // {
+        //     sr.sprite = grades[curGrade].crackedSprited[spriteIndex];
+        // }
         
         public UpgradableObject GetCurGradeAttributes()
         {
             return grades[curGrade];
+        }
+        
+        public UpgradableObject GetNextGradeAttributes()
+        {
+            return curGrade == grades.Length-1 ? null : grades[curGrade+1];
+        }
+        
+        public UpgradableObject GetPreviousGradeAttributes()
+        {
+            return curGrade == 0 ? grades[curGrade] : grades[curGrade-1];
         }
         
     }

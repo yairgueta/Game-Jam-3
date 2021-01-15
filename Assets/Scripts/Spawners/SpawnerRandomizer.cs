@@ -28,7 +28,7 @@ namespace Spawners
         }
 
 
-        private bool IsFree(Bounds bounds)
+        private List<GraphNode> IsFree(Bounds bounds)
         {
             var ls = new List<GraphNode>[graphs.Length];
             var walkable = true;
@@ -39,31 +39,31 @@ namespace Spawners
                 walkable = nodes.Aggregate(walkable, (current, node) => current && node.Walkable);
                 ls[i] = nodes;
             }
-
-            Debug.Log(bounds);
-
-            if (walkable) ls[0].ForEach(g => g.Walkable = false);
-
-            foreach (var graphNodes in ls)
+            
+            foreach (var graphNodes in ls.Skip(1))
             {
                 ListPool<GraphNode>.Release(graphNodes);
             }
 
-            return walkable;
+            return walkable ? ls[0] : null;
         }
 
-        public void RandomizeObjectPosition(GameObject go)
+        public void RandomizeObjectPosition(Spawnable spnble)
         {
             for (int i = 0; i < MAX_ITERATIONS; i++)
             {
                 var newPos = GetRandomPointWithinSpawner();
-                go.transform.position = newPos;
-                var collider = go.GetComponent<Collider2D>();
-                if (IsFree(new Bounds(newPos, collider.bounds.size)))
+                spnble.transform.position = newPos;
+                var collider = spnble.GetComponent<Collider2D>();
+                var takenNodes = IsFree(new Bounds(newPos, collider.bounds.size));
+                if (takenNodes != null)
+                {
+                    spnble.takenNodes = takenNodes;
                     return;
+                }
             }
 
-            Debug.LogError(gameObject.name + " Couldn't find free space for " + go.name);
+            Debug.LogError(gameObject.name + " Couldn't find free space for " + spnble.name);
         }
 
 

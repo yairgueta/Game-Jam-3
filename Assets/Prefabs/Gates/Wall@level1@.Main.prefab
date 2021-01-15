@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6206620531621183856}
   - component: {fileID: 3728940592743196378}
   - component: {fileID: 7257060498752397568}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Wall@level1@.Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,9 +172,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1591723774445582009}
-  - component: {fileID: 4618211783476346778}
   - component: {fileID: 6731850016589482698}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Selectable Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,21 +194,6 @@ Transform:
   m_Father: {fileID: 4310957693348009150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4618211783476346778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5898388277213431402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
-  selectedMaterial: {fileID: 0}
 --- !u!60 &6731850016589482698
 PolygonCollider2D:
   m_ObjectHideFlags: 0

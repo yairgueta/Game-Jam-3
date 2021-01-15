@@ -87,5 +87,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledPrefab: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
-  poolAmount: 20
+  totalPoolAmount: 20
   startingAmount: 6
+  spawnerType: 2

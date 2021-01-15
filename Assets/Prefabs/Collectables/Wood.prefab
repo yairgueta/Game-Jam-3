@@ -45,19 +45,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2855592476626253213, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Size.x
-      value: 1.5560651
+      value: 1.5055043
       objectReference: {fileID: 0}
     - target: {fileID: 2855592476626253213, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Size.y
-      value: 0.5288954
+      value: 0.17496854
       objectReference: {fileID: 0}
     - target: {fileID: 2855592476626253213, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Offset.x
-      value: -0.049453855
+      value: -0.07473427
       objectReference: {fileID: 0}
     - target: {fileID: 2855592476626253213, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Offset.y
-      value: 0.008524165
+      value: -0.11787829
       objectReference: {fileID: 0}
     - target: {fileID: 3440497857532448212, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: quantity
@@ -69,19 +69,19 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 5c8b49a4c662a4bd9a94f4f5a3370b34, type: 2}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Size.x
-      value: 1.5637226
+      value: 1.5492773
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Size.y
-      value: 0.25937343
+      value: 0.5699624
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Offset.x
-      value: -0.014075756
+      value: -0.021298409
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Offset.y
-      value: -0.07129753
+      value: 0.026212871
       objectReference: {fileID: 0}
     - target: {fileID: 4437600841816292466, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -166,6 +166,10 @@ PrefabInstance:
     - target: {fileID: 4437600841816292470, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
       propertyPath: m_Name
       value: Wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437600841816292470, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}
+      propertyPath: m_TagString
+      value: Selectable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f103403969ac54d2a97cb94df26f60bd, type: 3}

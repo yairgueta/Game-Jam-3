@@ -18,8 +18,7 @@ namespace Selections
         [SerializeField] private Material overMaterial = null;
         [SerializeField] private Material clickedDownMaterial = null;
         [SerializeField] private Material selectedMaterial = null;
-
-        private SpriteRenderer sr;
+        [SerializeField] private SpriteRenderer spriteRenderer;
         private Material originalMaterial;
 
         private float startDragTime;
@@ -33,12 +32,12 @@ namespace Selections
             isSelected = false;
             interactable = true;
             hasEnteredAndChanged = false;
+            originalMaterial = spriteRenderer.material;
         }
 
         private void Start()
         {
-            sr = GetComponentInParent<SpriteRenderer>() ?? GetComponent<SpriteRenderer>() ?? GetComponentInChildren<SpriteRenderer>();
-            originalMaterial = sr.material;
+            // spriteRenderer ??= GetComponentInParent<SpriteRenderer>() ?? GetComponent<SpriteRenderer>() ?? GetComponentInChildren<SpriteRenderer>();
             
             if (!overMaterial) overMaterial = SelectionManager.Instance.DefaultOverMaterial;
             if (!selectedMaterial) selectedMaterial = SelectionManager.Instance.DefaultSelectedMaterial;
@@ -52,7 +51,7 @@ namespace Selections
                 hasEnteredAndChanged = false;
                 return;
             }
-            sr.material = overMaterial;
+            spriteRenderer.material = overMaterial;
             hasEnteredAndChanged = true;
         }
 
@@ -65,21 +64,21 @@ namespace Selections
             }
             if (hasEnteredAndChanged) return;
             if (!interactable) return;
-            sr.material = overMaterial; 
+            spriteRenderer.material = overMaterial; 
             hasEnteredAndChanged = true;
 
         }
 
         private void OnMouseExit()
         {
-            if (interactable) sr.material = isSelected? selectedMaterial : originalMaterial;
+            if (interactable) spriteRenderer.material = isSelected? selectedMaterial : originalMaterial;
             hasEnteredAndChanged = false;
         }
 
         private void OnMouseDown()
         {
             if (!interactable) return;
-            sr.material = clickedDownMaterial;
+            spriteRenderer.material = clickedDownMaterial;
             startDragTime = Time.time;
             DragTime = 0;
         }
@@ -102,13 +101,13 @@ namespace Selections
         {
             if (!interactable) Debug.LogWarning("Selected uninteractable object: " + gameObject.name);
             
-            sr.material = selectedMaterial;
+            spriteRenderer.material = selectedMaterial;
             isSelected = true;
         }
         
         internal void Deselect()
         {
-            sr.material = originalMaterial;
+            spriteRenderer.material = originalMaterial;
             isSelected = false;
             DragTime = -1;
         }
@@ -116,7 +115,7 @@ namespace Selections
         public void SetInteractable(bool isOn)
         {
             if (isSelected && !isOn) Deselect();
-            sr.material = originalMaterial;
+            spriteRenderer.material = originalMaterial;
             interactable = isOn;
             DragTime = -1;
             hasEnteredAndChanged = false;

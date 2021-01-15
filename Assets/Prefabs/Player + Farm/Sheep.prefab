@@ -68,12 +68,12 @@ GameObject:
   m_Component:
   - component: {fileID: 6638235558202263003}
   - component: {fileID: 5483443218546135773}
-  - component: {fileID: 6638235558202263002}
-  - component: {fileID: 757032522092799463}
-  - component: {fileID: 5276318345902083641}
-  - component: {fileID: 2002767683938485113}
-  - component: {fileID: 9043651575126462529}
   - component: {fileID: 8534602923126289102}
+  - component: {fileID: 6638235558202263002}
+  - component: {fileID: 9043651575126462529}
+  - component: {fileID: 757032522092799463}
+  - component: {fileID: 2002767683938485113}
+  - component: {fileID: 5276318345902083641}
   m_Layer: 7
   m_Name: Sheep
   m_TagString: Sheep
@@ -109,8 +109,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9748dbad5be4ca0a0f079030e551a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  physicsCollider: {fileID: 4375668055353137537}
   sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
   collectionDisplay: {fileID: 5541047728772551231}
+--- !u!114 &8534602923126289102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638235558202263001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overMaterial: {fileID: 0}
+  clickedDownMaterial: {fileID: 0}
+  selectedMaterial: {fileID: 0}
+  spriteRenderer: {fileID: 6638235558202263002}
 --- !u!212 &6638235558202263002
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,6 +179,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!61 &9043651575126462529
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638235558202263001}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.01099062, y: 0.63}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.438617, y: 1.454}
+    newSize: {x: 7.193085, y: 7.27}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4878843, y: 1.2018037}
+  m_EdgeRadius: 0
 --- !u!114 &757032522092799463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +224,46 @@ MonoBehaviour:
       - m_Target: {fileID: 5483443218546135773}
         m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
         m_MethodName: WakeUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5483443218546135773}
+        m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
+        m_MethodName: SetGlow
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2002767683938485113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638235558202263001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deec871e1e04428b9e2e79c82b3f636a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5483443218546135773}
+        m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
+        m_MethodName: Sleep
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -242,87 +325,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &2002767683938485113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638235558202263001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deec871e1e04428b9e2e79c82b3f636a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5483443218546135773}
-        m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
-        m_MethodName: Sleep
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 5483443218546135773}
-        m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
-        m_MethodName: SetGlow
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!61 &9043651575126462529
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638235558202263001}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.01099062, y: 0.63}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.438617, y: 1.454}
-    newSize: {x: 7.193085, y: 7.27}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.4878843, y: 1.2018037}
-  m_EdgeRadius: 0
---- !u!114 &8534602923126289102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638235558202263001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
-  selectedMaterial: {fileID: 0}
 --- !u!1 &7012061998533608401
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +411,7 @@ GameObject:
   - component: {fileID: 7929012824422207289}
   - component: {fileID: 4375668055353137537}
   m_Layer: 11
-  m_Name: Selectable Trigger
+  m_Name: Physics Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

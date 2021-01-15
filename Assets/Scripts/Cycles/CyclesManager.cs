@@ -60,7 +60,6 @@ namespace Cycles
         {
             GUILayout.Space(50);
             GUILayout.Label(currentCycle.name + ": " + Math.Round(timer, 2));
-            // cyclesSettings[0].Duration = float.TryParse(GUILayout.TextField(cyclesSettings[0].Duration.ToString()), out float x) ? x: 0 ;
         }
 
         public float TimePercentage => timer / currentCycle.Duration;

@@ -1,46 +1,53 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Enemies;
 using Pathfinding;
+using Player;
 using UnityEngine;
 
-public class EnemyState : MonoBehaviour
+namespace Enemies
 {
-    [SerializeField] private Transform playerTransform;
-    [SerializeField] private Transform wallsPosition;
-    [SerializeField] private EnemySettings enemySettings;
+    public class EnemyState : MonoBehaviour
+    {
+        private static Transform _playerTransform;
+        private static Transform _wallsPosition;
     
-    private AIDestinationSetter destinationSetter;
-    private bool updateTarget = true;
+        [SerializeField] private EnemySettings enemySettings;
+    
+        private AIDestinationSetter destinationSetter;
+        private bool updateTarget = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        destinationSetter = GetComponent<AIDestinationSetter>();
-    }
-
-    private void Update()
-    {
-        if (updateTarget)
+        private void Awake()
         {
-            updateTarget = false;
-            ManageTarget();
+            _playerTransform ??= FindObjectOfType<PlayerController>().gameObject.transform;
+            _wallsPosition ??= GameObject.FindGameObjectWithTag("WallCenter").transform;
         }
-    }
 
-    private IEnumerator DelayChange()
-    {
-        yield return new WaitForSeconds(enemySettings.targetRefreshTime);
-        updateTarget = true;
-    }
+        void Start()
+        {
+            destinationSetter = GetComponent<AIDestinationSetter>();
+        }
 
-    private void ManageTarget()
-    {
-        var enemyPos = transform.position;
-        var distanceFromPlayer = Vector2.Distance(playerTransform.position, enemyPos);
-        var distanceFromWalls = Vector2.Distance(wallsPosition.position, enemyPos);
-        destinationSetter.target = distanceFromPlayer < distanceFromWalls ? playerTransform : wallsPosition;
-        StartCoroutine(DelayChange());
+        private void Update()
+        {
+            if (updateTarget)
+            {
+                updateTarget = false;
+                ManageTarget();
+            }
+        }
+
+        private IEnumerator DelayChange()
+        {
+            yield return new WaitForSeconds(enemySettings.targetRefreshTime);
+            updateTarget = true;
+        }
+
+        private void ManageTarget()
+        {
+            var enemyPos = transform.position;
+            var distanceFromPlayer = Vector2.Distance(_playerTransform.position, enemyPos);
+            var distanceFromWalls = Vector2.Distance(_wallsPosition.position, enemyPos);
+            destinationSetter.target = distanceFromPlayer < distanceFromWalls ? _playerTransform : _wallsPosition;
+            StartCoroutine(DelayChange());
+        }
     }
 }

@@ -48,14 +48,14 @@ namespace Spawners
             return walkable ? ls[0] : null;
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public void RandomizeObjectPosition(Spawnable spnble)
         {
             for (int i = 0; i < MAX_ITERATIONS; i++)
             {
                 var newPos = GetRandomPointWithinSpawner();
                 spnble.transform.position = newPos;
-                var collider = spnble.GetComponent<Collider2D>();
-                var takenNodes = IsFree(new Bounds(newPos, collider.bounds.size));
+                var takenNodes = IsFree(new Bounds(newPos, spnble.physicsCollider.bounds.size));
                 if (takenNodes != null)
                 {
                     spnble.takenNodes = takenNodes;
@@ -67,6 +67,7 @@ namespace Spawners
         }
 
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private Vector2 GetRandomPointWithinSpawner()
         {
             for (int i = 0; i < MAX_ITERATIONS; i++)
@@ -77,7 +78,6 @@ namespace Spawners
                 );
 
                 if (point == boundaries.ClosestPoint(point)) return point;
-                Debug.Log(i);
             }
 
             Debug.LogError("Bad Luck at finding point inside a collider!");

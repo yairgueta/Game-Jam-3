@@ -1,10 +1,11 @@
 using Pathfinding;
+using Spawners;
 using UnityEngine;
 
 namespace Enemies
 {
     public enum Mode {Walking, Attacking}
-    public class Enemy : MonoBehaviour
+    public class Enemy : Spawnable
     {
         [SerializeField] private EnemySettings enemySettings;
         [SerializeField] private GameObject enemyGFX;
@@ -17,7 +18,8 @@ namespace Enemies
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
-        void Start()
+
+        protected override void Start()
         {
             GetComponent<Seeker>().graphMask = GraphMask.FromGraphName("Enemy Graph");
             aiPath = GetComponent<AIPath>();

@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4310957693348009150}
-  - component: {fileID: 4310957693348009089}
   - component: {fileID: 6224921998276698802}
   - component: {fileID: 6206620531621183856}
   - component: {fileID: 3728940592743196378}
-  - component: {fileID: 7257060498752397568}
   - component: {fileID: 8714348725177977370}
+  - component: {fileID: 4310957693348009089}
+  - component: {fileID: 7257060498752397568}
   m_Layer: 7
   m_Name: Wall@level1@.Main
   m_TagString: Untagged
@@ -37,6 +37,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6224921998276698802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310957693348009093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ad4d3da2a35f74ea6a3cec5e75c366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
+  grades:
+  - {fileID: 11400000, guid: 7fac7bf326d92244b821109c16d1f4bc, type: 2}
+  - {fileID: 11400000, guid: 579ca1141e2d784479bf701140ed5014, type: 2}
+  - {fileID: 11400000, guid: 6f6ff02af6169744595e9717d5f49c0f, type: 2}
+  - {fileID: 11400000, guid: 4fc191a85bacfb1449cc67c4366eaf8f, type: 2}
+--- !u!114 &6206620531621183856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310957693348009093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2569fd9903bc2044b924c7688ee5b7d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallCollider: {fileID: 7257060498752397568}
+--- !u!114 &3728940592743196378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310957693348009093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overMaterial: {fileID: 0}
+  clickedDownMaterial: {fileID: 0}
+  selectedMaterial: {fileID: 0}
+  spriteRenderer: {fileID: 4310957693348009089}
+--- !u!114 &8714348725177977370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310957693348009093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461e227504b4a544098d7952687b462f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  crackedPercentage: 0.5
 --- !u!212 &4310957693348009089
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,53 +149,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6224921998276698802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310957693348009093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43ad4d3da2a35f74ea6a3cec5e75c366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
-  grades:
-  - {fileID: 11400000, guid: 7fac7bf326d92244b821109c16d1f4bc, type: 2}
-  - {fileID: 11400000, guid: 579ca1141e2d784479bf701140ed5014, type: 2}
-  - {fileID: 11400000, guid: 6f6ff02af6169744595e9717d5f49c0f, type: 2}
-  - {fileID: 11400000, guid: 4fc191a85bacfb1449cc67c4366eaf8f, type: 2}
---- !u!114 &6206620531621183856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310957693348009093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2569fd9903bc2044b924c7688ee5b7d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallCollider: {fileID: 7257060498752397568}
-  grades: []
---- !u!114 &3728940592743196378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310957693348009093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
-  selectedMaterial: {fileID: 0}
 --- !u!60 &7257060498752397568
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -164,19 +178,6 @@ PolygonCollider2D:
       - {x: 0.62229264, y: -0.40729225}
       - {x: 0.672384, y: 0.7417737}
       - {x: -0.5779009, y: 1.3836503}
---- !u!114 &8714348725177977370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310957693348009093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461e227504b4a544098d7952687b462f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  crackedPercentage: 0.5
 --- !u!1 &5898388277213431402
 GameObject:
   m_ObjectHideFlags: 0

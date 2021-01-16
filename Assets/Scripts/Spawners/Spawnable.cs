@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Spawners
 {
-    public abstract class Spawnable : MonoBehaviour
+    public class Spawnable : MonoBehaviour
     {
         [Tooltip("The collider in which this object is taking space in the world")][SerializeField] internal Collider2D physicsCollider;
         

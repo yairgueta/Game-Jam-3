@@ -120,7 +120,7 @@ TextureImporter:
         serializedVersion: 2
         x: 521
         y: 1031
-        width: 698
+        width: 700
         height: 910
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -142,7 +142,7 @@ TextureImporter:
         x: 1855
         y: 971
         width: 698
-        height: 909
+        height: 910
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,9 +160,9 @@ TextureImporter:
       name: Gates01_Carcked_2
       rect:
         serializedVersion: 2
-        x: 178
+        x: 182
         y: 71
-        width: 699
+        width: 700
         height: 910
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -183,7 +183,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1628
         y: 34
-        width: 698
+        width: 700
         height: 910
       alignment: 7
       pivot: {x: 0.5, y: 0}

@@ -12,10 +12,14 @@ namespace Spawners
     {
         private static readonly int MAX_ITERATIONS = 50;
 
+        [SerializeField] private Vector2 perlinVar;
+        [SerializeField] private float scale = .1f;
+        
         private GridGraph[] graphs;
         private AstarData astarData;
         private Collider2D boundaries;
-
+        private Vector2 worldSpaceOffset;
+        
         private void Awake()
         {
             boundaries = GetComponent<Collider2D>();
@@ -25,6 +29,8 @@ namespace Spawners
         {
             astarData = AstarPath.active.data;
             graphs = astarData.FindGraphsOfType(typeof(GridGraph)).OfType<GridGraph>().ToArray();
+            worldSpaceOffset = boundaries.offset + (Vector2)transform.position;
+            perlinVar = new Vector2(Random.value, Random.value) * 100f;
         }
 
 
@@ -48,14 +54,14 @@ namespace Spawners
             return walkable ? ls[0] : null;
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
-        public void RandomizeObjectPosition(Spawnable spnble)
+        private void AnyRandomizeObjectPosition(Spawnable spnble, Func<Vector2> randomMethod)
         {
             for (int i = 0; i < MAX_ITERATIONS; i++)
             {
-                var newPos = GetRandomPointWithinSpawner();
+                var newPos = randomMethod();
                 spnble.transform.position = newPos;
-                var takenNodes = IsFree(new Bounds(newPos, spnble.physicsCollider.bounds.size));
+                var spnbleCollidr = spnble.physicsCollider;
+                var takenNodes = IsFree(new Bounds(newPos + spnbleCollidr.offset, spnbleCollidr.bounds.size));
                 if (takenNodes != null)
                 {
                     spnble.takenNodes = takenNodes;
@@ -66,7 +72,33 @@ namespace Spawners
             Debug.LogError(gameObject.name + " Couldn't find free space for " + spnble.name);
         }
 
+        public void RandomizeObjectPosition(Spawnable spnble) =>
+            AnyRandomizeObjectPosition(spnble, GetRandomPointWithinSpawner);
 
+        public void PerlinRandomizeObjectPosition(Spawnable spnble) =>
+            AnyRandomizeObjectPosition(spnble, GetRandomPointWithinSpawnerPerlinNoise);
+
+
+        private Vector2 GetRandomPointWithinSpawnerPerlinNoise()
+        {
+            var threshold = .5f;
+            for (int i = 0; i < MAX_ITERATIONS * 2; i++)
+            {
+                var point = new Vector2(
+                    Random.Range(boundaries.bounds.min.x, boundaries.bounds.max.x),
+                    Random.Range(boundaries.bounds.min.y, boundaries.bounds.max.y)
+                );
+                var perlinNoise = Mathf.PerlinNoise(
+                    perlinVar.x + (point.x - worldSpaceOffset.x) / (scale * boundaries.bounds.size.x),
+                    perlinVar.y + (point.y - worldSpaceOffset.y) / (scale * boundaries.bounds.size.y));
+                if (perlinNoise < threshold) continue;
+                if (point == boundaries.ClosestPoint(point)) return point;
+            }
+
+            Debug.LogError("Bad Luck at finding point inside a collider and perlin noise!");
+            return new Vector2();
+        }
+        
         // ReSharper disable Unity.PerformanceAnalysis
         private Vector2 GetRandomPointWithinSpawner()
         {

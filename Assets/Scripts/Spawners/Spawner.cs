@@ -4,16 +4,18 @@ using System.Linq;
 using Pathfinding;
 using Pathfinding.Util;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Spawners
 {
     [RequireComponent(typeof(Collider2D), typeof(SpawnerRandomizer))]
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private GameObject pooledPrefab;
+        [SerializeField] private GameObject[] pooledPrefab;
         [SerializeField] private int totalPoolAmount;
-        [SerializeField] private int startingAmount;
         [SerializeField] private ObjectPoolType spawnerType = ObjectPoolType.Other;
+        [HideInInspector][SerializeField] private int startingAmount;
+        [HideInInspector][SerializeField] private bool usePerlinNoise;
         
         private SpawnerRandomizer randomizer;
         private Queue<int> queuePool;
@@ -35,14 +37,17 @@ namespace Spawners
             randomizer = GetComponent<SpawnerRandomizer>();
             for (int i = 0; i < totalPoolAmount; i++)
             {
-                var p = Instantiate(pooledPrefab, transform).GetComponent<Spawnable>();
+                var p = Instantiate(pooledPrefab[Random.Range(0, pooledPrefab.Length)], transform).GetComponent<Spawnable>();
                 p.Init(this);
                 p.spawnerIndex = i;
                 pooledObjects[i] = p;
                 p.gameObject.SetActive(false);
             }
 
-            for (int i = 0; i < startingAmount; i++) SpawnRandom();
+            if (usePerlinNoise)
+                SpawnNoise(startingAmount);
+            else
+                SpawnRandom(startingAmount);
         }
 
         internal void SpawnableDeath(Spawnable spawnable)
@@ -55,7 +60,7 @@ namespace Spawners
             spawnable.takenNodes = null;
         }
 
-        public void SpawnRandom()
+        private void SpawnRandom_Method(Action<Spawnable> randomMethod)
         {
             if (queuePool.Count == 0)
             {
@@ -64,23 +69,36 @@ namespace Spawners
             }
             var p = pooledObjects[queuePool.Dequeue()];
             p.gameObject.SetActive(true);
-            randomizer.RandomizeObjectPosition(p);
+            randomMethod(p);
             p.takenNodes.ForEach(g => g.Walkable = false);
         }
-
+        
         public void SpawnRandom(int amount)
         {
-            for (int i = 0; i < amount ; i++) SpawnRandom();
+            for (int i = 0; i < amount ; i++) SpawnRandom_Method(randomizer.RandomizeObjectPosition);
+        }
+
+        public void SpawnNoise(int amount)
+        {
+            for (int i = 0; i < amount; i++) SpawnRandom_Method(randomizer.PerlinRandomizeObjectPosition);
         }
 
         public void DespawnAll()
         {
             foreach (var p in pooledObjects)
-            {
                 p.gameObject.SetActive(false);
-            }
         }
-        
+
+        public void Spawn(int n)
+        {
+            if (usePerlinNoise) SpawnNoise(n);
+            else SpawnRandom(n);
+        }
+
+        public void SpawnAll()
+        {
+            Spawn(totalPoolAmount - CurrentPooled);
+        }
         public enum ObjectPoolType
         {
             Enemy,

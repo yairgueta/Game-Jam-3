@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3346947443374361540}
   - component: {fileID: 3346947443374361543}
   - component: {fileID: 3346947443374361542}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.91074634, y: 5.176511}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8214927, y: 28.420538}
+  m_Size: {x: 3, y: 30}
   m_EdgeRadius: 0
 --- !u!114 &3346947443374361543
 MonoBehaviour:
@@ -71,6 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046123930cd545e39dbd87f036b0e60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perlinVar: {x: 0, y: 0}
+  scale: 0.1
 --- !u!114 &3346947443374361542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,7 +85,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a63a30364d6748648eefccfe2301b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledPrefab: {fileID: 1667441342324272327, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+  pooledPrefab:
+  - {fileID: 1667441342324272327, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
   totalPoolAmount: 30
-  startingAmount: 0
   spawnerType: 0
+  startingAmount: 0
+  usePerlinNoise: 0

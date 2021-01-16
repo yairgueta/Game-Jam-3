@@ -3714,6 +3714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5783280737109674559, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: uniqueID
+      value: 1019586265628261717
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
 --- !u!1001 &419140812
@@ -4006,6 +4010,10 @@ PrefabInstance:
     - target: {fileID: 1667441342324272327, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783280737109674559, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: uniqueID
+      value: 697371202974270562
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
@@ -5553,7 +5561,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallCollider: {fileID: 0}
-  grades: []
 --- !u!114 &665360521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5566,7 +5573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ad4d3da2a35f74ea6a3cec5e75c366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
   grades:
   - {fileID: 11400000, guid: 7fac7bf326d92244b821109c16d1f4bc, type: 2}
   - {fileID: 11400000, guid: 579ca1141e2d784479bf701140ed5014, type: 2}
@@ -6055,7 +6061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7533622304232588855, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.3962277
+      value: 1.4002284
       objectReference: {fileID: 0}
     - target: {fileID: 7533622304232588855, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
@@ -6458,6 +6464,10 @@ PrefabInstance:
     - target: {fileID: 1667441342324272327, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783280737109674559, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: uniqueID
+      value: 8799977663263353482
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
@@ -7593,7 +7603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1026939626
 Transform:
   m_ObjectHideFlags: 0
@@ -8775,6 +8785,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 962801463186907190, guid: 424c960cccdac4649907119b6b788d96, type: 3}
   m_PrefabInstance: {fileID: 1175247227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1191533534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1191533535}
+  m_Layer: 0
+  m_Name: wallCenter
+  m_TagString: WallCenter
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1191533535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191533534}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.29, y: 0.8443403, z: 7.9176164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1192145554 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1023162987646982211, guid: ec0f8b4f53beb466e8e5d77d4c91882c, type: 3}
@@ -12288,7 +12328,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.3962277, y: 1.82}
+    oldSize: {x: 1.4002284, y: 1.82}
     newSize: {x: 1.3962277, y: 1.82}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12300,21 +12340,6 @@ PolygonCollider2D:
       - {x: 0.62229264, y: -0.40729225}
       - {x: 0.672384, y: 0.7417737}
       - {x: -0.5779009, y: 1.3836503}
---- !u!114 &1842944520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1842944514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
-  selectedMaterial: {fileID: 0}
 --- !u!1001 &1853099316
 PrefabInstance:
   m_ObjectHideFlags: 0

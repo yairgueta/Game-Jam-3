@@ -1,4 +1,5 @@
 using System;
+using Player;
 using Player.Inventory;
 using Selections;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Upgrader
 {
     public class Upgradable : MonoBehaviour
     {
-        [SerializeField] private InventoryObject inventory;
+        private InventoryObject inventory;
         [SerializeField] private UpgradableObject[] grades;
         public Action onUpgrade;
         private SpriteRenderer sr;
@@ -19,6 +20,8 @@ namespace Upgrader
         private void Awake()
         {
             curGrade = 1;
+            inventory = PlayerController.CurrentInventory;
+
             sr = GetComponent<SpriteRenderer>();
         }
 

@@ -1,3 +1,4 @@
+using System;
 using Collectables;
 using Player;
 using UnityEngine;
@@ -11,6 +12,12 @@ public class GameManager : Singleton<GameManager>
         {
             Restart();
         }
+    }
+
+    private void Start()
+    {
+        Physics2D.queriesHitTriggers = true;
+        Camera.main.eventMask = 1 << LayerMask.NameToLayer("Selectable") | 1 << LayerMask.NameToLayer("UI");
     }
 
     public void Restart()

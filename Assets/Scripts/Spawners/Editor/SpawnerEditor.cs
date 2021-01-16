@@ -52,7 +52,6 @@ namespace Spawners.Editor
             if (GUILayout.Button("Spawn"))
             {
                 spawner.SpawnRandom(ranAmount);
-                ranAmount = 0;
             }
             EditorGUILayout.EndHorizontal();
 
@@ -67,7 +66,6 @@ namespace Spawners.Editor
             if (GUILayout.Button("Spawn"))
             {
                 spawner.SpawnNoise(noiseAmount);
-                noiseAmount = 0;
             }
             EditorGUILayout.EndHorizontal();
 

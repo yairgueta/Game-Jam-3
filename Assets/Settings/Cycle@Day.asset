@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437e989f123845f38e967c351c8399a6, type: 3}
   m_Name: Cycle@Day
   m_EditorClassIdentifier: 
-  duration: 5
+  duration: 3
+  cycleType: 0
   globalLightColor: {r: 1, g: 1, b: 1, a: 0}
   globalLightIntensity: 1
   onCycleStart: {fileID: 11400000, guid: 660bda67326474a828ff51e5d2126210, type: 2}

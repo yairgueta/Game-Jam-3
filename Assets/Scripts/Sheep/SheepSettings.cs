@@ -8,7 +8,7 @@ namespace Player
     [CreateAssetMenu(menuName = "Settings/Sheep")]
     public class SheepSettings : ScriptableObject
     {
-        public List<Sheep> sheeps;
+        public List<Sheep.Sheep> sheeps;
         public Sprite awake, sleep;
         public Sprite emptyAwake, emptySleep;
         public Sprite glowSheep;

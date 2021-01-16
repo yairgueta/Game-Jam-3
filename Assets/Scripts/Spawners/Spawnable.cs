@@ -13,7 +13,7 @@ namespace Spawners
         internal int spawnerIndex = -1;
         private Spawner spawner;
 
-        protected virtual void Start()
+        private void Start()
         {
             physicsCollider ??= GetComponent<Collider2D>();
         }

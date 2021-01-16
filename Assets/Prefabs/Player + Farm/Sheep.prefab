@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 757032522092799463}
   - component: {fileID: 2002767683938485113}
   - component: {fileID: 5276318345902083641}
+  - component: {fileID: 478477743634085552}
   m_Layer: 7
   m_Name: Sheep
   m_TagString: Sheep
@@ -109,7 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9748dbad5be4ca0a0f079030e551a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsCollider: {fileID: 4375668055353137537}
   sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
   collectionDisplay: {fileID: 5541047728772551231}
 --- !u!114 &8534602923126289102
@@ -325,6 +325,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &478477743634085552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6638235558202263001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259c55aa992fdae4c882ec1d96fea0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsCollider: {fileID: 4375668055353137537}
 --- !u!1 &7012061998533608401
 GameObject:
   m_ObjectHideFlags: 0

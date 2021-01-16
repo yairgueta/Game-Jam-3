@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Enemies
 {
     public enum Mode {Walking, Attacking}
-    public class Enemy : Spawnable
+    public class Enemy : MonoBehaviour
     {
         [SerializeField] private EnemySettings enemySettings;
         [SerializeField] private GameObject enemyGFX;
@@ -19,7 +19,7 @@ namespace Enemies
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
 
-        protected override void Start()
+        private void Start()
         {
             GetComponent<Seeker>().graphMask = GraphMask.FromGraphName("Enemy Graph");
             aiPath = GetComponent<AIPath>();

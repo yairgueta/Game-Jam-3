@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2060712983}
   - component: {fileID: 900189601}
   - component: {fileID: 5783280737109674559}
+  - component: {fileID: 1654862752257921602}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -155,7 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97d41e1b63239b04eaf92d1ea689baea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsCollider: {fileID: 2060712990}
   enemySettings: {fileID: 11400000, guid: d95f1b722aafef446aba0a9a0e3c85af, type: 2}
   enemyGFX: {fileID: 1667441341712273183}
 --- !u!114 &1586172379
@@ -300,3 +300,16 @@ MonoBehaviour:
   uniqueID: 4632602897275852779
   updateError: 1
   checkTime: 0.4
+--- !u!114 &1654862752257921602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667441342324272327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259c55aa992fdae4c882ec1d96fea0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsCollider: {fileID: 2060712990}

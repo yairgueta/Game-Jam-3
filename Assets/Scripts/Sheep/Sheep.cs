@@ -1,23 +1,22 @@
 using System;
 using System.Collections;
-using Collectables;
+using Cycles;
 using Enemies;
-using Selections;
+using Player;
 using Spawners;
 using UnityEngine;
 using UnityEngine.UI;
 using Selectable = Selections.Selectable;
 
-namespace Player
+namespace Sheep
 {
-    public class Sheep : Spawnable, IEnemyDamage
+    public class Sheep : MonoBehaviour, IEnemyDamage
     {
         [SerializeField] private SheepSettings sheepSettings;
         [SerializeField] private Image collectionDisplay;
         private SpriteRenderer sr;
         private Selectable selectable;
         private float health;
-
         
         [Flags]
         private enum Status
@@ -28,21 +27,16 @@ namespace Player
             Glow = 4,
         }
 
-        private Status status;
+        [SerializeField] private Status status;
         
         private void Awake()
         {
             sr = GetComponent<SpriteRenderer>();
             selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
-            
-            status |= Status.Awake;
-            health = sheepSettings.maxHealth;
-
         }
-
+        
         private void Update()
         {
-            
             if (status.HasFlag(Status.Empty)) return;
             if (selectable.DragTime >= 0) DisplayBeingCollected();
             else collectionDisplay.fillAmount = 0;
@@ -51,17 +45,31 @@ namespace Player
                 return;
             }
             if (selectable.DragTime >= sheepSettings.timeToCollect) GetCollected();
-
         }
         
         private void OnEnable()
         {
             sheepSettings.sheeps.Add(this);
+            
+            health = sheepSettings.maxHealth;
+            status = Status.None;
+            switch (CyclesManager.Instance.CurrentCycle)
+            {
+                case CyclesType.Day:
+                    status |= Status.Awake;
+                    break;
+                case CyclesType.Night:
+                    break;
+                case CyclesType.Eclipse:
+                    status |= Status.Glow;
+                    status |= Status.Awake;
+                    break;
+            }
+            RefreshSprite();
         }
 
-        protected override void OnDisable()
+        private void OnDisable()
         {
-            base.OnDisable();
             sheepSettings.sheeps.Remove(this);
         }
 
@@ -72,7 +80,6 @@ namespace Player
             RefreshSprite();
             collectionDisplay.fillAmount = 0;
             selectable.SetInteractable(false);
-            // Invoke(nameof(Refill), sheepSettings.fillTime);
             StartCoroutine(WaitWhileShearing());
         }
         
@@ -88,7 +95,6 @@ namespace Player
         {
             status &= ~Status.Empty;
             RefreshSprite();
-            selectable.SetInteractable(true);
         }
 
         private void DisplayBeingCollected()
@@ -98,30 +104,26 @@ namespace Player
 
         private void RefreshSprite()
         {
-            switch (status)
+            Sprite sprite;
+            
+            if ((status & Status.Empty) != 0)
             {
-                case Status.Glow:
-                case Status.Glow | Status.Awake:
-                    sr.sprite = sheepSettings.glowSheep;
-                    break;
-                case Status.Awake | Status.Empty:
-                    sr.sprite = sheepSettings.emptyAwake;
-                    break;
-                case Status.Awake:      // Awake & Full
-                    sr.sprite = sheepSettings.awake;
-                    break;
-                case Status.Empty :     // Sleep & Empty
-                    sr.sprite = sheepSettings.emptySleep;
-                    break;
-                default:                // Sleep & Full
-                    sr.sprite = sheepSettings.sleep;
-                    break;
+                if ((status & Status.Awake) != 0) sprite = sheepSettings.emptyAwake;
+                else sprite = sheepSettings.emptySleep;
             }
+            else
+            {
+                if ((status & Status.Awake) != 0) sprite = sheepSettings.awake;
+                else sprite = sheepSettings.sleep;
+                if ((status & Status.Glow) != 0) sprite = sheepSettings.glowSheep;
+            }
+
+            sr.sprite = sprite;
+            selectable.SetInteractable((status & Status.Glow) != 0);
         }
 
         public void SetGlow(bool toGlow)
         {
-            selectable.SetInteractable(toGlow);
             if (toGlow)
             {
                 status |= Status.Glow;
@@ -131,9 +133,6 @@ namespace Player
                 status &= ~Status.Glow;
             }
             RefreshSprite();
-
-            // status ^= (Status.Awake & (Status)toGlow);
-
         }
 
         public void Sleep()

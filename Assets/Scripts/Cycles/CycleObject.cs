@@ -8,6 +8,7 @@ namespace Cycles
     [CreateAssetMenu(menuName = "Settings/Cycle Settings", fileName = "Cycle@New Cycle")][Serializable]
     public class CycleObject : ScriptableObject
     {
+        public CyclesType CycleType => cycleType;
         public Color GlobalLightColor => globalLightColor;
         public float GlobalLightIntensity => globalLightIntensity;
         public float Duration
@@ -31,6 +32,8 @@ namespace Cycles
 
         [Header("General Settings")]
         [SerializeField] private float duration;
+        [SerializeField] private CyclesType cycleType;
+
 
         [Header("Global Light")] 
         [SerializeField] private Color globalLightColor;
@@ -47,6 +50,12 @@ namespace Cycles
         [SerializeField] private Sprite uiTimerFiller;
         [SerializeField] private Image.FillMethod fillMethod;
         [SerializeField] private Image.Origin90 fillOrigin;
-
+        
+    }
+    public enum CyclesType
+    {
+        Day, 
+        Night,
+        Eclipse
     }
 }

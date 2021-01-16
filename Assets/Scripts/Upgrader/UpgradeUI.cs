@@ -77,7 +77,7 @@ namespace Upgrader
             var requiredWoods = fixable.RequiredWoodsPercentage();
             var requiredRocks = fixable.RequiredRocksPercentage();
             
-            SetUpTexts(requiredWoods, requiredRocks, fixDescription, fixable.GetCompleteSprite());
+            SetUpTexts(requiredWoods, requiredRocks, fixDescription, fixable.GetCompleteSprite(), false);
         }
 
         
@@ -110,16 +110,24 @@ namespace Upgrader
             var upgradableObject = upgradable.GetNextGradeAttributes();
             
             SetUpTexts(upgradableObject.requiredWoods, upgradableObject.requiredRocks,upgradableObject.description, 
-                upgradableObject.completeSprites[upgradableObject.spriteIndex]);
+                upgradableObject.completeSprites[upgradableObject.spriteIndex], true);
         }
 
 
-        private void SetUpTexts(int woods, int rocks, String desc, Sprite sprite)
+        private void SetUpTexts(int woods, int rocks, String desc, Sprite sprite, bool withImg)
         {
             woodAmount.text = woods.ToString();
             rockAmount.text = rocks.ToString();
             description.text = desc;
-            image.sprite = sprite;
+            if (withImg)
+            {
+                image.gameObject.SetActive(true);
+                image.sprite = sprite;
+            }
+            else
+            {
+                image.gameObject.SetActive(false);
+            }
 
             woodAmount.color = Color.white;
             rockAmount.color = Color.white;

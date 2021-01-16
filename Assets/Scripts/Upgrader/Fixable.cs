@@ -2,19 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enemies;
+using Player;
 using Player.Inventory;
 using UnityEngine;
 using Upgrader;
 
 public class Fixable : MonoBehaviour, IEnemyDamage
 {
-    [SerializeField] private InventoryObject inventory;
+    private InventoryObject inventory;
     public Action onWallBreak;
     private SpriteRenderer sr;
     private Sprite completeSprite;
     private Sprite crackedSprite;
     private float maxHealth;
-    private float curHealth;
+    [SerializeField] private float curHealth;
     private int requiredWoods;
     private int requiredRocks;
 
@@ -23,6 +24,7 @@ public class Fixable : MonoBehaviour, IEnemyDamage
 
     private void Start()
     {
+        inventory = PlayerController.CurrentInventory;
         sr = GetComponent<SpriteRenderer>();
     }
 

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Walls@Grade3
   m_EditorClassIdentifier: 
   completeSprites:
-  - {fileID: 21300000, guid: 129e8967e235d4b24ab7aee4d91bc54d, type: 3}
+  - {fileID: 3879520232261704139, guid: 3feea8c4ee16445d4983efd2d1dda7f9, type: 3}
   crackedSprited:
-  - {fileID: 21300000, guid: 67fd3d084e53143f3b082b85069a88b5, type: 3}
+  - {fileID: -7434716317444168983, guid: 67fd3d084e53143f3b082b85069a88b5, type: 3}
   spriteIndex: 0
   description: upgrade level 3
   healthPoints: 160

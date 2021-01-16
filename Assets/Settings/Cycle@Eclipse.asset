@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437e989f123845f38e967c351c8399a6, type: 3}
   m_Name: Cycle@Eclipse
   m_EditorClassIdentifier: 
-  duration: 21.62
+  duration: 8.86
   cycleType: 2
   globalLightColor: {r: 0.6698113, g: 0.21800463, b: 0.5398581, a: 0}
   globalLightIntensity: 0.6

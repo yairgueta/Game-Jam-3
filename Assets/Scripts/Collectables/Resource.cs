@@ -8,7 +8,6 @@ namespace Collectables
     [CreateAssetMenu(menuName = "Collectables/Resource")]
     public class Resource : CollectableObject
     {
-        [SerializeField] private InventoryObject playerInventory;
         [SerializeField] private ResourceType collectableType;
         [SerializeField] private int quantity;
         
@@ -18,7 +17,7 @@ namespace Collectables
         public override void OnCollected()
         {
             base.OnCollected();
-            playerInventory[collectableType] += quantity;
+            PlayerController.CurrentInventory[collectableType] += quantity;
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using Selections;
 using UnityEngine;
 
@@ -7,10 +8,14 @@ namespace Collectables
     {
         [SerializeField] private CollectableObject collectableObject;
         private Selectable selectable;
-        
-        private void Start()
+
+        private void Awake()
         {
             selectable = GetComponentInChildren<Selectable>();
+        }
+
+        private void Start()
+        {
             selectable.onThisSelected += Collect;
             EnableCollecting(false);
         }

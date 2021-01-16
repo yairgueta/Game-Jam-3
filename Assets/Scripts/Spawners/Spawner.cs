@@ -14,7 +14,6 @@ namespace Spawners
         [HideInInspector][SerializeField] private GameObject[] pooledPrefab;
         
         [SerializeField] private int totalPoolAmount;
-        [SerializeField] private ObjectPoolType spawnerType = ObjectPoolType.Other;
         [HideInInspector][SerializeField] private int startingAmount;
         [HideInInspector][SerializeField] private bool usePerlinNoise;
         [HideInInspector][SerializeField] private float[] percentageToSpawn;
@@ -24,9 +23,9 @@ namespace Spawners
         private Spawnable[] pooledObjects;
         
         public int CurrentPooled => totalPoolAmount - queuePool?.Count ?? 0;
-        public ObjectPoolType SpawnerType => spawnerType;
+        public int TotalPool => totalPoolAmount;
+        public bool IsFull => CurrentPooled == totalPoolAmount;
 
-        
         private void Awake()
         {
             queuePool = new Queue<int>();
@@ -112,12 +111,6 @@ namespace Spawners
         public void SpawnAll()
         {
             Spawn(totalPoolAmount - CurrentPooled);
-        }
-        public enum ObjectPoolType
-        {
-            Enemy,
-            Collectable,
-            Other
         }
     }
 }

@@ -11,47 +11,24 @@ namespace Spawners
 
     public class SpawnersManager : MonoBehaviour
     {
-        public int nextSpawnsNumber;
-        [SerializeField] private RespawnMethod respawnMethod;
         [Tooltip("% of spawned Objects to spawn in a random spawner")][SerializeField][Range(0,1)] private float randomPercentage;
-        [SerializeField] private Spawner.ObjectPoolType spawnersType;
-        [SerializeField] private CycleObject cycleLife;
-        
         private List<Spawner> spawners;
+
+        public int CurrentSpawned => spawners.Sum(s => s.CurrentPooled);
+        public int TotalPool => spawners.Sum(s => s.TotalPool);
 
         private void Start()
         {
-            if (spawnersType == Spawner.ObjectPoolType.Other)
-            {
-                Debug.LogWarning("You Should NOT have Spawner manager for 'other' spawner type!!!");
-            }
-            spawners = FindObjectsOfType<Spawner>().ToList().FindAll(s => s.SpawnerType == spawnersType);
-            var listener = gameObject.AddComponent<GameEventListener>();
-            listener.InitEvent(cycleLife.OnCycleEnd);
-            listener.response.AddListener(o=>DespawnAll());
-            
-            listener = gameObject.AddComponent<GameEventListener>();
-            listener.InitEvent(cycleLife.OnCycleStart);
-            listener.response.AddListener(o=>Respawn());
+            spawners = transform.GetComponentsInChildren<Spawner>().ToList();
         }
-
-        private void Respawn()
+        
+        public void RespawnAll()
         {
-            switch (respawnMethod)
+            spawners.ForEach(s =>
             {
-                case RespawnMethod.RandomBetweenSpawners:
-                    SpawnMany(nextSpawnsNumber);
-                    break;
-                case RespawnMethod.AllInAllSpawners:
-                    spawners.ForEach(s =>
-                    {
-                        s.DespawnAll();
-                        s.SpawnAll();
-                    });
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                s.DespawnAll();
+                s.SpawnAll();
+            });
         }
         
         public void SpawnMany(int n)
@@ -85,14 +62,9 @@ namespace Spawners
             for (int i = 0; i < n; i++)
             {
                 var spnr = spawners[Random.Range(0, spawners.Count)];
+                while (spnr.IsFull) spnr = spawners[Random.Range(0, spawners.Count)];
                 spnr.Spawn(1);
             }
-        }
-
-        public enum RespawnMethod
-        {
-            RandomBetweenSpawners,
-            AllInAllSpawners
         }
     }
 }

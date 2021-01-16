@@ -11,11 +11,13 @@ namespace Spawners
     [RequireComponent(typeof(Collider2D), typeof(SpawnerRandomizer))]
     public class Spawner : MonoBehaviour
     {
-        [SerializeField] private GameObject[] pooledPrefab;
+        [HideInInspector][SerializeField] private GameObject[] pooledPrefab;
+        
         [SerializeField] private int totalPoolAmount;
         [SerializeField] private ObjectPoolType spawnerType = ObjectPoolType.Other;
         [HideInInspector][SerializeField] private int startingAmount;
         [HideInInspector][SerializeField] private bool usePerlinNoise;
+        [HideInInspector][SerializeField] private float[] percentageToSpawn;
         
         private SpawnerRandomizer randomizer;
         private Queue<int> queuePool;
@@ -32,12 +34,24 @@ namespace Spawners
             gameObject.layer = LayerMask.NameToLayer("Spawner");
         }
 
+        private GameObject GetRandomPrefab()
+        {
+            var ran = Random.Range(0f, 1f);
+            var total = 0f;
+            for (var i = 0; i< pooledPrefab.Length; i++)
+            {
+                if (ran >= total && ran < total + percentageToSpawn[i]) return pooledPrefab[i];
+                total += percentageToSpawn[i];
+            }
+            return null;
+        }
+        
         private void Start()
         {
             randomizer = GetComponent<SpawnerRandomizer>();
             for (int i = 0; i < totalPoolAmount; i++)
             {
-                var p = Instantiate(pooledPrefab[Random.Range(0, pooledPrefab.Length)], transform).GetComponent<Spawnable>();
+                var p = Instantiate(GetRandomPrefab(), transform).GetComponent<Spawnable>();
                 p.Init(this);
                 p.spawnerIndex = i;
                 pooledObjects[i] = p;

@@ -1,10 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 namespace Selections
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Selectable : MonoBehaviour
+    public class Selectable : MonoBehaviour, IMouseCaptureEvent
     {
         public Action onThisSelected;
         public float DragTime { get; private set; }
@@ -19,7 +21,19 @@ namespace Selections
         private float startDragTime;
         
         private bool isSelected;
-        private bool interactable;
+        private bool isInteractable;
+
+        private bool interactable
+        {
+            get
+            {
+                var ret = isInteractable && !EventSystem.current.IsPointerOverGameObject();
+                if (!ret) spriteRenderer.material = isSelected? selectedMaterial : originalMaterial;
+                return ret;
+            }
+            set => isInteractable = value;
+        }
+
         private bool hasEnteredAndChanged;
 
         private void Awake()
@@ -32,13 +46,10 @@ namespace Selections
 
         private void Start()
         {
-            // spriteRenderer ??= GetComponentInParent<SpriteRenderer>() ?? GetComponent<SpriteRenderer>() ?? GetComponentInChildren<SpriteRenderer>();
-            
             if (!overMaterial) overMaterial = SelectionManager.Instance.DefaultOverMaterial;
             if (!selectedMaterial) selectedMaterial = SelectionManager.Instance.DefaultSelectedMaterial;
             if (!clickedDownMaterial) clickedDownMaterial = SelectionManager.Instance.DefaultClickedDownMaterial;
         }
-
         private void OnMouseEnter()
         {
             if (!interactable)
@@ -72,12 +83,13 @@ namespace Selections
 
         private void OnMouseDown()
         {
+            Debug.Log(EventSystem.current.IsPointerOverGameObject());
             if (!interactable) return;
             spriteRenderer.material = clickedDownMaterial;
             startDragTime = Time.time;
             DragTime = 0;
         }
-
+        
         private void OnMouseUp()
         {
             if (!interactable) return;
@@ -115,5 +127,6 @@ namespace Selections
             DragTime = -1;
             hasEnteredAndChanged = false;
         }
+
     }
 }

@@ -5553,7 +5553,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallCollider: {fileID: 0}
-  grades: []
 --- !u!114 &665360521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12288,7 +12287,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.3962277, y: 1.82}
+    oldSize: {x: 1.4002284, y: 1.82}
     newSize: {x: 1.3962277, y: 1.82}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -12315,6 +12314,7 @@ MonoBehaviour:
   overMaterial: {fileID: 0}
   clickedDownMaterial: {fileID: 0}
   selectedMaterial: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1001 &1853099316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14305,7 +14305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 624047592427529492, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.6269989
+      value: 1.6269836
       objectReference: {fileID: 0}
     - target: {fileID: 624047592427529492, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14323,9 +14323,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgraderManager
       objectReference: {fileID: 0}
+    - target: {fileID: 624047594029098720, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.26733398
+      objectReference: {fileID: 0}
     - target: {fileID: 624047594029098721, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}

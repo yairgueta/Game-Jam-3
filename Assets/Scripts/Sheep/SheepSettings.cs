@@ -16,5 +16,6 @@ namespace Player
         public int manaAddition;
         public float fillTime;
         public float maxHealth;
+        public int maxSheepInScene;
     }
 }

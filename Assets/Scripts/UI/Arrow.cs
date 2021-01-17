@@ -10,7 +10,7 @@ public class Arrow : MonoBehaviour
     [SerializeField] private GameObject downArrowImg;
     [SerializeField] private GameObject leftArrowImg;
     [SerializeField] private GameObject rightArrowImg;
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera mainCam;
     private float cameraWidth;
     void Start()
     {
@@ -30,7 +30,7 @@ public class Arrow : MonoBehaviour
     void Update()
     {
         Vector2 screenBounds =
-            camera.ScreenToWorldPoint(new Vector3(cameraWidth, Screen.height, camera.transform.position.z));
+            mainCam.ScreenToWorldPoint(new Vector3(cameraWidth, Screen.height, mainCam.transform.position.z));
         
         DisableArrows();
         if (sheepsPos.x < screenBounds.x-25)

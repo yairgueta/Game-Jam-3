@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25149a362ebe47e69c863811198fbc3b, type: 3}
   m_Name: Mushroom
   m_EditorClassIdentifier: 
-  onCollectedUnityEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  playerInventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
+  onCollected: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}
   collectableType: 2
   quantity: 1

@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySettings: {fileID: 11400000, guid: d95f1b722aafef446aba0a9a0e3c85af, type: 2}
   enemyGFX: {fileID: 1667441341712273183}
+  onNightEnd: {fileID: 11400000, guid: ced196fe55eb94eaca4c25ab594ec604, type: 2}
 --- !u!114 &1586172379
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,7 @@
+using Cycles;
+using Events;
 using Pathfinding;
+using Player;
 using Spawners;
 using UnityEngine;
 
@@ -19,7 +22,7 @@ namespace Enemies
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
-        
+        [SerializeField] private GameEvent onNightEnd;
         
         private void Start()
         {
@@ -29,7 +32,9 @@ namespace Enemies
             mode = Mode.Walking;
             gfxScale = enemyGFX.transform.localScale;
             curHealth = enemySettings.health;
-            
+            var listener = gameObject.AddComponent<GameEventListener>();
+            listener.InitEvent(onNightEnd);
+            listener.response.AddListener(o => Die());
         }
 
         private void Update()

@@ -10,7 +10,12 @@ public class Pointer : MonoBehaviour
     private RectTransform pointerTrans;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera uiCamera;
-    [SerializeField] private float borderSize;
+    [SerializeField] private float borderSize = 50f;
+    [SerializeField] private float x = 200f;
+    [SerializeField] private float y = 100f;
+    [SerializeField] private float z = -400f;
+    [SerializeField] private float w = 95f;
+    [SerializeField] private float t = -200f;
 
     
     
@@ -33,8 +38,8 @@ public class Pointer : MonoBehaviour
 
 
         Vector3 targetPosScreenPoint = mainCamera.WorldToScreenPoint(targetPosotion);
-        bool isOffScreen = targetPosScreenPoint.x <= borderSize || targetPosScreenPoint.x >= Screen.width - borderSize ||
-                           targetPosScreenPoint.y <= borderSize || targetPosScreenPoint.y >= Screen.height - borderSize;
+        bool isOffScreen = targetPosScreenPoint.x <= borderSize+z || targetPosScreenPoint.x >= Screen.width - borderSize+x ||
+                           targetPosScreenPoint.y <= borderSize+t || targetPosScreenPoint.y >= Screen.height - borderSize+y;
 
 
         if (isOffScreen)
@@ -43,7 +48,7 @@ public class Pointer : MonoBehaviour
             Vector3 cappedTargetPos = targetPosScreenPoint;
             if (cappedTargetPos.x <= borderSize) cappedTargetPos.x = borderSize;
             if (cappedTargetPos.x >= Screen.width-borderSize) cappedTargetPos.x = Screen.width-borderSize;
-            if (cappedTargetPos.y <= borderSize) cappedTargetPos.y = borderSize;
+            if (cappedTargetPos.y <= borderSize) cappedTargetPos.y = borderSize+w;
             if (cappedTargetPos.y >= Screen.height-borderSize) cappedTargetPos.y = Screen.height-borderSize;
 
 

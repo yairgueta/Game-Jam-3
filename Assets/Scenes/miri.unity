@@ -8675,7 +8675,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 886585346}
   uiCamera: {fileID: 2044454342}
-  borderSize: 100
+  borderSize: 50
+  x: 200
+  y: 100
+  z: -400
+  w: 95
+  t: -200
 --- !u!1 &1191533534
 GameObject:
   m_ObjectHideFlags: 0

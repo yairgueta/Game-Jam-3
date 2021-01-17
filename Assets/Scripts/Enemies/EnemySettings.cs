@@ -1,3 +1,4 @@
+using System;
 using Events;
 using UnityEngine;
 
@@ -17,21 +18,9 @@ namespace Enemies
         public float targetRefreshTime = 5f;
 
         [Header("Events")] 
-        public GameEvent onDeath;
+        public GameEvent onDeath; //todo: do we need it?
+        
 
-        public void UpdateLife(float damage)
-        {
-            health -= damage;
-            if (health <= 0)
-            {
-                Die();
-            }
-        }
-
-        private void Die()
-        {
-            onDeath.Raise();
-            health = 5f; //TODO: delete
-        }
+ 
     }
 }

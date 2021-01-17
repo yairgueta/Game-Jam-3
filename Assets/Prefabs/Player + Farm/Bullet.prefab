@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!58 &5017363973664174782
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7095353574741862497}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0022118613, y: 0.0077415034}
-  serializedVersion: 2
-  m_Radius: 0.043251388
 --- !u!50 &2231569457772214574
 Rigidbody2D:
   serializedVersion: 4
@@ -37,6 +21,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &5017363973664174782
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7095353574741862497}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0022118613, y: 0.0077415034}
+  serializedVersion: 2
+  m_Radius: 0.043251388
 --- !u!114 &2187844486859644118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +63,10 @@ PrefabInstance:
     - target: {fileID: 5211568865569893879, guid: dfd160921c0510d47b6587743a054fbc, type: 3}
       propertyPath: m_Name
       value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5211568865569893879, guid: dfd160921c0510d47b6587743a054fbc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6808710749511642529, guid: dfd160921c0510d47b6587743a054fbc, type: 3}
       propertyPath: m_RootOrder

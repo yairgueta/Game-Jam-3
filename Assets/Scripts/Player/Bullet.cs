@@ -41,7 +41,12 @@ namespace Player
         private void OnTriggerEnter2D(Collider2D other)
         {
             var enemy = other.GetComponent<Enemy>();
-            if (enemy == null) return;
+            if (enemy == null)
+            { 
+                Disable();
+                return;
+            }
+
             enemy.TakeDamage(power);
             Disable();
         }

@@ -14,11 +14,13 @@ namespace Enemies
         private Mode mode;
         private IEnemyDamage currentAttacked;
         private Vector3 gfxScale;
+        private float curHealth;
 
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
 
+        
         private void Start()
         {
             GetComponent<Seeker>().graphMask = GraphMask.FromGraphName("Enemy Graph");
@@ -26,6 +28,7 @@ namespace Enemies
             animator = GetComponent<Animator>();
             mode = Mode.Walking;
             gfxScale = enemyGFX.transform.localScale;
+            curHealth = enemySettings.health;
         }
 
         private void Update()
@@ -66,7 +69,17 @@ namespace Enemies
 
         public void TakeDamage(float damage)
         {
-            enemySettings.UpdateLife(damage);
+            curHealth -= damage;
+            if (curHealth <= 0)
+            {
+                curHealth = enemySettings.health;
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            gameObject.SetActive(false);
         }
 
         private void ManageDirection()

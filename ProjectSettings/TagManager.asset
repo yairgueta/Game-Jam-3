@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - WallCenter
+  - Selectable
+  - Sheep
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - Sheep
   - Spawner
   - Map Borders
-  - 
-  - 
+  - Bullet
+  - BulletEnemy
   - 
   - 
   - 

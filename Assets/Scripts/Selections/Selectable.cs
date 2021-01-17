@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 namespace Selections
 {
     [RequireComponent(typeof(Collider2D))]
-    public class Selectable : MonoBehaviour, IMouseCaptureEvent
+    public class Selectable : MonoBehaviour
     {
         public Action onThisSelected;
         public float DragTime { get; private set; }
@@ -127,6 +127,5 @@ namespace Selections
             DragTime = -1;
             hasEnteredAndChanged = false;
         }
-
     }
 }

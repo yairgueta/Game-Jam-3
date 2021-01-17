@@ -70,6 +70,7 @@ namespace Enemies
         public void TakeDamage(float damage)
         {
             curHealth -= damage;
+            Debug.Log("health "+ curHealth);
             if (curHealth <= 0)
             {
                 curHealth = enemySettings.health;
@@ -79,6 +80,7 @@ namespace Enemies
 
         private void Die()
         {
+            Debug.Log("enemy dead");
             gameObject.SetActive(false);
         }
 

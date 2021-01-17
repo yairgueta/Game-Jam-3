@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1068346525799917529}
   - component: {fileID: 2198389400995180261}
   - component: {fileID: 662908608058535378}
+  - component: {fileID: -5409504481364600002}
   m_Layer: 0
   m_Name: Main Tree
   m_TagString: Untagged
@@ -41,7 +42,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2571227511179559361}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -72,7 +73,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 259c55aa992fdae4c882ec1d96fea0c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physicsCollider: {fileID: 2198389400995180261}
+  physicsCollider: {fileID: -5409504481364600002}
+--- !u!70 &-5409504481364600002
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2571227511179559361}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: f067e4f77b15b7646877ba3f884becf5, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.20210326, y: 0.17487061}
+  m_Size: {x: 0.6728168, y: 0.21303973}
+  m_Direction: 1
 --- !u!1 &7700891375338551479
 GameObject:
   m_ObjectHideFlags: 0

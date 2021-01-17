@@ -18,6 +18,7 @@ namespace Enemies
         private IEnemyDamage currentAttacked;
         private Vector3 gfxScale;
         private float curHealth;
+        private EnemyState enemyState;
 
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
@@ -26,6 +27,7 @@ namespace Enemies
         
         private void Start()
         {
+            enemyState = GetComponent<EnemyState>();
             GetComponent<Seeker>().graphMask = GraphMask.FromGraphName("Enemy Graph");
             aiPath = GetComponent<AIPath>();
             animator = GetComponent<Animator>();
@@ -88,6 +90,7 @@ namespace Enemies
         private void Die()
         {
             Debug.Log("enemy dead");
+            enemyState.Initialize();
             gameObject.SetActive(false);
         }
 

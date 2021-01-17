@@ -17,8 +17,13 @@ namespace Enemies
 
         private void Awake()
         {
-            _playerTransform ??= FindObjectOfType<PlayerController>().gameObject.transform;
-            _wallsPosition ??= GameObject.FindGameObjectWithTag("WallCenter").transform;
+            Initialize();
+        }
+
+        public void Initialize()
+        {
+            _playerTransform = FindObjectOfType<PlayerController>().gameObject.transform;
+            _wallsPosition = GameObject.FindGameObjectWithTag("WallCenter").transform;
         }
 
         void Start()

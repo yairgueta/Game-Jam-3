@@ -90,7 +90,6 @@ namespace Enemies
         private void Die()
         {
             Debug.Log("enemy dead");
-            enemyState.Initialize();
             gameObject.SetActive(false);
         }
 

@@ -7,9 +7,9 @@ namespace Enemies
 {
     public class EnemyState : MonoBehaviour
     {
-        private static Transform _playerTransform;
+        private static Transform _playerTransform ;
         private static Transform _wallsPosition;
-    
+        
         [SerializeField] private EnemySettings enemySettings;
     
         private AIDestinationSetter destinationSetter;
@@ -17,13 +17,8 @@ namespace Enemies
 
         private void Awake()
         {
-            Initialize();
-        }
-
-        public void Initialize()
-        {
-            _playerTransform = FindObjectOfType<PlayerController>().gameObject.transform;
-            _wallsPosition = GameObject.FindGameObjectWithTag("WallCenter").transform;
+            if (_playerTransform == null) _playerTransform = FindObjectOfType<PlayerController>().gameObject.transform;
+            if (_wallsPosition == null) _wallsPosition = GameObject.FindGameObjectWithTag("WallCenter").transform;
         }
 
         void Start()

@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 1034680855471069782}
   - component: {fileID: 1034680855471069781}
   - component: {fileID: 1034680855471069780}
+  - component: {fileID: 1652557145}
   m_Layer: 12
-  m_Name: __Sheeps__
+  m_Name: Sheep Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,10 +59,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.4719505, y: 3.5005426}
-      - {x: -4.7816753, y: 1.4440151}
-      - {x: -0.39270753, y: -0.9686264}
-      - {x: 2.8308969, y: 1.1070626}
+    - - {x: 0.7616515, y: 1.7051779}
+      - {x: -3.8989768, y: -1.0114561}
+      - {x: -0.32319164, y: -3.1100063}
+      - {x: 4.318944, y: -0.3560846}
 --- !u!114 &1034680855471069781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046123930cd545e39dbd87f036b0e60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  perlinVar: {x: 0, y: 0}
+  scale: 0.1
 --- !u!114 &1034680855471069780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +89,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a63a30364d6748648eefccfe2301b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledPrefab: {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+  pooledPrefab:
+  - {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
   totalPoolAmount: 20
   startingAmount: 6
-  spawnerType: 2
+  usePerlinNoise: 0
+  percentageToSpawn:
+  - 1
+--- !u!114 &1652557145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034680855471069786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deec871e1e04428b9e2e79c82b3f636a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1034680855471069780}
+        m_TargetAssemblyTypeName: Spawners.Spawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

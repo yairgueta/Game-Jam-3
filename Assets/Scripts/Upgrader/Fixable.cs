@@ -74,6 +74,7 @@ public class Fixable : MonoBehaviour, IEnemyDamage
     
     public void TakeDamage(float damage)
     {
+        Debug.Log("take damage wall");
         curHealth -= damage;
         if (curHealth/maxHealth< crackedPercentage)
         {

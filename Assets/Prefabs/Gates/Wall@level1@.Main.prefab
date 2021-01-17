@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ad4d3da2a35f74ea6a3cec5e75c366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
   grades:
   - {fileID: 11400000, guid: 7fac7bf326d92244b821109c16d1f4bc, type: 2}
   - {fileID: 11400000, guid: 579ca1141e2d784479bf701140ed5014, type: 2}
@@ -96,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461e227504b4a544098d7952687b462f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  curHealth: 0
   crackedPercentage: 0.5
 --- !u!212 &4310957693348009089
 SpriteRenderer:
@@ -203,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5898388277213431402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.054, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4310957693348009150}
@@ -234,7 +233,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.63030005, y: 0.33495215}
+    - - {x: -0.60565436, y: 0.37362903}
       - {x: 0.66368115, y: -0.42384756}
       - {x: 0.67106557, y: -0.17741728}
-      - {x: -0.6219263, y: 0.59155506}
+      - {x: -0.61594325, y: 0.6035211}

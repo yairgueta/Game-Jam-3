@@ -19,7 +19,7 @@ namespace Enemies
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
-
+        
         
         private void Start()
         {
@@ -29,6 +29,7 @@ namespace Enemies
             mode = Mode.Walking;
             gfxScale = enemyGFX.transform.localScale;
             curHealth = enemySettings.health;
+            
         }
 
         private void Update()
@@ -64,13 +65,14 @@ namespace Enemies
         
         private void Attack()
         {
+            Debug.Log("currentAttacked "+currentAttacked);
             currentAttacked?.TakeDamage(enemySettings.attackPower);
         }
 
         public void TakeDamage(float damage)
         {
             curHealth -= damage;
-            Debug.Log("health "+ curHealth);
+            Debug.Log("enemy health "+ curHealth);
             if (curHealth <= 0)
             {
                 curHealth = enemySettings.health;

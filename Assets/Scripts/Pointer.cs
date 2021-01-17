@@ -11,12 +11,11 @@ public class Pointer : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera uiCamera;
     [SerializeField] private float borderSize = 50f;
-    [SerializeField] private float x = 200f;
-    [SerializeField] private float y = 100f;
-    [SerializeField] private float z = -400f;
     [SerializeField] private float w = 95f;
-    [SerializeField] private float t = -200f;
-
+    [SerializeField] private Transform left;
+    [SerializeField] private Transform right;
+    [SerializeField] private Transform up;
+    [SerializeField] private Transform down;
     
     
     void Start()
@@ -38,10 +37,15 @@ public class Pointer : MonoBehaviour
 
 
         Vector3 targetPosScreenPoint = mainCamera.WorldToScreenPoint(targetPosotion);
-        bool isOffScreen = targetPosScreenPoint.x <= borderSize+z || targetPosScreenPoint.x >= Screen.width - borderSize+x ||
-                           targetPosScreenPoint.y <= borderSize+t || targetPosScreenPoint.y >= Screen.height - borderSize+y;
+        Vector3 leftTargetPosScreenPoint = mainCamera.WorldToScreenPoint(left.position);
+        Vector3 rightTargetPosScreenPoint = mainCamera.WorldToScreenPoint(right.position);
+        Vector3 upTargetPosScreenPoint = mainCamera.WorldToScreenPoint(up.position);
+        Vector3 downTargetPosScreenPoint = mainCamera.WorldToScreenPoint(down.position);
 
-
+        bool isOffScreen = rightTargetPosScreenPoint.x <= 0f ||
+                           leftTargetPosScreenPoint.x >= Screen.width ||
+                           upTargetPosScreenPoint.y <= 0f ||
+                           downTargetPosScreenPoint.y >= Screen.height;
         if (isOffScreen)
         {
             pointerTrans.gameObject.SetActive(true);

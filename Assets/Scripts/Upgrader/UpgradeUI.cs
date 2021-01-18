@@ -40,7 +40,8 @@ namespace Upgrader
                 return;
             }
             
-            var fixable = SelectionManager.Instance.CurrentSelected.GetComponentInParent<Fixable>();
+            var fixable = SelectionManager.Instance.CurrentSelected.GetComponentInChildren<Fixable>();
+            Debug.Log(fixable);
             if (fixable != null)
             {
                 if (fixable.ShouldFix())

@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Selections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,6 +11,10 @@ namespace Player
     {
         [SerializeField] private LayerMask shootingLayerMask;
         [SerializeField] private Transform aimGunEndPoinTransform;
+        [SerializeField] private Transform bulletGFX;
+        
+        private Tween tween;
+        private Vector3 originSale;
         
         private Transform aimTransform;
         private bool ableToShoot = true;
@@ -21,6 +26,11 @@ namespace Player
         {
             aimTransform = transform.Find("Aim");
             mainCamera = Camera.main;
+        }
+
+        private void Start()
+        {
+            originSale = bulletGFX.localScale;
         }
 
         void Update()
@@ -73,6 +83,20 @@ namespace Player
             if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)) return;
             
             onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
+            BulletAnim();
         }
+        
+        
+        private void BulletAnim()
+        {
+            tween?.Kill(true);
+            ableToShoot = false;
+            tween = DOTween.Sequence()
+            .Append(bulletGFX.DOScale(Vector3.zero, 0.1f))
+            .Append((bulletGFX.DOScale(originSale,0.1f))
+                .SetDelay(PlayerController.PlayerSettings.bulletCoolDown))
+            .AppendCallback(()=>ableToShoot=true);
+        }
+        
     }
 }

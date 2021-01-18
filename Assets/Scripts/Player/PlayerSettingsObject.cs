@@ -18,6 +18,7 @@ namespace Player
         public float bulletSpeed = 10f;
         public float bulletPower= 1.5f;
         public float bulletDuration = 3f;
+        public float bulletCoolDown = 0.3f;
         
         [Header("Run Time Attributes")]
         public float curHealth;

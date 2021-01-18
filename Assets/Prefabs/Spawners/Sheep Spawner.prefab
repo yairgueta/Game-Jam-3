@@ -59,10 +59,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.7616515, y: 1.7051779}
-      - {x: -3.8989768, y: -1.0114561}
-      - {x: -0.32319164, y: -3.1100063}
-      - {x: 4.318944, y: -0.3560846}
+    - - {x: -0.54880536, y: 0.5265306}
+      - {x: -2.3566291, y: -0.27254033}
+      - {x: -2.1575112, y: -0.4381795}
+      - {x: 0.7724525, y: -2.3832848}
+      - {x: 2.6897542, y: -1.1950827}
 --- !u!114 &1034680855471069781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pooledPrefab:
-  - {fileID: 6638235558202263001, guid: bde7e11d114a24b2c888a28ad4abc3fb, type: 3}
+  - {fileID: 934456885316928747, guid: c756c0ba1816dc048ba933bd04cedf09, type: 3}
   totalPoolAmount: 20
   startingAmount: 6
   usePerlinNoise: 0

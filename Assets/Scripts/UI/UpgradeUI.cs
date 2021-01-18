@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -18,16 +19,17 @@ namespace UI
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private GameEvent onNewSelection;
         [SerializeField] private Button btn;
-        [SerializeField] private TMP_Text woodAmount;
-        [SerializeField] private TMP_Text rockAmount;
+        [SerializeField] private List<GameObject> costsImages;
         private Tween raiseAnimationTween;
         private TMP_Text btnText;
+        private TMP_Text woodAmount;
+        private TMP_Text rockAmount;
 
         private void Start()
         {
             GetComponent<Canvas>().worldCamera = Camera.main;
-            
-            var
+            woodAmount = costsImages[0].GetComponentInChildren<TMP_Text>();
+            rockAmount = costsImages[1].GetComponentInChildren<TMP_Text>();
             
             btnText = btn.GetComponentInChildren<TMP_Text>();
             var listener = gameObject.AddComponent<GameEventListener>();
@@ -74,7 +76,9 @@ namespace UI
             RaiseWindow();
             btn.interactable = true;
             btn.onClick.RemoveAllListeners();
-
+            
+            costsImages.ForEach(c => c.SetActive(true));
+            
             void BtnOnClick()
             {
                 onClick();
@@ -90,9 +94,8 @@ namespace UI
         private void SetUpMaxPanel()
         {
             RaiseWindow();
+            costsImages.ForEach(c => c.SetActive(false));
             btn.interactable = false;
-            woodAmount.text = "-";
-            rockAmount.text = "-";
             btnText.text = "Max Level!";
         }
 

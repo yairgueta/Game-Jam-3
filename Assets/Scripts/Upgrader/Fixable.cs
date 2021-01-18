@@ -51,27 +51,14 @@ public class Fixable : MonoBehaviour, IEnemyDamage
         sr.sprite = crackedSprite;
     }
 
-    public bool ShouldFix()
-    {
-        return curHealth < maxHealth;
-    }
-
-    public int RequiredRocksPercentage()
-    {
-        var percentage = curHealth / maxHealth;
-        return (int)(percentage * requiredRocks);
-    }
-    
-    public int RequiredWoodsPercentage()
-    {
-        var percentage = curHealth / maxHealth;
-        return (int)(percentage * requiredWoods);
-    }
+    public bool ShouldFix => curHealth < maxHealth;
+    public int RequiredWood => (int)(curHealth / maxHealth) * requiredWoods;
+    public int RequiredRock => (int)(curHealth / maxHealth) * requiredRocks;
 
     public void Fix()
     {
-        inventory[ResourceType.Wood] -= RequiredWoodsPercentage();
-        inventory[ResourceType.Rock] -= RequiredRocksPercentage();
+        inventory[ResourceType.Wood] -= RequiredWood;
+        inventory[ResourceType.Rock] -= requiredRocks;
         sr.sprite = completeSprite;
         curHealth = maxHealth;
     }

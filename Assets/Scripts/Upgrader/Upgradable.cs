@@ -25,8 +25,6 @@ namespace Upgrader
             sr = GetComponent<SpriteRenderer>();
         }
 
-
-
         public Sprite GetCompleteSprite()
         {
             return grades[curGrade].completeSprites[spriteIndex];
@@ -78,6 +76,8 @@ namespace Upgrader
         {
             return curGrade == 0 ? grades[curGrade] : grades[curGrade-1];
         }
-        
+
+        public int NextGradeRequiredWood => GetNextGradeAttributes().requiredWoods;
+        public int NextGradeRequiredRock => GetNextGradeAttributes().requiredRocks;
     }
 }

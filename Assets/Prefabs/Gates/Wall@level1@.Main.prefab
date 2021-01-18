@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 6731850016589482698}
   - component: {fileID: 6763729985872857892}
   m_Layer: 6
-  m_Name: Selectable Trigger
+  m_Name: Pyshics Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

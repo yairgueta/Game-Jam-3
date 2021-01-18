@@ -24,7 +24,7 @@ namespace Player
             power = _power;
             
             rb2d.AddForce(shootingDirection * speed, ForceMode2D.Impulse);
-            Invoke(nameof(Disable), duration);   
+            Invoke(nameof(Disable), duration+5);   
         }
 
         public void Disable()
@@ -40,7 +40,7 @@ namespace Player
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(other.gameObject.name);
+            Debug.Log("bullet collided with: "+other.gameObject.name);
             var enemy = other.GetComponent<Enemy>();
             if (enemy == null)
             { 

@@ -34,8 +34,9 @@ namespace Enemies
             mode = Mode.Walking;
             gfxScale = enemyGFX.transform.localScale;
             curHealth = enemySettings.health;
+           
             var listener = gameObject.AddComponent<GameEventListener>();
-            listener.InitEvent(onNightEnd);
+            listener.InitEvent(CyclesManager.Instance.NightSettings.OnCycleEnd);
             listener.response.AddListener(o => Die());
         }
 

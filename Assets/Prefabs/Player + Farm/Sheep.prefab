@@ -67,7 +67,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6638235558202263003}
-  - component: {fileID: 5483443218546135773}
   - component: {fileID: 8534602923126289102}
   - component: {fileID: 6638235558202263002}
   - component: {fileID: 9043651575126462529}
@@ -98,20 +97,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5483443218546135773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6638235558202263001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9748dbad5be4ca0a0f079030e551a09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
-  collectionDisplay: {fileID: 5541047728772551231}
 --- !u!114 &8534602923126289102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +206,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5483443218546135773}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
         m_MethodName: WakeUp
         m_Mode: 1
@@ -233,7 +218,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5483443218546135773}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
         m_MethodName: SetGlow
         m_Mode: 6
@@ -261,7 +246,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5483443218546135773}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
         m_MethodName: Sleep
         m_Mode: 1
@@ -273,7 +258,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5483443218546135773}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
         m_MethodName: SetGlow
         m_Mode: 6
@@ -301,7 +286,7 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5483443218546135773}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
         m_MethodName: WakeUp
         m_Mode: 1
@@ -313,7 +298,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5483443218546135773}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player.Sheep, Assembly-CSharp
         m_MethodName: SetGlow
         m_Mode: 6
@@ -423,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7929012824422207289}
   - component: {fileID: 4375668055353137537}
+  - component: {fileID: 5917857649033707401}
   m_Layer: 11
   m_Name: Physics Collider
   m_TagString: Untagged
@@ -470,3 +456,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.79534936, y: 0.44714633}
   m_EdgeRadius: 0
+--- !u!114 &5917857649033707401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8060475387069777209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9748dbad5be4ca0a0f079030e551a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
+  collectionDisplay: {fileID: 5541047728772551231}
+  sr: {fileID: 6638235558202263002}
+  status: 0

@@ -19,5 +19,5 @@ MonoBehaviour:
   spriteIndex: 0
   description: upgrade level 3
   healthPoints: 160
-  requiredWoods: 2
-  requiredRocks: 3
+  requiredWoods: 22
+  requiredRocks: 18

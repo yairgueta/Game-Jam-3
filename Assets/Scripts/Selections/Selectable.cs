@@ -83,7 +83,6 @@ namespace Selections
 
         private void OnMouseDown()
         {
-            Debug.Log(EventSystem.current.IsPointerOverGameObject());
             if (!interactable) return;
             spriteRenderer.material = clickedDownMaterial;
             startDragTime = Time.time;

@@ -11,7 +11,6 @@ namespace Spawners
         [SerializeField] private float baseRespawnTime = 10f;
         [SerializeField] private AnimationCurve spawningCurve;
         [SerializeField] private float softenFactor = 1f;
-        [SerializeField] private RespawnMethod respawnMethod;
         private SpawnersManager spawnersManager;
         private float timer;
 
@@ -19,37 +18,16 @@ namespace Spawners
         {
             SheepSettings sheepSettings = AssetBundle.FindObjectOfType<SheepSettings>();
             spawnersManager = GetComponent<SpawnersManager>();
-            toMethods = new Dictionary<RespawnMethod, Func<float>>
-            {
-                {
-                    RespawnMethod.IncreaseAccordingToSheep,
-                    () => sheepSettings.sheeps.Count / (float) sheepSettings.maxSheepInScene
-                },
-                {
-                    RespawnMethod.IncreaseAccordingToPoolPercentage,
-                    () => spawnersManager.CurrentSpawned / (float) spawnersManager.TotalPool
-                }
-            };
         }
 
         private void Update()
         {
-            var f = spawningCurve.Evaluate(toMethods[respawnMethod]());
+            var f = spawningCurve.Evaluate(spawnersManager.CurrentSpawned / (float) spawnersManager.TotalPool);
             f = Mathf.Clamp(f, 0, 2);
             timer -= Time.deltaTime * Mathf.Pow(f, softenFactor);
             if (timer > 0) return;
             timer = baseRespawnTime;
             spawnersManager.SpawnMany(1);
         }
-        
-        
-
-        private enum RespawnMethod
-        {
-            IncreaseAccordingToPoolPercentage,
-            IncreaseAccordingToSheep,
-        }
-
-        private Dictionary<RespawnMethod, Func<float>> toMethods;
     }
 }

@@ -14,6 +14,7 @@ namespace Sheep
     {
         [SerializeField] private SheepSettings sheepSettings;
         [SerializeField] private Image collectionDisplay;
+        [SerializeField] private ParticleSystem collectionParticle;
         private SpriteRenderer sr;
         private Selectable selectable;
         private float health;
@@ -42,6 +43,7 @@ namespace Sheep
         private void Update()
         {
             if (status.HasFlag(Status.Empty)) return;
+            if (selectable.DragTime < 0) collectionParticle.Stop();
             if (selectable.DragTime >= 0) DisplayBeingCollected();
             else collectionDisplay.fillAmount = 0;
             if (PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon)
@@ -82,6 +84,7 @@ namespace Sheep
             PlayerController.PlayerSettings.UpdateMana(sheepSettings.manaAddition);
             status |= Status.Empty;
             RefreshSprite();
+            collectionParticle.Stop();
             collectionDisplay.fillAmount = 0;
             selectable.SetInteractable(false);
             StartCoroutine(WaitWhileShearing());
@@ -104,6 +107,7 @@ namespace Sheep
         private void DisplayBeingCollected()
         {
             collectionDisplay.fillAmount = selectable.DragTime / sheepSettings.timeToCollect;
+            if (!collectionParticle.isPlaying) collectionParticle.Play();
         }
 
         private void RefreshSprite()

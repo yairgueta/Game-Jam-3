@@ -57,11 +57,6 @@ namespace Upgrader
             sr.sprite = current.completeSprites[spriteIndex];
         }
 
-        // public void Cracked()
-        // {
-        //     sr.sprite = grades[curGrade].crackedSprited[spriteIndex];
-        // }
-        
         public UpgradableObject GetCurGradeAttributes()
         {
             return grades[curGrade];
@@ -69,7 +64,7 @@ namespace Upgrader
         
         public UpgradableObject GetNextGradeAttributes()
         {
-            return curGrade == grades.Length-1 ? null : grades[curGrade+1];
+            return IsMaxGrade ? null : grades[curGrade+1];
         }
         
         public UpgradableObject GetPreviousGradeAttributes()
@@ -79,5 +74,7 @@ namespace Upgrader
 
         public int NextGradeRequiredWood => GetNextGradeAttributes().requiredWoods;
         public int NextGradeRequiredRock => GetNextGradeAttributes().requiredRocks;
+
+        public bool IsMaxGrade => curGrade == grades.Length - 1;
     }
 }

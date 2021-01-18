@@ -1,4 +1,7 @@
 using System;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using Events;
 using Player.Inventory;
 using Selections;
@@ -12,26 +15,32 @@ namespace UI
     public class UpgradeUI : MonoBehaviour
     {
         private static InventoryObject inventory => Player.PlayerController.CurrentInventory;
-    
+        [SerializeField] private GameObject upgradePanel;
         [SerializeField] private GameEvent onNewSelection;
         [SerializeField] private Button btn;
         [SerializeField] private TMP_Text woodAmount;
         [SerializeField] private TMP_Text rockAmount;
+        private Tween raiseAnimationTween;
+        private TMP_Text btnText;
+
         private void Start()
         {
             GetComponent<Canvas>().worldCamera = Camera.main;
-
+            
+            var
+            
+            btnText = btn.GetComponentInChildren<TMP_Text>();
             var listener = gameObject.AddComponent<GameEventListener>();
             listener.InitEvent(onNewSelection);
             listener.response.AddListener(o => OnNewSelection_Response());
+            ClosePanel();
         }
 
         private void OnNewSelection_Response()
         {
             if (SelectionManager.Instance.CurrentSelected == null) 
             {
-            Debug.Log("hi");
-                gameObject.SetActive(false);
+                upgradePanel.SetActive(false);
                 return;
             }
             
@@ -40,7 +49,7 @@ namespace UI
             {
                 if (fixable.ShouldFix)
                 {
-                    SetUpPanel(fixable.Fix, fixable.RequiredWood, fixable.RequiredRock);
+                    SetUpPanel(fixable.Fix, fixable.RequiredWood, fixable.RequiredRock,"FIX");
                     return;
                 }
             }
@@ -48,40 +57,52 @@ namespace UI
             var upgradable = SelectionManager.Instance.CurrentSelected.GetComponentInParent<Upgradable>();
             if (upgradable == null)
             {
-                gameObject.SetActive(false);
+                upgradePanel.SetActive(false);
                 return;
             }
 
-            SetUpPanel(upgradable.Upgrade, upgradable.NextGradeRequiredWood, upgradable.NextGradeRequiredRock);
+            if (upgradable.IsMaxGrade)
+            {
+                SetUpMaxPanel();
+            }
+            else SetUpPanel(upgradable.Upgrade, upgradable.NextGradeRequiredWood, upgradable.NextGradeRequiredRock, "UPGRADE");
         }
 
-        
-        private void SetUpPanel(Action onClick, int woodReq, int rockReq)
+
+        private void SetUpPanel(Action onClick, int woodReq, int rockReq, string btnString)
         {
-            gameObject.SetActive(true);
+            RaiseWindow();
             btn.interactable = true;
             btn.onClick.RemoveAllListeners();
 
-            void btnOnClick()
+            void BtnOnClick()
             {
                 onClick();
-                btn.onClick.RemoveListener(btnOnClick);
+                btn.onClick.RemoveListener(BtnOnClick);
                 ClosePanel();
             }
             
-            btn.onClick.AddListener(btnOnClick);
-            
+            btn.onClick.AddListener(BtnOnClick);
+            btnText.text = btnString;
             SetUpTexts(woodReq, rockReq);
         }
         
+        private void SetUpMaxPanel()
+        {
+            RaiseWindow();
+            btn.interactable = false;
+            woodAmount.text = "-";
+            rockAmount.text = "-";
+            btnText.text = "Max Level!";
+        }
 
         private void SetUpTexts(int woods, int rocks)
         {
             woodAmount.text = woods.ToString();
             rockAmount.text = rocks.ToString();
 
-            woodAmount.color = Color.white;
-            rockAmount.color = Color.white;
+            woodAmount.color = Color.black;
+            rockAmount.color = Color.black;
 
             if (inventory[ResourceType.Wood] < woods)
             {
@@ -96,9 +117,20 @@ namespace UI
             }
         }
         
-        public void ClosePanel()
+        private void RaiseWindow()
         {
-            SelectionManager.Instance.Deselect();
+            transform.position = SelectionManager.Instance.CurrentSelected.transform.position;
+            upgradePanel.SetActive(true);
+            
+            raiseAnimationTween?.Kill(true);
+            upgradePanel.transform.localScale = Vector3.zero;
+            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.one, .7f).SetEase(Ease.OutBounce);
+        }
+
+        private void ClosePanel()
+        {
+            raiseAnimationTween?.Kill(true);
+            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.zero, .3f).OnComplete(() => SelectionManager.Instance.Deselect());
         }
     }
 }

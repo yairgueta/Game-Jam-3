@@ -43,8 +43,7 @@ namespace Selections
         {
             Deselect();
             currentSelected = selected;
-            currentSelected.Select(); 
-
+            currentSelected.Select();
             onSelectionChanged.Raise();
         }
 

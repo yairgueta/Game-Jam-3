@@ -40,7 +40,6 @@ namespace Player
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("bullet collided with: "+other.gameObject.name);
             var enemy = other.GetComponent<Enemy>();
             if (enemy == null)
             { 

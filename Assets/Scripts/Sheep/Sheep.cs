@@ -36,7 +36,7 @@ namespace Sheep
             {
                 sr = GetComponentInParent<SpriteRenderer>();
             }
-            selectable = GetComponent<Selectable>() ?? GetComponentInParent<Selectable>();
+            selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
         }
         
         private void Update()
@@ -109,7 +109,6 @@ namespace Sheep
         private void RefreshSprite()
         {
             Sprite sprite;
-            Debug.Log("status "+status);
             
             if ((status & Status.Empty) != 0)
             {
@@ -154,7 +153,7 @@ namespace Sheep
 
         public void TakeDamage(float damage)
         {
-            Debug.Log("take damage sheep");
+            Debug.Log("take damage sheep "+health);
             health -= damage;
             if (health <= 0)
             {
@@ -164,6 +163,7 @@ namespace Sheep
 
         private void Die()
         {
+            Debug.Log("sheep is dead");
             gameObject.SetActive(false);
         }
     }

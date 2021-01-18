@@ -4335,6 +4335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgraderManager
       objectReference: {fileID: 0}
+    - target: {fileID: 624047593225217924, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 624047593600117982, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -21.300049
@@ -4346,6 +4350,10 @@ PrefabInstance:
     - target: {fileID: 624047594029098720, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.26733398
+      objectReference: {fileID: 0}
+    - target: {fileID: 624047594029098721, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cda0205a8eab274e83f3e65e8ee0f81, type: 3}

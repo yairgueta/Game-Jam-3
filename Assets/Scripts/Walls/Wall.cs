@@ -16,7 +16,6 @@ public class Wall : MonoBehaviour
     {
         upgradable = GetComponent<Upgradable>();
         fixable ??= GetComponent<Fixable>() ?? GetComponentInChildren<Fixable>();
-        
         OnUpgrade();
         upgradable.onUpgrade += OnUpgrade;
         fixable.onWallBreak += OnBreak;

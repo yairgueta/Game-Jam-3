@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2569fd9903bc2044b924c7688ee5b7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallCollider: {fileID: 7257060498752397568}
+  wallCollider: {fileID: 6731850016589482698}
 --- !u!114 &3728940592743196378
 MonoBehaviour:
   m_ObjectHideFlags: 0

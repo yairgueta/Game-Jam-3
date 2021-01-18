@@ -18,7 +18,6 @@ namespace Enemies
         private IEnemyDamage currentAttacked;
         private Vector3 gfxScale;
         private float curHealth;
-        private EnemyState enemyState;
 
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
@@ -26,7 +25,6 @@ namespace Enemies
         
         private void Start()
         {
-            enemyState = GetComponent<EnemyState>();
             GetComponent<Seeker>().graphMask = GraphMask.FromGraphName("Enemy Graph");
             aiPath = GetComponent<AIPath>();
             animator = GetComponent<Animator>();
@@ -72,14 +70,12 @@ namespace Enemies
         
         private void Attack()
         {
-            Debug.Log("currentAttacked "+currentAttacked);
             currentAttacked?.TakeDamage(enemySettings.attackPower);
         }
 
         public void TakeDamage(float damage)
         {
             curHealth -= damage;
-            Debug.Log("enemy health "+ curHealth);
             if (curHealth <= 0)
             {
                 curHealth = enemySettings.health;
@@ -89,7 +85,6 @@ namespace Enemies
 
         private void Die()
         {
-            Debug.Log("enemy dead");
             gameObject.SetActive(false);
         }
 
@@ -108,7 +103,6 @@ namespace Enemies
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Debug.Log(other.gameObject.name+"  enemy collided with "+ mode);
             if (mode == Mode.Attacking) return;
             var hit = other.gameObject.GetComponent<IEnemyDamage>();
             if (hit == null) return;

@@ -109,9 +109,11 @@ namespace Enemies
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            Debug.Log(other.gameObject.name+"  enemy collided with "+ mode);
             if (mode == Mode.Attacking) return;
             var hit = other.gameObject.GetComponent<IEnemyDamage>();
             if (hit == null) return;
+            Debug.Log("hit "+hit);
             AttackMode();
             currentAttacked = hit;
         }

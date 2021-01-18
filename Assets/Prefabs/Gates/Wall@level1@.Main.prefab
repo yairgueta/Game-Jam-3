@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6224921998276698802}
   - component: {fileID: 6206620531621183856}
   - component: {fileID: 3728940592743196378}
-  - component: {fileID: 8714348725177977370}
   - component: {fileID: 4310957693348009089}
   - component: {fileID: 7257060498752397568}
   m_Layer: 7
@@ -83,20 +82,6 @@ MonoBehaviour:
   clickedDownMaterial: {fileID: 0}
   selectedMaterial: {fileID: 0}
   spriteRenderer: {fileID: 4310957693348009089}
---- !u!114 &8714348725177977370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310957693348009093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461e227504b4a544098d7952687b462f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curHealth: 0
-  crackedPercentage: 0.5
 --- !u!212 &4310957693348009089
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -187,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591723774445582009}
   - component: {fileID: 6731850016589482698}
+  - component: {fileID: 6763729985872857892}
   m_Layer: 6
   m_Name: Selectable Trigger
   m_TagString: Untagged
@@ -237,3 +223,17 @@ PolygonCollider2D:
       - {x: 0.66368115, y: -0.42384756}
       - {x: 0.67106557, y: -0.17741728}
       - {x: -0.61594325, y: 0.6035211}
+--- !u!114 &6763729985872857892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5898388277213431402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461e227504b4a544098d7952687b462f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHealth: 0
+  crackedPercentage: 0.5

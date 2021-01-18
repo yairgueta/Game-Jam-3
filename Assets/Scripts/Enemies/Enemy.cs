@@ -23,7 +23,6 @@ namespace Enemies
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
-        [SerializeField] private GameEvent onNightEnd;
         
         private void Start()
         {

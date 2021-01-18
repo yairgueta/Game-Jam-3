@@ -37,7 +37,7 @@ namespace Sheep
             {
                 sr = GetComponentInParent<SpriteRenderer>();
             }
-            selectable = GetComponent<Selectable>() ?? GetComponentInParent<Selectable>();
+            selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
         }
         
         private void Update()
@@ -157,7 +157,6 @@ namespace Sheep
 
         public void TakeDamage(float damage)
         {
-            Debug.Log("take damage sheep");
             health -= damage;
             if (health <= 0)
             {

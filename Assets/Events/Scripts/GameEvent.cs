@@ -13,7 +13,7 @@ namespace Events
         
         [SerializeField] private string category, eventName;
         
-        private readonly HashSet<GameEventListener> listeners = new HashSet<GameEventListener>();
+        private readonly List<GameEventListener> listeners = new List<GameEventListener>();
         public  IEnumerable<GameEventListener> Listeners => listeners;
 
         private void Awake()
@@ -25,9 +25,9 @@ namespace Events
 
         public void Raise(object args = null)
         {
-            foreach (var listener in listeners)
+            for (int i = listeners.Count - 1; i >= 0; i--)
             {
-                listener.OnEventRaised(args);
+                listeners[i].OnEventRaised(args);
             }
         }
 

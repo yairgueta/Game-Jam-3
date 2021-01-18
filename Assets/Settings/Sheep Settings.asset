@@ -21,4 +21,5 @@ MonoBehaviour:
   timeToCollect: 1.5
   manaAddition: 20
   fillTime: 5
-  maxHealth: 0
+  maxHealth: 50
+  maxSheepInScene: 0

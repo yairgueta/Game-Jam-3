@@ -106,7 +106,6 @@ namespace Enemies
             if (mode == Mode.Attacking) return;
             var hit = other.gameObject.GetComponent<IEnemyDamage>();
             if (hit == null) return;
-            Debug.Log("hit "+hit);
             AttackMode();
             currentAttacked = hit;
         }

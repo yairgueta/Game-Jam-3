@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perlinVar: {x: 0, y: 0}
-  scale: 0.1
+  scale: 0.05
 --- !u!114 &4399592865015884427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,8 +63,8 @@ MonoBehaviour:
   - {fileID: 2571227511179559361, guid: fffe2d6e342c24cb1b7a1d83f89d1add, type: 3}
   - {fileID: 203218667141021560, guid: 8076e4ce067a04e3a9fa44a2bbabc830, type: 3}
   - {fileID: 203218667141021560, guid: 4d2b6298790ad40bdaecbba445cef5f4, type: 3}
-  totalPoolAmount: 100
-  startingAmount: 100
+  totalPoolAmount: 4000
+  startingAmount: 4000
   usePerlinNoise: 0
   percentageToSpawn:
   - 0.313

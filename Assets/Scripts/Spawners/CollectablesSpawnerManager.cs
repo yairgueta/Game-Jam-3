@@ -35,7 +35,7 @@ namespace Spawners
         private void Update()
         {
             var f = spawningCurve.Evaluate(toMethods[respawnMethod]());
-            f = Mathf.Clamp01(f);
+            f = Mathf.Clamp(f, 0, 2);
             timer -= Time.deltaTime * Mathf.Pow(f, softenFactor);
             if (timer > 0) return;
             timer = baseRespawnTime;

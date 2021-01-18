@@ -26,6 +26,10 @@ public class Fixable : MonoBehaviour, IEnemyDamage
     {
         inventory = PlayerController.CurrentInventory;
         sr = GetComponent<SpriteRenderer>();
+        if (sr == null)
+        {
+            sr = GetComponentInParent<SpriteRenderer>();
+        }
     }
 
     public Sprite GetCompleteSprite()

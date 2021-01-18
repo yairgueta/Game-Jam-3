@@ -1,4 +1,5 @@
 using System;
+using Selections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -58,7 +59,13 @@ namespace Player
         private void Shooting()
         {
             if (!Input.GetMouseButtonDown(0)) return;
+            if (SelectionManager.Instance.CurrentSelected != null)
+            {
+                SelectionManager.Instance.Deselect();
+                return;
+            }
             var hit = Physics2D.Raycast(mousePosition, Vector3.forward, 15f, shootingLayerMask);
+
             if (hit || EventSystem.current.IsPointerOverGameObject(-1)) return;
             
             if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)) return;

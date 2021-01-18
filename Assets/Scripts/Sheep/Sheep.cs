@@ -109,6 +109,7 @@ namespace Sheep
         private void RefreshSprite()
         {
             Sprite sprite;
+            Debug.Log("status "+status);
             
             if ((status & Status.Empty) != 0)
             {

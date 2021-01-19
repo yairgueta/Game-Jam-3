@@ -1,8 +1,8 @@
+using System;
+using System.Collections;
 using Cycles;
 using Events;
 using Pathfinding;
-using Player;
-using Spawners;
 using UnityEngine;
 
 namespace Enemies
@@ -12,16 +12,22 @@ namespace Enemies
     {
         [SerializeField] private EnemySettings enemySettings;
         [SerializeField] private GameObject enemyGFX;
-
-        private AIPath aiPath;
+        [SerializeField] private float stuckTimeThreshold = 2.5f;
         private Mode mode;
         private IEnemyDamage currentAttacked;
-        private Vector3 gfxScale;
         private float curHealth;
+
+        private Collider2D collider;
+        
+        private AIPath aiPath;
+        private Vector3 gfxScale;
 
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
+
+        private float stuckTimer;
+        
         
         private void Start()
         {
@@ -31,10 +37,9 @@ namespace Enemies
             mode = Mode.Walking;
             gfxScale = enemyGFX.transform.localScale;
             curHealth = enemySettings.health;
-           
-            var listener = gameObject.AddComponent<GameEventListener>();
-            listener.InitEvent(CyclesManager.Instance.NightSettings.OnCycleEnd);
-            listener.response.AddListener(o => Die());
+
+            collider = transform.GetChild(0).GetComponent<Collider2D>();
+            CyclesManager.Instance.NightSettings.OnCycleEnd.Register(gameObject, o => Die());
         }
 
         private void Update()
@@ -49,11 +54,33 @@ namespace Enemies
                 case Mode.Walking:
                     aiPath.canMove = true;
                     aiPath.canSearch = true;
+                    ManageStuck();
                     break;
             }
             ManageDirection();
         }
 
+        private void ManageStuck()
+        {
+            if (aiPath.velocity.sqrMagnitude > .1)
+            {
+                stuckTimer = 0;
+            }
+            else stuckTimer += Time.deltaTime;
+
+            if (stuckTimer > stuckTimeThreshold)
+            {
+                collider.enabled = false;
+
+                IEnumerator WaitAndEnable()
+                {
+                    yield return new WaitForSeconds(.5f);
+                    collider.enabled = true;
+                }
+
+                StartCoroutine(WaitAndEnable());
+            }
+        }
         private void AttackMode()
         {
             if (mode == Mode.Attacking) return;
@@ -83,7 +110,7 @@ namespace Enemies
             }
         }
 
-        private void Die()
+        public void Die()
         {
             gameObject.SetActive(false);
         }
@@ -93,11 +120,11 @@ namespace Enemies
             var gfxTransform = enemyGFX.transform;
             if (aiPath.desiredVelocity.x >= 0.01f)
             {
-                gfxTransform.localScale = new Vector3( -gfxScale.x, gfxScale.y, gfxScale.z);
+                transform.localScale = new Vector3( -1, 1, 1);
             }
             if (aiPath.desiredVelocity.x <= -0.01f)
             {
-                gfxTransform.localScale = new Vector3( gfxScale.x, gfxScale.y, gfxScale.z);
+                transform.localScale = new Vector3(1, 1, 1);
             }
         }
 
@@ -113,6 +140,7 @@ namespace Enemies
         private void OnCollisionExit2D(Collision2D other)
         {
             if (other.gameObject.GetComponent<IEnemyDamage>() != currentAttacked) return;
+            if (currentAttacked as Sheep.Sheep != null) gameObject.SetActive(false);
             currentAttacked = null;
             WalkMode();
         }

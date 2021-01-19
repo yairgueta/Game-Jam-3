@@ -3,8 +3,8 @@ using System.Collections;
 using Cycles;
 using Enemies;
 using Player;
-using Spawners;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.UI;
 using Selectable = Selections.Selectable;
 
@@ -17,6 +17,7 @@ namespace Sheep
         [SerializeField] private ParticleSystem collectionParticle;
         private SpriteRenderer sr;
         private Selectable selectable;
+        private Light2D light;
         private float health;
         
         [Flags]
@@ -33,23 +34,19 @@ namespace Sheep
         private void Awake()
         {
             sr = GetComponent<SpriteRenderer>();
-            if (sr == null)
-            {
-                sr = GetComponentInParent<SpriteRenderer>();
-            }
+            if (sr == null) sr = GetComponentInParent<SpriteRenderer>();
             selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
+            light = GetComponentInChildren<Light2D>();
         }
         
         private void Update()
         {
             if (status.HasFlag(Status.Empty)) return;
+            selectable.SetInteractable(
+                (PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon));
             if (selectable.DragTime < 0) collectionParticle.Stop();
             if (selectable.DragTime >= 0) DisplayBeingCollected();
             else collectionDisplay.fillAmount = 0;
-            if (PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon)
-            {
-                return;
-            }
             if (selectable.DragTime >= sheepSettings.timeToCollect) GetCollected();
         }
         
@@ -113,7 +110,7 @@ namespace Sheep
         private void RefreshSprite()
         {
             Sprite sprite;
-            
+            light.enabled = false;
             if ((status & Status.Empty) != 0)
             {
                 if ((status & Status.Awake) != 0) sprite = sheepSettings.emptyAwake;
@@ -123,7 +120,11 @@ namespace Sheep
             {
                 if ((status & Status.Awake) != 0) sprite = sheepSettings.awake;
                 else sprite = sheepSettings.sleep;
-                if ((status & Status.Glow) != 0) sprite = sheepSettings.glowSheep;
+                if ((status & Status.Glow) != 0)
+                {
+                    sprite = sheepSettings.glowSheep;
+                    light.enabled = true;
+                }
             }
 
             sr.sprite = sprite;

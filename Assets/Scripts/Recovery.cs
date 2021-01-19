@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cycles;
 using Player;
 using UnityEngine;
 
@@ -9,13 +10,15 @@ public class Recovery : MonoBehaviour
     private bool recoveryMode;
     private bool isEclipseTime;
     private float timer;
-    [SerializeField] private float recoveryGaps = 7f;
-    [SerializeField] private float lifeAddingAmount = 5f;
+    
+    
     void Start()
     {
         recoveryMode = false;
         timer = 0f;
-        
+        CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, arg0 => ChangeToEclipseTime());
+        CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject, arg0 => OutOfEclipseTime());
+
     }
 
     void Update()
@@ -26,9 +29,8 @@ public class Recovery : MonoBehaviour
         
         if (timer <= 0)
         {
-            PlayerController.PlayerSettings.UpdateLife(lifeAddingAmount);
-            Debug.Log("added life");
-            timer = recoveryGaps;
+            PlayerController.PlayerSettings.UpdateLife(PlayerController.PlayerSettings.lifeAdditionAmount);
+            timer = PlayerController.PlayerSettings.recoveryGap;
         }
         timer -= Time.deltaTime;
     }
@@ -49,7 +51,6 @@ public class Recovery : MonoBehaviour
         if (!isEclipseTime) return;
         if (other.CompareTag("Sheep") && !recoveryMode)
         {
-            Debug.Log("triggered sheep"+other.name);
             recoveryMode = true;
         }
     }
@@ -61,7 +62,6 @@ public class Recovery : MonoBehaviour
         if (!recoveryMode) return;
         if (other.CompareTag("Sheep"))
         {
-            Debug.Log("out of recovery mode");
             recoveryMode = false;
         }
     }

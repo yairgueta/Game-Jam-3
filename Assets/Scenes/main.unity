@@ -1062,8 +1062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3ba34363b7f9a48badeb7d92d9317e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoveryGaps: 15
-  lifeAddingAmount: 5
+  recoveryGaps: 1
+  lifeAddingAmount: 1
 --- !u!1 &426520604 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4478730694690051098, guid: 2970ad3dfed5f493bb36dd09487563fc, type: 3}

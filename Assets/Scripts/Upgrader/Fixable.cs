@@ -1,7 +1,6 @@
 using System;
 using Enemies;
 using Player;
-using Player.Inventory;
 using UnityEngine;
 
 namespace Upgrader

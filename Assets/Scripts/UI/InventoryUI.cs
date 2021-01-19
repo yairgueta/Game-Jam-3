@@ -1,7 +1,6 @@
 using System;
 using DG.Tweening;
 using Player;
-using Player.Inventory;
 using UnityEngine;
 using TMPro;
 

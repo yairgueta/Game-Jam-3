@@ -27,7 +27,7 @@ namespace Spawners
                 return;
             }
             sheepSettings = sheepSetts[0];
-
+            
             var listener = gameObject.AddComponent<GameEventListener>();
             listener.InitEvent(Cycles.CyclesManager.Instance.EclipseSettings.OnCycleStart);
             listener.response.AddListener(o => OnEclipseStart_Listener());

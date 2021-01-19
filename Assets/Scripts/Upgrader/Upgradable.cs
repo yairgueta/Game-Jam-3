@@ -1,6 +1,5 @@
 using System;
 using Player;
-using Player.Inventory;
 using Selections;
 using UnityEngine;
 using Random = UnityEngine.Random;

@@ -4,7 +4,7 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using Events;
-using Player.Inventory;
+using Player;
 using Selections;
 using TMPro;
 using UnityEngine;

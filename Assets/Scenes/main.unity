@@ -1472,19 +1472,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3346947443374361540, guid: f9ade2b0b76b24b97af0731f641414b2, type: 3}
       propertyPath: m_Size.x
-      value: 101.856514
+      value: 125.90314
       objectReference: {fileID: 0}
     - target: {fileID: 3346947443374361540, guid: f9ade2b0b76b24b97af0731f641414b2, type: 3}
       propertyPath: m_Size.y
-      value: 177.8002
+      value: 201.01762
       objectReference: {fileID: 0}
     - target: {fileID: 3346947443374361540, guid: f9ade2b0b76b24b97af0731f641414b2, type: 3}
       propertyPath: m_Offset.x
-      value: -49.428257
+      value: -49.013657
       objectReference: {fileID: 0}
     - target: {fileID: 3346947443374361540, guid: f9ade2b0b76b24b97af0731f641414b2, type: 3}
       propertyPath: m_Offset.y
-      value: -73.9001
+      value: -76.38769
       objectReference: {fileID: 0}
     - target: {fileID: 3346947443374361542, guid: f9ade2b0b76b24b97af0731f641414b2, type: 3}
       propertyPath: percentageToSpawn.Array.data[0]

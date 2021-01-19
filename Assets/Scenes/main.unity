@@ -1653,8 +1653,8 @@ RectTransform:
   m_Father: {fileID: 1354760938}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.22900002, y: 0.42400002}
-  m_AnchorMax: {x: 0.96700007, y: 0.59325004}
+  m_AnchorMin: {x: 0.22900002, y: 0.42400014}
+  m_AnchorMax: {x: 0.97861856, y: 0.59325004}
   m_AnchoredPosition: {x: -1.8280106, y: -0.000009536743}
   m_SizeDelta: {x: 0.9665, y: 0}
   m_Pivot: {x: -0.009578957, y: 0.5}
@@ -2091,8 +2091,8 @@ RectTransform:
   m_Father: {fileID: 4879632303796238129}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.25068653, y: 0.4042135}
-  m_AnchorMax: {x: 0.95800006, y: 0.6472526}
+  m_AnchorMin: {x: 0.2572955, y: 0.4172268}
+  m_AnchorMax: {x: 0.9827834, y: 0.6602659}
   m_AnchoredPosition: {x: -1.0705, y: -0.4544}
   m_SizeDelta: {x: 1.253, y: 2.8061}
   m_Pivot: {x: -0.000000040622183, y: 0.49999985}
@@ -3878,8 +3878,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -4.0654297, y: 355.351}
-  m_SizeDelta: {x: 85.929, y: 86.68298}
+  m_AnchoredPosition: {x: -13.140015, y: 355.69}
+  m_SizeDelta: {x: 68.7143, y: 69.3173}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1886934725
 MonoBehaviour:
@@ -3893,11 +3893,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82ecd7025f5e45478704d9be4bed88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterDuration: 2
+  enterDuration: 1
   exitDuration: 0.4
   onScreenDuration: 10
-  f: 570
   mushroomCollectedEvent: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}
+  ease: 15
 --- !u!114 &1886934726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4981,7 +4981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -106.7, y: 34.1}
+  m_AnchoredPosition: {x: -106.700195, y: 34.100098}
   m_SizeDelta: {x: 205.28, y: 52.1258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4879632303796238130

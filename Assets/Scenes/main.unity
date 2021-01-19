@@ -3802,7 +3802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82ecd7025f5e45478704d9be4bed88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterDuration: 2
+  enterDuration: 1
   exitDuration: 0.4
   onScreenDuration: 10
   mushroomCollectedEvent: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}

@@ -12,7 +12,7 @@ namespace Player
         [SerializeField] private LayerMask shootingLayerMask;
         [SerializeField] private Transform aimGunEndPoinTransform;
         [SerializeField] private Transform bulletGFX;
-        
+
         private Tween tween;
         private Vector3 originSale;
         
@@ -31,6 +31,7 @@ namespace Player
         private void Start()
         {
             originSale = bulletGFX.localScale;
+            
         }
 
         void Update()

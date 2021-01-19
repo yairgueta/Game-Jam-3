@@ -34,6 +34,8 @@ namespace Selections
             set => isInteractable = value;
         }
 
+        public bool Interactable => interactable;
+
         private bool hasEnteredAndChanged;
 
         private void Awake()

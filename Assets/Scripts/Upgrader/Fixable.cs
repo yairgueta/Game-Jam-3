@@ -50,8 +50,8 @@ namespace Upgrader
         }
 
         public bool ShouldFix => curHealth < maxHealth;
-        public int RequiredWood => (int)(curHealth / maxHealth) * requiredWoods;
-        public int RequiredRock => (int)(curHealth / maxHealth) * requiredRocks;
+        public int RequiredWood => Mathf.FloorToInt((curHealth / maxHealth) * requiredWoods);
+        public int RequiredRock => Mathf.FloorToInt((curHealth / maxHealth) * requiredRocks);
 
         public void Fix()
         {

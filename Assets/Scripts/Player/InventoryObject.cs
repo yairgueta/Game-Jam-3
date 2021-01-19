@@ -18,7 +18,6 @@ namespace Player
         [Header("Initial Quantities")] 
         [SerializeField] private int initWood;
         [SerializeField] private int initRock;
-        [SerializeField] private int initMushroom;
 
         [Header("Inventory Things")]
         [SerializeField] private GameEvent onChange;
@@ -31,7 +30,7 @@ namespace Player
         {
             quantityMap = new SerializedDictionary<ResourceType, int>
             {
-                {ResourceType.Wood, initWood}, {ResourceType.Rock, initRock}, {ResourceType.Mushroom, initMushroom}
+                {ResourceType.Wood, initWood}, {ResourceType.Rock, initRock}
             };
             onChange.Raise();
         }

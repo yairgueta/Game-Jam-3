@@ -3,7 +3,7 @@ using Events;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace Player.Inventory
+namespace Player
 {
     public enum ResourceType
     {

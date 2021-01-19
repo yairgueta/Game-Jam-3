@@ -1,7 +1,6 @@
 using System;
 using Collectables;
 using Enemies;
-using Player.Inventory;
 using UnityEngine;
 
 namespace Player

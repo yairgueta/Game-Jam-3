@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 30
   cycleType: 1
-  globalLightColor: {r: 1, g: 1, b: 1, a: 0}
-  globalLightIntensity: 0.4
+  globalLightColor: {r: 1, g: 1, b: 1, a: 1}
+  globalLightIntensity: 0.03
   onCycleStart: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}
   onCycleEnd: {fileID: 11400000, guid: ced196fe55eb94eaca4c25ab594ec604, type: 2}
   uiTimer: {fileID: 1302723820812287101, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}

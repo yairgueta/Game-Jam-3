@@ -30,7 +30,7 @@ namespace Player
         {
             quantityMap = new SerializedDictionary<ResourceType, int>
             {
-                {ResourceType.Wood, initWood}, {ResourceType.Rock, initRock}
+                {ResourceType.Wood, initWood}, {ResourceType.Rock, initRock}, {ResourceType.Mushroom, 0}
             };
             onChange.Raise();
         }

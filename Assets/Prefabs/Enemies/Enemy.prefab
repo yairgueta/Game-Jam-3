@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LightType: 1
+  m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.345
   m_Color: {r: 0.9811321, g: 0.66180134, b: 0.9318045, a: 1}
@@ -269,7 +269,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 5
+  maxSpeed: 2.88
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -280,9 +280,9 @@ MonoBehaviour:
   targetCompatibility: {fileID: 0}
   maxAcceleration: 10
   rotationSpeed: 360
-  slowdownDistance: 0.6
+  slowdownDistance: 18.22
   pickNextWaypointDist: 2
-  endReachedDistance: 0.2
+  endReachedDistance: 0.1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437e989f123845f38e967c351c8399a6, type: 3}
   m_Name: Cycle@Night
   m_EditorClassIdentifier: 
-  duration: 30
+  duration: 90
   cycleType: 1
   globalLightColor: {r: 1, g: 1, b: 1, a: 1}
   globalLightIntensity: 0.03

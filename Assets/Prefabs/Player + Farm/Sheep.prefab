@@ -544,7 +544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overMaterial: {fileID: 0}
   clickedDownMaterial: {fileID: 0}
-  selectedMaterial: {fileID: 0}
+  selectedMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   spriteRenderer: {fileID: 934456885316928744}
 --- !u!1 &8168792148115109427
 GameObject:

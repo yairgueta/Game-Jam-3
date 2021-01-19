@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Yair.unity
-    guid: c27f94196d34841bba1dee8c49a74fcd
+    path: Assets/Scenes/main.unity
+    guid: 7545a6fed4d37964f940708bf70e2b04
   m_configObjects: {}

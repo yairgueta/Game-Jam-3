@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5811730a5be24b66ae2efd51b9cc8432, type: 3}
   m_Name: Player Settings
   m_EditorClassIdentifier: 
-  speed: 6.08
+  speed: 3.91
   maxHealth: 50
   maxMana: 100
   initialMana: 70
@@ -20,11 +20,11 @@ MonoBehaviour:
   lifeAdditionAmount: 1
   bulletManaCost: 2
   bulletSpeed: 10
-  bulletPower: 1.5
+  bulletPower: 3
   bulletDuration: 1.42
   bulletCoolDown: 0.3
   curHealth: 50
-  curMana: 54
+  curMana: 70
   onDeath: {fileID: 11400000, guid: ce7896d81791f41a5a2433c723a31a3e, type: 2}
   onHealthChange: {fileID: 11400000, guid: a3853c4fbc09b4fcdb96ae73da19454d, type: 2}
   onManaChange: {fileID: 11400000, guid: 02a796ea9269b4c0b941b1dbd4e51e43, type: 2}

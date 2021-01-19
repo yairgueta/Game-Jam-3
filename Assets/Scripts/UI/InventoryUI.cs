@@ -29,9 +29,9 @@ namespace UI
                     return woodText;
                 case ResourceType.Rock:
                     return rockText;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
+
+            return null;
         }
         
         public void WarnLackOfResource(object args)
@@ -59,6 +59,7 @@ namespace UI
             {
                 var type = tArgs.type;
                 var tmpText = TypeToText(type);
+                if (tmpText == null) return; //TODO FIX THIS LINE
                 DOTween.Kill(type, true);
                 tmpText.text = inventory[type].ToString();
                 if (tArgs.isIncreasing > 0)

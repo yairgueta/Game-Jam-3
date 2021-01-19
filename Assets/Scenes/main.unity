@@ -1045,6 +1045,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30837691f612e42db884a98441b4c850, type: 3}
+--- !u!1 &420657982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5050817412865449637, guid: 4525a5c4545e741a29d6bc548299af97, type: 3}
+  m_PrefabInstance: {fileID: 1921680003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &420657985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420657982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba3ba34363b7f9a48badeb7d92d9317e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoveryGaps: 15
+  lifeAddingAmount: 5
 --- !u!1 &426520604 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4478730694690051098, guid: 2970ad3dfed5f493bb36dd09487563fc, type: 3}
@@ -2976,7 +2995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 292.82806, y: 81.903}
+  m_AnchoredPosition: {x: 292.82806, y: 81.90234}
   m_SizeDelta: {x: 204.3407, y: 68.7297}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1354760939
@@ -3878,7 +3897,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -13.140015, y: 355.69}
+  m_AnchoredPosition: {x: -13.139648, y: 355.68945}
   m_SizeDelta: {x: 68.7143, y: 69.3173}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1886934725
@@ -4981,7 +5000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -106.700195, y: 34.100098}
+  m_AnchoredPosition: {x: -106.700195, y: 34.09961}
   m_SizeDelta: {x: 205.28, y: 52.1258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4879632303796238130
@@ -5315,7 +5334,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 44.17868}
+  m_AnchoredPosition: {x: 0, y: 44.177734}
   m_SizeDelta: {x: 199.0973, y: 82.9884}
   m_Pivot: {x: -0.000000030733645, y: 0.5000001}
 --- !u!224 &7959453265156650288 stripped

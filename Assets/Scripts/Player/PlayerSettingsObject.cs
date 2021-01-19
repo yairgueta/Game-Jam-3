@@ -34,7 +34,7 @@ namespace Player
         public void UpdateLife(float damage)
         {
             curHealth += damage;
-            Debug.Log("health player "+ curHealth);
+            Debug.Log("health player "+ curHealth+" "+damage);
             if (curHealth <= 0) onDeath.Raise();
             curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
             onHealthChange.Raise();

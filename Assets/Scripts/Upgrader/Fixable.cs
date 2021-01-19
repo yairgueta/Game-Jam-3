@@ -49,7 +49,7 @@ namespace Upgrader
             sr.sprite = crackedSprite;
         }
 
-        public bool ShouldFix => curHealth < maxHealth;
+        public bool ShouldFix => curHealth < maxHealth && curHealth > 0;
         public int RequiredWood => Mathf.FloorToInt((curHealth / maxHealth) * requiredWoods);
         public int RequiredRock => Mathf.FloorToInt((curHealth / maxHealth) * requiredRocks);
 

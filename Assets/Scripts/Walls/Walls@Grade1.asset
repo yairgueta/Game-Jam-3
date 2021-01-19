@@ -25,5 +25,5 @@ MonoBehaviour:
   spriteIndex: 2
   description: upgrade level 1
   healthPoints: 80
-  requiredWoods: 5
-  requiredRocks: 8
+  requiredWoods: 7
+  requiredRocks: 4

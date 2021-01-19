@@ -154,7 +154,7 @@ namespace Sheep
             status |= Status.Awake;
             RefreshSprite();
         }
-
+        
         public void TakeDamage(float damage)
         {
             health -= damage;

@@ -18,8 +18,9 @@ namespace UI
             woodText = woodDisplay.GetComponentInChildren<TMP_Text>();
             rockText = rockDisplay.GetComponentInChildren<TMP_Text>();
         }
-        
 
+
+        
         private TMP_Text TypeToText(ResourceType type)
         {
             switch (type)
@@ -66,8 +67,8 @@ namespace UI
                     tmpText.gameObject.transform.DOScaleY(.8f, .18f).SetLoops(2, LoopType.Yoyo).SetId(type);
             }
             
-            woodDisplay.SetActive(inventory[ResourceType.Wood] != 0);
-            rockDisplay.SetActive(inventory[ResourceType.Rock] != 0);
+            // woodDisplay.SetActive(inventory[ResourceType.Wood] != 0);
+            // rockDisplay.SetActive(inventory[ResourceType.Rock] != 0);
         }
     }
 }

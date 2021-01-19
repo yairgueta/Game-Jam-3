@@ -18,8 +18,8 @@ MonoBehaviour:
   crackedSprited:
   - {fileID: 1783381997064855523, guid: 136a6d03c62f94053acf2205533fcedb, type: 3}
   - {fileID: -5346261853866320983, guid: 136a6d03c62f94053acf2205533fcedb, type: 3}
-  spriteIndex: 1
+  spriteIndex: 0
   description: upgrade level 2
   healthPoints: 120
-  requiredWoods: 12
-  requiredRocks: 8
+  requiredWoods: 10
+  requiredRocks: 7

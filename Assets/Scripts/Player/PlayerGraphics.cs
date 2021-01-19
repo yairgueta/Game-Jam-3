@@ -17,6 +17,7 @@ namespace Player
         private void Awake()
         {
             anim = GetComponent<Animator>();
+            anim.SetFloat("AnimMoveMagnitude", 0f);
         }
 
         private void Update()

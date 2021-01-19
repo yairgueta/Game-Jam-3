@@ -19,7 +19,7 @@ MonoBehaviour:
   emptySleep: {fileID: 7640251648590994544, guid: e39124e06e8d04084af83165f44841a9, type: 3}
   glowSheep: {fileID: -8403577120292615673, guid: e39124e06e8d04084af83165f44841a9, type: 3}
   timeToCollect: 1.5
-  manaAddition: 20
-  fillTime: 5
+  manaAddition: 15
+  fillTime: 93
   maxHealth: 50
   maxSheepInScene: 20

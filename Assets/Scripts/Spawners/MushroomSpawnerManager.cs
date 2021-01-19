@@ -17,9 +17,6 @@ namespace Spawners
         {
             spawnersManager = GetComponent<SpawnersManager>();
 
-            Cycles.CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, OnEclipseStart_Listener);
-            Cycles.CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject, OnEclipseEnd_Listener);
-            
             if (sheepSettings != null) return;
             var sheepSetts = AssetBundle.FindObjectsOfType<SheepSettings>();
             if (sheepSetts.Length > 1) 
@@ -30,15 +27,23 @@ namespace Spawners
                 return;
             }
             sheepSettings = sheepSetts[0];
+            
+            var listener = gameObject.AddComponent<GameEventListener>();
+            listener.InitEvent(Cycles.CyclesManager.Instance.EclipseSettings.OnCycleStart);
+            listener.response.AddListener(o => OnEclipseStart_Listener());
+
+            listener = gameObject.AddComponent<GameEventListener>();
+            listener.InitEvent(Cycles.CyclesManager.Instance.EclipseSettings.OnCycleEnd);
+            listener.response.AddListener(o => OnEclipseEnd_Listener());
         }
 
-        private void OnEclipseEnd_Listener(object o)
+        private void OnEclipseEnd_Listener()
         {
             //TODO: Maybe some fadeaway effect
             spawnersManager.DespawnAll();
         }
         
-        private void OnEclipseStart_Listener(object o)
+        private void OnEclipseStart_Listener()
         {
             // TODO: some Fadein effect??
             Debug.Log(RandomAmountToSpawn);

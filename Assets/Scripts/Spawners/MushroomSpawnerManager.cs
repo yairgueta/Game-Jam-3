@@ -41,6 +41,7 @@ namespace Spawners
         private void OnEclipseStart_Listener(object o)
         {
             // TODO: some Fadein effect??
+            Debug.Log(RandomAmountToSpawn);
             spawnersManager.SpawnMany(RandomAmountToSpawn);
         }
         

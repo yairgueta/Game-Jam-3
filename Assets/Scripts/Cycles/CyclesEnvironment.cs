@@ -12,21 +12,23 @@ namespace Cycles
         [SerializeField] private float animationDuration = .5f;
         private Light2D globalLight;
         private Sequence animationSequence;
-
+        private Camera camera;
 
         private void Start()
         {
             animationSequence = DOTween.Sequence();
-            
+            camera = Camera.main;
             var lights = FindObjectsOfType<Light2D>();
             globalLight = lights.First(l => l.lightType == Light2D.LightType.Global);
-
+            
+            // Light changes through times
             foreach (var cycle in CyclesManager.Instance.CyclesSettings)
-            {
-                var listener = gameObject.AddComponent<GameEventListener>();
-                listener.InitEvent(cycle.OnCycleStart);
-                listener.response.AddListener(o => TweenLight(cycle));
-            }
+                cycle.OnCycleStart.Register(gameObject, o => TweenLight(cycle));
+            
+            // camera culling mask in eclipse
+            CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, o => camera.cullingMask |= 1 << LayerMask.NameToLayer("Eclipse"));
+            CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject,o => camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Eclipse")));
+            
         }
 
         private void TweenLight(CycleObject cycle)

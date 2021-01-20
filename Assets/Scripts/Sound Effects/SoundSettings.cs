@@ -20,6 +20,10 @@ public class SoundSettings : ScriptableObject
     public GameEvent onEclipseStart;
     public GameEvent onNightStart;
     public GameEvent onEnemyDeath;
+    public GameEvent onPlayerDeath;
+    public GameEvent onOutOfResources;
+    public GameEvent onMushroomCollected;
+    public GameEvent onBulletExplode;
 
     [Header("Attributes")] 
     public float volume;

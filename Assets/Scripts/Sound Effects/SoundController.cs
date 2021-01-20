@@ -25,11 +25,9 @@ public class SoundController : MonoBehaviour
 
     private void Update()
     {
-        if (shouldChangeBG)
-        {
-            DecreaseOldBGMusic();
-            IncreaseNewBMusic();
-        }
+        if (!shouldChangeBG) return;
+        DecreaseOldBGMusic();
+        IncreaseNewBMusic();
     }
 
     private void DecreaseOldBGMusic()
@@ -41,11 +39,9 @@ public class SoundController : MonoBehaviour
             currentBGMusic.Stop();
             currentBGMusic = changeTo;
             bgMusicChanged = true;
+            return;
         }
-        else
-        {
-            currentBGMusic.volume = oldBGnewVolume;
-        }
+        currentBGMusic.volume = oldBGnewVolume;
     }
 
     private void IncreaseNewBMusic()
@@ -55,11 +51,9 @@ public class SoundController : MonoBehaviour
         {
             changeTo.volume = soundSettings.volume;
             shouldChangeBG = false;
+            return;
         }
-        else
-        {
-            changeTo.volume = newBGVolume;
-        }
+        changeTo.volume = newBGVolume;
     }
     
     private void StartMusic(AudioSource source)
@@ -90,8 +84,9 @@ public class SoundController : MonoBehaviour
         bgMusicChanged = false;
     }
 
-    private void PlaySoundEffect(AudioClip audioClip)
+    public void PlaySoundEffect(AudioClip audioClip)
     {
+        if (!audioClip) return;
         soundEffectsSource.PlayOneShot(audioClip);
     }
 }

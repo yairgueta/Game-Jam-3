@@ -29,7 +29,8 @@ public class SoundSettings : ScriptableObject
     public GameEvent onBulletExplode;
 
     [Header("Attributes")] 
-    public float volume;
+    public float bgVolume;
+    public float sfxVolume;
     public float fadeoutTime;
     public float fadeInTime;
 }

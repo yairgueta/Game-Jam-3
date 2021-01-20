@@ -16,9 +16,18 @@ MonoBehaviour:
   nightMusic: {fileID: 8300000, guid: 732e19c8c9ca89c45a95fcb57887c700, type: 3}
   eclipseMusic: {fileID: 8300000, guid: d86515a6d25fa9b4dbe68271afec669d, type: 3}
   enemyDeath: {fileID: 8300000, guid: defddbb8964812947aa460a770c17608, type: 3}
+  playerDeath: {fileID: 0}
+  outOfResources: {fileID: 0}
+  mushroomCollected: {fileID: 0}
+  bulletExploded: {fileID: 0}
   onDayStart: {fileID: 11400000, guid: 660bda67326474a828ff51e5d2126210, type: 2}
   onEclipseStart: {fileID: 11400000, guid: ced196fe55eb94eaca4c25ab594ec604, type: 2}
   onNightStart: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}
   onEnemyDeath: {fileID: 11400000, guid: 906630ade5ebeda4a84d087379978e65, type: 2}
-  volume: 0.2
-  mixerFactor: 0.01
+  onPlayerDeath: {fileID: 0}
+  onOutOfResources: {fileID: 0}
+  onMushroomCollected: {fileID: 0}
+  onBulletExplode: {fileID: 0}
+  volume: 0.1
+  fadeoutTime: 5
+  fadeInTime: 10

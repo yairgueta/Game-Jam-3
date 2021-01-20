@@ -4,7 +4,6 @@ using UnityEngine;
 public class SoundController : MonoBehaviour
 {
     [SerializeField] private SoundSettings soundSettings;
-
     [SerializeField] private AudioSource soundEffectsSource;
     [SerializeField] private AudioSource dayMusicSource;
     [SerializeField] private AudioSource nightMusicSource;
@@ -34,7 +33,7 @@ public class SoundController : MonoBehaviour
         changeTo = source;
         currentBGMusic.volume = 0f;
         currentBGMusic.Play();
-        changeTo.DOFade(soundSettings.volume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
+        changeTo.DOFade(soundSettings.bgVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
     private void PlayBGMusic(AudioSource source)
@@ -56,12 +55,12 @@ public class SoundController : MonoBehaviour
         changeTo.volume = 0f;
         changeTo.Play();
         currentBGMusic.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
-        changeTo.DOFade(soundSettings.volume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
+        changeTo.DOFade(soundSettings.bgVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
     public void PlaySoundEffect(AudioClip audioClip)
     {
         if (audioClip == null) return;
-        soundEffectsSource.PlayOneShot(audioClip);
+        soundEffectsSource.PlayOneShot(audioClip, soundSettings.sfxVolume);
     }
 }

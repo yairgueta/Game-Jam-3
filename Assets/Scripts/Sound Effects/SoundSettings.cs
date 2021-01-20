@@ -13,8 +13,11 @@ public class SoundSettings : ScriptableObject
 
     [Header("Sound Effects")] 
     public AudioClip enemyDeath;
-
-
+    public AudioClip playerDeath;
+    public AudioClip outOfResources;
+    public AudioClip mushroomCollected;
+    public AudioClip bulletExploded;
+    
     [Header("Events")] 
     public GameEvent onDayStart;
     public GameEvent onEclipseStart;
@@ -27,5 +30,6 @@ public class SoundSettings : ScriptableObject
 
     [Header("Attributes")] 
     public float volume;
-    [Tooltip("The factor of change ease between two music clips")] public float mixerFactor;
+    public float fadeoutTime;
+    public float fadeInTime;
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class SoundController : MonoBehaviour
@@ -21,46 +22,19 @@ public class SoundController : MonoBehaviour
         soundSettings.onEclipseStart.Register(gameObject,o => PlayBGMusic(eclipseMusicSource));
         soundSettings.onNightStart.Register(gameObject,o => PlayBGMusic(nightMusicSource));
         soundSettings.onEnemyDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.enemyDeath));
+        // soundSettings.onPlayerDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.playerDeath));
+        // soundSettings.onOutOfResources.Register(gameObject, o => PlaySoundEffect(soundSettings.outOfResources));
+        // soundSettings.onMushroomCollected.Register(gameObject, o => PlaySoundEffect(soundSettings.mushroomCollected));
+        // soundSettings.onBulletExplode.Register(gameObject, o => PlaySoundEffect(soundSettings.bulletExploded));
     }
 
-    private void Update()
-    {
-        if (!shouldChangeBG) return;
-        DecreaseOldBGMusic();
-        IncreaseNewBMusic();
-    }
-
-    private void DecreaseOldBGMusic()
-    {
-        if (bgMusicChanged) return;
-        var oldBGnewVolume = currentBGMusic.volume - soundSettings.mixerFactor * 2f * Time.deltaTime;
-        if (oldBGnewVolume <= 0)
-        {
-            currentBGMusic.Stop();
-            currentBGMusic = changeTo;
-            bgMusicChanged = true;
-            return;
-        }
-        currentBGMusic.volume = oldBGnewVolume;
-    }
-
-    private void IncreaseNewBMusic()
-    {
-        var newBGVolume = changeTo.volume + soundSettings.mixerFactor * Time.deltaTime;
-        if (newBGVolume >= soundSettings.volume)
-        {
-            changeTo.volume = soundSettings.volume;
-            shouldChangeBG = false;
-            return;
-        }
-        changeTo.volume = newBGVolume;
-    }
-    
     private void StartMusic(AudioSource source)
     {
         currentBGMusic = source;
-        currentBGMusic.volume = soundSettings.volume;
+        changeTo = source;
+        currentBGMusic.volume = 0f;
         currentBGMusic.Play();
+        changeTo.DOFade(soundSettings.volume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
     private void PlayBGMusic(AudioSource source)
@@ -77,16 +51,17 @@ public class SoundController : MonoBehaviour
     private void ChangeMusic(AudioSource source)
     {
         if (source == currentBGMusic) return;
+        currentBGMusic = changeTo;
         changeTo = source;
         changeTo.volume = 0f;
         changeTo.Play();
-        shouldChangeBG = true;
-        bgMusicChanged = false;
+        currentBGMusic.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
+        changeTo.DOFade(soundSettings.volume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
     public void PlaySoundEffect(AudioClip audioClip)
     {
-        if (!audioClip) return;
+        if (audioClip == null) return;
         soundEffectsSource.PlayOneShot(audioClip);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enemies;
+using Events;
 using UnityEngine;
 using Upgrader;
 
@@ -10,6 +11,7 @@ public class Wall : MonoBehaviour
     [SerializeField] private Collider2D wallCollider;
     private Upgradable upgradable;
     private Fixable fixable;
+    [SerializeField] private GameEvent onWallDestroy;
 
     
     void Start()
@@ -23,6 +25,7 @@ public class Wall : MonoBehaviour
 
     private void OnBreak()
     {
+        onWallDestroy.Raise();
         upgradable.ReduceToGrade(0);
         wallCollider.enabled = false;
     }

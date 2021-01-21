@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Cycles;
 using Enemies;
+using Events;
 using Player;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
@@ -19,6 +20,7 @@ namespace Sheep
         private Selectable selectable;
         private Light2D light;
         private float health;
+        [SerializeField] private GameEvent onSheepDeath;
         private bool PlayerMaxMana => PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon;
         
         [Flags]
@@ -174,6 +176,7 @@ namespace Sheep
 
         private void Die()
         {
+            onSheepDeath.Raise();
             gameObject.SetActive(false);
         }
     }

@@ -251,6 +251,7 @@ MonoBehaviour:
   enemySettings: {fileID: 11400000, guid: d95f1b722aafef446aba0a9a0e3c85af, type: 2}
   enemyGFX: {fileID: 1667441341712273183}
   stuckTimeThreshold: 2.5
+  onEnemyDeath: {fileID: 11400000, guid: 906630ade5ebeda4a84d087379978e65, type: 2}
 --- !u!114 &1586172379
 MonoBehaviour:
   m_ObjectHideFlags: 0

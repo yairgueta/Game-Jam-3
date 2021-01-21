@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager>
     {
         Physics2D.queriesHitTriggers = true;
         Camera.main.eventMask = 1 << LayerMask.NameToLayer("Selectable") | 1 << LayerMask.NameToLayer("UI");
+        Cycles.CyclesManager.Instance.StartPlaying();
     }
 
     public void Restart()

@@ -21,6 +21,7 @@ namespace Cycles
         private CycleObject currentCycle;
         private Queue<CycleObject> cyclesQueue;
         private float timer;
+        private bool isPlaying;
 
         private void OnEnable()
         {
@@ -31,7 +32,7 @@ namespace Cycles
         {
             Instance = null;
         }
-
+        
         private void Awake()
         {
             var orderedCycles = new []{cyclesSettings[cyclesOrder[0]], cyclesSettings[cyclesOrder[1]], cyclesSettings[cyclesOrder[2]]};
@@ -41,8 +42,14 @@ namespace Cycles
             cyclesQueue = new Queue<CycleObject>(orderedCycles);
         }
 
+        public void StartPlaying()
+        {
+            isPlaying = true;
+        }
+        
         private void Update()
         {
+            if (!isPlaying) return;
             timer -= Time.deltaTime;
             if (timer > 0) return;
             ProgressCycle();

@@ -68,7 +68,6 @@ namespace Spawners
                     return;
                 }
             }
-
             Debug.LogError(gameObject.name + " Couldn't find free space for " + spnble.name);
         }
 

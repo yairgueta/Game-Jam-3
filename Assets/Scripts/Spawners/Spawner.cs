@@ -83,6 +83,7 @@ namespace Spawners
             var p = pooledObjects[queuePool.Dequeue()];
             p.gameObject.SetActive(true);
             randomMethod(p);
+            bs = p.physicsCollider;
             p.takenNodes.ForEach(g => g.Walkable = false);
         }
         
@@ -111,6 +112,21 @@ namespace Spawners
         public void SpawnAll()
         {
             Spawn(totalPoolAmount - CurrentPooled);
+        }
+
+        private Collider2D bs;
+        
+        private void OnDrawGizmos()
+        {
+            if (bs == null) return;
+            var bss = new Bounds(bs.transform.position + (Vector3) bs.offset, bs.bounds.size);
+            Gizmos.color = Color.red;
+            // Gizmos.DrawCube(bss.center, Vector3.one*30);
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(bss.center, bss.size);
+            // Debug.Log(bs.center);
+            // Debug.Log(bs.size);
+            // Gizmos.DrawCube(Vector3.zero, Vector3.one*50);
         }
     }
 }

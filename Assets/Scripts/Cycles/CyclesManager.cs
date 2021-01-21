@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,11 +39,6 @@ namespace Cycles
                 orderedCycles[i].OnCycleEnd = orderedCycles[(i + 1) % 3].OnCycleStart;
             currentCycle = orderedCycles[0];
             cyclesQueue = new Queue<CycleObject>(orderedCycles);
-        }
-
-        private void Start()
-        {
-            ProgressCycle();
         }
 
         private void Update()

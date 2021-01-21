@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71290ef305a0c9d4ea25ff7ae463d002, type: 3}
+  m_Name: Sound Settings
+  m_EditorClassIdentifier: 
+  dayMusic: {fileID: 8300000, guid: 12bc9a4eeecbc904388f917d0757c1d4, type: 3}
+  nightMusic: {fileID: 8300000, guid: 732e19c8c9ca89c45a95fcb57887c700, type: 3}
+  eclipseMusic: {fileID: 8300000, guid: d86515a6d25fa9b4dbe68271afec669d, type: 3}
+  enemyDeath: {fileID: 8300000, guid: defddbb8964812947aa460a770c17608, type: 3}
+  playerDeath: {fileID: 0}
+  outOfResources: {fileID: 0}
+  mushroomCollected: {fileID: 0}
+  bulletExploded: {fileID: 0}
+  onDayStart: {fileID: 11400000, guid: 660bda67326474a828ff51e5d2126210, type: 2}
+  onEclipseStart: {fileID: 11400000, guid: ced196fe55eb94eaca4c25ab594ec604, type: 2}
+  onNightStart: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}
+  onEnemyDeath: {fileID: 11400000, guid: 906630ade5ebeda4a84d087379978e65, type: 2}
+  onPlayerDeath: {fileID: 0}
+  onOutOfResources: {fileID: 0}
+  onMushroomCollected: {fileID: 0}
+  onBulletExplode: {fileID: 0}
+  volume: 0.1
+  fadeoutTime: 5
+  fadeInTime: 10

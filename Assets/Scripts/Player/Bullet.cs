@@ -17,6 +17,8 @@ namespace Player
             gameObject.SetActive(false);
         }
 
+
+
         public void Setup(Vector3 shootingDirection, float speed, float duration, GameEvent explosionEvent, float _power)
         {
             gameObject.SetActive(true);
@@ -30,6 +32,7 @@ namespace Player
         public void Disable()
         {
             onExplosionEvent.Raise(this);
+            rb2d.velocity = Vector2.zero;
             gameObject.SetActive(false);
         }
 

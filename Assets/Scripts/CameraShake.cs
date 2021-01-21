@@ -38,7 +38,6 @@ public class CameraShake : MonoBehaviour
 
     public void Shake()
     {
-        Debug.Log("miri");
         var perlin = camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         perlin.m_AmplitudeGain = intensity;
         shakeTimer = time;

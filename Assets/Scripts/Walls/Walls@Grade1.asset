@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Walls@Grade1
   m_EditorClassIdentifier: 
   completeSprites:
-  - {fileID: -1536805930604170367, guid: d99e8910a98374047b8cfb2370875372, type: 3}
-  - {fileID: 436020569704322110, guid: d99e8910a98374047b8cfb2370875372, type: 3}
-  - {fileID: -4691949163412759019, guid: d99e8910a98374047b8cfb2370875372, type: 3}
-  - {fileID: 5218092282149787072, guid: d99e8910a98374047b8cfb2370875372, type: 3}
+  - {fileID: -1536805930604170367, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
+  - {fileID: -4691949163412759019, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
+  - {fileID: 436020569704322110, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
+  - {fileID: 5218092282149787072, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
   crackedSprited:
-  - {fileID: -4057909357595780919, guid: 821a32dddbe404a3ba32ae6e8b2dc621, type: 3}
-  - {fileID: 5986293577970895832, guid: 821a32dddbe404a3ba32ae6e8b2dc621, type: 3}
-  - {fileID: 8652895354714682181, guid: 821a32dddbe404a3ba32ae6e8b2dc621, type: 3}
-  - {fileID: -8218510926705459213, guid: 821a32dddbe404a3ba32ae6e8b2dc621, type: 3}
-  spriteIndex: 2
+  - {fileID: -2695223057205537600, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  - {fileID: -5930745286017603572, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  - {fileID: -2245485231436899348, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  - {fileID: -3202933927235779249, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  spriteIndex: 0
   description: upgrade level 1
   healthPoints: 80
   requiredWoods: 7

@@ -135,7 +135,7 @@ namespace Sheep
             }
 
             sr.sprite = sprite;
-            selectable.SetInteractable((status & Status.Glow) != 0);
+            selectable.SetInteractable((status & Status.Glow) != 0 && (status & Status.Empty) == 0);
         }
 
         public void SetGlow(bool toGlow)

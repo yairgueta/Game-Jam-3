@@ -14,7 +14,7 @@ namespace Player
         [SerializeField] private Transform bulletGFX;
 
         private Tween tween;
-        private Vector3 originSale;
+        private Vector3 originScale;
         
         private Transform aimTransform;
         private bool ableToShoot = true;
@@ -30,7 +30,7 @@ namespace Player
 
         private void Start()
         {
-            originSale = bulletGFX.localScale;
+            originScale = bulletGFX.localScale;
             
         }
 
@@ -84,19 +84,19 @@ namespace Player
             if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)) return;
             
             onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
-            BulletAnim();
+            BulletAnimation();
         }
         
         
-        private void BulletAnim()
+        private void BulletAnimation()
         {
+            bulletGFX.localScale = Vector3.zero;
             tween?.Kill(true);
             ableToShoot = false;
             tween = DOTween.Sequence()
-            .Append(bulletGFX.DOScale(Vector3.zero, 0.1f))
-            .Append((bulletGFX.DOScale(originSale,0.1f))
-                .SetDelay(PlayerController.PlayerSettings.bulletCoolDown))
-            .AppendCallback(()=>ableToShoot=true);
+                .Append(bulletGFX.DOScale(originScale,PlayerController.PlayerSettings.bulletCoolDown * .5f)
+                        .SetDelay(PlayerController.PlayerSettings.bulletCoolDown * .5f))
+                .AppendCallback(()=>ableToShoot=true);
         }
         
     }

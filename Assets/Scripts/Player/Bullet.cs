@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Enemies;
 using Events;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace Player
         private Rigidbody2D rb2d;
         private GameEvent onExplosionEvent;
         private float power;
+        [SerializeField] private ParticleSystem particle;
+        [SerializeField] private GameObject circle;
 
         private void Awake()
         {
@@ -26,13 +29,25 @@ namespace Player
             power = _power;
             
             rb2d.AddForce(shootingDirection * speed, ForceMode2D.Impulse);
-            Invoke(nameof(Disable), duration+5);   
+            Invoke(nameof(Disable), duration);   
         }
 
         public void Disable()
         {
             onExplosionEvent.Raise(this);
+            StartCoroutine(Particle());
+            // rb2d.velocity = Vector2.zero;
+            // gameObject.SetActive(false);
+        }
+
+        IEnumerator Particle()
+        {
+            particle.Play();
+            circle.SetActive(false);
+            yield return new WaitForSeconds(0.4f);
             rb2d.velocity = Vector2.zero;
+            particle.Stop();
+            circle.SetActive(true);
             gameObject.SetActive(false);
         }
 

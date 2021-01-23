@@ -1,45 +1,53 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Enemies;
 using Events;
 using UnityEngine;
 using Upgrader;
 
-public class Wall : MonoBehaviour
+namespace Walls
 {
-    [SerializeField] private Collider2D wallCollider;
-    private Upgradable upgradable;
-    private Fixable fixable;
-    [SerializeField] private GameEvent onWallDestroy;
-
-    
-    void Start()
+    public class Wall : MonoBehaviour
     {
-        upgradable = GetComponent<Upgradable>();
-        fixable ??= GetComponent<Fixable>() ?? GetComponentInChildren<Fixable>();
-        OnUpgrade();
-        upgradable.onUpgrade += OnUpgrade;
-        fixable.onWallBreak += OnBreak;
-    }
+        [SerializeField] private Collider2D wallCollider;
+        [SerializeField] private GameEvent onWallDestroy;
+        private Upgradable upgradable;
+        private Fixable fixable;
+        private SpriteRenderer sr;
 
-    private void OnBreak()
-    {
-        onWallDestroy.Raise();
-        upgradable.ReduceToGrade(0);
-        wallCollider.enabled = false;
-    }
-    
+        private void Awake()
+        {
+            sr = GetComponent<SpriteRenderer>();
+        }
 
-    public void OnUpgrade()    
-    {
-        var gradeAttributes = upgradable.GetCurGradeAttributes();
-        var prevGrade = upgradable.GetPreviousGradeAttributes();
+        void Start()
+        {
+            upgradable = GetComponent<Upgradable>();
+            fixable = GetComponent<Fixable>() ?? GetComponentInChildren<Fixable>();
+            OnUpgrade();
+            upgradable.onUpgrade += OnUpgrade;
+            fixable.onDeath += OnDestroyed;
+            fixable.onFixed += () => sr.sprite = upgradable.CompleteSprite;
+            fixable.onHalfHealth += () => sr.sprite = upgradable.CrackedSprite;
+        }
+
+        private void OnDestroyed()
+        {
+            onWallDestroy.Raise();
+            upgradable.ReduceToGrade(0);
+            wallCollider.enabled = false;
+        }
+
+
+        public void OnUpgrade()    
+        {
+            var gradeAttributes = upgradable.GetCurGradeAttributes();
+            var prevGrade = upgradable.GetPreviousGradeAttributes();
         
-        fixable.SetUp(gradeAttributes.healthPoints, upgradable.GetCompleteSprite(), upgradable.GetCrackedSprite(),
-            prevGrade.requiredWoods, prevGrade.requiredRocks);
-        wallCollider.enabled = true;
+            fixable.SetUp(gradeAttributes.healthPoints, prevGrade.requiredWoods, prevGrade.requiredRocks);
+            wallCollider.enabled = true;
+            sr.sprite = upgradable.CompleteSprite;
+        }
+
+        
+
+
     }
-
-
 }

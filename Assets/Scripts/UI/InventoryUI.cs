@@ -83,11 +83,10 @@ namespace UI
                 var difference = tArgs.difference;
                 var animText = TypeToAnimationText(type, difference);
                 var tempText = TypeToText(type);
-                if (animText == null) return; //TODO FIX THIS LINE
+                if (tempText == null) return; //TODO FIX THIS LINE
                 DOTween.Kill(type, true);
                 tempText.text = inventory[type].ToString();
                 tween?.Kill(true);
-                animText.gameObject.transform.localScale = Vector3.zero;;
                 if (tArgs.isIncreasing > 0)
                 {
                     animText.text = "+" + animText.text;
@@ -95,7 +94,7 @@ namespace UI
                 }
                 else if (tArgs.isIncreasing < 0)
                 {
-                    animText.text = "-" + animText.text;
+                    animText.text = animText.text; // todo: find out why - already happens
                     AnimateChange(animText, type);
                     // tempText.gameObject.transform.DOScaleY(.8f, .18f).SetLoops(2, LoopType.Yoyo).SetId(type);
                 }
@@ -107,10 +106,10 @@ namespace UI
 
         private void AnimateChange(TMP_Text animText, ResourceType type)
         {
+            animText.gameObject.transform.localScale = Vector3.zero;
             tween = DOTween.Sequence().Append(animText.gameObject.transform.DOScale(
-                    1.2f * Vector3.one, .25f).SetLoops(2, LoopType.Yoyo).SetId(type))
-                .AppendInterval(2f)
-                .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f));
+                    1.2f * Vector3.one, .25f).SetId(type))
+                .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(2f));
         }
 
     }

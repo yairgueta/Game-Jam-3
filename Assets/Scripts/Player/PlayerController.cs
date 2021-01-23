@@ -36,6 +36,8 @@ namespace Player
             playerSettings.curHealth = playerSettings.maxHealth;
             playerSettings.UpdateMana(0);
             playerSettings.curMana = playerSettings.initialMana;
+            playerSettings.onHealthChange.Raise();
+            playerSettings.onManaChange.Raise();
         }
 
         private void Update()

@@ -47,7 +47,7 @@ namespace Player
                 }
                 var difference = value - quantityMap[t];
                 quantityMap[t] = value;
-                onChange.Raise(new CollectingArgs(t, difference));
+                onChange.Raise(new CollectingArgs(t, difference, difference));
             }
         } 
 
@@ -59,17 +59,20 @@ namespace Player
         {
             public readonly ResourceType type;
             public readonly int isIncreasing;
+            public readonly int difference;
 
             public CollectingArgs(ResourceType type)
             {
                 this.type = type;
                 isIncreasing = 0;
+                difference = 0;
             }
 
-            public CollectingArgs(ResourceType type, int isIncreasing)
+            public CollectingArgs(ResourceType type, int isIncreasing, int diff)
             {
                 this.type = type;
                 this.isIncreasing = Mathf.Clamp(isIncreasing, -1, 1);
+                difference = diff;
             }
         }
         #endregion

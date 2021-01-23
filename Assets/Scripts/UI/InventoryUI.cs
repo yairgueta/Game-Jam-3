@@ -82,7 +82,7 @@ namespace UI
                 DOTween.Kill(type, true);
                 tempText.text = inventory[type].ToString();
                 animText.text = (Mathf.Abs(int.Parse(tempText.text) - inventory[type])).ToString();
-                DOTween.Kill(animText, true);
+                DOTween.KillAll(animText);
                 animText.gameObject.transform.DOScale(1f, 0f);
                 if (tArgs.isIncreasing > 0)
                 {

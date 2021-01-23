@@ -2207,6 +2207,8 @@ MonoBehaviour:
   pooledPrefab:
   - {fileID: 2823448820945319993, guid: 315e8164702dc457f8450e0bbf439b07, type: 3}
   totalPoolAmount: 300
+  useOverFrameSpawning: 1
+  overFrameTimeout: 0.5
   startingAmount: 0
   usePerlinNoise: 0
   percentageToSpawn:
@@ -3862,6 +3864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manaFiller: {fileID: 799075428}
+  heart: {fileID: 0}
 --- !u!222 &1354760941
 CanvasRenderer:
   m_ObjectHideFlags: 0

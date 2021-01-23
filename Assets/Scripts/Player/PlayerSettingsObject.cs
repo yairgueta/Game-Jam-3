@@ -6,14 +6,13 @@ namespace Player
     [CreateAssetMenu(menuName = "Settings/Player Settings", order = 0)]
     public class PlayerSettingsObject : ScriptableObject
     {
-        //TODO: make them private?
         [Header("Attributes")]
         public float speed = 10f;
         public float maxHealth = 50f;
         public int maxMana = 100;
         public int initialMana = 70;
-        public float recoveryGap = 1f;    // Gap Between Health Addition On Eclipse
-        public float lifeAdditionAmount = 1f;    // On Eclipse
+        public float recoveryGap = 1f;              // Gap Between Health Addition On Eclipse
+        public float lifeAdditionAmount = 1f;       // On Eclipse
         
         
         [Header("Bullets Properties")]

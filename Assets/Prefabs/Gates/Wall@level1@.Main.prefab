@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallCollider: {fileID: 6731850016589482698}
+  onWallDestroy: {fileID: 11400000, guid: c5d43385e4ff9a84883ca6a064af7377, type: 2}
 --- !u!114 &3728940592743196378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,10 +159,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.58891153, y: 0.31011906}
+    - - {x: -0.67847496, y: 0.39968252}
       - {x: 0.62229264, y: -0.40729225}
       - {x: 0.672384, y: 0.7417737}
-      - {x: -0.5779009, y: 1.3836503}
+      - {x: -0.6495517, y: 1.4433591}
 --- !u!1 &5898388277213431402
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,10 +220,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.60565436, y: 0.37362903}
-      - {x: 0.66368115, y: -0.42384756}
-      - {x: 0.67106557, y: -0.17741728}
-      - {x: -0.61594325, y: 0.6035211}
+    - - {x: -0.61162525, y: 0.0034333467}
+      - {x: 0.6517395, y: -0.50744015}
+      - {x: 0.6591238, y: 0.07933128}
+      - {x: -0.61594325, y: 0.78861904}
 --- !u!114 &6763729985872857892
 MonoBehaviour:
   m_ObjectHideFlags: 0

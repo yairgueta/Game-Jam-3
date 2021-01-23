@@ -15,10 +15,14 @@ MonoBehaviour:
   completeSprites:
   - {fileID: 5367596630024612521, guid: 78481b88697c34301942eaa77f59ef36, type: 3}
   - {fileID: -2600560975786441760, guid: 78481b88697c34301942eaa77f59ef36, type: 3}
+  - {fileID: -2600560975786441760, guid: 78481b88697c34301942eaa77f59ef36, type: 3}
+  - {fileID: 5367596630024612521, guid: 78481b88697c34301942eaa77f59ef36, type: 3}
   crackedSprited:
-  - {fileID: 1783381997064855523, guid: 136a6d03c62f94053acf2205533fcedb, type: 3}
-  - {fileID: -5346261853866320983, guid: 136a6d03c62f94053acf2205533fcedb, type: 3}
-  spriteIndex: 0
+  - {fileID: -632787769138493405, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  - {fileID: -632787769138493405, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  - {fileID: -632787769138493405, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  - {fileID: -632787769138493405, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  spriteIndex: 3
   description: upgrade level 2
   healthPoints: 120
   requiredWoods: 10

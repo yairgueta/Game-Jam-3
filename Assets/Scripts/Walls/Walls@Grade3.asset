@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completeSprites:
   - {fileID: 3879520232261704139, guid: 3feea8c4ee16445d4983efd2d1dda7f9, type: 3}
+  - {fileID: 3879520232261704139, guid: 3feea8c4ee16445d4983efd2d1dda7f9, type: 3}
+  - {fileID: 3879520232261704139, guid: 3feea8c4ee16445d4983efd2d1dda7f9, type: 3}
   crackedSprited:
-  - {fileID: -7434716317444168983, guid: 67fd3d084e53143f3b082b85069a88b5, type: 3}
-  spriteIndex: 0
+  - {fileID: -8575390091591404169, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  - {fileID: -1822375406331950582, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  - {fileID: -2377242735199449079, guid: a4ed3b055cc291b418a073a62d71381a, type: 3}
+  spriteIndex: 2
   description: upgrade level 3
   healthPoints: 160
   requiredWoods: 20

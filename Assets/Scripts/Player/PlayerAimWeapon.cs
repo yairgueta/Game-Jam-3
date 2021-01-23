@@ -69,7 +69,7 @@ namespace Player
 
         private void Shooting()
         {
-            if (!Input.GetMouseButtonDown(0)) return;
+            if (!Input.GetMouseButtonDown(1)) return;
             
             var hit = Physics2D.Raycast(mousePosition, Vector3.forward, 15f, shootingLayerMask);
 

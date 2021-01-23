@@ -112,7 +112,15 @@ namespace Enemies
 
         public void Die()
         {
+            animator.SetTrigger("Die");
+            // gameObject.SetActive(false);
+        }
+
+        public void SetDead()
+        {
+            Debug.Log("dead");
             gameObject.SetActive(false);
+
         }
 
         private void ManageDirection()

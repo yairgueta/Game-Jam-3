@@ -88,6 +88,8 @@ MonoBehaviour:
   pooledPrefab:
   - {fileID: 1667441342324272327, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
   totalPoolAmount: 30
+  useOverFrameSpawning: 0
+  overFrameTimeout: 0.5
   startingAmount: 0
   usePerlinNoise: 0
   percentageToSpawn:

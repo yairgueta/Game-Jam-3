@@ -66,8 +66,7 @@ namespace Cycles
         
         private void OnGUI()
         {
-            GUILayout.Space(50);
-            GUILayout.Label(currentCycle.name + ": " + Math.Round(timer, 2));
+            GUI.Label(new Rect(Screen.width*.8f, 0, Screen.width*.2f, Screen.height*.1f), currentCycle.name + ": " + Math.Round(timer, 2));
         }
 
         public float TimePercentage => timer / currentCycle.Duration;

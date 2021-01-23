@@ -9,7 +9,7 @@ namespace Player
     {
         Wood, 
         Rock, 
-        Mushroom,
+        // Mushroom,
     }
     
     [CreateAssetMenu]
@@ -30,7 +30,7 @@ namespace Player
         {
             quantityMap = new SerializedDictionary<ResourceType, int>
             {
-                {ResourceType.Wood, initWood}, {ResourceType.Rock, initRock}, {ResourceType.Mushroom, 0}
+                {ResourceType.Wood, initWood}, {ResourceType.Rock, initRock}
             };
             onChange.Raise();
         }

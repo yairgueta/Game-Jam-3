@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Collectables
 {
-    public abstract class CollectableObject : ScriptableObject
+    [CreateAssetMenu(menuName = "Collectables/Other")]
+    public class CollectableObject : ScriptableObject
     {
         public GameEvent onCollected;
 

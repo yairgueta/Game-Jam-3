@@ -1,4 +1,5 @@
 using System;
+using Pathfinding;
 using UnityEditor;
 using UnityEditor.Rendering;
 using UnityEditorInternal;
@@ -25,6 +26,9 @@ namespace Spawners.Editor
         private Rect objRect;
         private float total;
 
+        private SerializedProperty useOverFrameSpawning;
+        private SerializedProperty overFrameTimeout;
+            
         private void OnEnable()
         {
             serializedObject.Update();
@@ -39,6 +43,9 @@ namespace Spawners.Editor
             prefabsArray = serializedObject.FindProperty("pooledPrefab");
             prefabsList = new ReorderableList(serializedObject, prefabsArray, true, true, true, true); 
             percentageToSpawn = serializedObject.FindProperty("percentageToSpawn");
+            
+            useOverFrameSpawning = serializedObject.FindProperty("useOverFrameSpawning");
+            overFrameTimeout = serializedObject.FindProperty("overFrameTimeout");
             
             percentageToSpawn.arraySize = prefabsArray.arraySize;
             
@@ -62,6 +69,26 @@ namespace Spawners.Editor
             serializedObject.Update();
             var remainingToPool = totalPool.intValue - spawner.CurrentPooled;
             base.OnInspectorGUI();
+
+            if (GUILayout.Button($"Instantiate All Pool ({spawner.transform.childCount})"))
+            {
+                for (int i = spawner.transform.childCount - 1; i >= 0; i--)
+                {
+                    DestroyImmediate(spawner.transform.GetChild(i).gameObject);
+                }
+
+                for (int i = 0; i < totalPool.intValue; i++)
+                {
+                    var prefab = spawner.GetRandomPrefab();
+                    var itn = Instantiate(prefab, spawner.transform);
+                    itn.SetActive(false);
+                }
+            }
+            
+            EditorGUILayout.PropertyField(useOverFrameSpawning);
+            if (useOverFrameSpawning.boolValue) EditorGUILayout.PropertyField(overFrameTimeout);
+            
+            
             total = 0;
             prefabsList.DoLayoutList();
             prefabsList.drawElementCallback = (rect, index, active, focused) =>
@@ -75,13 +102,14 @@ namespace Spawners.Editor
                 serVal.floatValue = Mathf.Min(serVal.floatValue, 1 - total);
                 total = Mathf.Min(1f, total + serVal.floatValue);
             };
+            prefabsList.drawHeaderCallback += rect => EditorGUI.DropShadowLabel(rect, "Prefabs List and Percentages"); 
             
             percentageToSpawn.GetArrayElementAtIndex(percentageToSpawn.arraySize - 1).floatValue += 1 - total;
             
             DrawRandomNoiseField();
 
-            DrawSpawnLine(remainingToPool, "Spawn Objects", spawner.SpawnRandom, ref ranAmount);
-            DrawSpawnLine(remainingToPool, "Spawn Noise", spawner.SpawnNoise, ref noiseAmount);
+            DrawSpawnLine(remainingToPool, "Spawn Objects", i => spawner.SpawnRandom(i, false), ref ranAmount);
+            DrawSpawnLine(remainingToPool, "Spawn Noise", i=>spawner.SpawnNoise(i, false), ref noiseAmount);
             
             DrawRespawnsButtons();
 
@@ -126,8 +154,8 @@ namespace Spawners.Editor
             if (GUILayout.Button("Respawn All (" + spawner.CurrentPooled + ")"))
             {
                 spawner.DespawnAll();
-                if (startWithPerlinNoise.boolValue) spawner.SpawnNoise(totalPool.intValue);
-                else spawner.SpawnRandom(totalPool.intValue);
+                if (startWithPerlinNoise.boolValue) spawner.SpawnNoise(totalPool.intValue, false);
+                else spawner.SpawnRandom(totalPool.intValue, false);
             }
 
             if (GUILayout.Button("Despawn All (" + spawner.CurrentPooled + ")")) spawner.DespawnAll();

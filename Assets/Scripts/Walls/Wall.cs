@@ -34,9 +34,8 @@ namespace Walls
             upgradable.ReduceToGrade(0);
             wallCollider.enabled = false;
         }
-
-
-        public void OnUpgrade()    
+        
+        private void OnUpgrade()    
         {
             var gradeAttributes = upgradable.GetCurGradeAttributes();
             var prevGrade = upgradable.GetPreviousGradeAttributes();
@@ -45,9 +44,5 @@ namespace Walls
             wallCollider.enabled = true;
             sr.sprite = upgradable.CompleteSprite;
         }
-
-        
-
-
     }
 }

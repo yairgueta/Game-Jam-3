@@ -14,10 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   completeSprites:
   - {fileID: -4824135590178980912, guid: f7d887eb3c5c4416f997738a87f014af, type: 3}
-  crackedSprited:
-  - {fileID: -4824135590178980912, guid: f7d887eb3c5c4416f997738a87f014af, type: 3}
-  spriteIndex: 0
-  description: upgrade level 0
+  crackedSprites: []
   healthPoints: 0
   requiredWoods: 2
   requiredRocks: 3

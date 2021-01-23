@@ -10,10 +10,12 @@ public class Recovery : MonoBehaviour
     private bool recoveryMode;
     private bool isEclipseTime;
     private float timer;
+    [SerializeField] private ParticleSystem particleSystem;
     
     
     void Start()
     {
+        particleSystem.Stop();
         recoveryMode = false;
         timer = 0f;
         CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, arg0 => ChangeToEclipseTime());
@@ -44,15 +46,15 @@ public class Recovery : MonoBehaviour
     private void OutOfEclipseTime()
     {
         isEclipseTime = false;
+        particleSystem.Stop();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!isEclipseTime) return;
-        if (other.CompareTag("Sheep") && !recoveryMode)
-        {
-            recoveryMode = true;
-        }
+        if (!other.CompareTag("Sheep") || recoveryMode) return;
+        recoveryMode = true;
+        particleSystem.Play();
     }
 
 
@@ -60,9 +62,8 @@ public class Recovery : MonoBehaviour
     {
         if (!isEclipseTime) return;
         if (!recoveryMode) return;
-        if (other.CompareTag("Sheep"))
-        {
-            recoveryMode = false;
-        }
+        if (!other.CompareTag("Sheep")) return;
+        recoveryMode = false;
+        particleSystem.Stop();
     }
 }

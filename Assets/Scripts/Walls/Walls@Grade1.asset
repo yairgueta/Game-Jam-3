@@ -13,17 +13,13 @@ MonoBehaviour:
   m_Name: Walls@Grade1
   m_EditorClassIdentifier: 
   completeSprites:
-  - {fileID: -1536805930604170367, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
-  - {fileID: -4691949163412759019, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
-  - {fileID: 436020569704322110, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
-  - {fileID: 5218092282149787072, guid: 2f136875e7690475b9c6001e68ea56fe, type: 3}
-  crackedSprited:
+  - {fileID: -7241879989780444375, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
+  - {fileID: 8435836319720060072, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
+  - {fileID: 5479258139330378744, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
+  crackedSprites:
   - {fileID: -5726578055183476937, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
   - {fileID: 7304477173356067291, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
   - {fileID: 7830007947761811189, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
-  - {fileID: 7830007947761811189, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
-  spriteIndex: 0
-  description: upgrade level 1
   healthPoints: 80
   requiredWoods: 7
   requiredRocks: 4

@@ -4000,7 +4000,7 @@ PrefabInstance:
     - target: {fileID: 4310957693348009089, guid: 30837691f612e42db884a98441b4c850, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2600560975786441760, guid: 78481b88697c34301942eaa77f59ef36, type: 3}
+      objectReference: {fileID: -3083754176343223731, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
     - target: {fileID: 4310957693348009093, guid: 30837691f612e42db884a98441b4c850, type: 3}
       propertyPath: m_Name
       value: Wall@level1@.Main (1)
@@ -5570,6 +5570,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1048692822}
     m_Modifications:
+    - target: {fileID: 4310957693348009089, guid: 30837691f612e42db884a98441b4c850, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8435836319720060072, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
     - target: {fileID: 4310957693348009093, guid: 30837691f612e42db884a98441b4c850, type: 3}
       propertyPath: m_Name
       value: Wall@level1@.Main (2)

@@ -25,6 +25,7 @@ namespace Enemies
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
+        private readonly int dieAnimationID = Animator.StringToHash("Die");
 
         private float stuckTimer;
         
@@ -61,6 +62,11 @@ namespace Enemies
             }
             ManageDirection();
         }
+
+        // private void OnEnable()
+        // {
+        //     mode = Mode.Walking;
+        // }
 
         private void ManageStuck()
         {
@@ -114,8 +120,8 @@ namespace Enemies
 
         public void Die()
         {
-            animator.SetTrigger("Die");
             mode = Mode.Dying;
+            animator.SetTrigger(dieAnimationID);
         }
 
         public void SetDead()

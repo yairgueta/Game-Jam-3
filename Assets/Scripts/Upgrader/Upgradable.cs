@@ -1,6 +1,5 @@
 using System;
 using Player;
-using Selections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,43 +7,31 @@ namespace Upgrader
 {
     public class Upgradable : MonoBehaviour
     {
-        private InventoryObject inventory;
-        [SerializeField] private UpgradableObject[] grades;
         public Action onUpgrade;
-        private SpriteRenderer sr;
+        
+        [SerializeField] private UpgradableObject[] grades;
+        private InventoryObject Inventory => PlayerController.CurrentInventory;
         private int curGrade;
         private int spriteIndex;
-
         
+        public Sprite CompleteSprite => grades[curGrade].completeSprites[spriteIndex];
+        
+        public Sprite CrackedSprite => grades[curGrade].crackedSprites[spriteIndex];
+
         private void Awake()
         {
-            curGrade = 1;
-            inventory = PlayerController.CurrentInventory;
-
-            sr = GetComponent<SpriteRenderer>();
-        }
-
-        public Sprite GetCompleteSprite()
-        {
-            return grades[curGrade].completeSprites[spriteIndex];
+            curGrade = 0;
+            Upgrade();
         }
         
-        public Sprite GetCrackedSprite()
-        {
-            return grades[curGrade].crackedSprited[spriteIndex];
-        }
-
         public void Upgrade()
         {
             curGrade++;
             UpgradableObject current = grades[curGrade];
             spriteIndex = Random.Range(0, current.completeSprites.Length);
-            current.spriteIndex = spriteIndex;
-            sr.sprite = current.completeSprites[spriteIndex];
-            inventory[ResourceType.Wood] -= grades[curGrade].requiredWoods;
-            inventory[ResourceType.Rock] -= grades[curGrade].requiredRocks;
+            Inventory[ResourceType.Wood] -= grades[curGrade].requiredWoods;
+            Inventory[ResourceType.Rock] -= grades[curGrade].requiredRocks;
             onUpgrade?.Invoke();
-            
         }
 
         public void ReduceToGrade(int grade)
@@ -52,8 +39,7 @@ namespace Upgrader
             curGrade = grade;
             UpgradableObject current = grades[curGrade];
             spriteIndex = Random.Range(0, current.completeSprites.Length);
-            current.spriteIndex = spriteIndex;
-            sr.sprite = current.completeSprites[spriteIndex];
+            onUpgrade?.Invoke();
         }
 
         public UpgradableObject GetCurGradeAttributes()

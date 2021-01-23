@@ -7,72 +7,63 @@ namespace Upgrader
 {
     public class Fixable : MonoBehaviour, IEnemyDamage
     {
-        private InventoryObject inventory;
-        public Action onWallBreak;
-        private SpriteRenderer sr;
-        private Sprite completeSprite;
-        private Sprite crackedSprite;
-        private float maxHealth;
+        public Action onDeath, onHalfHealth, onFixed;
         [SerializeField] private float curHealth;
-        private int requiredWoods;
-        private int requiredRocks;
-
-
-        [SerializeField] private float crackedPercentage = 0.5f;
-
-        private void Start()
-        {
-            inventory = PlayerController.CurrentInventory;
-            sr = GetComponent<SpriteRenderer>();
-            if (sr == null)
-            {
-                sr = GetComponentInParent<SpriteRenderer>();
-            }
-        }
-
-        public Sprite GetCompleteSprite()
-        {
-            return completeSprite;
-        }
-        public void SetUp(float health, Sprite complete, Sprite cracked, int requiredWood, int requiredRock)
+        [SerializeField] private float crackedPercentage = .5f;
+        
+        private float maxHealth;
+        private int maxRequiredWoods;
+        private int maxRequiredRocks;
+        private bool halfHealthEventThrew = false;
+        private InventoryObject Inventory => PlayerController.CurrentInventory;
+        public bool ShouldFix => curHealth < maxHealth && curHealth > 0;
+        public int RequiredWood => Mathf.FloorToInt((curHealth / maxHealth) * maxRequiredWoods);
+        public int RequiredRock => Mathf.FloorToInt((curHealth / maxHealth) * maxRequiredRocks);
+        
+        
+        public void SetUp(float health, int requiredWood, int requiredRock)
         {
             maxHealth = health;
             curHealth = maxHealth;
-            completeSprite = complete;
-            crackedSprite = cracked;
-            requiredRocks = requiredRock;
-            requiredWoods = requiredWood;
+            maxRequiredRocks = requiredRock;
+            maxRequiredWoods = requiredWood;
         }
-    
-        private void Cracked()
-        {
-            sr.sprite = crackedSprite;
-        }
-
-        public bool ShouldFix => curHealth < maxHealth && curHealth > 0;
-        public int RequiredWood => Mathf.FloorToInt((curHealth / maxHealth) * requiredWoods);
-        public int RequiredRock => Mathf.FloorToInt((curHealth / maxHealth) * requiredRocks);
 
         public void Fix()
         {
-            inventory[ResourceType.Wood] -= RequiredWood;
-            inventory[ResourceType.Rock] -= requiredRocks;
-            sr.sprite = completeSprite;
+            Inventory[ResourceType.Wood] -= RequiredWood;
+            Inventory[ResourceType.Rock] -= maxRequiredRocks;
             curHealth = maxHealth;
+            halfHealthEventThrew = false;
         }
     
         public void TakeDamage(float damage)
         {
             curHealth -= damage;
-            if (curHealth/maxHealth< crackedPercentage)
+            if (curHealth / maxHealth <= crackedPercentage && !halfHealthEventThrew)
             {
-                Cracked();
+                onHalfHealth?.Invoke();
+                halfHealthEventThrew = true;
             }
             if (curHealth <= 0)
-            {
-                onWallBreak?.Invoke();
-            }
+                onDeath?.Invoke();
         }
 
+        public static int i = 0;
+        public int index;
+
+        private void Start()
+        {
+            index = i++;
+        }
+
+        private void OnGUI()
+        {
+            GUILayout.Space(30f+20f*index);
+            if (GUILayout.Button("damage"))
+            {
+                TakeDamage(maxHealth / 4);
+            }
+        }
     }
 }

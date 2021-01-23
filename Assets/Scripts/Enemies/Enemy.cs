@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public enum Mode {Walking, Attacking}
+    public enum Mode {Walking, Attacking, Dying}
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private EnemySettings enemySettings;
@@ -55,6 +55,8 @@ namespace Enemies
                     aiPath.canMove = true;
                     aiPath.canSearch = true;
                     ManageStuck();
+                    break;
+                case Mode.Dying:
                     break;
             }
             ManageDirection();
@@ -113,14 +115,12 @@ namespace Enemies
         public void Die()
         {
             animator.SetTrigger("Die");
-            // gameObject.SetActive(false);
+            mode = Mode.Dying;
         }
 
         public void SetDead()
         {
-            Debug.Log("dead");
             gameObject.SetActive(false);
-
         }
 
         private void ManageDirection()
@@ -138,7 +138,7 @@ namespace Enemies
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (mode == Mode.Attacking) return;
+            if (mode == Mode.Attacking || mode == Mode.Dying) return;
             var hit = other.gameObject.GetComponent<IEnemyDamage>();
             if (hit == null) return;
             AttackMode();
@@ -147,6 +147,7 @@ namespace Enemies
 
         private void OnCollisionExit2D(Collision2D other)
         {
+            if (mode == Mode.Dying) return;
             if (other.gameObject.GetComponent<IEnemyDamage>() != currentAttacked) return;
             if (currentAttacked as Sheep.Sheep != null) gameObject.SetActive(false);
             currentAttacked = null;

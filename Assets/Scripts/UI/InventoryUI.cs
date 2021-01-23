@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using Player;
 using UnityEngine;
@@ -10,6 +11,10 @@ namespace UI
     {
         [SerializeField] private GameObject woodDisplay;
         [SerializeField] private GameObject rockDisplay;
+        
+        [SerializeField] private TMP_Text woodAnimationTxt;
+        [SerializeField] private TMP_Text rockAnimationTxt;
+        
         
         private TMP_Text woodText, rockText;
 
@@ -29,6 +34,19 @@ namespace UI
                     return woodText;
                 case ResourceType.Rock:
                     return rockText;
+            }
+
+            return null;
+        }
+        
+        private TMP_Text TypeToAnimationText(ResourceType type)
+        {
+            switch (type)
+            {
+                case ResourceType.Wood:
+                    return woodAnimationTxt;
+                case ResourceType.Rock:
+                    return rockAnimationTxt;
             }
 
             return null;
@@ -58,18 +76,37 @@ namespace UI
             else
             {
                 var type = tArgs.type;
-                var tmpText = TypeToText(type);
-                if (tmpText == null) return; //TODO FIX THIS LINE
+                var animText = TypeToAnimationText(type);
+                var tempText = TypeToText(type);
+                if (animText == null) return; //TODO FIX THIS LINE
                 DOTween.Kill(type, true);
-                tmpText.text = inventory[type].ToString();
+                tempText.text = inventory[type].ToString();
+                animText.text = (Mathf.Abs(int.Parse(tempText.text) - inventory[type])).ToString();
+                DOTween.Kill(animText, true);
+                animText.gameObject.transform.DOScale(1f, 0f);
                 if (tArgs.isIncreasing > 0)
-                    tmpText.gameObject.transform.DOScale(1.2f * Vector3.one, .25f).SetLoops(2, LoopType.Yoyo).SetId(type);
+                {
+                    animText.text = "+" + animText.text;
+                    tempText.gameObject.transform.DOScale(1.2f * Vector3.one, .25f).SetLoops(2, LoopType.Yoyo)
+                        .SetId(type);
+                    StartCoroutine(TextFade(animText));
+                }
                 else if (tArgs.isIncreasing < 0)
-                    tmpText.gameObject.transform.DOScaleY(.8f, .18f).SetLoops(2, LoopType.Yoyo).SetId(type);
+                {
+                    animText.text = "-" + animText.text;
+                    tempText.gameObject.transform.DOScaleY(.8f, .18f).SetLoops(2, LoopType.Yoyo).SetId(type);
+                    StartCoroutine(TextFade(animText));
+                }
             }
             
             // woodDisplay.SetActive(inventory[ResourceType.Wood] != 0);
             // rockDisplay.SetActive(inventory[ResourceType.Rock] != 0);
+        }
+
+        private IEnumerator TextFade(TMP_Text text)
+        {
+            yield return new WaitForSeconds(1f);
+            text.gameObject.transform.DOScale(0f, 1f);
         }
     }
 }

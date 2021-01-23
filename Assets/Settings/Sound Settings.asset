@@ -28,6 +28,7 @@ MonoBehaviour:
   onOutOfResources: {fileID: 0}
   onMushroomCollected: {fileID: 0}
   onBulletExplode: {fileID: 0}
-  volume: 0.1
-  fadeoutTime: 5
-  fadeInTime: 10
+  bgVolume: 0.1
+  sfxVolume: 0.1
+  fadeoutTime: 8
+  fadeInTime: 12

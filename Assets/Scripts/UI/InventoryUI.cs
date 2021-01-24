@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Player;
 using UnityEngine;
@@ -7,26 +8,21 @@ namespace UI
 {
     public class InventoryUI : MonoBehaviour
     {
-        [SerializeField] private GameObject woodDisplay;
-        [SerializeField] private GameObject rockDisplay;
+        // [SerializeField] private GameObject woodDisplay;
+        // [SerializeField] private GameObject rockDisplay;
+        [SerializeField] private TMP_Text woodText, rockText;
         
         [SerializeField] private TMP_Text woodAnimationTxt;
         [SerializeField] private TMP_Text rockAnimationTxt;
         
         private Tween woodTween;
         private Tween rockTween;
-        
-        
-        private TMP_Text woodText, rockText;
 
-        private void Awake()
+        private void Start()
         {
-            woodText = woodDisplay.GetComponentInChildren<TMP_Text>();
-            rockText = rockDisplay.GetComponentInChildren<TMP_Text>();
+            UpdateResources(null);
         }
 
-
-        
         private (TMP_Text, TMP_Text) TypeToText(ResourceType type, int diff)
         {
             switch (type)

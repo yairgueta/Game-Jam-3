@@ -16,18 +16,14 @@ namespace Upgrader
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private GameEvent onNewSelection;
         [SerializeField] private Button btn;
-        [SerializeField] private List<GameObject> costsImages;
+        [SerializeField] private TMP_Text woodAmount;
+        [SerializeField] private TMP_Text rockAmount;
         private Tween raiseAnimationTween;
         private TMP_Text btnText;
-        private TMP_Text woodAmount;
-        private TMP_Text rockAmount;
 
         private void Start()
         {
             GetComponent<Canvas>().worldCamera = Camera.main;
-            woodAmount = costsImages[0].GetComponentInChildren<TMP_Text>();
-            rockAmount = costsImages[1].GetComponentInChildren<TMP_Text>();
-            
             btnText = btn.GetComponentInChildren<TMP_Text>();
             var listener = gameObject.AddComponent<GameEventListener>();
             listener.InitEvent(onNewSelection);
@@ -81,7 +77,7 @@ namespace Upgrader
             btn.interactable = true;
             btn.onClick.RemoveAllListeners();
             
-            costsImages.ForEach(c => c.SetActive(true));
+            // costsImages.ForEach(c => c.SetActive(true));
             
             void BtnOnClick()
             {
@@ -98,8 +94,10 @@ namespace Upgrader
         private void SetUpMaxPanel()
         {
             RaiseWindow();
-            costsImages.ForEach(c => c.SetActive(false));
+            // costsImages.ForEach(c => c.SetActive(false));
             btn.interactable = false;
+            woodAmount.text = "";
+            rockAmount.text = "";
             btnText.text = "Max Level!";
         }
 

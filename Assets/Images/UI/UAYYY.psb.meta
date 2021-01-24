@@ -90,16 +90,16 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData:
-  - name: Score_right
+  - name: Rock Upgrade
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1092
+      x: 4
       y: 451
-      width: 520
+      width: 957
       height: 617
     spriteID: 6a19e2d7543c84151b8ef20b09e80502
     internalID: 0
@@ -111,29 +111,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 531, y: 120}
-  - name: Score_left
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 451
-      width: 1080
-      height: 683
-    spriteID: ddbcc84bbea0247c48c7e82e3a379fc0
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -141, y: 125}
+    uvTransform: {x: -127, y: 61}
   - name: UP_Bar
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -141,7 +119,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 538
+      x: 533
       y: 1548
       width: 929
       height: 196
@@ -155,7 +133,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 407, y: 1430}
+    uvTransform: {x: 402, y: 1430}
   - name: rock_score
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -163,8 +141,8 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 1548
+      x: 1092
+      y: 451
       width: 526
       height: 594
     spriteID: 5b6f010e999bc4c8ab4e4cc9fe6e4bbc
@@ -177,7 +155,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -2001, y: 1402}
+    uvTransform: {x: -913, y: 305}
   - name: tree_Count
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -186,7 +164,7 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 2150
+      y: 1548
       width: 521
       height: 586
     spriteID: a6c8a41cfa8774405815d2823ebedc13
@@ -199,7 +177,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -1403, y: 2004}
+    uvTransform: {x: -1403, y: 1402}
   - name: Mana
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -229,7 +207,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 538
+      x: 533
       y: 1752
       width: 1244
       height: 58
@@ -243,7 +221,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -788, y: 555}
+    uvTransform: {x: -793, y: 555}
   - name: Layer 15
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -273,7 +251,7 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 538
+      x: 533
       y: 1818
       width: 1244
       height: 58
@@ -287,7 +265,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -801, y: 100}
+    uvTransform: {x: -806, y: 100}
   rigSpriteImportData:
   - name: Score_right
     originalName: 
@@ -538,19 +516,12 @@ ScriptedImporter:
   resliceFromLayer: 0
   characterMode: 0
   mosaicPSDLayers:
-  - name: Score_right
-    spriteName: Score_right
+  - name: Rock Upgrade
+    spriteName: Rock Upgrade
     isGroup: 0
     parentIndex: -1
     spriteID: 6a19e2d7543c84151b8ef20b09e80502
     layerID: 43
-    mosaicPosition: {x: 1092, y: 451}
-  - name: Score_left
-    spriteName: Score_left
-    isGroup: 0
-    parentIndex: -1
-    spriteID: ddbcc84bbea0247c48c7e82e3a379fc0
-    layerID: 33
     mosaicPosition: {x: 4, y: 451}
   - name: UP_Bar
     spriteName: UP_Bar
@@ -558,21 +529,21 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: d3b031146610c4d998c2c3aa480effa9
     layerID: 29
-    mosaicPosition: {x: 538, y: 1548}
+    mosaicPosition: {x: 533, y: 1548}
   - name: rock_score
     spriteName: rock_score
     isGroup: 0
     parentIndex: -1
     spriteID: 5b6f010e999bc4c8ab4e4cc9fe6e4bbc
     layerID: 26
-    mosaicPosition: {x: 4, y: 1548}
+    mosaicPosition: {x: 1092, y: 451}
   - name: tree_Count
     spriteName: tree_Count
     isGroup: 0
     parentIndex: -1
     spriteID: a6c8a41cfa8774405815d2823ebedc13
     layerID: 20
-    mosaicPosition: {x: 4, y: 2150}
+    mosaicPosition: {x: 4, y: 1548}
   - name: Mana
     spriteName: Mana
     isGroup: 0
@@ -586,28 +557,28 @@ ScriptedImporter:
     parentIndex: -1
     spriteID: 0cbfeb98156134c698b989b17393c158
     layerID: 11
-    mosaicPosition: {x: 538, y: 1752}
+    mosaicPosition: {x: 533, y: 1752}
   - name: Life
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 
+    spriteID: 00000000000000000000000000000000
     layerID: 50
     mosaicPosition: {x: 0, y: 0}
   - name: Layer 15
     spriteName: Layer 15
     isGroup: 0
-    parentIndex: 7
+    parentIndex: 6
     spriteID: 37b699733846a4a9c8b9a89c4b7f7518
     layerID: 49
     mosaicPosition: {x: 4, y: 4}
   - name: Layer 17
     spriteName: Layer 17
     isGroup: 0
-    parentIndex: 7
+    parentIndex: 6
     spriteID: fdebd24ee65bf48ae91e1d18cd45d18d
     layerID: 47
-    mosaicPosition: {x: 538, y: 1818}
+    mosaicPosition: {x: 533, y: 1818}
   rigPSDLayers:
   - name: Score_right
     spriteName: Score_right

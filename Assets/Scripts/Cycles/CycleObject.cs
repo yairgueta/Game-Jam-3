@@ -24,11 +24,8 @@ namespace Cycles
             set => onCycleEnd = value;
         }
 
-        public Sprite UITimer => uiTimer;
-        public Sprite UITimerFiller => uiTimerFiller;
-        public Image.FillMethod FillMethod => fillMethod;
-        public Image.Origin90 FillOrigin => fillOrigin;
-
+        public Sprite UIActiveSprite => uiActiveSprite;
+        public float UIFillerThreshold => fillerThreshold;
 
         [Header("General Settings")]
         [SerializeField] private float duration;
@@ -46,16 +43,13 @@ namespace Cycles
 
 
         [Header("UI")] 
-        [SerializeField] private Sprite uiTimer;
-        [SerializeField] private Sprite uiTimerFiller;
-        [SerializeField] private Image.FillMethod fillMethod;
-        [SerializeField] private Image.Origin90 fillOrigin;
-        
+        [SerializeField] private Sprite uiActiveSprite;
+        [SerializeField] private float fillerThreshold;
     }
     public enum CyclesType
     {
-        Day, 
-        Night,
-        Eclipse
+        Day = 0, 
+        Night = 1,
+        Eclipse = 2
     }
 }

@@ -18,7 +18,5 @@ MonoBehaviour:
   globalLightIntensity: 1
   onCycleStart: {fileID: 11400000, guid: 660bda67326474a828ff51e5d2126210, type: 2}
   onCycleEnd: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}
-  uiTimer: {fileID: 6146782616825927046, guid: ff89f491285f24bcc8928f8e642007e2, type: 3}
-  uiTimerFiller: {fileID: 6146782616825927046, guid: 20baab6ab77374f3eadc0d654299e3bf, type: 3}
-  fillMethod: 2
-  fillOrigin: 0
+  uiActiveSprite: {fileID: -8112179616328028442, guid: fc5bf4e96ef2248179bec8ffc469d85a, type: 3}
+  fillerThreshold: 0

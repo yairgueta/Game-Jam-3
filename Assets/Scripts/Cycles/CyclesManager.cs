@@ -69,6 +69,6 @@ namespace Cycles
             GUI.Label(new Rect(Screen.width*.8f, 0, Screen.width*.2f, Screen.height*.1f), currentCycle.name + ": " + Math.Round(timer, 2));
         }
 
-        public float TimePercentage => timer / currentCycle.Duration;
+        public float TimePercentage => 1 - timer / currentCycle.Duration;
     }
 }

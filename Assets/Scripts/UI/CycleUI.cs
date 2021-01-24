@@ -8,30 +8,31 @@ namespace UI
     public class CycleUI : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private Image radialTimer;
-        [SerializeField] private Image filler;
-
+        [SerializeField] private Image outerFill;
+        [SerializeField] private Image innerFill;
+        [SerializeField] private Image activeImage;
+        [SerializeField] private float[] fillThreshold = new float[3];
+        private float allPercentage;
+        private int currentCycle = 0;
         private void Start()
         {
             foreach (var cycle in CyclesManager.Instance.CyclesSettings)
             {
-                var listener = gameObject.AddComponent<GameEventListener>();
-                listener.InitEvent(cycle.OnCycleStart);
-                listener.response.AddListener(o =>
+                cycle.OnCycleStart.Register(gameObject, o =>
                 {
-                    radialTimer.sprite = cycle.UITimer;
-                    filler.sprite = cycle.UITimerFiller;
-
-                    filler.fillMethod = cycle.FillMethod;
-                    filler.fillOrigin = (int) cycle.FillOrigin;
-                    filler.fillAmount = 0;
+                    activeImage.sprite = cycle.UIActiveSprite;
+                    currentCycle = (int)cycle.CycleType;
+                    allPercentage = (currentCycle == 2 ? 1 : fillThreshold[currentCycle + 1]) - fillThreshold[currentCycle];
                 });
             }
         }
+        
+        
 
         private void Update()
         {
-            filler.fillAmount = 1 - CyclesManager.Instance.TimePercentage;
+            outerFill.fillAmount =  CyclesManager.Instance.TimePercentage*allPercentage + fillThreshold[currentCycle];
+            innerFill.fillAmount =  CyclesManager.Instance.TimePercentage*allPercentage + fillThreshold[currentCycle];
         }
         
     }

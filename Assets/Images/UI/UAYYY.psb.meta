@@ -244,29 +244,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -788, y: 555}
-  - name: Life_Bar
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 538
-      y: 1818
-      width: 1244
-      height: 58
-    spriteID: e7648d7c28f6b45638dca65d93e389a9
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -801, y: 101}
-  - name: Heart
+  - name: Layer 15
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -277,7 +255,7 @@ ScriptedImporter:
       y: 4
       width: 1751
       height: 439
-    spriteID: af326028b9091438bb337dbea7536bdc
+    spriteID: 37b699733846a4a9c8b9a89c4b7f7518
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -287,7 +265,29 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -895, y: -1514}
+    uvTransform: {x: -895, y: -1515}
+  - name: Layer 17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 538
+      y: 1818
+      width: 1244
+      height: 58
+    spriteID: fdebd24ee65bf48ae91e1d18cd45d18d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -801, y: 100}
   rigSpriteImportData:
   - name: Score_right
     originalName: 
@@ -587,20 +587,27 @@ ScriptedImporter:
     spriteID: 0cbfeb98156134c698b989b17393c158
     layerID: 11
     mosaicPosition: {x: 538, y: 1752}
-  - name: Life_Bar
-    spriteName: Life_Bar
-    isGroup: 0
+  - name: Life
+    spriteName: 
+    isGroup: 1
     parentIndex: -1
-    spriteID: e7648d7c28f6b45638dca65d93e389a9
-    layerID: 5
-    mosaicPosition: {x: 538, y: 1818}
-  - name: Heart
-    spriteName: Heart
+    spriteID: 
+    layerID: 50
+    mosaicPosition: {x: 0, y: 0}
+  - name: Layer 15
+    spriteName: Layer 15
     isGroup: 0
-    parentIndex: -1
-    spriteID: af326028b9091438bb337dbea7536bdc
-    layerID: 7
+    parentIndex: 7
+    spriteID: 37b699733846a4a9c8b9a89c4b7f7518
+    layerID: 49
     mosaicPosition: {x: 4, y: 4}
+  - name: Layer 17
+    spriteName: Layer 17
+    isGroup: 0
+    parentIndex: 7
+    spriteID: fdebd24ee65bf48ae91e1d18cd45d18d
+    layerID: 47
+    mosaicPosition: {x: 538, y: 1818}
   rigPSDLayers:
   - name: Score_right
     spriteName: Score_right

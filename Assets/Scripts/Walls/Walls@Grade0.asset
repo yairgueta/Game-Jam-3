@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Walls@Grade0
   m_EditorClassIdentifier: 
   completeSprites:
-  - {fileID: -4824135590178980912, guid: f7d887eb3c5c4416f997738a87f014af, type: 3}
+  - {fileID: -355488156011469252, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
   crackedSprites: []
   healthPoints: 0
   requiredWoods: 2
-  requiredRocks: 3
+  requiredRocks: 0

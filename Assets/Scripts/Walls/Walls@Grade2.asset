@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Walls@Grade2
   m_EditorClassIdentifier: 
   completeSprites:
-  - {fileID: 5367596630024612521, guid: 78481b88697c34301942eaa77f59ef36, type: 3}
-  - {fileID: -2600560975786441760, guid: 78481b88697c34301942eaa77f59ef36, type: 3}
+  - {fileID: 4450998234733417990, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
+  - {fileID: 281134902734843780, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
   crackedSprites:
-  - {fileID: 1783381997064855523, guid: 136a6d03c62f94053acf2205533fcedb, type: 3}
-  - {fileID: -5346261853866320983, guid: 136a6d03c62f94053acf2205533fcedb, type: 3}
-  healthPoints: 120
-  requiredWoods: 10
-  requiredRocks: 7
+  - {fileID: 4369327588835816675, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
+  - {fileID: 2318865483116328066, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
+  healthPoints: 170
+  requiredWoods: 7
+  requiredRocks: 2

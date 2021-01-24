@@ -7,18 +7,18 @@ namespace Upgrader
 {
     public class Fixable : MonoBehaviour, IEnemyDamage
     {
-        public Action onDeath, onHalfHealth, onFixed;
+        public Action onDeath, onHalfHealth, onFixed, onHealthChange;
         [SerializeField] private float curHealth;
         [SerializeField] private float crackedPercentage = .5f;
         
         private float maxHealth;
         private int maxRequiredWoods;
         private int maxRequiredRocks;
-        private bool halfHealthEventThrew = false;
+        private bool halfHealthEventThrew;
         private InventoryObject Inventory => PlayerController.CurrentInventory;
-        public bool ShouldFix => curHealth < maxHealth && curHealth > 0;
-        public int RequiredWood => Mathf.FloorToInt((curHealth / maxHealth) * maxRequiredWoods);
-        public int RequiredRock => Mathf.FloorToInt((curHealth / maxHealth) * maxRequiredRocks);
+        public bool ShouldFix => curHealth < maxHealth;
+        public int RequiredWood => Mathf.CeilToInt((1 - curHealth / maxHealth) * maxRequiredWoods);
+        public int RequiredRock => Mathf.CeilToInt((1 - curHealth / maxHealth) * maxRequiredRocks);
         
         
         public void SetUp(float health, int requiredWood, int requiredRock)
@@ -27,6 +27,7 @@ namespace Upgrader
             curHealth = maxHealth;
             maxRequiredRocks = requiredRock;
             maxRequiredWoods = requiredWood;
+            halfHealthEventThrew = false;
         }
 
         public void Fix()
@@ -34,22 +35,25 @@ namespace Upgrader
             Inventory[ResourceType.Wood] -= RequiredWood;
             Inventory[ResourceType.Rock] -= maxRequiredRocks;
             curHealth = maxHealth;
+            onFixed?.Invoke();
             halfHealthEventThrew = false;
         }
     
         public void TakeDamage(float damage)
         {
+            onHealthChange?.Invoke();
             curHealth -= damage;
             if (curHealth / maxHealth <= crackedPercentage && !halfHealthEventThrew)
             {
                 onHalfHealth?.Invoke();
                 halfHealthEventThrew = true;
             }
+
             if (curHealth <= 0)
                 onDeath?.Invoke();
         }
 
-        public static int i = 0;
+        private static int i;
         public int index;
 
         private void Start()

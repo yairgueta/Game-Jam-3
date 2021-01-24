@@ -15,7 +15,7 @@ MonoBehaviour:
   dayMusic: {fileID: 8300000, guid: 509d8b642f4bb4423bd8f1ad71ef6f18, type: 3}
   nightMusic: {fileID: 8300000, guid: b29a3b461c59f47edb7c8dd5078ea34f, type: 3}
   eclipseMusic: {fileID: 8300000, guid: 664160cad04ce4ff69406452eac99bc2, type: 3}
-  enemyDeath: {fileID: 8300000, guid: defddbb8964812947aa460a770c17608, type: 3}
+  enemyDeath: {fileID: 8300000, guid: bef2e037eb82e4c9484539d33a4a4ff2, type: 3}
   playerDeath: {fileID: 0}
   outOfResources: {fileID: 0}
   mushroomCollected: {fileID: 0}
@@ -24,10 +24,10 @@ MonoBehaviour:
   onEclipseStart: {fileID: 11400000, guid: ced196fe55eb94eaca4c25ab594ec604, type: 2}
   onNightStart: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}
   onEnemyDeath: {fileID: 11400000, guid: 906630ade5ebeda4a84d087379978e65, type: 2}
-  onPlayerDeath: {fileID: 0}
+  onPlayerDeath: {fileID: 11400000, guid: ce7896d81791f41a5a2433c723a31a3e, type: 2}
   onOutOfResources: {fileID: 0}
-  onMushroomCollected: {fileID: 0}
-  onBulletExplode: {fileID: 0}
+  onMushroomCollected: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}
+  onBulletExplode: {fileID: 11400000, guid: 1d6eda70405af4d93b8301c7eb30f686, type: 2}
   bgVolume: 0.2
   sfxVolume: 0.2
   fadeoutTime: 8

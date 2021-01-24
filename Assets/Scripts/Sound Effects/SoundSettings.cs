@@ -24,7 +24,7 @@ public class SoundSettings : ScriptableObject
     public GameEvent onNightStart;
     public GameEvent onEnemyDeath;
     public GameEvent onPlayerDeath;
-    public GameEvent onOutOfResources;
+    // public GameEvent onOutOfResources;
     public GameEvent onMushroomCollected;
     public GameEvent onBulletExplode;
 

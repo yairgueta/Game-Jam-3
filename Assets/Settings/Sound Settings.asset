@@ -25,7 +25,6 @@ MonoBehaviour:
   onNightStart: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}
   onEnemyDeath: {fileID: 11400000, guid: 906630ade5ebeda4a84d087379978e65, type: 2}
   onPlayerDeath: {fileID: 11400000, guid: ce7896d81791f41a5a2433c723a31a3e, type: 2}
-  onOutOfResources: {fileID: 0}
   onMushroomCollected: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}
   onBulletExplode: {fileID: 11400000, guid: 1d6eda70405af4d93b8301c7eb30f686, type: 2}
   bgVolume: 0.2

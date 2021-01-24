@@ -17,6 +17,7 @@ public class SoundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InitializeBGClips();
         soundSettings.onDayStart.Register(gameObject, o => PlayBGMusic(dayMusicSource));
         soundSettings.onEclipseStart.Register(gameObject,o => PlayBGMusic(eclipseMusicSource));
         soundSettings.onNightStart.Register(gameObject,o => PlayBGMusic(nightMusicSource));
@@ -25,6 +26,13 @@ public class SoundController : MonoBehaviour
         // soundSettings.onOutOfResources.Register(gameObject, o => PlaySoundEffect(soundSettings.outOfResources));
         // soundSettings.onMushroomCollected.Register(gameObject, o => PlaySoundEffect(soundSettings.mushroomCollected));
         // soundSettings.onBulletExplode.Register(gameObject, o => PlaySoundEffect(soundSettings.bulletExploded));
+    }
+
+    private void InitializeBGClips()
+    {
+        dayMusicSource.clip = soundSettings.dayMusic;
+        nightMusicSource.clip = soundSettings.nightMusic;
+        eclipseMusicSource.clip = soundSettings.eclipseMusic;
     }
 
     private void StartMusic(AudioSource source)
@@ -50,6 +58,7 @@ public class SoundController : MonoBehaviour
     private void ChangeMusic(AudioSource source)
     {
         if (source == currentBGMusic) return;
+        Debug.Log("wallak");
         currentBGMusic = changeTo;
         changeTo = source;
         changeTo.volume = 0f;

@@ -58,7 +58,6 @@ public class SoundController : MonoBehaviour
     private void ChangeMusic(AudioSource source)
     {
         if (source == currentBGMusic) return;
-        Debug.Log("wallak");
         currentBGMusic = changeTo;
         changeTo = source;
         changeTo.volume = 0f;

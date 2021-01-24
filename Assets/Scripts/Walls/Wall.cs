@@ -31,8 +31,9 @@ namespace Walls
         private void OnDestroyed()
         {
             onWallDestroy.Raise();
-            upgradable.ReduceToGrade(0);
+            upgradable.ReduceToGrade(1);
             wallCollider.enabled = false;
+            sr.sprite = upgradable.DestroyedSprite;
         }
         
         private void OnUpgrade()    

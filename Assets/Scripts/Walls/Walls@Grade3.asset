@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Walls@Grade3
   m_EditorClassIdentifier: 
   completeSprites:
-  - {fileID: 9147851324635279666, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
-  - {fileID: 9147851324635279666, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
-  - {fileID: 9147851324635279666, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
+  - {fileID: -2471383395226888747, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
+  - {fileID: -2471383395226888747, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
+  - {fileID: -2471383395226888747, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
   crackedSprites:
-  - {fileID: 3851839722963236235, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
-  - {fileID: 5811781274619131684, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
-  - {fileID: -2343269055139782589, guid: 6802fbb4b7e48aa44b86c2e0e198dcef, type: 3}
-  healthPoints: 160
-  requiredWoods: 20
-  requiredRocks: 13
+  - {fileID: 2260477285947949342, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
+  - {fileID: -2921333169162541148, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
+  - {fileID: -2562893906255213712, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
+  healthPoints: 300
+  requiredWoods: 7
+  requiredRocks: 12

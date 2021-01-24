@@ -10,13 +10,13 @@ namespace Upgrader
         public Action onUpgrade;
         
         [SerializeField] private UpgradableObject[] grades;
-        private InventoryObject Inventory => PlayerController.CurrentInventory;
         private int curGrade;
         private int spriteIndex;
+        private static InventoryObject Inventory => PlayerController.CurrentInventory;
         
         public Sprite CompleteSprite => grades[curGrade].completeSprites[spriteIndex];
-        
         public Sprite CrackedSprite => grades[curGrade].crackedSprites[spriteIndex];
+        public Sprite DestroyedSprite => grades[0].completeSprites[0];
 
         private void Awake()
         {
@@ -39,7 +39,6 @@ namespace Upgrader
             curGrade = grade;
             UpgradableObject current = grades[curGrade];
             spriteIndex = Random.Range(0, current.completeSprites.Length);
-            onUpgrade?.Invoke();
         }
 
         public UpgradableObject GetCurGradeAttributes()

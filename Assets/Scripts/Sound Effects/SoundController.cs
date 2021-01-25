@@ -9,6 +9,7 @@ public class SoundController : Singleton<SoundController>
     private AudioSource dayMusicSource;
     private AudioSource nightMusicSource;
     private AudioSource eclipseMusicSource;
+    private AudioSource ambientMusicSource;
 
     private AudioSource currentBGMusic;
     private AudioSource changeTo;
@@ -22,6 +23,7 @@ public class SoundController : Singleton<SoundController>
         InitializeAudioSources();
         InitializeBGClips();
         RegisterToEvents();
+        PlayAmbient();
     }
 
     private void InitializeSettings()
@@ -61,6 +63,7 @@ public class SoundController : Singleton<SoundController>
         dayMusicSource = bgMusic.transform.GetChild(0).GetComponent<AudioSource>();
         nightMusicSource = bgMusic.transform.GetChild(1).GetComponent<AudioSource>();
         eclipseMusicSource = bgMusic.transform.GetChild(2).GetComponent<AudioSource>();
+        ambientMusicSource = bgMusic.transform.GetChild(3).GetComponent<AudioSource>();
     }
 
     private void InitializeBGClips()
@@ -100,6 +103,13 @@ public class SoundController : Singleton<SoundController>
         changeTo.Play();
         currentBGMusic.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
         changeTo.DOFade(soundSettings.bgVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
+    }
+
+    private void PlayAmbient()
+    {
+        ambientMusicSource.volume = soundSettings.ambientVolume;
+        ambientMusicSource.clip = soundSettings.ambient;
+        ambientMusicSource.Play();
     }
 
     public void PlaySoundEffect(AudioClip audioClip)

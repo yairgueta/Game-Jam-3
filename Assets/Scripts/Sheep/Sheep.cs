@@ -49,6 +49,7 @@ namespace Sheep
             if (sr == null) sr = GetComponentInParent<SpriteRenderer>();
             selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
             sheepLight = GetComponentInChildren<Light2D>();
+            sheepLight.enabled = false;
             PlayerController.PlayerSettings.onManaChange.Register(gameObject, RefreshSelectableInteractable);
         }
         

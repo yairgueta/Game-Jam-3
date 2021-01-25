@@ -12,12 +12,12 @@ namespace Cycles
         [SerializeField] private float animationDuration = .5f;
         private Light2D globalLight;
         private Sequence animationSequence;
-        private Camera camera;
+        private Camera mainCam;
 
         private void Start()
         {
             animationSequence = DOTween.Sequence();
-            camera = Camera.main;
+            mainCam = Camera.main;
             var lights = FindObjectsOfType<Light2D>();
             globalLight = lights.First(l => l.lightType == Light2D.LightType.Global);
             
@@ -26,8 +26,8 @@ namespace Cycles
                 cycle.OnCycleStart.Register(gameObject, o => TweenLight(cycle));
             
             // camera culling mask in eclipse
-            CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, o => camera.cullingMask |= 1 << LayerMask.NameToLayer("Eclipse"));
-            CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject,o => camera.cullingMask &= ~(1 << LayerMask.NameToLayer("Eclipse")));
+            CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, o => mainCam.cullingMask |= 1 << LayerMask.NameToLayer("Eclipse"));
+            CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject,o => mainCam.cullingMask &= ~(1 << LayerMask.NameToLayer("Eclipse")));
             
         }
 

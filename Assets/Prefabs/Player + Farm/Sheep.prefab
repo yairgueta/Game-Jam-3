@@ -80,7 +80,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &934456885316928745
 Transform:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2548003363665265101, guid: e39124e06e8d04084af83165f44841a9, type: 3}
+  m_Sprite: {fileID: -8403577120292615673, guid: e39124e06e8d04084af83165f44841a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -180,8 +180,8 @@ MonoBehaviour:
   collectionDisplay: {fileID: 2021511546823349005}
   collectionParticle: {fileID: 1380875590584609813}
   onSheepDeath: {fileID: 11400000, guid: bd7ec884f05dcf845b3e7e162042db41, type: 2}
-  intensityRange: {x: 0.6, y: 3}
-  flickerSpeed: 0.9
+  intensityRange: {x: 0.6, y: 1.5}
+  flickerSpeed: 0.8
   status: 0
 --- !u!61 &934456885316928750
 BoxCollider2D:
@@ -200,7 +200,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.438617, y: 1.454}
+    oldSize: {x: 1.4426186, y: 1.4519999}
     newSize: {x: 7.193085, y: 7.27}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -374,9 +374,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.398
+  m_FalloffIntensity: 0.39
   m_Color: {r: 0.514151, g: 0.8797313, b: 1, a: 1}
-  m_Intensity: 0.9
+  m_Intensity: 1.6573462
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 0000000077ce2084
   m_LightCookieSprite: {fileID: 0}
@@ -387,8 +387,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.45206064
-  m_PointLightOuterRadius: 1.11
+  m_PointLightInnerRadius: 0.1
+  m_PointLightOuterRadius: 1.02
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -427,7 +427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2518913349742949073}
   m_LocalRotation: {x: -0, y: -0, z: -0.44192427, w: 0.89705235}
-  m_LocalPosition: {x: -0.386, y: 0.798, z: -3.98}
+  m_LocalPosition: {x: -0.37, y: 0.67, z: -3.98}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 934456885316928745}
@@ -442,7 +442,7 @@ ParticleSystem:
   m_GameObject: {fileID: 2518913349742949073}
   serializedVersion: 7
   lengthInSec: 1
-  simulationSpeed: 1
+  simulationSpeed: 0.7
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -515,9 +515,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.8
-      minScalar: 5
+      minMaxState: 3
+      scalar: 4
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -569,7 +569,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.8
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1274,8 +1274,8 @@ ParticleSystem:
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 4
+      minMaxState: 0
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1381,7 +1381,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -2592,7 +2592,7 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -2649,7 +2649,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2752,7 +2752,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 0
+    inWorldSpace: 1
     randomizePerFrame: 0
   ExternalForcesModule:
     serializedVersion: 2
@@ -5359,8 +5359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
+  overMaterial: {fileID: 2100000, guid: 68a0f8fdde790494eb2f7de42a2773c2, type: 2}
+  clickedDownMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   selectedMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   spriteRenderer: {fileID: 934456885316928744}
 --- !u!1 &8168792148115109427

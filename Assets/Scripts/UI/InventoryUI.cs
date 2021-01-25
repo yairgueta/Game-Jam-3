@@ -14,13 +14,15 @@ namespace UI
         
         [SerializeField] private TMP_Text woodAnimationTxt;
         [SerializeField] private TMP_Text rockAnimationTxt;
-        [SerializeField] private SoundController soundController;
+        private SoundController soundController;
         
         private Tween woodTween;
         private Tween rockTween;
 
         private void Start()
         {
+            soundController = FindObjectOfType<SoundController>();
+            Debug.Log(soundController);
             UpdateResources(null);
             woodAnimationTxt.text = "";
             rockAnimationTxt.text = "";
@@ -84,7 +86,6 @@ namespace UI
                 tempText.text = inventory[type].ToString();
                 if (tArgs.isIncreasing > 0)
                 {
-                    Debug.Log(tArgs.isIncreasing);
                     PlayPickSound(type);
                     animText.text = "+" + animText.text;
                     AnimateChange(animText, type);

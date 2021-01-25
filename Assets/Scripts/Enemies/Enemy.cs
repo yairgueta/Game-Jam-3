@@ -13,6 +13,7 @@ namespace Enemies
         [SerializeField] private EnemySettings enemySettings;
         [SerializeField] private GameObject enemyGFX;
         [SerializeField] private float stuckTimeThreshold = 2.5f;
+        private SoundController soundController;
         private Mode mode;
         private IEnemyDamage currentAttacked;
         private float curHealth;
@@ -32,6 +33,7 @@ namespace Enemies
         
         private void Start()
         {
+            soundController = FindObjectOfType<SoundController>();
             GetComponent<Seeker>().graphMask = GraphMask.FromGraphName("Enemy Graph");
             aiPath = GetComponent<AIPath>();
             animator = GetComponent<Animator>();
@@ -92,6 +94,7 @@ namespace Enemies
         private void AttackMode()
         {
             if (mode == Mode.Attacking) return;
+            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
             mode = Mode.Attacking;
             animator.SetTrigger(attackAnimationID);
         }

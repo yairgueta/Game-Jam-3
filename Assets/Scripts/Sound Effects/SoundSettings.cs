@@ -21,6 +21,7 @@ public class SoundSettings : ScriptableObject
     public AudioClip wallDestroyed;
     public AudioClip pickStone;
     public AudioClip pickWood;
+    public AudioClip monsterAttack;
     
     [Header("Events")] 
     public GameEvent onDayStart;

@@ -2,27 +2,50 @@ using Cycles;
 using DG.Tweening;
 using UnityEngine;
 
-public class SoundController : MonoBehaviour
+public class SoundController : Singleton<SoundController>
 {
     public SoundSettings soundSettings;
-    [SerializeField] private AudioSource soundEffectsSource;
-    [SerializeField] private AudioSource dayMusicSource;
-    [SerializeField] private AudioSource nightMusicSource;
-    [SerializeField] private AudioSource eclipseMusicSource;
+    private AudioSource soundEffectsSource;
+    private AudioSource dayMusicSource;
+    private AudioSource nightMusicSource;
+    private AudioSource eclipseMusicSource;
 
     private AudioSource currentBGMusic;
     private AudioSource changeTo;
     private bool shouldChangeBG;
     private bool bgMusicChanged;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        InitializeSettings();
+        InitializeAudioSources();
         InitializeBGClips();
+        RegisterToEvents();
+    }
+
+    private void InitializeSettings()
+    {
+        if (soundSettings != null) return;
+        var soundSetts = AssetBundle.FindObjectsOfType<SoundSettings>();
+        if (soundSetts.Length > 1)
+            Debug.LogWarning(
+                "Sound settings ambiguity: sound settings was provided and there are more then one in project!");
+        if (soundSetts.Length == 0)
+        {
+            Debug.LogError("Sound settings Problem: No sound settings were found!");
+            return;
+        }
+        soundSettings = soundSetts[0];
+        Debug.Log(soundSettings);
+    }
+
+    private void RegisterToEvents()
+    {
         CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, o => PlayBGMusic(dayMusicSource));
         // soundSettings.onDayStart.Register(gameObject, o => PlayBGMusic(dayMusicSource));
-        soundSettings.onEclipseStart.Register(gameObject,o => PlayBGMusic(eclipseMusicSource));
-        soundSettings.onNightStart.Register(gameObject,o => PlayBGMusic(nightMusicSource));
+        soundSettings.onEclipseStart.Register(gameObject, o => PlayBGMusic(eclipseMusicSource));
+        soundSettings.onNightStart.Register(gameObject, o => PlayBGMusic(nightMusicSource));
         soundSettings.onEnemyDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.enemyDeath));
         soundSettings.onPlayerDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.playerDeath));
         soundSettings.onOutOfResources.Register(gameObject, o => PlaySoundEffect(soundSettings.outOfResources));
@@ -30,6 +53,15 @@ public class SoundController : MonoBehaviour
         soundSettings.onBulletExplode.Register(gameObject, o => PlaySoundEffect(soundSettings.bulletExploded));
         soundSettings.onSheepDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.sheepDeath));
         soundSettings.onWallDestroyed.Register(gameObject, o => PlaySoundEffect(soundSettings.wallDestroyed));
+    }
+
+    private void InitializeAudioSources()
+    {
+        var bgMusic = transform.GetChild(1);
+        soundEffectsSource = transform.GetChild(0).GetComponent<AudioSource>();
+        dayMusicSource = bgMusic.transform.GetChild(0).GetComponent<AudioSource>();
+        nightMusicSource = bgMusic.transform.GetChild(1).GetComponent<AudioSource>();
+        eclipseMusicSource = bgMusic.transform.GetChild(2).GetComponent<AudioSource>();
     }
 
     private void InitializeBGClips()

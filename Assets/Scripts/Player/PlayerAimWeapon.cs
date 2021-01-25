@@ -69,20 +69,20 @@ namespace Player
 
         private void Shooting()
         {
-            if (!Input.GetMouseButtonDown(1)) return;
+            bool right = Input.GetMouseButtonDown(1);
+            bool left = Input.GetMouseButtonDown(0);
             
+            if (!(right || left)) return;
             var hit = Physics2D.Raycast(mousePosition, Vector3.forward, 15f, shootingLayerMask);
-
             if (hit || EventSystem.current.IsPointerOverGameObject(-1)) return;
-            
             if (SelectionManager.Instance.CurrentSelected != null)
             {
                 SelectionManager.Instance.Deselect();
                 return;
             }
-            
-            if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)) return;
-            
+            if (!right) return;
+            if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)
+            ) return;
             onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
             BulletAnimation();
         }

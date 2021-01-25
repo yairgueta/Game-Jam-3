@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
-    [SerializeField] private SoundSettings soundSettings;
+    public SoundSettings soundSettings;
     [SerializeField] private AudioSource soundEffectsSource;
     [SerializeField] private AudioSource dayMusicSource;
     [SerializeField] private AudioSource nightMusicSource;
@@ -24,10 +24,12 @@ public class SoundController : MonoBehaviour
         soundSettings.onEclipseStart.Register(gameObject,o => PlayBGMusic(eclipseMusicSource));
         soundSettings.onNightStart.Register(gameObject,o => PlayBGMusic(nightMusicSource));
         soundSettings.onEnemyDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.enemyDeath));
-        // soundSettings.onPlayerDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.playerDeath));
-        // soundSettings.onOutOfResources.Register(gameObject, o => PlaySoundEffect(soundSettings.outOfResources));
+        soundSettings.onPlayerDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.playerDeath));
+        soundSettings.onOutOfResources.Register(gameObject, o => PlaySoundEffect(soundSettings.outOfResources));
         // soundSettings.onMushroomCollected.Register(gameObject, o => PlaySoundEffect(soundSettings.mushroomCollected));
-        // soundSettings.onBulletExplode.Register(gameObject, o => PlaySoundEffect(soundSettings.bulletExploded));
+        soundSettings.onBulletExplode.Register(gameObject, o => PlaySoundEffect(soundSettings.bulletExploded));
+        soundSettings.onSheepDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.sheepDeath));
+        soundSettings.onWallDestroyed.Register(gameObject, o => PlaySoundEffect(soundSettings.wallDestroyed));
     }
 
     private void InitializeBGClips()

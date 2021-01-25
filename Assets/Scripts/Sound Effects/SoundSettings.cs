@@ -17,6 +17,10 @@ public class SoundSettings : ScriptableObject
     public AudioClip outOfResources;
     public AudioClip mushroomCollected;
     public AudioClip bulletExploded;
+    public AudioClip sheepDeath;
+    public AudioClip wallDestroyed;
+    public AudioClip pickStone;
+    public AudioClip pickWood;
     
     [Header("Events")] 
     public GameEvent onDayStart;
@@ -24,9 +28,11 @@ public class SoundSettings : ScriptableObject
     public GameEvent onNightStart;
     public GameEvent onEnemyDeath;
     public GameEvent onPlayerDeath;
-    // public GameEvent onOutOfResources;
+    public GameEvent onOutOfResources;
     public GameEvent onMushroomCollected;
     public GameEvent onBulletExplode;
+    public GameEvent onSheepDeath;
+    public GameEvent onWallDestroyed;
 
     [Header("Attributes")] 
     public float bgVolume;

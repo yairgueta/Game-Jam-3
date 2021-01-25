@@ -14,6 +14,7 @@ namespace UI
         
         [SerializeField] private TMP_Text woodAnimationTxt;
         [SerializeField] private TMP_Text rockAnimationTxt;
+        [SerializeField] private SoundController soundController;
         
         private Tween woodTween;
         private Tween rockTween;
@@ -21,6 +22,8 @@ namespace UI
         private void Start()
         {
             UpdateResources(null);
+            woodAnimationTxt.text = "";
+            rockAnimationTxt.text = "";
         }
 
         private (TMP_Text, TMP_Text) TypeToText(ResourceType type, int diff)
@@ -51,6 +54,19 @@ namespace UI
                 .SetId(t);
         }
 
+        private void PlayPickSound(ResourceType type)
+        {
+            switch (type)
+            {
+                case ResourceType.Wood:
+                    soundController.PlaySoundEffect(soundController.soundSettings.pickWood);
+                    return;
+                case ResourceType.Rock:
+                    soundController.PlaySoundEffect(soundController.soundSettings.pickStone);
+                    return;
+            }
+        }
+
         public void UpdateResources(object args)
         {
             var inventory = PlayerController.CurrentInventory;
@@ -68,6 +84,8 @@ namespace UI
                 tempText.text = inventory[type].ToString();
                 if (tArgs.isIncreasing > 0)
                 {
+                    Debug.Log(tArgs.isIncreasing);
+                    PlayPickSound(type);
                     animText.text = "+" + animText.text;
                     AnimateChange(animText, type);
                 }
@@ -84,17 +102,16 @@ namespace UI
 
         private void AnimateChange(TMP_Text animText, ResourceType type)
         {
+            animText.gameObject.transform.localScale = Vector3.zero;
             if (type == ResourceType.Wood)
             {
                 woodTween.Kill();
-                animText.gameObject.transform.localScale = Vector3.zero;
                 woodTween = DOTween.Sequence().Append(animText.gameObject.transform.DOScale(
                         1.2f * Vector3.one, .25f).SetId(type))
                     .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(0.5f));
                 return;
             }
             rockTween.Kill();
-            animText.gameObject.transform.localScale = Vector3.zero;
             rockTween = DOTween.Sequence().Append(animText.gameObject.transform.DOScale(
                     1.2f * Vector3.one, .25f).SetId(type))
                 .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(0.5f));

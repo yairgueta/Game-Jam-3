@@ -19,11 +19,13 @@ namespace Walls
         private float overallDistance;
 
         private Tween tween;
+        private SoundController soundController;
         
         private void Start()
         {
             startY = innerDoor.position.y;
             overallDistance = startY - endY;
+            soundController = FindObjectOfType<SoundController>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -42,6 +44,7 @@ namespace Walls
             tween?.Kill(false);
             var dur = ((innerDoor.position.y - endY) / overallDistance) * openDuration;
             tween = innerDoor.DOMoveY(endY, dur).SetEase(easeOpenFunction);
+            PlaySounds();
         }
 
         void CloseAnimation()
@@ -49,7 +52,12 @@ namespace Walls
             tween?.Kill(false);
             var dur = ((startY - innerDoor.position.y) / overallDistance) * closeDuration;
             tween = innerDoor.DOMoveY(startY, dur).SetEase(easeCloseFunction);
+            PlaySounds();
+        }
 
+        private void PlaySounds()
+        {
+            soundController.PlaySoundEffect(soundController.soundSettings.gate);
         }
     }
 }

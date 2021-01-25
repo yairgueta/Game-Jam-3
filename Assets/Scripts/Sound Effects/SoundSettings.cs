@@ -22,6 +22,7 @@ public class SoundSettings : ScriptableObject
     public AudioClip pickStone;
     public AudioClip pickWood;
     public AudioClip monsterAttack;
+    public AudioClip gate;
     
     [Header("Events")] 
     public GameEvent onDayStart;

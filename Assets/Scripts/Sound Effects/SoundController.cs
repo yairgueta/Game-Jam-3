@@ -37,7 +37,6 @@ public class SoundController : Singleton<SoundController>
             return;
         }
         soundSettings = soundSetts[0];
-        Debug.Log(soundSettings);
     }
 
     private void RegisterToEvents()
@@ -49,7 +48,7 @@ public class SoundController : Singleton<SoundController>
         soundSettings.onEnemyDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.enemyDeath));
         soundSettings.onPlayerDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.playerDeath));
         soundSettings.onOutOfResources.Register(gameObject, o => PlaySoundEffect(soundSettings.outOfResources));
-        // soundSettings.onMushroomCollected.Register(gameObject, o => PlaySoundEffect(soundSettings.mushroomCollected));
+        soundSettings.onMushroomCollected.Register(gameObject, o => PlaySoundEffect(soundSettings.mushroomCollected));
         soundSettings.onBulletExplode.Register(gameObject, o => PlaySoundEffect(soundSettings.bulletExploded));
         soundSettings.onSheepDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.sheepDeath));
         soundSettings.onWallDestroyed.Register(gameObject, o => PlaySoundEffect(soundSettings.wallDestroyed));

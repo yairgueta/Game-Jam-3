@@ -107,14 +107,14 @@ namespace UI
             {
                 woodTween.Kill();
                 woodTween = DOTween.Sequence().Append(animText.gameObject.transform.DOScale(
-                        1.2f * Vector3.one, .25f).SetId(type))
-                    .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(0.5f));
+                        1.5f * Vector3.one, .5f).SetEase(Ease.OutBounce).SetId(type))
+                    .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetEase(Ease.OutBounce).SetDelay(0.5f));
                 return;
             }
             rockTween.Kill();
             rockTween = DOTween.Sequence().Append(animText.gameObject.transform.DOScale(
-                    1.2f * Vector3.one, .25f).SetId(type))
-                .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(0.5f));
+                    1.5f * Vector3.one, .5f).SetEase(Ease.OutBounce).SetId(type))
+                .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetEase(Ease.OutBounce).SetDelay(0.5f));
         }
 
     }

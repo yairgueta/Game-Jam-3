@@ -23,6 +23,7 @@ public class SoundSettings : ScriptableObject
     public AudioClip pickWood;
     public AudioClip monsterAttack;
     public AudioClip gate;
+    public AudioClip ambient;
     
     [Header("Events")] 
     public GameEvent onDayStart;
@@ -39,6 +40,7 @@ public class SoundSettings : ScriptableObject
     [Header("Attributes")] 
     public float bgVolume;
     public float sfxVolume;
+    public float ambientVolume;
     public float fadeoutTime;
     public float fadeInTime;
 }

@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000091552734, y: 0}
+  m_AnchoredPosition: {x: -0.00012207031, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7816339920729935028
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4081764903905258535, guid: f4e7454b521104f2abcf025a978fcb57, type: 3}
+  m_Sprite: {fileID: 4005928175662224718, guid: f4e7454b521104f2abcf025a978fcb57, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -367,7 +367,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.22900002, y: 0.42400014}
   m_AnchorMax: {x: 0.97861856, y: 0.59325004}
-  m_AnchoredPosition: {x: -1.8279114, y: -0.000009536743}
+  m_AnchoredPosition: {x: -1.8278809, y: -0.0000076293945}
   m_SizeDelta: {x: 0.9665, y: 0}
   m_Pivot: {x: -0.009578957, y: 0.5}
 --- !u!222 &7816339920925006075
@@ -440,10 +440,10 @@ RectTransform:
   m_Father: {fileID: 3444928280830657455}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.2572955, y: 0.4172268}
-  m_AnchorMax: {x: 0.9827834, y: 0.6602659}
-  m_AnchoredPosition: {x: -1.0704956, y: -0.4543991}
-  m_SizeDelta: {x: 1.253, y: 2.8061}
+  m_AnchorMin: {x: 0.2454852, y: 0.40180352}
+  m_AnchorMax: {x: 0.9624943, y: 0.63221693}
+  m_AnchoredPosition: {x: -1.0704956, y: 0.09700012}
+  m_SizeDelta: {x: 1.2530003, y: -0.19390011}
   m_Pivot: {x: -0.000000040622183, y: 0.49999985}
 --- !u!222 &7816339921099359246
 CanvasRenderer:
@@ -473,9 +473,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6891538860069415318, guid: f4e7454b521104f2abcf025a978fcb57, type: 3}
+  m_Sprite: {fileID: 17251611980673948, guid: f4e7454b521104f2abcf025a978fcb57, type: 3}
   m_Type: 3
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
   m_FillAmount: 1

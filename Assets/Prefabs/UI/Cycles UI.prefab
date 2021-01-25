@@ -70,7 +70,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.7
   m_FillClockwise: 1
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 815273015235601956}
   - component: {fileID: 4707988061635886244}
   m_Layer: 5
-  m_Name: Inner Fill (1)
+  m_Name: Black Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 3057367106330157129, guid: fc5bf4e96ef2248179bec8ffc469d85a, type: 3}
-  m_Type: 3
+  m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -519,6 +519,10 @@ MonoBehaviour:
   outerFill: {fileID: 6073185721631105150}
   innerFill: {fileID: 3976617347579661368}
   activeImage: {fileID: 7272996645229923749}
+  fillThreshold:
+  - 0
+  - 0.46
+  - 0.7
 --- !u!1 &7608442059056736612
 GameObject:
   m_ObjectHideFlags: 0

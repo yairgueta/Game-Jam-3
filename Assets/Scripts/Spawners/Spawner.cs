@@ -116,7 +116,6 @@ namespace Spawners
             {
                 SpawnRandom_Method(randomMethod);
                 if (stopwatch.ElapsedMilliseconds < overFrameTimeout) continue;
-                x = i;
                 yield return null;
                 stopwatch.Restart();
             }
@@ -145,47 +144,17 @@ namespace Spawners
                 p.gameObject.SetActive(false);
         }
 
-        public void Spawn(int n, bool useMultiFrame = false)
+        public void Spawn(int n, bool useMultiFrame)
         {
             if (usePerlinNoise) SpawnNoise(n, useMultiFrame);
             else SpawnRandom(n, useMultiFrame);
         }
 
+        public void Spawn(int n) => Spawn(n, false);
+        
         public void SpawnAll()
         {
             Spawn(totalPoolAmount - CurrentPooled);
-        }
-
-        // private Collider2D bs;
-        //
-        // private void OnDrawGizmos()
-        // {
-        //     if (bs == null) return;
-        //     var bss = new Bounds(bs.transform.position + (Vector3) bs.offset, bs.bounds.size);
-        //     Gizmos.color = Color.red;
-        //     // Gizmos.DrawCube(bss.center, Vector3.one*30);
-        //     Gizmos.color = Color.green;
-        //     Gizmos.DrawCube(bss.center, bss.size);
-        //     // Debug.Log(bs.center);
-        //     // Debug.Log(bs.size);
-        //     // Gizmos.DrawCube(Vector3.zero, Vector3.one*50);
-        // }
-
-        private int x = 5000;
-        private void OnGUI()
-        {
-            GUI.BeginGroup(new Rect(0, Screen.height *.5f, Screen.width, Screen.height * .5f));
-            x = Int32.Parse(GUILayout.TextField(x.ToString()));
-            // if (GUILayout.Button("Spawn"))
-            // {
-            //     for (int i = 0; i < x; i++)
-            //     {
-            //         var p = pooledObjects[queuePool.Dequeue()];
-            //         p.gameObject.SetActive(true);
-            //         randomizer.RandomizeObjectPosition_2(p);
-            //     }
-            // }
-            GUI.EndGroup();
         }
     }
 }

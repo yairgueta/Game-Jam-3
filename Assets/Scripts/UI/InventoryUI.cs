@@ -22,7 +22,6 @@ namespace UI
         private void Start()
         {
             soundController = FindObjectOfType<SoundController>();
-            Debug.Log(soundController);
             UpdateResources(null);
             woodAnimationTxt.text = "";
             rockAnimationTxt.text = "";

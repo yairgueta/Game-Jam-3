@@ -40,5 +40,5 @@ MonoBehaviour:
   bgVolume: 0.01
   sfxVolume: 1
   ambientVolume: 0.03
-  fadeoutTime: 8
-  fadeInTime: 12
+  fadeoutTime: 6
+  fadeInTime: 8

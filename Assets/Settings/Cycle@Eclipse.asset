@@ -18,5 +18,5 @@ MonoBehaviour:
   globalLightIntensity: 0.6
   onCycleStart: {fileID: 11400000, guid: ced196fe55eb94eaca4c25ab594ec604, type: 2}
   onCycleEnd: {fileID: 11400000, guid: 660bda67326474a828ff51e5d2126210, type: 2}
-  uiActiveSprite: {fileID: 8867631687859194054, guid: fc5bf4e96ef2248179bec8ffc469d85a, type: 3}
+  uiActiveSprite: {fileID: -8813056335224524397, guid: fc5bf4e96ef2248179bec8ffc469d85a, type: 3}
   fillerThreshold: 0.7

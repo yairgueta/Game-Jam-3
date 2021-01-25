@@ -1,3 +1,4 @@
+using Cycles;
 using DG.Tweening;
 using UnityEngine;
 
@@ -18,7 +19,8 @@ public class SoundController : MonoBehaviour
     void Start()
     {
         InitializeBGClips();
-        soundSettings.onDayStart.Register(gameObject, o => PlayBGMusic(dayMusicSource));
+        CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, o => PlayBGMusic(dayMusicSource));
+        // soundSettings.onDayStart.Register(gameObject, o => PlayBGMusic(dayMusicSource));
         soundSettings.onEclipseStart.Register(gameObject,o => PlayBGMusic(eclipseMusicSource));
         soundSettings.onNightStart.Register(gameObject,o => PlayBGMusic(nightMusicSource));
         soundSettings.onEnemyDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.enemyDeath));
@@ -37,6 +39,7 @@ public class SoundController : MonoBehaviour
 
     private void StartMusic(AudioSource source)
     {
+        Debug.Log("playing sound");
         currentBGMusic = source;
         changeTo = source;
         currentBGMusic.volume = 0f;

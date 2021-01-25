@@ -94,14 +94,14 @@ namespace UI
                 animText.gameObject.transform.localScale = Vector3.zero;
                 woodTween = DOTween.Sequence().Append(animText.gameObject.transform.DOScale(
                         1.2f * Vector3.one, .25f).SetId(type))
-                    .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(2f));
+                    .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(0.5f));
                 return;
             }
             rockTween.Kill();
             animText.gameObject.transform.localScale = Vector3.zero;
             rockTween = DOTween.Sequence().Append(animText.gameObject.transform.DOScale(
                     1.2f * Vector3.one, .25f).SetId(type))
-                .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(2f));
+                .Append(animText.gameObject.transform.DOScale(Vector3.zero, .25f).SetDelay(0.5f));
         }
 
     }

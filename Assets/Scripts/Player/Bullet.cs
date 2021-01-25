@@ -27,7 +27,6 @@ namespace Player
             gameObject.SetActive(true);
             onExplosionEvent = explosionEvent;
             power = _power;
-            
             rb2d.AddForce(shootingDirection * speed, ForceMode2D.Impulse);
             Invoke(nameof(Disable), duration);   
         }
@@ -36,7 +35,7 @@ namespace Player
         {
             onExplosionEvent.Raise(this);
             StartCoroutine(Particle());
-            // rb2d.velocity = Vector2.zero;
+            rb2d.velocity = Vector2.zero;
             // gameObject.SetActive(false);
         }
 

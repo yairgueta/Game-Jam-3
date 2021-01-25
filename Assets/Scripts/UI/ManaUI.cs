@@ -27,13 +27,18 @@ public class ManaUI : MonoBehaviour
 
     IEnumerator Flicker(int nTimes, float timeOn, float timeOff)
     {
+        var color = heart.color;
+
         while (nTimes > 0)
         {
-            heart.enabled = true;
+            color = new Color(color.r,color.b, color.g, 1f);
+            heart.color = color;
             yield return new WaitForSeconds(timeOn);
-            heart.enabled = false;
+            color = new Color(color.r,color.b, color.g, 0f);
+            heart.color = color;
             yield return new WaitForSeconds(timeOff);
-            heart.enabled = true;
+            color = new Color(color.r,color.b, color.g, 1f);
+            heart.color = color;
             nTimes--;
         }
     }

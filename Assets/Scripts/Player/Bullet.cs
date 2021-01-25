@@ -41,7 +41,7 @@ namespace Player
 
         IEnumerator Particle()
         {
-            particle.Play();
+            // particle.Play();
             circle.SetActive(false);
             yield return new WaitForSeconds(0.4f);
             rb2d.velocity = Vector2.zero;

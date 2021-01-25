@@ -7,6 +7,7 @@ using Player;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 using Selectable = Selections.Selectable;
 
 namespace Sheep
@@ -16,11 +17,17 @@ namespace Sheep
         [SerializeField] private SheepSettings sheepSettings;
         [SerializeField] private Image collectionDisplay;
         [SerializeField] private ParticleSystem collectionParticle;
+        [SerializeField] private GameEvent onSheepDeath;
+        
+        [Header("Light Settings")]
+        [SerializeField] private Vector2 intensityRange = new Vector2(.3f, .6f);
+        [SerializeField] private float flickerSpeed = 5f;
+        private Vector2 noiseVar;
+        
         private SpriteRenderer sr;
         private Selectable selectable;
-        private Light2D light;
+        private Light2D sheepLight;
         private float health;
-        [SerializeField] private GameEvent onSheepDeath;
         private bool PlayerMaxMana => PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon;
         
         [Flags]
@@ -36,17 +43,23 @@ namespace Sheep
         
         private void Awake()
         {
+            noiseVar = new Vector2(Random.value, Random.value);
+            
             sr = GetComponent<SpriteRenderer>();
             if (sr == null) sr = GetComponentInParent<SpriteRenderer>();
             selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
-            light = GetComponentInChildren<Light2D>();
+            sheepLight = GetComponentInChildren<Light2D>();
             PlayerController.PlayerSettings.onManaChange.Register(gameObject, RefreshSelectableInteractable);
         }
         
         private void Update()
         {
             if (status.HasFlag(Status.Empty)) return;
-            
+            if ((status & Status.Glow) != 0)
+            {
+                var noise = Mathf.PerlinNoise(Time.time*flickerSpeed + noiseVar.x, noiseVar.y);
+                sheepLight.intensity = Mathf.Lerp(intensityRange.x, intensityRange.y, noise);
+            }
             if (selectable.DragTime < 0) collectionParticle.Stop();
             if (selectable.DragTime >= 0) DisplayBeingCollected();
             else collectionDisplay.fillAmount = 0;
@@ -119,7 +132,7 @@ namespace Sheep
         private void RefreshSprite()
         {
             Sprite sprite;
-            light.enabled = false;
+            sheepLight.enabled = false;
             if ((status & Status.Empty) != 0)
             {
                 if ((status & Status.Awake) != 0) sprite = sheepSettings.emptyAwake;
@@ -132,7 +145,7 @@ namespace Sheep
                 if ((status & Status.Glow) != 0)
                 {
                     sprite = sheepSettings.glowSheep;
-                    light.enabled = true;
+                    sheepLight.enabled = true;
                 }
             }
 

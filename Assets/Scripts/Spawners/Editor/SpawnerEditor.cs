@@ -80,9 +80,9 @@ namespace Spawners.Editor
                 for (int i = 0; i < totalPool.intValue; i++)
                 {
                     var prefab = spawner.GetRandomPrefab();
-                    var itn = Instantiate(prefab, spawner.transform);
-                    itn.SetActive(false);
+                    PrefabUtility.InstantiatePrefab(prefab, spawner.transform);
                 }
+                foreach (Transform child in spawner.transform) child.gameObject.SetActive(false);
             }
             
             EditorGUILayout.PropertyField(useOverFrameSpawning);

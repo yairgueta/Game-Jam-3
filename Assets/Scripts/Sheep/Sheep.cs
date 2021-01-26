@@ -17,6 +17,7 @@ namespace Sheep
         [SerializeField] private SheepSettings sheepSettings;
         [SerializeField] private Image collectionDisplay;
         [SerializeField] private ParticleSystem collectionParticle;
+        [SerializeField] private ParticleSystem sleepingParticle;
         [SerializeField] private GameEvent onSheepDeath;
         
         [Header("Light Settings")]
@@ -158,6 +159,13 @@ namespace Sheep
             animator.SetInteger(StatusAnimatorID, (int) status);
             
             sheepLight.enabled = false;
+            if ((status & Status.Awake) == 0)
+            {
+                // if (!sleepingParticle.isPlaying) 
+                    sleepingParticle.Play();
+            }
+            else 
+                sleepingParticle.Stop();
             if ((status & Status.Empty) == 0 && (status & Status.Glow) != 0) sheepLight.enabled = true;
 
             selectable.SetInteractable((status & Status.Glow) != 0 && (status & Status.Empty) == 0);

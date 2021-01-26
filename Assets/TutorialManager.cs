@@ -45,7 +45,8 @@ public class TutorialManager : MonoBehaviour
         AnimateTransition(oldImage, CurrentImage);
         prevButton.interactable = currentIndex > 0;
         nextButton.interactable = currentIndex < tutsImages.Length - 1;
-        
+        if (!isRight) startButton.gameObject.SetActive(false);
+
     }
     
     private void AnimateTransition(Image oldImage, Image newImage)

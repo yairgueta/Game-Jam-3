@@ -1370,6 +1370,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1835439061, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: bgMusicSlider
+      value: 
+      objectReference: {fileID: 313680449089587832}
+    - target: {fileID: 1835439061, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: sfxMusicSlider
+      value: 
+      objectReference: {fileID: 313680448096841891}
     - target: {fileID: 4583978824794404653, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
       propertyPath: m_Name
       value: Sound Controller
@@ -3081,26 +3089,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2587891287377725639, guid: b221c3529c02f4945a7b810718473f77, type: 3}
   m_PrefabInstance: {fileID: 1766353712}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1835439058 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4583978824794404653, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+--- !u!114 &1835439061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1835439061, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
   m_PrefabInstance: {fileID: 806807633}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1835439061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835439058}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3695128f2fe626542995099357fed0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundSettings: {fileID: 11400000, guid: 6e4a7ec272fb4c847970be0a90fa8e33, type: 2}
-  bgMusicSlider: {fileID: 313680449089587832}
-  sfxMusicSlider: {fileID: 313680448096841891}
 --- !u!4 &1851173640 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7418918906592728186, guid: dbcb690343fb84bd1bd8cc80bd7d287c, type: 3}

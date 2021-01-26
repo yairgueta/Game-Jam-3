@@ -645,6 +645,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4583978824794404654}
   - component: {fileID: 4583978824794404655}
+  - component: {fileID: 1835439061}
   m_Layer: 0
   m_Name: Sound Controller
   m_TagString: Untagged
@@ -681,6 +682,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundSettings: {fileID: 11400000, guid: 6e4a7ec272fb4c847970be0a90fa8e33, type: 2}
+--- !u!114 &1835439061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583978824794404653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3695128f2fe626542995099357fed0a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundSettings: {fileID: 11400000, guid: 6e4a7ec272fb4c847970be0a90fa8e33, type: 2}
+  bgMusicSlider: {fileID: 0}
+  sfxMusicSlider: {fileID: 0}
 --- !u!1 &4583978824821058074
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,13 @@ public class SoundPlayerPrefs : MonoBehaviour
     [SerializeField] private Slider bgMusicSlider;
     [SerializeField] private Slider sfxMusicSlider;
     // private AudioSource menuAudioSource;
-    
+    private SoundController soundController;
+
+    private void Awake()
+    {
+        soundController = FindObjectOfType<SoundController>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +24,7 @@ public class SoundPlayerPrefs : MonoBehaviour
         bgMusicSlider.value = soundSettings.bgVolume;
         sfxMusicSlider.value = soundSettings.sfxVolume;
         // menuAudioSource.volume = soundSettings.bgVolume;
+        
     }
 
     public void ChangeSFXVolume(float value)
@@ -28,5 +36,6 @@ public class SoundPlayerPrefs : MonoBehaviour
     {
         // menuAudioSource.volume = value;
         soundSettings.bgVolume = value;
+        soundController.ChangeMenuVolume(value);
     }
 }

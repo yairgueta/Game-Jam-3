@@ -24,7 +24,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.R))
         {
             RestartGame();
         }

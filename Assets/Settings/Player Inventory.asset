@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51415acc141c64870b64f67a02af1375, type: 3}
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  initWood: 100
-  initRock: 100
+  initWood: 10
+  initRock: 5
   onChange: {fileID: 11400000, guid: 7bcb3616a4a6a4d9e982d13045dd1954, type: 2}
   onOutOfResources: {fileID: 11400000, guid: 47ecf8534cd56432893c2d30cc8d125a, type: 2}
   quantityMap:
     m_Keys: 0000000001000000
-    m_Values: 220000005e000000
+    m_Values: 0100000005000000

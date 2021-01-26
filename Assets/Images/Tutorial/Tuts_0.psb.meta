@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d85ce71f63ac249148934696037ac297
+guid: ebf75a594646842f5b267275d9f679f4
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -27,9 +27,9 @@ ScriptedImporter:
     vTOnly: 0
     nPOTScale: 1
     sRGBTexture: 1
-    spriteMode: 1
+    spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 0
+    spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 100
@@ -67,18 +67,18 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   spriteImportData:
-  - name: Tutorial_0_1
+  - name: 
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 1154
-      height: 502
-    spriteID: 186ec34afeca14a55862231f53ab7f10
+      width: 0
+      height: 0
+    spriteID: 
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -90,18 +90,18 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData:
-  - name: Find And Collect wood and  rocks around the forest  Also sheeps
+  - name: Layer 8
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1049
-      y: 4
-      width: 696
-      height: 272
-    spriteID: a2f2ea9c56689419fb78e7d09813ee9f
+      x: 4
+      y: 2980
+      width: 290
+      height: 167
+    spriteID: 00adc1c468a26474c99f256b003a56fe
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -111,8 +111,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 765, y: -92}
-  - name: Ellipse 1
+    uvTransform: {x: -2307, y: 2341}
+  - name: 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -121,9 +121,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1037
-      height: 483
-    spriteID: d951079f53c1345a79d7ffe27f9038d7
+      width: 1976
+      height: 1480
+    spriteID: 0848556ccd52043c58ed08331a1d0e0b
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -133,19 +133,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -50, y: -8}
-  - name: Layer 0
+    uvTransform: {x: -762, y: -496}
+  - name: 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1753
-      y: 4
-      width: 0
-      height: 0
-    spriteID: 8339fe1cd1731452babbdfe311f0bc61
+      x: 4
+      y: 1492
+      width: 1976
+      height: 1480
+    spriteID: 50eaa44b835a649239c6ed6bcbc5807b
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -155,20 +155,42 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 599, y: -498}
+    uvTransform: {x: -762, y: 992}
+  - name: 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1988
+      y: 4
+      width: 1976
+      height: 1480
+    spriteID: 49054250044b142b391e270ef168f4f6
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1222, y: -496}
   rigSpriteImportData:
-  - name: Find And Collect wood and  rocks around the forest  Also sheeps
+  - name: Play
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1049
-      y: 4
-      width: 696
-      height: 272
-    spriteID: 12505ac983bfc4e3ca50766fcc7d44f5
+      x: 4
+      y: 2980
+      width: 290
+      height: 167
+    spriteID: 7b3bcae7973eb47f48b03f7d1a1e224c
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -178,8 +200,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 765, y: -92}
-  - name: Ellipse 1
+    uvTransform: {x: -2307, y: 2341}
+  - name: 3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -188,9 +210,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 1037
-      height: 483
-    spriteID: b6b686e16034e4a13a66ce3553e4d0b7
+      width: 1976
+      height: 1480
+    spriteID: 84f418986826843129a6eeedef0da691
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -200,19 +222,19 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -50, y: -8}
-  - name: Layer 0
+    uvTransform: {x: -762, y: -496}
+  - name: 2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1753
-      y: 4
-      width: 0
-      height: 0
-    spriteID: c25b63ef47e8b406e9d4795f5ba107e9
+      x: 4
+      y: 1492
+      width: 1976
+      height: 1480
+    spriteID: e3c98b6c6ac5e478b973079048fda8a7
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -222,7 +244,29 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 599, y: -498}
+    uvTransform: {x: -762, y: 992}
+  - name: 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1988
+      y: 4
+      width: 1976
+      height: 1480
+    spriteID: 167eeca8db2894985a1981b9dd9f5d96
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1222, y: -496}
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -257,73 +301,87 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
-  mosaicLayers: 0
+  mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
   importedTextureWidth: 2048
   importedTextureHeight: 2048
-  documentSize: {x: 1154, y: 502}
+  documentSize: {x: 3508, y: 2480}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
   spriteCategoryList:
     categories: []
-  textureActualWidth: 1154
-  textureActualHeight: 502
+  textureActualWidth: 4096
+  textureActualHeight: 4096
   spritePackingTag: 
   resliceFromLayer: 0
   characterMode: 0
   mosaicPSDLayers:
-  - name: Find And Collect wood and  rocks around the forest  Also sheeps
-    spriteName: Find And Collect wood and  rocks around the forest  Also sheeps
+  - name: Layer 8
+    spriteName: Layer 8
     isGroup: 0
     parentIndex: -1
-    spriteID: a2f2ea9c56689419fb78e7d09813ee9f
-    layerID: 2
-    mosaicPosition: {x: 1049, y: 4}
-  - name: Ellipse 1
-    spriteName: Ellipse 1
+    spriteID: 00adc1c468a26474c99f256b003a56fe
+    layerID: 25
+    mosaicPosition: {x: 4, y: 2980}
+  - name: 3
+    spriteName: 3
     isGroup: 0
     parentIndex: -1
-    spriteID: d951079f53c1345a79d7ffe27f9038d7
-    layerID: 4
+    spriteID: 0848556ccd52043c58ed08331a1d0e0b
+    layerID: 24
     mosaicPosition: {x: 4, y: 4}
-  - name: Layer 0
-    spriteName: Layer 0
+  - name: 2
+    spriteName: 2
     isGroup: 0
     parentIndex: -1
-    spriteID: 8339fe1cd1731452babbdfe311f0bc61
-    layerID: 5
-    mosaicPosition: {x: 1753, y: 4}
+    spriteID: 50eaa44b835a649239c6ed6bcbc5807b
+    layerID: 14
+    mosaicPosition: {x: 4, y: 1492}
+  - name: 1
+    spriteName: 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 49054250044b142b391e270ef168f4f6
+    layerID: 7
+    mosaicPosition: {x: 1988, y: 4}
   rigPSDLayers:
-  - name: Find And Collect wood and  rocks around the forest  Also sheeps
-    spriteName: Find And Collect wood and  rocks around the forest  Also sheeps
+  - name: Play
+    spriteName: Play
     isGroup: 0
     parentIndex: -1
-    spriteID: 12505ac983bfc4e3ca50766fcc7d44f5
-    layerID: 2
-    mosaicPosition: {x: 1049, y: 4}
-  - name: Ellipse 1
-    spriteName: Ellipse 1
+    spriteID: 7b3bcae7973eb47f48b03f7d1a1e224c
+    layerID: 25
+    mosaicPosition: {x: 4, y: 2980}
+  - name: 3
+    spriteName: 3
     isGroup: 0
     parentIndex: -1
-    spriteID: b6b686e16034e4a13a66ce3553e4d0b7
-    layerID: 4
+    spriteID: 84f418986826843129a6eeedef0da691
+    layerID: 24
     mosaicPosition: {x: 4, y: 4}
-  - name: Layer 0
-    spriteName: Layer 0
+  - name: 2
+    spriteName: 2
     isGroup: 0
     parentIndex: -1
-    spriteID: c25b63ef47e8b406e9d4795f5ba107e9
-    layerID: 5
-    mosaicPosition: {x: 1753, y: 4}
+    spriteID: e3c98b6c6ac5e478b973079048fda8a7
+    layerID: 14
+    mosaicPosition: {x: 4, y: 1492}
+  - name: 1
+    spriteName: 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 167eeca8db2894985a1981b9dd9f5d96
+    layerID: 7
+    mosaicPosition: {x: 1988, y: 4}
   characterData:
     bones: []
     parts: []
     dimension: {x: 0, y: 0}
     characterGroups: []
   generateGOHierarchy: 0
-  textureAssetName: Tutorial_0 Texture
-  prefabAssetName: Tutorial_0 Prefab
-  spriteLibAssetName: Tutorial_0 Sprite Lib
+  textureAssetName: Tuts_0 Texture
+  prefabAssetName: Tuts_0 Prefab
+  spriteLibAssetName: Tuts_0 Sprite Lib
   secondarySpriteTextures: []

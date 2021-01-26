@@ -23,11 +23,15 @@ namespace Sheep
         [SerializeField] private Vector2 intensityRange = new Vector2(.3f, .6f);
         [SerializeField] private float flickerSpeed = 5f;
         private Vector2 noiseVar;
-        
+
+        private Animator animator;
         private SpriteRenderer sr;
         private Selectable selectable;
         private Light2D sheepLight;
         private float health;
+
+        private static readonly int StatusAnimatorID = Animator.StringToHash("Status");
+        
         private bool PlayerMaxMana => PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon;
         
         [Flags]
@@ -44,7 +48,8 @@ namespace Sheep
         private void Awake()
         {
             noiseVar = new Vector2(Random.value, Random.value);
-            
+
+            animator = GetComponent<Animator>();
             sr = GetComponent<SpriteRenderer>();
             if (sr == null) sr = GetComponentInParent<SpriteRenderer>();
             selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
@@ -132,25 +137,29 @@ namespace Sheep
 
         private void RefreshSprite()
         {
-            Sprite sprite;
+            // Sprite sprite;
+            // if ((status & Status.Empty) != 0)
+            // {
+            //     if ((status & Status.Awake) != 0) sprite = sheepSettings.emptyAwake;
+            //     else sprite = sheepSettings.emptySleep;
+            // }
+            // else
+            // {
+            //     if ((status & Status.Awake) != 0) sprite = sheepSettings.awake;
+            //     else sprite = sheepSettings.sleep;
+            //     if ((status & Status.Glow) != 0)
+            //     {
+            //         sprite = sheepSettings.glowSheep;
+            //         sheepLight.enabled = true;
+            //     }
+            // }
+            // sr.sprite = sprite;
+            
+            animator.SetInteger(StatusAnimatorID, (int) status);
+            
             sheepLight.enabled = false;
-            if ((status & Status.Empty) != 0)
-            {
-                if ((status & Status.Awake) != 0) sprite = sheepSettings.emptyAwake;
-                else sprite = sheepSettings.emptySleep;
-            }
-            else
-            {
-                if ((status & Status.Awake) != 0) sprite = sheepSettings.awake;
-                else sprite = sheepSettings.sleep;
-                if ((status & Status.Glow) != 0)
-                {
-                    sprite = sheepSettings.glowSheep;
-                    sheepLight.enabled = true;
-                }
-            }
+            if ((status & Status.Empty) == 0 && (status & Status.Glow) != 0) sheepLight.enabled = true;
 
-            sr.sprite = sprite;
             selectable.SetInteractable((status & Status.Glow) != 0 && (status & Status.Empty) == 0);
         }
 

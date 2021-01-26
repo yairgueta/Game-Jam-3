@@ -18,4 +18,4 @@ MonoBehaviour:
   onOutOfResources: {fileID: 11400000, guid: 47ecf8534cd56432893c2d30cc8d125a, type: 2}
   quantityMap:
     m_Keys: 0000000001000000
-    m_Values: 2200000054000000
+    m_Values: 220000005e000000

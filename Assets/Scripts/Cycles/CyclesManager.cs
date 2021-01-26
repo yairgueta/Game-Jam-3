@@ -21,7 +21,6 @@ namespace Cycles
         private CycleObject currentCycle;
         private Queue<CycleObject> cyclesQueue;
         private float timer;
-        private bool isPlaying;
 
         private void OnEnable()
         {
@@ -41,15 +40,10 @@ namespace Cycles
             currentCycle = orderedCycles[0];
             cyclesQueue = new Queue<CycleObject>(orderedCycles);
         }
-
-        public void StartPlaying()
-        {
-            isPlaying = true;
-        }
         
         private void Update()
         {
-            if (!isPlaying) return;
+            if (!GameManager.Instance.IsPlaying) return;
             timer -= Time.deltaTime;
             if (timer > 0) return;
             ProgressCycle();

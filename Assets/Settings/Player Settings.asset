@@ -18,13 +18,13 @@ MonoBehaviour:
   initialMana: 70
   recoveryGap: 1
   lifeAdditionAmount: 1
-  bulletManaCost: 2
+  bulletManaCost: 5
   bulletSpeed: 10
   bulletPower: 3
   bulletDuration: 1.42
   bulletCoolDown: 0.49
   curHealth: 50
-  curMana: 0
+  curMana: 60
   onDeath: {fileID: 11400000, guid: ce7896d81791f41a5a2433c723a31a3e, type: 2}
   onHealthChange: {fileID: 11400000, guid: a3853c4fbc09b4fcdb96ae73da19454d, type: 2}
   onManaChange: {fileID: 11400000, guid: 02a796ea9269b4c0b941b1dbd4e51e43, type: 2}

@@ -22,4 +22,4 @@ MonoBehaviour:
   - {fileID: -4401582580983228226, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
   healthPoints: 100
   requiredWoods: 3
-  requiredRocks: 0
+  requiredRocks: 1

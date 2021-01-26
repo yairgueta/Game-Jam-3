@@ -35,7 +35,7 @@ public class EnemiesSpawner : MonoBehaviour
         if (i > 0)
         {
             yield return new WaitForSeconds(timeBetweenSpawning);
-            int num = Random.Range(1,3);
+            int num = Random.Range(1,8);
             spawnersManager.SpawnMany(num);
             i--;
             StartCoroutine(Spawn(i));

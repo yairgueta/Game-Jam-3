@@ -53,21 +53,21 @@ namespace Upgrader
                 onDeath?.Invoke();
         }
 
-        private static int i;
-        public int index;
-
-        private void Start()
-        {
-            index = i++;
-        }
-
-        private void OnGUI()
-        {
-            GUILayout.Space(30f+20f*index);
-            if (GUILayout.Button("damage"))
-            {
-                TakeDamage(maxHealth / 4);
-            }
-        }
+        // private static int i;
+        // public int index;
+        //
+        // private void Start()
+        // {
+        //     index = i++;
+        // }
+        //
+        // private void OnGUI()
+        // {
+        //     GUILayout.Space(30f+20f*index);
+        //     if (GUILayout.Button("damage"))
+        //     {
+        //         TakeDamage(maxHealth / 4);
+        //     }
+        // }
     }
 }

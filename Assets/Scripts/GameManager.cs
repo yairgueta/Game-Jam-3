@@ -1,17 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Collectables;
-using NUnit.Framework;
-using Player;
+using Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
+    public GameEvent ONFinishLoading => onFinishLoading;
+    public GameEvent ONStartGame => onStartGame;
+    public bool IsPlaying { get; private set; }
+    
+    [SerializeField] private GameEvent onFinishLoading;
+    [SerializeField] private GameEvent onStartGame;
     private List<bool> waitingList;
-
 
     private bool canRegisterToWaitingList = true;
 
@@ -37,9 +38,10 @@ public class GameManager : Singleton<GameManager>
         canRegisterToWaitingList = false;
     }
 
-    private void StartGame()
+    public void StartGame()
     {
-        Cycles.CyclesManager.Instance.StartPlaying();
+        onStartGame.Raise();
+        IsPlaying = true;
     }
     
     public void RestartGame()
@@ -64,6 +66,10 @@ public class GameManager : Singleton<GameManager>
     private void OnFinishedTask(int i)
     {
         waitingList[i] = true;
-        if (!waitingList.Contains(false)) StartGame();
+        if (!waitingList.Contains(false))
+        {
+            onFinishLoading.Raise();
+            // StartGame();
+        }
     }
 }

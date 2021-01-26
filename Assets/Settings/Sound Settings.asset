@@ -37,8 +37,8 @@ MonoBehaviour:
   onBulletExplode: {fileID: 11400000, guid: 1d6eda70405af4d93b8301c7eb30f686, type: 2}
   onSheepDeath: {fileID: 11400000, guid: bd7ec884f05dcf845b3e7e162042db41, type: 2}
   onWallDestroyed: {fileID: 11400000, guid: c5d43385e4ff9a84883ca6a064af7377, type: 2}
-  bgVolume: 0.049437128
-  sfxVolume: 1
+  initialVolumes: 0.8
+  sfxVolume: 0
   ambientVolume: 0.03
   fadeoutTime: 6
   fadeInTime: 8

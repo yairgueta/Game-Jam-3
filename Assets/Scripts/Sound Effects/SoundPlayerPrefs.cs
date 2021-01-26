@@ -12,30 +12,20 @@ public class SoundPlayerPrefs : MonoBehaviour
     // private AudioSource menuAudioSource;
     private SoundController soundController;
 
-    private void Awake()
-    {
-        soundController = FindObjectOfType<SoundController>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // menuAudioSource = gameObject.GetComponent<AudioSource>();
-        bgMusicSlider.value = soundSettings.bgVolume;
-        sfxMusicSlider.value = soundSettings.sfxVolume;
-        // menuAudioSource.volume = soundSettings.bgVolume;
-        
-    }
-
-    public void ChangeSFXVolume(float value)
-    {
-        soundSettings.sfxVolume = value;
-    }
-
-    public void ChangeBGVolume(float value)
-    {
-        // menuAudioSource.volume = value;
-        soundSettings.bgVolume = value;
-        soundController.ChangeMenuVolume(value);
-    }
+    // private void Awake()
+    // {
+    //     soundController = FindObjectOfType<SoundController>();
+    // }
+    //
+    // public void ChangeSFXVolume(float value)
+    // {
+    //     soundSettings.sfxVolume = value;
+    // }
+    //
+    // public void ChangeBGVolume(float value)
+    // {
+    //     // menuAudioSource.volume = value;
+    //     soundSettings.bgVolume = value;
+    //     soundController.ChangeMenuVolume(value);
+    // }
 }

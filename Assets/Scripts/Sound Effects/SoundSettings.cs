@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Events;
@@ -36,11 +37,22 @@ public class SoundSettings : ScriptableObject
     public GameEvent onBulletExplode;
     public GameEvent onSheepDeath;
     public GameEvent onWallDestroyed;
-
+    public Action onVolumeChange;
+    
     [Header("Attributes")] 
-    public float bgVolume;
-    public float sfxVolume;
+    [Range(0,1)] public float initialVolumes;
+    [Range(0,1)] private float bgmVolume;
+    [Range(0,1)] public float sfxVolume;
     public float ambientVolume;
     public float fadeoutTime;
     public float fadeInTime;
+
+    public float BGMVolume => bgmVolume;
+    public void SetBGMVolume(float v)
+    {
+        bgmVolume = v;
+        onVolumeChange?.Invoke();
+    }
+
+    public void SetSFXVolume(float v) => sfxVolume = v;
 }

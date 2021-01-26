@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -62,14 +63,21 @@ public class GameManager : Singleton<GameManager>
         waitingList.Add(false);
         return () => OnFinishedTask(i);
     }
+    public bool FinishedLoading => !waitingList.Contains(false);
 
     private void OnFinishedTask(int i)
     {
         waitingList[i] = true;
-        if (!waitingList.Contains(false))
+        if (FinishedLoading)
         {
             onFinishLoading.Raise();
             // StartGame();
         }
     }
+
+
+    // private void OnGUI()
+    // {
+    //     GUI.Label(new Rect(Screen.width/2-40, 5, 80, 30), $"Load: {waitingList.Count(b=>b)} / {waitingList.Count}" );
+    // }
 }

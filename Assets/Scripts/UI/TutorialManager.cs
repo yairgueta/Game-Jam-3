@@ -10,12 +10,15 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Button startButton;
     [SerializeField] private float fadeInDuration, fadeOutDuration;
     [SerializeField] private Ease fadeInEase, fadeOutEase;
+
+    [SerializeField] private Canvas mainGameUI;
     private Image[] tutsImages;
     private int currentIndex;
     private Tween fadeAnimation;
     
     void Start()
     {
+        mainGameUI.enabled = false;
         nextButton.onClick.AddListener(() => Scroll(true));
         prevButton.onClick.AddListener(() => Scroll(false));
         tutsImages = tutorialsImages.GetComponentsInChildren<Image>();
@@ -27,7 +30,7 @@ public class TutorialManager : MonoBehaviour
         startButton.gameObject.SetActive(currentIndex == tutsImages.Length - 1);
         prevButton.interactable = false;
 
-        startButton.interactable = false;
+        startButton.interactable = GameManager.Instance.FinishedLoading;
         GameManager.Instance.ONFinishLoading.Register(startButton.gameObject, o => startButton.interactable = true);
         startButton.onClick.AddListener(() =>
         {

@@ -1,23 +1,29 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class Menu : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private GameObject tutorial;
-
-    public void Play()
+    public class Menu : MonoBehaviour
     {
-        FindObjectOfType<SoundController>().TurnMenuMusicOff();
-        tutorial.SetActive(true);
-        gameObject.SetActive(false);
-    }
+        [SerializeField] private GameObject tutorial;
 
-    public void Quit()
-    {
-        Application.Quit();
-    }
+        private void Start()
+        {
+            var initVol = SoundController.Instance.soundSettings.initialVolumes;
+            foreach (var slider in GetComponentsInChildren<Slider>()) slider.value = initVol;
+        }
 
+        public void Play()
+        {
+            SoundController.Instance.TurnMenuMusicOff();
+            tutorial.SetActive(true);
+            gameObject.SetActive(false);
+        }
+
+        public void Quit()
+        {
+            Application.Quit();
+        }
+
+    }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -57,10 +58,14 @@ namespace Cycles
             timer = currentCycle.Duration;
             currentCycle.OnCycleStart.Raise();
         }
-        
+
+        private Rect r = new Rect(Screen.width * .8f, 0, Screen.width * .2f, Screen.height * .1f);
+        private StringBuilder sb = new StringBuilder(20,20);
         private void OnGUI()
         {
-            GUI.Label(new Rect(Screen.width*.8f, 0, Screen.width*.2f, Screen.height*.1f), currentCycle.name + ": " + Math.Round(timer, 2));
+            sb.Clear();
+            sb.Append(currentCycle.name).Append(": ").Append(Math.Round(timer, 2));
+            GUI.Label(r, sb.ToString());
         }
 
         public float TimePercentage => 1 - timer / currentCycle.Duration;

@@ -26,6 +26,7 @@ public class SoundController : Singleton<SoundController>
         RegisterToEvents();
         // PlayAmbient();
         PlayMenuMusic();
+        soundSettings.onVolumeChange += ()=> mainMenuSource.volume = soundSettings.BGMVolume;
     }
 
     private void InitializeSettings()
@@ -82,7 +83,7 @@ public class SoundController : Singleton<SoundController>
         changeTo = source;
         currentBGMusic.volume = 0f;
         currentBGMusic.Play();
-        changeTo.DOFade(soundSettings.bgVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
+        changeTo.DOFade(soundSettings.BGMVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
     private void PlayBGMusic(AudioSource source)
@@ -104,7 +105,7 @@ public class SoundController : Singleton<SoundController>
         changeTo.volume = 0f;
         changeTo.Play();
         currentBGMusic.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
-        changeTo.DOFade(soundSettings.bgVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
+        changeTo.DOFade(soundSettings.BGMVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
     private void PlayAmbient()
@@ -116,7 +117,7 @@ public class SoundController : Singleton<SoundController>
 
     private void PlayMenuMusic()
     {
-        mainMenuSource.volume = soundSettings.bgVolume;
+        mainMenuSource.volume = soundSettings.BGMVolume;
         mainMenuSource.clip = soundSettings.eclipseMusic;
         mainMenuSource.Play();
     }
@@ -125,12 +126,7 @@ public class SoundController : Singleton<SoundController>
     {
         mainMenuSource.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
     }
-
-    public void ChangeMenuVolume(float volume)
-    {
-        mainMenuSource.volume = volume;
-    }
-
+    
     public void PlaySoundEffect(AudioClip audioClip)
     {
         if (audioClip == null) return;

@@ -26,7 +26,7 @@ MonoBehaviour:
   pickWood: {fileID: 8300000, guid: 5322e5f93bfa3d148876e9e17423643d, type: 3}
   monsterAttack: {fileID: 8300000, guid: c98f6a682a0542e41991db1399d64e40, type: 3}
   gate: {fileID: 8300000, guid: e5b40b0d8b43d984ba1d73e5da4b96b4, type: 3}
-  ambient: {fileID: 8300000, guid: 4a7ead4dd85ac3a47807303913a0cc1c, type: 3}
+  ambient: {fileID: 8300000, guid: b74f4092ee55b4d88896b8749e2494ee, type: 3}
   onDayStart: {fileID: 11400000, guid: 660bda67326474a828ff51e5d2126210, type: 2}
   onEclipseStart: {fileID: 11400000, guid: ced196fe55eb94eaca4c25ab594ec604, type: 2}
   onNightStart: {fileID: 11400000, guid: 26148eb380676484ba5b5622baf6bdb7, type: 2}

@@ -75,7 +75,6 @@ public class SoundController : Singleton<SoundController>
 
     private void StartMusic(AudioSource source)
     {
-        Debug.Log("playing sound");
         currentBGMusic = source;
         changeTo = source;
         currentBGMusic.volume = 0f;

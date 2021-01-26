@@ -19,7 +19,7 @@ MonoBehaviour:
   playerDeath: {fileID: 8300000, guid: 581f5dab87526ae4387e16e0bcde6f4d, type: 3}
   outOfResources: {fileID: 8300000, guid: ea071283347450c448669aff5ddb17a1, type: 3}
   mushroomCollected: {fileID: 8300000, guid: b77bf4288d1fe6d4988e41a2c96d748b, type: 3}
-  bulletExploded: {fileID: 8300000, guid: 99e3643ccf2c95046913f915431ea6c2, type: 3}
+  bulletExploded: {fileID: 8300000, guid: ed6acc2fd6e6ce74a9eb6220747d7dd9, type: 3}
   sheepDeath: {fileID: 8300000, guid: 164d079f19c94e84aa714f43020e1bf3, type: 3}
   wallDestroyed: {fileID: 8300000, guid: 3f883c288c37dc9429472c1128e7f4c9, type: 3}
   pickStone: {fileID: 8300000, guid: 593e32a8464403a4e96065a0a1e62e1a, type: 3}
@@ -37,7 +37,7 @@ MonoBehaviour:
   onBulletExplode: {fileID: 11400000, guid: 1d6eda70405af4d93b8301c7eb30f686, type: 2}
   onSheepDeath: {fileID: 11400000, guid: bd7ec884f05dcf845b3e7e162042db41, type: 2}
   onWallDestroyed: {fileID: 11400000, guid: c5d43385e4ff9a84883ca6a064af7377, type: 2}
-  bgVolume: 0.01
+  bgVolume: 0.049437128
   sfxVolume: 1
   ambientVolume: 0.03
   fadeoutTime: 6

@@ -18,7 +18,7 @@ namespace Enemies
         private IEnemyDamage currentAttacked;
         private float curHealth;
 
-        private Collider2D collider;
+        private Collider2D enemyCollider;
         
         private AIPath aiPath;
         private Vector3 gfxScale;
@@ -41,7 +41,7 @@ namespace Enemies
             gfxScale = enemyGFX.transform.localScale;
             curHealth = enemySettings.health;
 
-            collider = transform.GetChild(0).GetComponent<Collider2D>();
+            enemyCollider = transform.GetChild(0).GetComponent<Collider2D>();
             CyclesManager.Instance.NightSettings.OnCycleEnd.Register(gameObject, o => Die());
         }
 
@@ -80,12 +80,12 @@ namespace Enemies
 
             if (stuckTimer > stuckTimeThreshold)
             {
-                collider.enabled = false;
+                enemyCollider.enabled = false;
 
                 IEnumerator WaitAndEnable()
                 {
                     yield return new WaitForSeconds(.5f);
-                    collider.enabled = true;
+                    enemyCollider.enabled = true;
                 }
 
                 StartCoroutine(WaitAndEnable());

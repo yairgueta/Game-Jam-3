@@ -27,7 +27,7 @@ namespace Enemies
         {
             destinationSetter = GetComponent<AIDestinationSetter>();
             aiPath = GetComponent<AIPath>();
-            // InitializeSettings();
+            // InitializeSettings(); // todo: find out why this line doesnt work
         }
 
         private void Update()
@@ -63,7 +63,6 @@ namespace Enemies
             {
                 var sheepIndex = Random.Range(0, sheepSettings.sheeps.Count);
                 destinationSetter.target = sheepSettings.sheeps[sheepIndex].transform;
-                Debug.Log(destinationSetter.target);
                 return;
             }
             var enemyPos = transform.position;

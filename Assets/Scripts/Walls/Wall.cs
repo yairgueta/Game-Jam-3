@@ -24,8 +24,14 @@ namespace Walls
             OnUpgrade();
             upgradable.onUpgrade += OnUpgrade;
             fixable.onDeath += OnDestroyed;
-            fixable.onFixed += () => sr.sprite = upgradable.CompleteSprite;
+            fixable.onFixed += OnFixed;
             fixable.onHalfHealth += () => sr.sprite = upgradable.CrackedSprite;
+        }
+
+        private void OnFixed()
+        {
+            sr.sprite = upgradable.CompleteSprite;
+            wallCollider.enabled = true;
         }
 
         private void OnDestroyed()

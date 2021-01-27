@@ -305,8 +305,8 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.62038416, y: 0.11729908}
       - {x: 0.6342217, y: -0.5161992}
-      - {x: 0.677492, y: 0.2905655}
-      - {x: -0.6230014, y: 1.022252}
+      - {x: 0.70620954, y: 0.46287024}
+      - {x: -0.6353089, y: 1.1576341}
 --- !u!114 &6763729985872857892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,4 +321,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: 0
   crackedPercentage: 0.5
-  index: 0

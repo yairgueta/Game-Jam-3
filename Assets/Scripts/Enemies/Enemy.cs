@@ -29,7 +29,7 @@ namespace Enemies
         private readonly int dieAnimationID = Animator.StringToHash("Die");
 
         private float stuckTimer;
-        
+        private bool canRoar = true;
         
         private void Start()
         {
@@ -94,9 +94,18 @@ namespace Enemies
         private void AttackMode()
         {
             if (mode == Mode.Attacking) return;
-            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
             mode = Mode.Attacking;
             animator.SetTrigger(attackAnimationID);
+            if(!canRoar) return;
+            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
+            StartCoroutine(AttackSoundDelay());
+        }
+
+        private IEnumerator AttackSoundDelay()
+        {
+            canRoar = false;
+            yield return new WaitForSeconds(soundController.soundSettings.monsterAttack.length * 3f);
+            canRoar = true;
         }
 
         private void WalkMode()

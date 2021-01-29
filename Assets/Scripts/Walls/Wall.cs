@@ -6,8 +6,8 @@ namespace Walls
 {
     public class Wall : MonoBehaviour
     {
-        [SerializeField] private Collider2D wallCollider;
         [SerializeField] private GameEvent onWallDestroy;
+        private Collider2D wallCollider;
         private Upgradable upgradable;
         private Fixable fixable;
         private SpriteRenderer sr;
@@ -15,12 +15,13 @@ namespace Walls
         private void Awake()
         {
             sr = GetComponent<SpriteRenderer>();
+            wallCollider = GetComponent<Collider2D>();
+            fixable = GetComponent<Fixable>();
+            upgradable = GetComponent<Upgradable>();
         }
 
         void Start()
         {
-            upgradable = GetComponent<Upgradable>();
-            fixable = GetComponent<Fixable>() ?? GetComponentInChildren<Fixable>();
             OnUpgrade();
             upgradable.onUpgrade += OnUpgrade;
             fixable.onDeath += OnDestroyed;

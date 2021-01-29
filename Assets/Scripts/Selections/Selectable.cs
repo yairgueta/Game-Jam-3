@@ -9,124 +9,68 @@ namespace Selections
     public class Selectable : MonoBehaviour
     {
         public Action onThisSelected;
+        public Action onThisDiabled;
         public float DragTime { get; private set; }
-        
-        [Header("Materials (keep null for defaults)")]
-        [SerializeField] private Material overMaterial = null;
-        [SerializeField] private Material clickedDownMaterial = null;
-        [SerializeField] private Material selectedMaterial = null;
+        [Tooltip("keep null for default")] [SerializeField] private Material overMaterial = null;
+        [Tooltip("keep null for default")] [SerializeField] private Material clickedDownMaterial = null;
         [SerializeField] private SpriteRenderer spriteRenderer;
         private Material originalMaterial;
 
         private float startDragTime;
-        
-        private bool isSelected;
-        private bool isInteractable;
-
-        private bool interactable
-        {
-            get
-            {
-                var ret = isInteractable && !EventSystem.current.IsPointerOverGameObject();
-                if (!ret) spriteRenderer.material = isSelected? selectedMaterial : originalMaterial;
-                return ret;
-            }
-            set => isInteractable = value;
-        }
-
-        public bool Interactable => interactable;
-
-        private bool hasEnteredAndChanged;
 
         private void Awake()
         {
-            isSelected = false;
-            interactable = true;
-            hasEnteredAndChanged = false;
+            spriteRenderer ??= GetComponent<SpriteRenderer>();
             originalMaterial = spriteRenderer.material;
         }
 
         private void Start()
         {
-            if (!overMaterial) overMaterial = SelectionManager.Instance.DefaultOverMaterial;
-            if (!selectedMaterial) selectedMaterial = SelectionManager.Instance.DefaultSelectedMaterial;
-            if (!clickedDownMaterial) clickedDownMaterial = SelectionManager.Instance.DefaultClickedDownMaterial;
+            if (!overMaterial) overMaterial = MouseInputHandler.Instance.DefaultOverMaterial;
+            if (!clickedDownMaterial) clickedDownMaterial = MouseInputHandler.Instance.DefaultClickedDownMaterial;
         }
-        private void OnMouseEnter()
+
+        public void MouseEnter()
         {
-            if (!interactable)
-            {
-                hasEnteredAndChanged = false;
-                return;
-            }
             spriteRenderer.material = overMaterial;
-            hasEnteredAndChanged = true;
         }
 
-        private void OnMouseOver()
+        public void MouseExit()
         {
-            if (!interactable)
-            {
-                hasEnteredAndChanged = false;
-                return;
-            }
-            if (hasEnteredAndChanged) return;
-            if (!interactable) return;
-            spriteRenderer.material = overMaterial; 
-            hasEnteredAndChanged = true;
-
+            spriteRenderer.material = originalMaterial;
+            DragTime = -1;
         }
 
-        private void OnMouseExit()
+        public void MouseDown()
         {
-            if (interactable) spriteRenderer.material = isSelected? selectedMaterial : originalMaterial;
-            hasEnteredAndChanged = false;
-        }
-
-        private void OnMouseDown()
-        {
-            if (!interactable) return;
             spriteRenderer.material = clickedDownMaterial;
+            onThisSelected?.Invoke();
             startDragTime = Time.time;
             DragTime = 0;
         }
-        
-        private void OnMouseUp()
+
+        public void MouseDrag()
         {
-            if (!interactable) return;
-            SelectionManager.Instance.NewSelected(this);
-            onThisSelected?.Invoke();
+            DragTime = Time.time - startDragTime;
+        }
+        
+        public void MouseUp()
+        {
+            spriteRenderer.material = originalMaterial;
             DragTime = -1;
         }
 
-        private void OnMouseDrag()
+        private void OnDisable()
         {
-            if (!interactable) return;
-            DragTime = Time.time - startDragTime;
+            spriteRenderer.material = originalMaterial;
+            DragTime = -1;
+            onThisDiabled?.Invoke();
         }
 
-        internal void Select()
-        {
-            if (!interactable) Debug.LogWarning("Selected uninteractable object: " + gameObject.name);
-            
-            spriteRenderer.material = selectedMaterial;
-            isSelected = true;
-        }
-        
         internal void Deselect()
         {
             spriteRenderer.material = originalMaterial;
-            isSelected = false;
             DragTime = -1;
-        }
-
-        public void SetInteractable(bool isOn)
-        {
-            if (isSelected && !isOn) Deselect();
-            spriteRenderer.material = originalMaterial;
-            interactable = isOn;
-            DragTime = -1;
-            hasEnteredAndChanged = false;
         }
     }
 }

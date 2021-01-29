@@ -7,20 +7,32 @@ using Selections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Selectable = Selections.Selectable;
 
 namespace Upgrader
 {
     public class UpgradeUI : MonoBehaviour
     {
         private static InventoryObject inventory => PlayerController.CurrentInventory;
+        
+        [Header("References")]
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private GameEvent onNewSelection;
         [SerializeField] private Button btn;
         [SerializeField] private TMP_Text woodAmount;
         [SerializeField] private TMP_Text rockAmount;
+        
+        [Header("Animation Attributes")]
+        [SerializeField] private float openDuration;
+        [SerializeField] private Ease openEase;
+        [SerializeField] private float closeDuration;
+        [SerializeField] private Ease closeEase;
+
+        
+        private Selectable previousWindowRaised;
         private Tween raiseAnimationTween;
         private TMP_Text btnText;
-
+        
         private void Start()
         {
             GetComponent<Canvas>().worldCamera = Camera.main;
@@ -33,13 +45,15 @@ namespace Upgrader
 
         private void OnNewSelection_Response()
         {
-            if (SelectionManager.Instance.CurrentSelected == null) 
+            if (!MouseInputHandler.Instance.currentSelected) 
             {
-                upgradePanel.SetActive(false);
+                ClosePanel();
                 return;
             }
-            
-            var fixable = SelectionManager.Instance.CurrentSelected.GetComponentInChildren<Fixable>();
+
+            if (MouseInputHandler.Instance.currentSelected == previousWindowRaised) return;  // Do nothing when selected the same!
+
+                var fixable = MouseInputHandler.Instance.currentSelected.GetComponentInChildren<Fixable>();
             if (fixable != null)
             {
                 void FixableHealthChange()
@@ -56,10 +70,10 @@ namespace Upgrader
                 }
             }
             
-            var upgradable = SelectionManager.Instance.CurrentSelected.GetComponentInParent<Upgradable>();
+            var upgradable = MouseInputHandler.Instance.currentSelected.GetComponentInParent<Upgradable>();
             if (upgradable == null)
             {
-                upgradePanel.SetActive(false);
+                ClosePanel();
                 return;
             }
 
@@ -121,21 +135,24 @@ namespace Upgrader
                 btn.interactable = false;
             }
         }
+
         
         private void RaiseWindow()
         {
-            transform.position = SelectionManager.Instance.CurrentSelected.transform.position;
+            previousWindowRaised = MouseInputHandler.Instance.currentSelected;
+            transform.position = previousWindowRaised.transform.position;
             upgradePanel.SetActive(true);
             
             raiseAnimationTween?.Kill(true);
             upgradePanel.transform.localScale = Vector3.zero;
-            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.one, .7f).SetEase(Ease.OutBounce);
+            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.one, openDuration).SetEase(openEase);
         }
 
         private void ClosePanel()
         {
+            previousWindowRaised = null;
             raiseAnimationTween?.Kill(true);
-            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.zero, .3f).OnComplete(() => SelectionManager.Instance.Deselect());
+            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.zero, closeDuration).SetEase(closeEase).OnComplete(() => MouseInputHandler.Instance.Deselect());
         }
     }
 }

@@ -30,13 +30,14 @@ namespace Sheep
         private Selectable selectable;
         private Light2D sheepLight;
         private float health;
+        private Status status;
 
         private static readonly int StatusAnimatorID = Animator.StringToHash("Status");
-        
+        private WaitForSeconds waitWhileShearing;
+
         private bool PlayerMaxMana => PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon;
         
-        [Flags]
-        private enum Status
+        [Flags] private enum Status
         {
             None = 0,
             Awake = 1,
@@ -44,7 +45,6 @@ namespace Sheep
             Glow = 4,
         }
 
-        [SerializeField] private Status status;
         
         private void Awake()
         {
@@ -57,6 +57,9 @@ namespace Sheep
             sheepLight = GetComponentInChildren<Light2D>();
             sheepLight.enabled = false;
             PlayerController.PlayerSettings.onManaChange.Register(gameObject, RefreshSelectableInteractable);
+            
+            waitWhileShearing = new WaitForSeconds(sheepSettings.fillTime);
+
         }
         
         private void Update()
@@ -75,8 +78,8 @@ namespace Sheep
 
         private void RefreshSelectableInteractable(object o)
         {
-            if (selectable.Interactable && PlayerMaxMana) selectable.SetInteractable(false);
-            if (!selectable.Interactable && !PlayerMaxMana) selectable.SetInteractable(true & (status & Status.Glow) != 0);
+            if (selectable.enabled && PlayerMaxMana) selectable.enabled = false;
+            if (!selectable.enabled && !PlayerMaxMana) selectable.enabled = true & (status & Status.Glow) != 0;
         }
 
         private void OnEnable()
@@ -107,19 +110,20 @@ namespace Sheep
 
         private void GetCollected()
         {
+            Debug.Log(gameObject.name);
             PlayerController.PlayerSettings.UpdateMana(sheepSettings.manaAddition);
             status |= Status.Empty;
             RefreshSprite();
             collectionParticle.Stop();
             collectionDisplay.fillAmount = 0;
-            selectable.SetInteractable(false);
+            selectable.enabled = false;
             StartCoroutine(WaitWhileShearing());
         }
         
 
         IEnumerator WaitWhileShearing()
         {
-            yield return new WaitForSeconds(sheepSettings.fillTime);
+            yield return waitWhileShearing;
             Refill();
         }
         
@@ -138,37 +142,14 @@ namespace Sheep
 
         private void RefreshSprite()
         {
-            // Sprite sprite;
-            // if ((status & Status.Empty) != 0)
-            // {
-            //     if ((status & Status.Awake) != 0) sprite = sheepSettings.emptyAwake;
-            //     else sprite = sheepSettings.emptySleep;
-            // }
-            // else
-            // {
-            //     if ((status & Status.Awake) != 0) sprite = sheepSettings.awake;
-            //     else sprite = sheepSettings.sleep;
-            //     if ((status & Status.Glow) != 0)
-            //     {
-            //         sprite = sheepSettings.glowSheep;
-            //         sheepLight.enabled = true;
-            //     }
-            // }
-            // sr.sprite = sprite;
-            
             animator.SetInteger(StatusAnimatorID, (int) status);
             
             sheepLight.enabled = false;
-            if ((status & Status.Awake) == 0)
-            {
-                // if (!sleepingParticle.isPlaying) 
-                    sleepingParticle.Play();
-            }
-            else 
-                sleepingParticle.Stop();
+            if ((status & Status.Awake) == 0) sleepingParticle.Play();
+            else sleepingParticle.Stop();
             if ((status & Status.Empty) == 0 && (status & Status.Glow) != 0) sheepLight.enabled = true;
 
-            selectable.SetInteractable((status & Status.Glow) != 0 && (status & Status.Empty) == 0);
+            selectable.enabled = (status & Status.Glow) != 0 && (status & Status.Empty) == 0;
         }
 
         public void SetGlow(bool toGlow)

@@ -23,14 +23,10 @@ namespace Collectables
         private void Collect()
         {
             collectableObject.OnCollected();
-            SelectionManager.Instance.Deselect();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
-        public void EnableCollecting(bool b)
-        {
-            selectable.SetInteractable(b);
-        }
+        public void EnableCollecting(bool b) => selectable.enabled = b;
 
     }
 }

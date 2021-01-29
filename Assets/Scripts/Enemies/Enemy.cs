@@ -77,11 +77,10 @@ namespace Enemies
             }
         }
 
-        private void OnEnable()
-        {
-            mode = Mode.Walking;
-            dieMaterial.SetFloat("edge", 0f);
-        }
+        // private void OnEnable()
+        // {
+        //     mode = Mode.Walking;
+        // }
         
         private void ManageStuck()
         {
@@ -163,6 +162,8 @@ namespace Enemies
         public void SetDead()
         {
             spriteRenderer.material = defaultMaterial;
+            mode = Mode.Walking;
+            dieMaterial.SetFloat("edge", 0f);
             gameObject.SetActive(false);
         }
 

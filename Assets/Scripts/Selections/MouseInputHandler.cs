@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Diagnostics;
 using Events;
 using UnityEditor;
 using UnityEngine;
@@ -112,7 +113,8 @@ namespace Selections
             Selectable selectable = GetSelectableFromHit();
             if (selectable != currentMouseOver)
             {
-                if(currentMouseOver && !IsOverCurrentSelected) currentMouseOver.MouseExit();
+                // if(currentMouseOver && !IsOverCurrentSelected) currentMouseOver.MouseExit();
+                if(currentMouseOver) currentMouseOver.MouseExit();
                 if(IsSelectableActive(selectable)) selectable.MouseEnter();
             }
             else
@@ -136,25 +138,32 @@ namespace Selections
                 }
             }
         }
-        
+
         private Selectable GetSelectableFromHit()
         {
+
             if (currentEventSystem.IsPointerOverGameObject(-1)) return null;
             var newMouseOver = Physics2D.OverlapPoint(mousePosition, layerMask);
-            return !newMouseOver ? null : newMouseOver.gameObject.GetComponent<Selectable>();
+            if (!newMouseOver)
+            {
+                overType = OverType.None;
+                return null;
+            }
+            var s = newMouseOver.GetComponent<Selectable>();
+            overType = s ? OverType.Selectable : OverType.Other;
+            return s;
         }
 
         private void LeftClickDownHandle()
         {
-            if (currentSelected) currentSelected.Deselect();
-            if (currentMouseOver)
+            if (overType != OverType.Other)
             {
-                currentMouseOver.MouseDown();
-                currentDragged = currentMouseOver;
+                if (currentSelected) currentSelected.Deselect();
+                currentSelected = currentDragged = currentMouseOver;
+                currentSelected?.MouseDown();
+                onSelectionChangeEvent.Raise();
             }
             
-            currentSelected = currentMouseOver;
-            onSelectionChangeEvent.Raise();
         }
 
         private bool IsSelectableActive(Selectable selectable) => selectable && selectable.enabled;
@@ -163,6 +172,14 @@ namespace Selections
         {
             if (currentSelected) currentSelected.Deselect();
             currentSelected = null;
+        }
+
+        private OverType overType;
+        private enum OverType
+        {
+            None,
+            Other,
+            Selectable
         }
     }
 }

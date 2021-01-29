@@ -12,18 +12,11 @@ namespace Selections
         public Action onThisDiabled;
         public float DragTime { get; private set; }
         [Tooltip("keep null for default")] [SerializeField] private Material overMaterial = null;
+        [Tooltip("keep null for default")] [SerializeField] private Material clickedDownMaterial = null;
         [SerializeField] private SpriteRenderer spriteRenderer;
         private Material originalMaterial;
 
         private float startDragTime;
-
-        //     {
-        //         var ret = isInteractable && !EventSystem.current.IsPointerOverGameObject();
-        //         if (!ret) spriteRenderer.material = isSelected? selectedMaterial : originalMaterial;
-        //         return ret;
-        //     }
-        //     set => isInteractable = value;
-        // }
 
         private void Awake()
         {
@@ -48,6 +41,8 @@ namespace Selections
 
         public void MouseDown()
         {
+            print("clickedDownMaterial.name");
+            spriteRenderer.material = clickedDownMaterial;
             onThisSelected?.Invoke();
             startDragTime = Time.time;
             DragTime = 0;
@@ -60,6 +55,7 @@ namespace Selections
         
         public void MouseUp()
         {
+            spriteRenderer.material = originalMaterial;
             DragTime = -1;
         }
 

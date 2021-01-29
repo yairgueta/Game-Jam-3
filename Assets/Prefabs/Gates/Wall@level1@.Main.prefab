@@ -163,8 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
-  selectedMaterial: {fileID: 0}
+  clickedDownMaterial: {fileID: 2100000, guid: ff433411f16dd47c8a3c2d666d267fac, type: 2}
   spriteRenderer: {fileID: 4310957693348009089}
 --- !u!212 &4310957693348009089
 SpriteRenderer:

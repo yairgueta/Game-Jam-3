@@ -7,17 +7,21 @@ using Selections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Selectable = Selections.Selectable;
 
 namespace Upgrader
 {
     public class UpgradeUI : MonoBehaviour
     {
         private static InventoryObject inventory => PlayerController.CurrentInventory;
+        
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private GameEvent onNewSelection;
         [SerializeField] private Button btn;
         [SerializeField] private TMP_Text woodAmount;
         [SerializeField] private TMP_Text rockAmount;
+        
+        private Selectable previousWindowRaised;
         private Tween raiseAnimationTween;
         private TMP_Text btnText;
 
@@ -35,11 +39,13 @@ namespace Upgrader
         {
             if (!MouseInputHandler.Instance.currentSelected) 
             {
-                upgradePanel.SetActive(false);
+                ClosePanel();
                 return;
             }
-            
-            var fixable = MouseInputHandler.Instance.currentSelected.GetComponentInChildren<Fixable>();
+
+            if (MouseInputHandler.Instance.currentSelected == previousWindowRaised) return;  // Do nothing when selected the same!
+
+                var fixable = MouseInputHandler.Instance.currentSelected.GetComponentInChildren<Fixable>();
             if (fixable != null)
             {
                 void FixableHealthChange()
@@ -59,7 +65,7 @@ namespace Upgrader
             var upgradable = MouseInputHandler.Instance.currentSelected.GetComponentInParent<Upgradable>();
             if (upgradable == null)
             {
-                upgradePanel.SetActive(false);
+                ClosePanel();
                 return;
             }
 
@@ -121,10 +127,12 @@ namespace Upgrader
                 btn.interactable = false;
             }
         }
+
         
         private void RaiseWindow()
         {
-            transform.position = MouseInputHandler.Instance.currentSelected.transform.position;
+            previousWindowRaised = MouseInputHandler.Instance.currentSelected;
+            transform.position = previousWindowRaised.transform.position;
             upgradePanel.SetActive(true);
             
             raiseAnimationTween?.Kill(true);
@@ -134,6 +142,7 @@ namespace Upgrader
 
         private void ClosePanel()
         {
+            previousWindowRaised = null;
             raiseAnimationTween?.Kill(true);
             raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.zero, .3f).OnComplete(() => MouseInputHandler.Instance.Deselect());
         }

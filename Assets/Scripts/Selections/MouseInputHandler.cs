@@ -12,6 +12,7 @@ namespace Selections
 {
     public class MouseInputHandler : Singleton<MouseInputHandler>
     {
+        private static readonly int MAX_HIT = 10;
         
         public Action<Vector2> onRightClick, onLeftClick;
         public Material DefaultOverMaterial => defaultOverMaterial;
@@ -23,16 +24,14 @@ namespace Selections
         
         private bool isDragging;
         private Vector2 mousePosition;
+        private Collider2D[] hits;
+
+        private int layerMask;
         private int rightMouse, leftMouse;
         private Camera mainCamera;
-        
-        
-        
         private EventSystem currentEventSystem;
-        private int layerMask;
-        private Coroutine dragCoroutine;
 
-        
+        #region Current Selectables (Over / Selected / Dragged)
         private Selectable __currentSelected;
         public Selectable currentSelected
         {
@@ -67,11 +66,9 @@ namespace Selections
             }
             set => __currentDragged = value;
         }
+        #endregion
 
         
-        private bool IsOverCurrentSelected => currentSelected && currentMouseOver == currentSelected;
-
-
         protected override void Awake()
         {
             base.Awake();
@@ -87,6 +84,8 @@ namespace Selections
 
             rightMouse = (int) MouseButton.RightMouse;
             leftMouse = (int) MouseButton.LeftMouse;
+
+            hits = new Collider2D[MAX_HIT];
         }
 
         private void Update()
@@ -145,13 +144,20 @@ namespace Selections
         {
 
             if (currentEventSystem.IsPointerOverGameObject(-1)) return null;
-            var newMouseOver = Physics2D.OverlapPoint(mousePosition, layerMask);
-            if (!newMouseOver)
+            var hitCount = Physics2D.OverlapPointNonAlloc(mousePosition, hits, layerMask);
+
+            if (hitCount == 0)
             {
                 overType = OverType.None;
                 return null;
             }
-            var s = newMouseOver.GetComponent<Selectable>();
+
+            var bestHit = hits[0];
+
+            for (int i = 1; i < hitCount; i++)
+                if (bestHit.transform.position.y > hits[i].transform.position.y) bestHit = hits[i];
+
+            var s = bestHit.GetComponent<Selectable>();
             overType = s ? OverType.Selectable : OverType.Other;
             return s;
         }

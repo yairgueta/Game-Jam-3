@@ -13,9 +13,9 @@ namespace Spawners
         internal int spawnerIndex = -1;
         private Spawner spawner;
 
-        private void Start()
+        private void Awake()
         {
-            physicsCollider ??= GetComponent<Collider2D>();
+            if(!physicsCollider) physicsCollider = GetComponent<Collider2D>();
         }
 
         internal void Init(Spawner spawnerParent)

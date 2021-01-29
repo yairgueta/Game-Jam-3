@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2550198028727895974}
   - component: {fileID: 8981416363076081174}
   m_Layer: 0
-  m_Name: Shadows_1 (1)
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,11 +92,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4310957693348009150}
   - component: {fileID: 6224921998276698802}
+  - component: {fileID: 2407348229195932952}
   - component: {fileID: 6206620531621183856}
-  - component: {fileID: 3728940592743196378}
   - component: {fileID: 4310957693348009089}
   - component: {fileID: 7257060498752397568}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Wall@level1@.Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1591723774445582009}
+  - {fileID: 5959143576265201065}
   - {fileID: 2550198028727895974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -136,6 +136,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 579ca1141e2d784479bf701140ed5014, type: 2}
   - {fileID: 11400000, guid: 6f6ff02af6169744595e9717d5f49c0f, type: 2}
   - {fileID: 11400000, guid: 4fc191a85bacfb1449cc67c4366eaf8f, type: 2}
+--- !u!114 &2407348229195932952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310957693348009093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461e227504b4a544098d7952687b462f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHealth: 0
+  crackedPercentage: 0.5
 --- !u!114 &6206620531621183856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,23 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2569fd9903bc2044b924c7688ee5b7d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallCollider: {fileID: 6731850016589482698}
   onWallDestroy: {fileID: 11400000, guid: c5d43385e4ff9a84883ca6a064af7377, type: 2}
---- !u!114 &3728940592743196378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4310957693348009093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 2100000, guid: ff433411f16dd47c8a3c2d666d267fac, type: 2}
-  spriteRenderer: {fileID: 4310957693348009089}
 --- !u!212 &4310957693348009089
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -241,11 +239,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.67847496, y: 0.39968252}
-      - {x: 0.62229264, y: -0.40729225}
-      - {x: 0.672384, y: 0.7417737}
-      - {x: -0.6495517, y: 1.4433591}
---- !u!1 &5898388277213431402
+    - - {x: -0.74355954, y: -0.055909097}
+      - {x: 0.59439933, y: -0.7606083}
+      - {x: 0.672384, y: 0.28618205}
+      - {x: -0.7146362, y: 0.95987403}
+--- !u!1 &6430465675487971896
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,70 +251,71 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1591723774445582009}
-  - component: {fileID: 6731850016589482698}
-  - component: {fileID: 6763729985872857892}
-  m_Layer: 6
-  m_Name: Pyshics Collider
+  - component: {fileID: 5959143576265201065}
+  - component: {fileID: 5299996169773682988}
+  - component: {fileID: 6466621328010883221}
+  m_Layer: 7
+  m_Name: Selectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1591723774445582009
+--- !u!4 &5959143576265201065
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5898388277213431402}
+  m_GameObject: {fileID: 6430465675487971896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.054, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4310957693348009150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &6731850016589482698
+--- !u!60 &5299996169773682988
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5898388277213431402}
+  m_GameObject: {fileID: 6430465675487971896}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.37}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.3962277, y: 1.82}
-    newSize: {x: 1.3962277, y: 1.82}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.62038416, y: 0.11729908}
-      - {x: 0.6342217, y: -0.5161992}
-      - {x: 0.70620954, y: 0.46287024}
-      - {x: -0.6353089, y: 1.1576341}
---- !u!114 &6763729985872857892
+    - - {x: -0.7345254, y: 1.9948635}
+      - {x: -0.7179543, y: 0.7344161}
+      - {x: 0.6249764, y: -0.046598196}
+      - {x: 0.6814205, y: 1.2573916}
+--- !u!114 &6466621328010883221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5898388277213431402}
+  m_GameObject: {fileID: 6430465675487971896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461e227504b4a544098d7952687b462f, type: 3}
+  m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curHealth: 0
-  crackedPercentage: 0.5
+  overMaterial: {fileID: 0}
+  clickedDownMaterial: {fileID: 0}
+  spriteRenderer: {fileID: 4310957693348009089}

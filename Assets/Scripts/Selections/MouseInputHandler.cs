@@ -15,8 +15,10 @@ namespace Selections
         
         public Action<Vector2> onRightClick, onLeftClick;
         public Material DefaultOverMaterial => defaultOverMaterial;
+        public Material DefaultClickedDownMaterial => defaultClickedDownMaterial;
         
         [SerializeField] private Material defaultOverMaterial;
+        [SerializeField] private Material defaultClickedDownMaterial;
         [SerializeField] private GameEvent onSelectionChangeEvent;
         
         private bool isDragging;

@@ -20,12 +20,14 @@ namespace Selections
 
         private void Awake()
         {
+            spriteRenderer ??= GetComponent<SpriteRenderer>();
             originalMaterial = spriteRenderer.material;
         }
 
         private void Start()
         {
             if (!overMaterial) overMaterial = MouseInputHandler.Instance.DefaultOverMaterial;
+            if (!clickedDownMaterial) clickedDownMaterial = MouseInputHandler.Instance.DefaultClickedDownMaterial;
         }
 
         public void MouseEnter()
@@ -41,7 +43,6 @@ namespace Selections
 
         public void MouseDown()
         {
-            print("clickedDownMaterial.name");
             spriteRenderer.material = clickedDownMaterial;
             onThisSelected?.Invoke();
             startDragTime = Time.time;

@@ -373,6 +373,10 @@ MonoBehaviour:
   btn: {fileID: 751026709210669875}
   woodAmount: {fileID: 751026710390530457}
   rockAmount: {fileID: 751026708792737897}
+  openDuration: 0.2
+  openEase: 8
+  closeDuration: 0.15
+  closeEase: 9
 --- !u!1 &751026710157256054
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,16 +15,24 @@ namespace Upgrader
     {
         private static InventoryObject inventory => PlayerController.CurrentInventory;
         
+        [Header("References")]
         [SerializeField] private GameObject upgradePanel;
         [SerializeField] private GameEvent onNewSelection;
         [SerializeField] private Button btn;
         [SerializeField] private TMP_Text woodAmount;
         [SerializeField] private TMP_Text rockAmount;
         
+        [Header("Animation Attributes")]
+        [SerializeField] private float openDuration;
+        [SerializeField] private Ease openEase;
+        [SerializeField] private float closeDuration;
+        [SerializeField] private Ease closeEase;
+
+        
         private Selectable previousWindowRaised;
         private Tween raiseAnimationTween;
         private TMP_Text btnText;
-
+        
         private void Start()
         {
             GetComponent<Canvas>().worldCamera = Camera.main;
@@ -137,14 +145,14 @@ namespace Upgrader
             
             raiseAnimationTween?.Kill(true);
             upgradePanel.transform.localScale = Vector3.zero;
-            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.one, .7f).SetEase(Ease.OutBounce);
+            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.one, openDuration).SetEase(openEase);
         }
 
         private void ClosePanel()
         {
             previousWindowRaised = null;
             raiseAnimationTween?.Kill(true);
-            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.zero, .3f).OnComplete(() => MouseInputHandler.Instance.Deselect());
+            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.zero, closeDuration).SetEase(closeEase).OnComplete(() => MouseInputHandler.Instance.Deselect());
         }
     }
 }

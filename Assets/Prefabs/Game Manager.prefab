@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8265862186904806056}
   - component: {fileID: 8265862186904806057}
   - component: {fileID: 8536212987877226201}
+  - component: {fileID: 474870707}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -76,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42b8f9d7992ee41c38bbc3b5f35bd47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onFinishLoading: {fileID: 11400000, guid: 8f4f305ec235a4ba191bec8db2f35cc6, type: 2}
+  onStartGame: {fileID: 11400000, guid: 673d851a3a9c449c79e47235714e86e8, type: 2}
 --- !u!114 &8536212987877226201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,3 +91,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63758a93a45804d21a92d7c16fca63c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &474870707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8265862186904806061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1530947caa645109deb484b99f3733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultOverMaterial: {fileID: 2100000, guid: 1a799b9aecc294ea287b0a70699ac337, type: 2}
+  defaultClickedDownMaterial: {fileID: 2100000, guid: f55d80d36276448549b8a70974a17357, type: 2}
+  onSelectionChangeEvent: {fileID: 11400000, guid: 59fd63c51de132a4197c64fd4ffde55e, type: 2}

@@ -33,13 +33,13 @@ namespace Upgrader
 
         private void OnNewSelection_Response()
         {
-            if (SelectionManager.Instance.CurrentSelected == null) 
+            if (!MouseInputHandler.Instance.currentSelected) 
             {
                 upgradePanel.SetActive(false);
                 return;
             }
             
-            var fixable = SelectionManager.Instance.CurrentSelected.GetComponentInChildren<Fixable>();
+            var fixable = MouseInputHandler.Instance.currentSelected.GetComponentInChildren<Fixable>();
             if (fixable != null)
             {
                 void FixableHealthChange()
@@ -56,7 +56,7 @@ namespace Upgrader
                 }
             }
             
-            var upgradable = SelectionManager.Instance.CurrentSelected.GetComponentInParent<Upgradable>();
+            var upgradable = MouseInputHandler.Instance.currentSelected.GetComponentInParent<Upgradable>();
             if (upgradable == null)
             {
                 upgradePanel.SetActive(false);
@@ -124,7 +124,7 @@ namespace Upgrader
         
         private void RaiseWindow()
         {
-            transform.position = SelectionManager.Instance.CurrentSelected.transform.position;
+            transform.position = MouseInputHandler.Instance.currentSelected.transform.position;
             upgradePanel.SetActive(true);
             
             raiseAnimationTween?.Kill(true);
@@ -135,7 +135,7 @@ namespace Upgrader
         private void ClosePanel()
         {
             raiseAnimationTween?.Kill(true);
-            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.zero, .3f).OnComplete(() => SelectionManager.Instance.Deselect());
+            raiseAnimationTween = upgradePanel.transform.DOScale(Vector3.zero, .3f).OnComplete(() => MouseInputHandler.Instance.Deselect());
         }
     }
 }

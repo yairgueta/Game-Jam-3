@@ -16,6 +16,7 @@ namespace Enemies
         [SerializeField] private Material dieMaterial;
         
         private Material defaultMaterial;
+        private float dieMaterialEdge;
         private SpriteRenderer spriteRenderer;
         private SoundController soundController;
         private Mode mode;
@@ -47,6 +48,7 @@ namespace Enemies
             curHealth = enemySettings.health;
             spriteRenderer = enemyGFX.GetComponent<SpriteRenderer>();
             defaultMaterial = spriteRenderer.material;
+            dieMaterialEdge = dieMaterial.GetFloat("edge");
 
             enemyCollider = transform.GetChild(0).GetComponent<Collider2D>();
             CyclesManager.Instance.NightSettings.OnCycleEnd.Register(gameObject, o => Die());
@@ -144,9 +146,10 @@ namespace Enemies
         
         private void ManageDeath()
         {
-            var edge = dieMaterial.GetFloat("edge") + Time.deltaTime * fadeSpeed;
-            dieMaterial.SetFloat("edge", edge);
-            if (edge >= maxFadeValue)
+            dieMaterialEdge += Time.deltaTime;
+            dieMaterial.SetFloat("edge", dieMaterialEdge);
+            Debug.Log(dieMaterialEdge);
+            if (dieMaterialEdge >= maxFadeValue)
             {
                 SetDead();
             }
@@ -164,6 +167,7 @@ namespace Enemies
             spriteRenderer.material = defaultMaterial;
             mode = Mode.Walking;
             dieMaterial.SetFloat("edge", 0f);
+            dieMaterialEdge = 0f;
             gameObject.SetActive(false);
         }
 

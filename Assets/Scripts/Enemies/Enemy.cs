@@ -13,11 +13,14 @@ namespace Enemies
         [SerializeField] private EnemySettings enemySettings;
         [SerializeField] private GameObject enemyGFX;
         [SerializeField] private float stuckTimeThreshold = 2.5f;
+        [SerializeField] private Material dieMaterial;
+        
+        private Material defaultMaterial;
+        private SpriteRenderer spriteRenderer;
         private SoundController soundController;
         private Mode mode;
         private IEnemyDamage currentAttacked;
         private float curHealth;
-
         private Collider2D enemyCollider;
         
         private AIPath aiPath;
@@ -30,6 +33,8 @@ namespace Enemies
 
         private float stuckTimer;
         private bool canRoar = true;
+        private float fadeSpeed = 0.35f;
+        private float maxFadeValue = 0.65f;
         
         private void Start()
         {
@@ -40,6 +45,8 @@ namespace Enemies
             mode = Mode.Walking;
             gfxScale = enemyGFX.transform.localScale;
             curHealth = enemySettings.health;
+            spriteRenderer = enemyGFX.GetComponent<SpriteRenderer>();
+            defaultMaterial = spriteRenderer.material;
 
             enemyCollider = transform.GetChild(0).GetComponent<Collider2D>();
             CyclesManager.Instance.NightSettings.OnCycleEnd.Register(gameObject, o => Die());
@@ -47,6 +54,12 @@ namespace Enemies
 
         private void Update()
         {
+            ManageDirection();
+            if (mode == Mode.Dying)
+            {
+                ManageDeath();
+                return;
+            }
             switch (mode)
             {
                 case Mode.Attacking:
@@ -62,14 +75,13 @@ namespace Enemies
                 case Mode.Dying:
                     break;
             }
-            ManageDirection();
         }
 
         // private void OnEnable()
         // {
         //     mode = Mode.Walking;
         // }
-
+        
         private void ManageStuck()
         {
             if (aiPath.velocity.sqrMagnitude > .1)
@@ -93,7 +105,7 @@ namespace Enemies
         }
         private void AttackMode()
         {
-            if (mode == Mode.Attacking) return;
+            if (mode == Mode.Attacking || mode == Mode.Dying) return;
             mode = Mode.Attacking;
             animator.SetTrigger(attackAnimationID);
             if(!canRoar) return;
@@ -129,15 +141,29 @@ namespace Enemies
                 Die();
             }
         }
+        
+        private void ManageDeath()
+        {
+            var edge = dieMaterial.GetFloat("edge") + Time.deltaTime * fadeSpeed;
+            dieMaterial.SetFloat("edge", edge);
+            if (edge >= maxFadeValue)
+            {
+                SetDead();
+            }
+        }
 
         public void Die()
         {
             mode = Mode.Dying;
-            animator.SetTrigger(dieAnimationID);
+            // animator.SetTrigger(dieAnimationID);
+            spriteRenderer.material = dieMaterial;
         }
 
         public void SetDead()
         {
+            spriteRenderer.material = defaultMaterial;
+            mode = Mode.Walking;
+            dieMaterial.SetFloat("edge", 0f);
             gameObject.SetActive(false);
         }
 

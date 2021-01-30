@@ -122,6 +122,7 @@ public class GameManager : Singleton<GameManager>
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         GameEvent trigger = pauseMenu.activeSelf ? triggerBlur : triggerUnblur;
+        mainUI.SetActive(!mainUI.activeSelf);
         trigger.Raise();
     }
 

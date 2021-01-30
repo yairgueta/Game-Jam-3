@@ -1,9 +1,11 @@
 using System;
+using DG.Tweening;
 using Events;
 using Player;
 using UI;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Menu = UI.Menu;
 
@@ -57,11 +59,13 @@ public class GameManager : Singleton<GameManager>
         // TODO: Check if things still good without this line ^^^^^^
         
         InitializeUI();
+        Time.timeScale = 0;
     }
 
     public void StartGame()
     {
         onStartGame.Raise();
+        Time.timeScale = 1;
         IsPlaying = true;
     }
 
@@ -117,14 +121,16 @@ public class GameManager : Singleton<GameManager>
             StartGame();
         };
         
-        pauseMenu.GetComponent<PauseMenu>().SetMainMenuButtonFeedback(RestartGame);
+        pauseMenu.GetComponent<PauseMenu>().InitReferences(RestartGame, SetPauseMenu);
     }
 
     private void SetPauseMenu()
     {
+        if (!IsPlaying) return;
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         GameEvent trigger = pauseMenu.activeSelf ? triggerBlur : triggerUnblur;
         mainUI.SetActive(!mainUI.activeSelf);
+        Time.timeScale = pauseMenu.activeSelf ? 0 : 1;
         trigger.Raise();
     }
 

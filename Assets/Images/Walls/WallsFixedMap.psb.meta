@@ -481,14 +481,14 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: WallsFixedMap_15
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.783319, y: 0.1673726}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 2250
       y: 0
-      width: 750
+      width: 747
       height: 970
     spriteID: 3221ad6801dbcf770800000000000000
     internalID: 0
@@ -525,8 +525,8 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   - name: OuterGate
     originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 7
+    pivot: {x: 0.109996095, y: 0.32700446}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2

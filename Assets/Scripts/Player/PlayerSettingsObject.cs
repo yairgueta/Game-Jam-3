@@ -11,8 +11,8 @@ namespace Player
         public float maxHealth = 50f;
         public int maxMana = 100;
         public int initialMana = 70;
-        public float recoveryGap = 1f;              // Gap Between Health Addition On Eclipse
-        public float lifeAdditionAmount = 1f;       // On Eclipse
+        // public float recoveryGap = 1f;              // Gap Between Health Addition On Eclipse
+        public float lifeAdditionSpeed = 1f;
         
         
         [Header("Bullets Properties")]
@@ -33,9 +33,9 @@ namespace Player
         public GameEvent onOutOfMana;
         public GameEvent onBulletExplode;
 
-        public void UpdateLife(float damage)
+        public void UpdateLife(float value)
         {
-            curHealth += damage;
+            curHealth += value;
             if (curHealth <= 0) onDeath.Raise();
             curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
             onHealthChange.Raise();

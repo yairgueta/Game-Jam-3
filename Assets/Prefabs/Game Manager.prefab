@@ -83,6 +83,12 @@ MonoBehaviour:
   sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
   onSheepDeath: {fileID: 11400000, guid: bd7ec884f05dcf845b3e7e162042db41, type: 2}
   onPlayerDeath: {fileID: 11400000, guid: ce7896d81791f41a5a2433c723a31a3e, type: 2}
+  mainMenu: {fileID: 0}
+  tutorial: {fileID: 0}
+  mainUI: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  triggerBlur: {fileID: 11400000, guid: e7687571e06804262862ab5b1e6fb98a, type: 2}
+  triggerUnblur: {fileID: 11400000, guid: 30673a6d43ed542e39b147a931e42d91, type: 2}
 --- !u!114 &8536212987877226201
 MonoBehaviour:
   m_ObjectHideFlags: 0

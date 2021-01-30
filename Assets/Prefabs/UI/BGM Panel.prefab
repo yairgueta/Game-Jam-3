@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 7158280666426297340}
   - component: {fileID: 7158280666426297343}
   m_Layer: 5
-  m_Name: BGM Slider
+  m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 7425653910936790460}
   - component: {fileID: 7425653910936790461}
   m_Layer: 5
-  m_Name: BGM Label
+  m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

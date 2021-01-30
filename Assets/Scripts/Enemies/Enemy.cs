@@ -59,7 +59,6 @@ namespace Enemies
 
         private void Update()
         {
-            ManageDirection();
             if (mode == Mode.Dying)
             {
                 ManageDeath();
@@ -80,6 +79,7 @@ namespace Enemies
                 case Mode.Dying:
                     break;
             }
+            ManageDirection();
         }
 
         // private void OnEnable()
@@ -158,13 +158,13 @@ namespace Enemies
                 Die();
             }
         }
-        
-        
-        
+
         private void ManageDeath()
         {
             dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
             dieMaterial.SetFloat("edge", dieMaterialEdge);
+            aiPath.canMove = false;
+            enemyCollider.enabled = false;
             if (dieMaterialEdge >= maxFadeValue)
             {
                 SetDead();
@@ -182,6 +182,8 @@ namespace Enemies
         {
             spriteRenderer.material = defaultMaterial;
             mode = Mode.Walking;
+            aiPath.canMove = true;
+            enemyCollider.enabled = true;
             dieMaterial.SetFloat("edge", 0f);
             dieMaterialEdge = 0f;
             gameObject.SetActive(false);

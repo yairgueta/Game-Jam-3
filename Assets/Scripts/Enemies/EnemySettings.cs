@@ -11,7 +11,7 @@ namespace Enemies
         public float attackPower = 1;
         public float health = 5f;
         public float speed = 15f;
-        public float fadeSpeed = 0.2f;
+        public float fadeSpeed = 0.5f;
 
         [Header("AI Attributes")]
         public float nextWaypointDistance = 3f;

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using Selections;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Player
     {
         [SerializeField] private Transform aimGunEndPoinTransform;
         [SerializeField] private Transform bulletGFX;
+        private PlayerController playerController;
 
         private Tween tween;
         private Vector3 originScale;
@@ -28,6 +30,7 @@ namespace Player
         {
             originScale = bulletGFX.localScale;
             MouseInputHandler.Instance.onRightClick += Shooting;
+            playerController = GetComponent<PlayerController>();
         }
 
         void Update()
@@ -77,10 +80,33 @@ namespace Player
             // }
             // if (!right) return;
             if (!ableToShoot) return;
-
             if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)) return;
+            AnimateTowardsShoot(mousePosition);
+            StartCoroutine(ShootDelay(mousePosition));
+        }
+
+        private IEnumerator ShootDelay(Vector2 mousePosition)
+        {
+            yield return null;
             onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
             BulletAnimation();
+        }
+        
+        private void AnimateTowardsShoot(Vector2 mousePosition)
+        {
+            if (IsWalking()) return;
+            var playerPosition = playerController.gameObject.transform.position;
+            if (mousePosition.x - playerPosition.x > 0f)
+            {
+                playerController.LastMoveDirection = new Vector2(1f, 0f);
+                return;
+            }
+            playerController.LastMoveDirection = new Vector2(-1f, 0f);
+        }
+        
+        private bool IsWalking()
+        {
+            return playerController.MoveDirection.x > 0f || playerController.MoveDirection.y > 0f;
         }
         
         

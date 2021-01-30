@@ -19,7 +19,6 @@ namespace Player
         {
             anim = GetComponent<Animator>();
             anim.SetFloat("AnimMoveMagnitude", 0f);
-            MouseInputHandler.Instance.onRightClick += AnimateTowardsShoot;
         }
 
         private void Update()
@@ -34,23 +33,6 @@ namespace Player
             anim.SetFloat(AnimMoveMagnitude, playerController.MoveDirection.sqrMagnitude);
             anim.SetFloat(AnimLastMoveX, playerController.LastMoveDirection.x);
             anim.SetFloat(AnimLastMoveY, playerController.LastMoveDirection.y);
-        }
-
-        private void AnimateTowardsShoot(Vector2 mousePosition)
-        {
-            if (IsWalking()) return;
-            var playerPosition = playerController.gameObject.transform.position;
-            if (mousePosition.x - playerPosition.x > 0f)
-            {
-                playerController.LastMoveDirection = new Vector2(1f, 0f);
-                return;
-            }
-            playerController.LastMoveDirection = new Vector2(-1f, 0f);
-        }
-
-        private bool IsWalking()
-        {
-            return playerController.MoveDirection.x > 0f || playerController.MoveDirection.y > 0f;
         }
     }
 }

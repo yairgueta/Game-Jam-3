@@ -163,7 +163,7 @@ namespace Enemies
         
         private void ManageDeath()
         {
-            dieMaterialEdge += Time.deltaTime;
+            dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
             dieMaterial.SetFloat("edge", dieMaterialEdge);
             if (dieMaterialEdge >= maxFadeValue)
             {

@@ -33,9 +33,9 @@ namespace Player
         public GameEvent onOutOfMana;
         public GameEvent onBulletExplode;
 
-        public void UpdateLife(float damage)
+        public void UpdateLife(float value)
         {
-            curHealth += damage;
+            curHealth += value;
             if (curHealth <= 0) onDeath.Raise();
             curHealth = Mathf.Clamp(curHealth, 0, maxHealth);
             onHealthChange.Raise();

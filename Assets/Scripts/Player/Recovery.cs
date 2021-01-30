@@ -8,7 +8,6 @@ namespace Player
     {
         private bool recoveryMode;
         private bool isEclipseTime;
-        private float timer;
         private ParticleSystem recoveryParticles;
     
     
@@ -17,28 +16,27 @@ namespace Player
             recoveryParticles = GetComponentInChildren<ParticleSystem>();
             recoveryParticles.Stop();
             recoveryMode = false;
-            timer = 0f;
-            CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, arg0 => ChangeToEclipseTime());
-            CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject, arg0 => OutOfEclipseTime());
+            CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, ChangeToEclipseTime);
+            CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject, OutOfEclipseTime);
         }
 
         void Update()
         {
             if (!isEclipseTime|| !recoveryMode) return;
         
-                PlayerController.PlayerSettings.UpdateLife(PlayerController.PlayerSettings.lifeAdditionAmount);
-            if (PlayerController.PlayerSettings.maxHealth - PlayerController.PlayerSettings.curHealth <= Mathf.Epsilon)
+            PlayerController.PlayerSettings.UpdateLife(PlayerController.PlayerSettings.lifeAdditionSpeed * Time.deltaTime);
+            if (PlayerController.PlayerSettings.maxHealth == PlayerController.PlayerSettings.curHealth)
             {
                 StopRecovery();
             }
         }
         
-        private void ChangeToEclipseTime()
+        private void ChangeToEclipseTime(object o)
         {
             isEclipseTime = true;
         }
     
-        private void OutOfEclipseTime()
+        private void OutOfEclipseTime(object o)
         {
             isEclipseTime = false;
             recoveryParticles.Stop();

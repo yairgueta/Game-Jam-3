@@ -60,7 +60,7 @@ namespace Player
             var enemy = other.GetComponent<Enemy>();
             if (enemy == null)
             { 
-                Disable();
+                // Disable();
                 return;
             }
 

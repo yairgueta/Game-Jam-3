@@ -1,4 +1,5 @@
 using System;
+using Selections;
 using UnityEngine;
 
 namespace Player
@@ -18,6 +19,7 @@ namespace Player
         {
             anim = GetComponent<Animator>();
             anim.SetFloat("AnimMoveMagnitude", 0f);
+            MouseInputHandler.Instance.onRightClick += AnimateTowardsShoot;
         }
 
         private void Update()
@@ -32,6 +34,21 @@ namespace Player
             anim.SetFloat(AnimMoveMagnitude, playerController.MoveDirection.sqrMagnitude);
             anim.SetFloat(AnimLastMoveX, playerController.LastMoveDirection.x);
             anim.SetFloat(AnimLastMoveY, playerController.LastMoveDirection.y);
+        }
+
+        private void AnimateTowardsShoot(Vector2 mousePosition)
+        {
+            if (IsWalking()) return;
+            var playerPosition = playerController.gameObject.transform.position;
+            if (Mathf.Abs(mousePosition.x - playerPosition.x) > 1f)
+            {
+                anim.SetFloat(AnimMoveX, (mousePosition - new Vector2(playerPosition.x, playerPosition.y)).normalized.x);
+            }
+        }
+
+        private bool IsWalking()
+        {
+            return playerController.MoveDirection.x > 0f || playerController.MoveDirection.y > 0f;
         }
     }
 }

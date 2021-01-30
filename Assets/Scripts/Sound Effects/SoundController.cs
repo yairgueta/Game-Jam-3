@@ -21,7 +21,6 @@ public class SoundController : Singleton<SoundController>
     protected override void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        base.Awake();
         InitializeSettings();
         InitializeAudioSources();
         InitializeBGClips();
@@ -29,6 +28,7 @@ public class SoundController : Singleton<SoundController>
         // PlayAmbient();
         PlayMenuMusic();
         soundSettings.onVolumeChange += ()=> mainMenuSource.volume = soundSettings.BGMVolume;
+        base.Awake();
         
     }
 

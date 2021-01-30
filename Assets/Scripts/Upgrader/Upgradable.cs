@@ -20,8 +20,10 @@ namespace Upgrader
 
         private void Awake()
         {
-            curGrade = 0;
-            Upgrade();
+            curGrade = 1;
+            UpgradableObject current = grades[curGrade];
+            spriteIndex = Random.Range(0, current.completeSprites.Length);
+            onUpgrade?.Invoke();
         }
         
         public void Upgrade()

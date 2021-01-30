@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Events;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -7,37 +8,33 @@ namespace Player
 {
     public enum ResourceType
     {
-        Wood, 
-        Rock, 
-        // Mushroom,
+        Wood = 0, 
+        Rock = 1, 
     }
-    
+
     [CreateAssetMenu]
     public class InventoryObject : ScriptableObject
     {
-        [Header("Initial Quantities")] 
-        [SerializeField] private int initWood;
+        [Header("Initial Quantities")] [SerializeField]
+        private int initWood;
+
         [SerializeField] private int initRock;
 
-        [Header("Inventory Things")]
-        [SerializeField] private GameEvent onChange;
+        [Header("Inventory Things")] [SerializeField]
+        private GameEvent onChange;
+
         [SerializeField] private GameEvent onOutOfResources;
-        [SerializeField] private SerializedDictionary<ResourceType, int> quantityMap;
-        
-        
+        [SerializeField] private List<int> quantityMap;
 
         public void Setup()
         {
-            quantityMap = new SerializedDictionary<ResourceType, int>
-            {
-                {ResourceType.Wood, initWood}, {ResourceType.Rock, initRock}
-            };
+            quantityMap = new List<int> {initWood, initRock};
             onChange.Raise();
         }
 
         public int this[ResourceType t]
         {
-            get => quantityMap[t];
+            get => quantityMap[(int) t];
             set
             {
                 if (value < 0)
@@ -45,16 +42,19 @@ namespace Player
                     onOutOfResources.Raise(new CollectingArgs(t));
                     throw new InventoryOutOfResourceException();
                 }
-                var difference = value - quantityMap[t];
-                quantityMap[t] = value;
+
+                var difference = value - quantityMap[(int) t];
+                quantityMap[(int) t] = value;
                 onChange.Raise(new CollectingArgs(t, difference, difference));
             }
-        } 
+        }
 
         #region Classes
 
-        public class InventoryOutOfResourceException : Exception { }
-        
+        public class InventoryOutOfResourceException : Exception
+        {
+        }
+
         public class CollectingArgs
         {
             public readonly ResourceType type;
@@ -75,6 +75,7 @@ namespace Player
                 difference = diff;
             }
         }
+
         #endregion
     }
 }

@@ -9,7 +9,7 @@ namespace Selections
     public class Selectable : MonoBehaviour
     {
         public Action onThisSelected;
-        public Action onThisDiabled;
+        public Action onThisEnabled;
         public float DragTime { get; private set; }
         [Tooltip("keep null for default")] [SerializeField] private Material overMaterial = null;
         [Tooltip("keep null for default")] [SerializeField] private Material clickedDownMaterial = null;
@@ -17,6 +17,9 @@ namespace Selections
         private Material originalMaterial;
 
         private float startDragTime;
+
+
+        
 
         private void Awake()
         {
@@ -28,6 +31,8 @@ namespace Selections
         {
             if (!overMaterial) overMaterial = MouseInputHandler.Instance.DefaultOverMaterial;
             if (!clickedDownMaterial) clickedDownMaterial = MouseInputHandler.Instance.DefaultClickedDownMaterial;
+            
+            MouseInputHandler.Instance.ss.Add(this);
         }
 
         public void MouseEnter()
@@ -64,7 +69,11 @@ namespace Selections
         {
             spriteRenderer.material = originalMaterial;
             DragTime = -1;
-            onThisDiabled?.Invoke();
+        }
+
+        private void OnEnable()
+        {
+            onThisEnabled?.Invoke();
         }
 
         internal void Deselect()

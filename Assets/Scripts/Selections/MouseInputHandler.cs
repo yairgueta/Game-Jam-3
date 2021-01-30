@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Events;
 using UnityEditor;
@@ -45,7 +46,10 @@ namespace Selections
             private set => __currentSelected = value;
         }
 
+        // Raw current mouse over object.
         private Selectable __currentMouseOver;
+        
+        // Returns null if there is selectable over the mouse but it is not enabled.
         private Selectable currentMouseOver
         {
             get
@@ -69,6 +73,18 @@ namespace Selections
         }
         #endregion
 
+
+        public List<Selectable> ss;
+        
+        private void LateUpdate()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ss.ForEach(s => s.enabled = !s.enabled);
+            }
+        }
+        
+        
         
         protected override void Awake()
         {
@@ -116,7 +132,11 @@ namespace Selections
             if (selectable != currentMouseOver)
             {
                 // if(currentMouseOver && !IsOverCurrentSelected) currentMouseOver.MouseExit();
-                if(currentMouseOver) currentMouseOver.MouseExit();
+                if (currentMouseOver)
+                {
+                    // currentMouseOver.onThisEnabled = null;
+                    currentMouseOver.MouseExit();
+                }
                 if(IsSelectableActive(selectable)) selectable.MouseEnter();
             }
             else
@@ -124,7 +144,9 @@ namespace Selections
                 if (isDragging && IsSelectableActive(selectable)) HandleDrag(selectable);
                 else currentDragged = null;
             }
-            
+
+            if (__currentMouseOver) __currentMouseOver.onThisEnabled = null;
+            if (selectable) selectable.onThisEnabled = selectable.MouseEnter;
             currentMouseOver = selectable;
         }
 
@@ -168,8 +190,6 @@ namespace Selections
                     return null;
                 }
                 if (bestHit.transform.position.y > hits[i].transform.position.y) bestHit = hits[i];
-                
-                
             }
 
             var s = bestHit.GetComponent<Selectable>();

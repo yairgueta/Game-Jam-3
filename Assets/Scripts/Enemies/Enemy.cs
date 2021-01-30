@@ -138,6 +138,7 @@ namespace Enemies
         public void TakeDamage(float damage)
         {
             curHealth -= damage;
+            
             // transform.DOShakePosition(
                 // 0.5f, Vector3.right * 1.5f, 1, 40f, false, true).SetEase(Ease.InOutBounce);
             if (curHealth <= 0)

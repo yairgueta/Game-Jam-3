@@ -13,7 +13,7 @@ namespace Player
         [SerializeField] private PlayerSettingsObject playerSettings;
 
         public Vector2 MoveDirection { get; private set; }
-        public Vector2 LastMoveDirection { get; private set; }
+        public Vector2 LastMoveDirection { get; set; }
         private Rigidbody2D rb;
 
         private void OnEnable()

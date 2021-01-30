@@ -874,7 +874,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 2
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5383,9 +5383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269e7d0d5effd9242a13074f6bec70b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingLayerMask:
-    serializedVersion: 2
-    m_Bits: 224
   aimGunEndPoinTransform: {fileID: 3860564479102645007}
   bulletGFX: {fileID: 3860564479102645007}
 --- !u!114 &5050817413598364853

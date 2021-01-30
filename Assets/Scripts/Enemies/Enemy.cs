@@ -148,7 +148,6 @@ namespace Enemies
         {
             dieMaterialEdge += Time.deltaTime;
             dieMaterial.SetFloat("edge", dieMaterialEdge);
-            Debug.Log(dieMaterialEdge);
             if (dieMaterialEdge >= maxFadeValue)
             {
                 SetDead();

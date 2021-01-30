@@ -1431,6 +1431,18 @@ PrefabInstance:
       propertyPath: sfxMusicSlider
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4583978824391299525, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583978824391299525, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].time
+      value: 0.00308609
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583978824391299525, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4583978824794404653, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
       propertyPath: m_Name
       value: Sound Controller

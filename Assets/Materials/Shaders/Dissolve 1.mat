@@ -54,7 +54,7 @@ Material:
     m_Floats:
     - Vector1_a3b2fa6cae454717bc7431a0c9107e33: 0
     - _EnableExternalAlpha: 0
-    - edge: 0.74923193
+    - edge: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

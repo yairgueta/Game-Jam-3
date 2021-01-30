@@ -1,3 +1,4 @@
+using System;
 using Cycles;
 using UnityEngine;
 
@@ -23,9 +24,7 @@ namespace Player
 
         void Update()
         {
-            if (!isEclipseTime) return;
-
-            if (!recoveryMode) return;
+            if (!isEclipseTime|| !recoveryMode) return;
         
             if (timer <= 0)
             {
@@ -33,9 +32,12 @@ namespace Player
                 timer = PlayerController.PlayerSettings.recoveryGap;
             }
             timer -= Time.deltaTime;
+            if (PlayerController.PlayerSettings.maxHealth - PlayerController.PlayerSettings.curHealth <= Mathf.Epsilon)
+            {
+                StopRecovery();
+            }
         }
-
-
+        
         private void ChangeToEclipseTime()
         {
             isEclipseTime = true;
@@ -47,20 +49,21 @@ namespace Player
             recoveryParticles.Stop();
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerStay2D(Collider2D other)
         {
-            if (!isEclipseTime) return;
-            if (!other.CompareTag("Sheep") || recoveryMode) return;
+            if (!isEclipseTime || !other.CompareTag("Sheep") || recoveryMode) return;
             recoveryMode = true;
             recoveryParticles.Play();
         }
 
-
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (!isEclipseTime) return;
-            if (!recoveryMode) return;
-            if (!other.CompareTag("Sheep")) return;
+            if (!isEclipseTime || !recoveryMode || !other.CompareTag("Sheep")) return;
+            StopRecovery();
+        }
+
+        private void StopRecovery()
+        {
             recoveryMode = false;
             recoveryParticles.Stop();
         }

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy@Move
+  m_Name: Attack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -39,8 +39,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: 25f2cf1384a5e8648a5276104e5f5791, type: 3}
     - time: 0.75
       value: {fileID: 21300000, guid: ddf7b45c232b7be46b487b88f98895a9, type: 3}
-    - time: 1
-      value: {fileID: 21300000, guid: 507ff56b2a28649b7891ff869a03afcd, type: 3}
     attribute: m_Sprite
     path: GFX
     classID: 212
@@ -70,13 +68,12 @@ AnimationClip:
     - {fileID: 21300000, guid: 57555f2d4854b024e9d528c75f6e133a, type: 3}
     - {fileID: 21300000, guid: 25f2cf1384a5e8648a5276104e5f5791, type: 3}
     - {fileID: 21300000, guid: ddf7b45c232b7be46b487b88f98895a9, type: 3}
-    - {fileID: 21300000, guid: 507ff56b2a28649b7891ff869a03afcd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0166667
+    m_StopTime: 0.76666665
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

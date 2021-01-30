@@ -16,8 +16,8 @@ namespace Events
         
         private readonly List<GameEventListener> listeners = new List<GameEventListener>();
         public  IEnumerable<GameEventListener> Listeners => listeners;
-
-        private void Awake()
+        
+        private void OnEnable()
         {
             var s = name.Split('@');
             category = s.ElementAtOrDefault(1);

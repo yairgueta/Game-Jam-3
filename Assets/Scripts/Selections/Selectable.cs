@@ -31,8 +31,6 @@ namespace Selections
         {
             if (!overMaterial) overMaterial = MouseInputHandler.Instance.DefaultOverMaterial;
             if (!clickedDownMaterial) clickedDownMaterial = MouseInputHandler.Instance.DefaultClickedDownMaterial;
-            
-            MouseInputHandler.Instance.ss.Add(this);
         }
 
         public void MouseEnter()

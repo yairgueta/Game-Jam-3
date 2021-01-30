@@ -72,17 +72,6 @@ namespace Selections
             set => __currentDragged = value;
         }
         #endregion
-
-
-        public List<Selectable> ss;
-        
-        private void LateUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ss.ForEach(s => s.enabled = !s.enabled);
-            }
-        }
         
         
         

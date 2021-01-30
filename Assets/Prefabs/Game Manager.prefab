@@ -79,6 +79,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onFinishLoading: {fileID: 11400000, guid: 8f4f305ec235a4ba191bec8db2f35cc6, type: 2}
   onStartGame: {fileID: 11400000, guid: 673d851a3a9c449c79e47235714e86e8, type: 2}
+  onLose: {fileID: 11400000, guid: 35ce317b1fbd744d284a125ec6c51c24, type: 2}
+  sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
+  onSheepDeath: {fileID: 11400000, guid: bd7ec884f05dcf845b3e7e162042db41, type: 2}
+  onPlayerDeath: {fileID: 11400000, guid: ce7896d81791f41a5a2433c723a31a3e, type: 2}
 --- !u!114 &8536212987877226201
 MonoBehaviour:
   m_ObjectHideFlags: 0

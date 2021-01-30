@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Events;
+using Player;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -15,14 +13,20 @@ public class GameManager : Singleton<GameManager>
     
     [SerializeField] private GameEvent onFinishLoading;
     [SerializeField] private GameEvent onStartGame;
-    private List<bool> waitingList;
-
-    private bool canRegisterToWaitingList = true;
+    [SerializeField] private GameEvent onLose;
+    [SerializeField] private SheepSettings sheepSettings;
+     
+    [Header("Lose Cases Events")]
+    [SerializeField] private GameEvent onSheepDeath;
+    [SerializeField] private GameEvent onPlayerDeath;
+    
+    
+    private WaitingList waitingList;
 
     protected override void Awake()
     {
         base.Awake();
-        waitingList = new List<bool>();
+        waitingList = new WaitingList(()=>onFinishLoading.Raise());
     }
 
     private void Update()
@@ -35,10 +39,15 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        onSheepDeath.Register(gameObject, o =>
+        {
+            if (sheepSettings.sheeps.Count == 0) Lose();
+        });
+        onPlayerDeath.Register(gameObject, o => Lose());
+        
         Physics2D.queriesHitTriggers = true;
-        Camera.main.eventMask = 1 << LayerMask.NameToLayer("Selectable") | 1 << LayerMask.NameToLayer("UI");
-
-        canRegisterToWaitingList = false;
+        // Camera.main.eventMask = 1 << LayerMask.NameToLayer("Selectable") | 1 << LayerMask.NameToLayer("UI");
+        // TODO: Check if things still good without this line ^^^^^^
     }
 
     public void StartGame()
@@ -46,36 +55,27 @@ public class GameManager : Singleton<GameManager>
         onStartGame.Raise();
         IsPlaying = true;
     }
+
+    public void Lose()
+    {
+        Time.timeScale = 0; // TODO slow down slowly until 0??
+        onLose.Raise();
+    }
     
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        waitingList = new List<bool>();
+        waitingList.Clear();
     }
 
+    
+    
     // Return a function to run when finished the task!
-    public Action RegisterToWaitingList()
-    {
-        if (!canRegisterToWaitingList)
-        {
-            Debug.LogError("Cannot register to waiting list after game startup!");
-            return null;
-        }
-        var i = waitingList.Count;
-        waitingList.Add(false);
-        return () => OnFinishedTask(i);
-    }
-    public bool FinishedLoading => !waitingList.Contains(false);
+    public Action RegisterToWaitingList() => waitingList.Register();
+    
+    public bool FinishedLoading => waitingList.AreAllDone;
 
-    private void OnFinishedTask(int i)
-    {
-        waitingList[i] = true;
-        if (FinishedLoading)
-        {
-            onFinishLoading.Raise();
-            // StartGame();
-        }
-    }
+
 
 
     // private void OnGUI()

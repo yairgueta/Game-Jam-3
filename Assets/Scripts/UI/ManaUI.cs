@@ -27,6 +27,7 @@ public class ManaUI : MonoBehaviour
 
     IEnumerator Flicker(int nTimes, float timeOn, float timeOff)
     {
+        //TODO: BUGGGG
         var color = heart.color;
 
         while (nTimes > 0)

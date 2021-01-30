@@ -301,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGMSlider: {fileID: 6502804193248101784}
   SFXSlider: {fileID: 6502804192784750118}
+  mainMenuButton: {fileID: 4137061631546253531}
 --- !u!1 &4137061632086425986
 GameObject:
   m_ObjectHideFlags: 0

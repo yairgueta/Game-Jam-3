@@ -40,10 +40,12 @@ namespace Player
         {
             if (IsWalking()) return;
             var playerPosition = playerController.gameObject.transform.position;
-            if (Mathf.Abs(mousePosition.x - playerPosition.x) > 1f)
+            if (mousePosition.x - playerPosition.x > 0f)
             {
-                anim.SetFloat(AnimMoveX, (mousePosition - new Vector2(playerPosition.x, playerPosition.y)).normalized.x);
+                playerController.LastMoveDirection = new Vector2(1f, 0f);
+                return;
             }
+            playerController.LastMoveDirection = new Vector2(-1f, 0f);
         }
 
         private bool IsWalking()

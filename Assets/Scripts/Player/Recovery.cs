@@ -26,12 +26,7 @@ namespace Player
         {
             if (!isEclipseTime|| !recoveryMode) return;
         
-            if (timer <= 0)
-            {
                 PlayerController.PlayerSettings.UpdateLife(PlayerController.PlayerSettings.lifeAdditionAmount);
-                timer = PlayerController.PlayerSettings.recoveryGap;
-            }
-            timer -= Time.deltaTime;
             if (PlayerController.PlayerSettings.maxHealth - PlayerController.PlayerSettings.curHealth <= Mathf.Epsilon)
             {
                 StopRecovery();

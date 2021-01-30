@@ -18,6 +18,6 @@ MonoBehaviour:
   crackedSprites:
   - {fileID: 4369327588835816675, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
   - {fileID: 2318865483116328066, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
-  healthPoints: 200
-  requiredWoods: 6
-  requiredRocks: 2
+  healthPoints: 300
+  requiredWoods: 13
+  requiredRocks: 1

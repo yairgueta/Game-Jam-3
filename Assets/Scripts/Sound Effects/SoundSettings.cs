@@ -47,10 +47,12 @@ public class SoundSettings : ScriptableObject
     public float fadeoutTime;
     public float fadeInTime;
 
-    public float BGMVolume => bgmVolume;
+    private readonly float BGM_VOLUME_FACTOR = 20;
+    
+    public float BGMVolume => bgmVolume * BGM_VOLUME_FACTOR;
     public void SetBGMVolume(float v)
     {
-        bgmVolume = v / 20f;
+        bgmVolume = v / BGM_VOLUME_FACTOR;
         onVolumeChange?.Invoke();
     }
 

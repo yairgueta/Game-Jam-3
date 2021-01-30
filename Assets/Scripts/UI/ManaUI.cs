@@ -1,16 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Events;
 using Player;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class ManaUI : MonoBehaviour
 {
     [SerializeField] private Image manaFiller;
     [SerializeField] private Image heart;
-
     
     public void RefreshManaFill()
     {
@@ -18,10 +20,18 @@ public class ManaUI : MonoBehaviour
         PlayerController.PlayerSettings.onOutOfMana.Register(gameObject, arg0 => OutOfMana());
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            OutOfMana();
+        }
+    }
 
 
     private void OutOfMana()
     {
+
         StartCoroutine(Flicker(2, 0.2f, 0.2f));
     }
 
@@ -35,7 +45,7 @@ public class ManaUI : MonoBehaviour
             color = new Color(color.r,color.b, color.g, 1f);
             heart.color = color;
             yield return new WaitForSeconds(timeOn);
-            color = new Color(color.r,color.b, color.g, 0f);
+            color = new Color(color.r,color.b, color.g, 0.2f);
             heart.color = color;
             yield return new WaitForSeconds(timeOff);
             color = new Color(color.r,color.b, color.g, 1f);

@@ -26,6 +26,7 @@ namespace Enemies
         private IEnemyDamage currentAttacked;
         private float curHealth;
         private Collider2D enemyCollider;
+        private BoxCollider2D bulletCollider;
         
         private AIPath aiPath;
         private Vector3 gfxScale;
@@ -52,7 +53,7 @@ namespace Enemies
             spriteRenderer = enemyGFX.GetComponent<SpriteRenderer>();
             defaultMaterial = spriteRenderer.material;
             dieMaterialEdge = dieMaterial.GetFloat("edge");
-
+            bulletCollider = GetComponent<BoxCollider2D>();
             enemyCollider = transform.GetChild(0).GetComponent<Collider2D>();
             CyclesManager.Instance.NightSettings.OnCycleEnd.Register(gameObject, o => Die());
         }
@@ -163,8 +164,10 @@ namespace Enemies
         {
             dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
             dieMaterial.SetFloat("edge", dieMaterialEdge);
-            aiPath.canMove = false;
-            enemyCollider.enabled = false;
+            // aiPath.canMove = false;
+            // enemyCollider.enabled = false;
+            // light2D.intensity = 0;
+
             if (dieMaterialEdge >= maxFadeValue)
             {
                 SetDead();
@@ -174,18 +177,27 @@ namespace Enemies
         public void Die()
         {
             mode = Mode.Dying;
+            aiPath.canMove = false;
+            enemyCollider.enabled = false;
+            bulletCollider.enabled = false;
+            tween?.Kill();
+            light2D.intensity = 0;
             // animator.SetTrigger(dieAnimationID);
             spriteRenderer.material = dieMaterial;
         }
 
         public void SetDead()
         {
+            Debug.Log("set dead");
             spriteRenderer.material = defaultMaterial;
             mode = Mode.Walking;
             aiPath.canMove = true;
             enemyCollider.enabled = true;
+            bulletCollider.enabled = true;
+
             dieMaterial.SetFloat("edge", 0f);
             dieMaterialEdge = 0f;
+            light2D.intensity = 1;
             gameObject.SetActive(false);
         }
 

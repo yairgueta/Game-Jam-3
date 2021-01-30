@@ -170,7 +170,7 @@ namespace Enemies
                 SetDead();
             }
         }
-
+        
         public void Die()
         {
             mode = Mode.Dying;

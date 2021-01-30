@@ -61,7 +61,8 @@ namespace UI
             fadeAnimation = DOTween.Sequence()
                 .Append(oldImage.DOFade(0f, fadeOutDuration).SetEase(fadeOutEase))
                 .Append(newImage.DOFade(1, fadeInDuration).SetEase(fadeInEase))
-                .AppendCallback(() => startButton.gameObject.SetActive(currentIndex == tutsImages.Length - 1));
+                .AppendCallback(() => startButton.gameObject.SetActive(currentIndex == tutsImages.Length - 1))
+                .SetUpdate(true);
         }
     }
 }

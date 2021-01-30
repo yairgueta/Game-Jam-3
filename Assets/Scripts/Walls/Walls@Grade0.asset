@@ -16,5 +16,5 @@ MonoBehaviour:
   - {fileID: -355488156011469252, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
   crackedSprites: []
   healthPoints: 0
-  requiredWoods: 2
+  requiredWoods: 5
   requiredRocks: 0

@@ -5,6 +5,7 @@ using DG.Tweening;
 using Events;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace Enemies
 {
@@ -15,6 +16,7 @@ namespace Enemies
         [SerializeField] private GameObject enemyGFX;
         [SerializeField] private float stuckTimeThreshold = 2.5f;
         [SerializeField] private Material dieMaterial;
+        [SerializeField] private Light2D light2D;
         
         private Material defaultMaterial;
         private float dieMaterialEdge;
@@ -27,7 +29,7 @@ namespace Enemies
         
         private AIPath aiPath;
         private Vector3 gfxScale;
-
+        private Tween tween;
         private Animator animator;
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
@@ -135,17 +137,29 @@ namespace Enemies
             currentAttacked?.TakeDamage(enemySettings.attackPower);
         }
 
+        private void LateUpdate()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                TakeDamage(0);
+            }
+        }
+
         public void TakeDamage(float damage)
         {
             curHealth -= damage;
-            // transform.DOShakePosition(
-                // 0.5f, Vector3.right * 1.5f, 1, 40f, false, true).SetEase(Ease.InOutBounce);
+            tween?.Kill(true);
+            tween = DOTween.Sequence()
+                .Append(DOTween.To(() => light2D.intensity, f => light2D.intensity = f, 0.2f, 0.05f))
+                .Append(DOTween.To(() => light2D.intensity, f => light2D.intensity = f, 1.24F, 0.2f).SetDelay(0.1f));
             if (curHealth <= 0)
             {
                 curHealth = enemySettings.health;
                 Die();
             }
         }
+        
+        
         
         private void ManageDeath()
         {

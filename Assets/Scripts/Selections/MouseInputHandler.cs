@@ -27,6 +27,7 @@ namespace Selections
         private Collider2D[] hits;
 
         private int layerMask;
+        private int UILayer;
         private int rightMouse, leftMouse;
         private Camera mainCamera;
         private EventSystem currentEventSystem;
@@ -79,8 +80,8 @@ namespace Selections
         {
             mainCamera = Camera.main;
             currentEventSystem = EventSystem.current;
-            
-            layerMask = 1 << LayerMask.NameToLayer("Selectable") | 1 << LayerMask.NameToLayer("UI");
+            UILayer = LayerMask.NameToLayer("UI");
+            layerMask = 1 << LayerMask.NameToLayer("Selectable") | 1 << UILayer;
 
             rightMouse = (int) MouseButton.RightMouse;
             leftMouse = (int) MouseButton.LeftMouse;
@@ -153,9 +154,23 @@ namespace Selections
             }
 
             var bestHit = hits[0];
+            if (bestHit.gameObject.layer == UILayer)
+            {
+                overType = OverType.Other;
+                return null;
+            }
 
             for (int i = 1; i < hitCount; i++)
+            {
+                if (hits[i].gameObject.layer == UILayer)
+                {
+                    overType = OverType.Other;
+                    return null;
+                }
                 if (bestHit.transform.position.y > hits[i].transform.position.y) bestHit = hits[i];
+                
+                
+            }
 
             var s = bestHit.GetComponent<Selectable>();
             overType = s ? OverType.Selectable : OverType.Other;

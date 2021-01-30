@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onWallDestroy: {fileID: 11400000, guid: c5d43385e4ff9a84883ca6a064af7377, type: 2}
+  shadowSprite: {fileID: 3690371882177848775}
 --- !u!212 &4310957693348009089
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -239,10 +240,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.74355954, y: -0.055909097}
+    - - {x: -0.7355401, y: -0.01581186}
       - {x: 0.59439933, y: -0.7606083}
-      - {x: 0.672384, y: 0.28618205}
-      - {x: -0.7146362, y: 0.95987403}
+      - {x: 0.66401076, y: 0.52063286}
+      - {x: -0.6909796, y: 1.2827724}
 --- !u!1 &6430465675487971896
 GameObject:
   m_ObjectHideFlags: 0

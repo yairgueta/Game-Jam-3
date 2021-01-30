@@ -253,6 +253,7 @@ MonoBehaviour:
   stuckTimeThreshold: 2.5
   dieMaterial: {fileID: 2100000, guid: 5e7afe8882c2a85458f9450565145c59, type: 2}
   light2D: {fileID: 1902000544118271707}
+  bulletCollider: {fileID: 2879252309761741967}
 --- !u!114 &1586172379
 MonoBehaviour:
   m_ObjectHideFlags: 0

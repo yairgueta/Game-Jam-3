@@ -123,10 +123,9 @@ public class SoundController : Singleton<SoundController>
         mainMenuSource.Play();
     }
 
-    public void TurnMenuMusicOff()
-    {
+    public void TurnMenuMusicOff() =>
         mainMenuSource.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
-    }
+   
     
     public void PlaySoundEffect(AudioClip audioClip)
     {

@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25149a362ebe47e69c863811198fbc3b, type: 3}
+  m_Script: {fileID: 11500000, guid: e0a2b3a0fed8346f7ac7deb6083755b5, type: 3}
   m_Name: Wood
   m_EditorClassIdentifier: 
-  onCollectedUnityEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  playerInventory: {fileID: 11400000, guid: cb084c2467af94b55b5be84e0e20dead, type: 2}
+  onCollected: {fileID: 0}
   collectableType: 0
   quantity: 1

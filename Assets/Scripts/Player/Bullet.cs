@@ -70,6 +70,14 @@ namespace Player
 
         private void OnCollisionEnter2D(Collision2D other)
         {
+            var enemy = other.gameObject.GetComponent<Enemy>();
+            if (enemy == null)
+            { 
+                Disable();
+                return;
+            }
+
+            enemy.TakeDamage(power);
             Disable();
         }
     }

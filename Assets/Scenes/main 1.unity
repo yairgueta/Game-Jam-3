@@ -611,8 +611,8 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0
+  m_Color: {r: 0.2124611, g: 0.08746883, b: 0.3962264, a: 1}
+  m_Intensity: 0.4
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 77ce20840000000023ff6f7a
   m_LightCookieSprite: {fileID: 0}
@@ -2948,11 +2948,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1667441342324272320, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.549713
+      value: -4.65
       objectReference: {fileID: 0}
     - target: {fileID: 1667441342324272320, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.3893704
+      value: -3.57
       objectReference: {fileID: 0}
     - target: {fileID: 1667441342324272320, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2989,6 +2989,14 @@ PrefabInstance:
     - target: {fileID: 1667441342324272327, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902000544118271707, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.98039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902000544118271707, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.52168226
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97d61ddcbe2ab824f9adeaa61715a91a, type: 3}

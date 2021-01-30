@@ -31,12 +31,6 @@ public class SoundController : Singleton<SoundController>
         base.Awake();
         
     }
-
-    private void OnDestroy()
-    {
-        print(name);
-    }
-
     private void InitializeSettings()
     {
         if (soundSettings != null) return;

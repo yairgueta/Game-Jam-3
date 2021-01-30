@@ -103,7 +103,7 @@ public class GameManager : Singleton<GameManager>
         mainUI.SetActive(false);
         pauseMenu.SetActive(false);
         triggerBlur.Raise();
-
+        
         mainMenu.GetComponent<Menu>().onClickedPlay += () =>
         {
             mainMenu.SetActive(false);
@@ -116,6 +116,8 @@ public class GameManager : Singleton<GameManager>
             triggerUnblur.Raise();
             StartGame();
         };
+        
+        pauseMenu.GetComponent<PauseMenu>().SetMainMenuButtonFeedback(RestartGame);
     }
 
     private void SetPauseMenu()

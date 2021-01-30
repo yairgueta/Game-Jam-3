@@ -50,7 +50,7 @@ public class SoundSettings : ScriptableObject
     public float BGMVolume => bgmVolume;
     public void SetBGMVolume(float v)
     {
-        bgmVolume = v;
+        bgmVolume = v / 20f;
         onVolumeChange?.Invoke();
     }
 

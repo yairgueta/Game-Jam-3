@@ -18,9 +18,9 @@ public class SoundController : Singleton<SoundController>
     private bool shouldChangeBG;
     private bool bgMusicChanged;
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         InitializeSettings();
         InitializeAudioSources();
         InitializeBGClips();
@@ -28,6 +28,13 @@ public class SoundController : Singleton<SoundController>
         // PlayAmbient();
         PlayMenuMusic();
         soundSettings.onVolumeChange += ()=> mainMenuSource.volume = soundSettings.BGMVolume;
+        base.Awake();
+        
+    }
+
+    private void OnDestroy()
+    {
+        print(name);
     }
 
     private void InitializeSettings()

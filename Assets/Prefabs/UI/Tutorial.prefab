@@ -194,8 +194,8 @@ MonoBehaviour:
   nextButton: {fileID: 7060473503910223405}
   prevButton: {fileID: 7060473503705907265}
   startButton: {fileID: 7060473503079111187}
-  fadeInDuration: 0.5
-  fadeOutDuration: 0.5
+  fadeInDuration: 0.3
+  fadeOutDuration: 0.15
   fadeInEase: 8
   fadeOutEase: 9
 --- !u!1 &7060473503079111196

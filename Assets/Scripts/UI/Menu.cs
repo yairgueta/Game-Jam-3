@@ -1,12 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace UI
 {
     public class Menu : MonoBehaviour
     {
-        [SerializeField] private GameObject tutorial;
-
+        public UnityAction onClickedPlay;
         private void Start()
         {
             var initVol = SoundController.Instance.soundSettings.initialVolumes;
@@ -16,7 +16,7 @@ namespace UI
         public void Play()
         {
             SoundController.Instance.TurnMenuMusicOff();
-            tutorial.SetActive(true);
+            onClickedPlay?.Invoke();
             gameObject.SetActive(false);
         }
 

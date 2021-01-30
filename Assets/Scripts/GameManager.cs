@@ -1,9 +1,11 @@
 using System;
 using Events;
 using Player;
+using UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Menu = UI.Menu;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -31,9 +33,14 @@ public class GameManager : Singleton<GameManager>
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             RestartGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        {
+            SetPauseMenu();
         }
     }
 
@@ -48,6 +55,8 @@ public class GameManager : Singleton<GameManager>
         Physics2D.queriesHitTriggers = true;
         // Camera.main.eventMask = 1 << LayerMask.NameToLayer("Selectable") | 1 << LayerMask.NameToLayer("UI");
         // TODO: Check if things still good without this line ^^^^^^
+        
+        InitializeUI();
     }
 
     public void StartGame()
@@ -67,14 +76,57 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         waitingList.Clear();
     }
-
-    
     
     // Return a function to run when finished the task!
     public Action RegisterToWaitingList() => waitingList.Register();
     
     public bool FinishedLoading => waitingList.AreAllDone;
 
+
+    #region UI Management
+
+    [Header("UI Refernces")] 
+    [SerializeField] private GameObject mainMenu;
+    [SerializeField] private GameObject tutorial;
+    [SerializeField] private GameObject mainUI;
+    [SerializeField] private GameObject pauseMenu;
+    
+    [Header("UI Triggers")]
+    [SerializeField] private GameEvent triggerBlur;
+    [SerializeField] private GameEvent triggerUnblur;
+    
+    
+    private void InitializeUI()
+    {
+        mainMenu.SetActive(true);
+        tutorial.SetActive(false);
+        mainUI.SetActive(false);
+        pauseMenu.SetActive(false);
+        triggerBlur.Raise();
+
+        mainMenu.GetComponent<Menu>().onClickedPlay += () =>
+        {
+            mainMenu.SetActive(false);
+            tutorial.SetActive(true);
+        };
+        tutorial.GetComponent<TutorialManager>().onClickedStart += () =>
+        {
+            tutorial.SetActive(false);
+            mainUI.SetActive(true);
+            triggerUnblur.Raise();
+            StartGame();
+        };
+    }
+
+    private void SetPauseMenu()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        GameEvent trigger = pauseMenu.activeSelf ? triggerBlur : triggerUnblur;
+        mainUI.SetActive(!mainUI.activeSelf);
+        trigger.Raise();
+    }
+
+    #endregion
 
 
 

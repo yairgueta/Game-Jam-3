@@ -55,13 +55,11 @@ public class MinimapIcons : MonoBehaviour
         {
             if (!sheep.IsSheared)
             {
-                Debug.Log("not sheard");
                 FlashAnimation(eclipseColor, originColorSheep, -1);
                 return;
             }
         }
 
-        Debug.Log("all sheared");
         tween?.Kill(true);
         sheepRenderer.color = originColorSheep;
         sheepTransform.localScale = originalScale;

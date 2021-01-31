@@ -1,4 +1,5 @@
 using System;
+using Cycles;
 using DG.Tweening;
 using Events;
 using Player;
@@ -14,7 +15,6 @@ public class GameManager : Singleton<GameManager>
     public GameEvent ONFinishLoading => onFinishLoading;
     public GameEvent ONStartGame => onStartGame;
     public bool IsPlaying { get; private set; }
-    public int cyclesNum { get; private set; }
     
     [SerializeField] private GameEvent onFinishLoading;
     [SerializeField] private GameEvent onStartGame;
@@ -24,7 +24,8 @@ public class GameManager : Singleton<GameManager>
     [Header("Lose Cases Events")]
     [SerializeField] private GameEvent onSheepDeath;
     [SerializeField] private GameEvent onPlayerDeath;
-    
+    public int cyclesNum { get; private set; }
+
     
     private WaitingList waitingList;
 
@@ -61,6 +62,7 @@ public class GameManager : Singleton<GameManager>
         
         InitializeUI();
         Time.timeScale = 0;
+        CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, AddCycle);
     }
 
     public void StartGame()
@@ -149,6 +151,7 @@ public class GameManager : Singleton<GameManager>
     private void AddCycle(object o)
     {
         cyclesNum++;
+        Debug.Log(cyclesNum);
     }
 
     // private void OnGUI()

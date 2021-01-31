@@ -21,10 +21,13 @@ namespace Spawners
         
         private GridGraph[] graphs;
         private GridGraph mainGraph;
+
+        private List<GraphNode>[] nodesLists;
+        
         private AstarData astarData;
         private Collider2D boundaries;
         private Vector2 worldSpaceOffset;
-        
+
         private void Awake()
         {
             boundaries = GetComponent<Collider2D>();
@@ -37,36 +40,38 @@ namespace Spawners
             graphs = astarData.FindGraphsOfType(typeof(GridGraph)).OfType<GridGraph>().ToArray();
             worldSpaceOffset = boundaries.offset + (Vector2)transform.position;
             perlinVar = new Vector2(Random.value, Random.value) * 100f;
+
+            nodesLists = new List<GraphNode>[graphs.Length];
         }
         
         private List<GraphNode> IsFree(Bounds bounds)
         {
-            var ls = new List<GraphNode>[graphs.Length];
             var walkable = true;
             for (var i = 0; i < graphs.Length; i++)
             {
                 var graph = graphs[i];
                 var nodes = graph.GetNodesInRegion(bounds);
                 walkable = nodes.Aggregate(walkable, (current, node) => current && node.Walkable);
-                ls[i] = nodes;
+                nodesLists[i] = nodes;
             }
             
-            foreach (var graphNodes in ls.Skip(1))
+            foreach (var graphNodes in nodesLists.Skip(1))
             {
                 ListPool<GraphNode>.Release(graphNodes);
             }
 
-            return walkable ? ls[0] : null;
+            return walkable ? nodesLists[0] : null;
         }
 
         private void AnyRandomizeObjectPosition(Spawnable spnble, Func<Vector2> randomMethod)
         {
+            var spnbleCollider = spnble.physicsCollider;
+            var boundsSize = spnbleCollider.bounds.size + (Vector3) (spnble.Radius * Vector2.one);
             for (int i = 0; i < MAX_ITERATIONS; i++)
             {
                 var newPos = randomMethod();
                 spnble.transform.position = newPos;
-                var spnbleCollidr = spnble.physicsCollider;
-                var takenNodes = IsFree(new Bounds(newPos + spnbleCollidr.offset, spnbleCollidr.bounds.size));
+                var takenNodes = IsFree(new Bounds(newPos + spnbleCollider.offset, boundsSize));
                 if (takenNodes != null)
                 {
                     spnble.takenNodes = takenNodes;

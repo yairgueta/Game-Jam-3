@@ -64,7 +64,34 @@ MonoBehaviour:
   baseRespawnTime: 0.34
   spawningSpeedCurve:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0083351135
+      value: 1.0117798
+      inSlope: -0.0026434101
+      outSlope: -0.0026434101
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.31318963
+    - serializedVersion: 3
+      time: 0.71116126
+      value: 0.67686576
+      inSlope: -1.3422489
+      outSlope: -1.3422489
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.32737306
+    - serializedVersion: 3
+      time: 0.9887085
+      value: -0.01210022
+      inSlope: 0.010076026
+      outSlope: 0.010076026
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5744376
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -158,7 +185,7 @@ MonoBehaviour:
   - {fileID: 7408568662195309065, guid: 45eb40fe04f7c400fa777e1c8ab9ee22, type: 3}
   - {fileID: 962801463186907189, guid: 424c960cccdac4649907119b6b788d96, type: 3}
   - {fileID: 2235701822541872045, guid: ce832a0df268a43eda078a02e0454e52, type: 3}
-  totalPoolAmount: 2000
+  totalPoolAmount: 1000
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
   startingAmount: 200

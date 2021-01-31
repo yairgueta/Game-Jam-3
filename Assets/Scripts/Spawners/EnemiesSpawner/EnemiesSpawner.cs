@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +7,11 @@ namespace Spawners.EnemiesSpawner
     public class EnemiesSpawner : MonoBehaviour
     {
         private Queue<Spawnable> enemiesQueue;
-
+        public EnemiesSpawnerMinimapIcon minimapIcon { get; private set; }
         private void Start()
         {
+            minimapIcon = GetComponentInChildren<EnemiesSpawnerMinimapIcon>();
+            
             enemiesQueue = new Queue<Spawnable>();
             foreach (Transform child in transform)
             {

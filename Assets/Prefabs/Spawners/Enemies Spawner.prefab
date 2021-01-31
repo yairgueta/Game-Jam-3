@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4565451717462665147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7, y: 5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.98, y: 3.84, z: 0}
+  m_LocalScale: {x: 0.6521, y: 0.6521, z: 0.6521}
   m_Children:
   - {fileID: 5719547379295692285}
   m_Father: {fileID: 5348176395332998919}
@@ -73,9 +73,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4713900240745642979, guid: e5639f5a172c7db438879043848d3532, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0cbb4fc9e6b0449c09c35823319c8952, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -97,8 +97,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.31143948, y: -1.6609839}
-  m_Size: {x: 10.679078, y: 5.963214}
+  m_Offset: {x: 0.6056942, y: -1.8042854}
+  m_Size: {x: 13.659814, y: 5.447367}
   m_Direction: 1
 --- !u!1 &5348176395332998922
 GameObject:
@@ -126,7 +126,7 @@ Transform:
   m_GameObject: {fileID: 5348176395332998922}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -26.2, y: 14.6, z: 7.856481}
-  m_LocalScale: {x: 0.6047, y: 0.6047, z: 0.6047}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3646905531961547780}
   - {fileID: 6709091347227163132}
@@ -175,6 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5719547379295692285}
   - component: {fileID: 5901170300006922094}
+  - component: {fileID: 5674745712837186850}
   m_Layer: 18
   m_Name: Minimap Icon
   m_TagString: Untagged
@@ -190,8 +191,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5901757062776475410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: -1.18, z: -1.37}
-  m_LocalScale: {x: 2.8875, y: 2.8875, z: 2.8875}
+  m_LocalPosition: {x: -0.05, y: -1.18, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 3646905531961547780}
   m_RootOrder: 0
@@ -247,6 +248,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5674745712837186850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5901757062776475410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e458115345c447a385ec4331c6b194f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loopsCount: 5
+  duration: 0.58
+  warningColor: {r: 1, g: 0, b: 0, a: 1}
+  scaleMultiplier: 1.4
+  scaleEaseIn: 5
+  scaleEaseOut: 6
 --- !u!1001 &5348176393351388777
 PrefabInstance:
   m_ObjectHideFlags: 0

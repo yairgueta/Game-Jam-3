@@ -55,18 +55,18 @@ namespace Player
             CancelInvoke();
         }
         
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            var enemy = other.GetComponent<Enemy>();
-            if (enemy == null)
-            { 
-                // Disable();
-                return;
-            }
-
-            enemy.TakeDamage(power);
-            Disable();
-        }
+        // private void OnTriggerEnter2D(Collider2D other)
+        // {
+        //     var enemy = other.GetComponent<Enemy>();
+        //     if (enemy == null)
+        //     { 
+        //         Disable();
+        //         return;
+        //     }
+        //
+        //     enemy.TakeDamage(power);
+        //     Disable();
+        // }
 
         private void OnCollisionEnter2D(Collision2D other)
         {

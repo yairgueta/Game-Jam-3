@@ -77,7 +77,7 @@ namespace Spawners
             for (; i < totalPoolAmount; i++)
             {
                 var p = Instantiate(GetRandomPrefab(), transform).GetComponent<Spawnable>();
-                p.Init(this);
+                p.Init(SpawnableDeath);
                 p.spawnerIndex = i;
                 pooledObjects[i] = p;
                 p.gameObject.SetActive(false);

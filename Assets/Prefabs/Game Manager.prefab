@@ -113,6 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1530947caa645109deb484b99f3733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultOverMaterial: {fileID: 2100000, guid: 1a799b9aecc294ea287b0a70699ac337, type: 2}
-  defaultClickedDownMaterial: {fileID: 2100000, guid: f55d80d36276448549b8a70974a17357, type: 2}
+  defaultOverMaterial: {fileID: 2100000, guid: f191696a5dd15894fa3691b2df5a4933, type: 2}
+  defaultClickedDownMaterial: {fileID: 2100000, guid: a26af24fc0e2446d4a46a39005dbae78, type: 2}
   onSelectionChangeEvent: {fileID: 11400000, guid: 59fd63c51de132a4197c64fd4ffde55e, type: 2}

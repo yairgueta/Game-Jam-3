@@ -52,6 +52,7 @@ namespace Sheep
             noiseVar = new Vector2(Random.value, Random.value);
 
             animator = GetComponent<Animator>();
+            RandomizeAnimationSpeed();
             sr = GetComponent<SpriteRenderer>();
             if (sr == null) sr = GetComponentInParent<SpriteRenderer>();
             selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
@@ -61,6 +62,11 @@ namespace Sheep
             
             waitWhileShearing = new WaitForSeconds(sheepSettings.fillTime);
 
+        }
+
+        private void RandomizeAnimationSpeed()
+        {
+            animator.speed = Random.Range(0.5f, 1f);
         }
         
         private void Update()

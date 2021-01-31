@@ -23,6 +23,7 @@ public class MinimapIcons : MonoBehaviour
     [SerializeField] private GameEvent onShear;
     [SerializeField] private GameEvent onRefill;
     [SerializeField] private SheepSettings sheepSettings;
+    [SerializeField] private Ease scaleEaseIn;
 
     void Start()
     {
@@ -34,8 +35,6 @@ public class MinimapIcons : MonoBehaviour
         onShear.Register(gameObject, OnEclipse);
         CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject, DoneEclipse);
         CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, OnEclipse);
-
-        
     }
 
     public void StartAttack(object o)
@@ -43,14 +42,14 @@ public class MinimapIcons : MonoBehaviour
         FlashAnimation(attackColor, originColorSheep, 3);
     }
     
-    public void DoneAttack(object o)
-    {
-        // tween?.Kill();
-    }
+    // public void DoneAttack(object o)
+    // {
+    //     // tween?.Kill();
+    // }
 
     public void OnEclipse(object o)
     {
-        // if (CyclesManager.Instance.CurrentCycle != CyclesType.Eclipse) return;
+        if (CyclesManager.Instance.CurrentCycle != CyclesType.Eclipse) return;
 
         foreach (var sheep in sheepSettings.sheeps)
         {
@@ -65,15 +64,17 @@ public class MinimapIcons : MonoBehaviour
         Debug.Log("all sheared");
         tween?.Kill(true);
         sheepRenderer.color = originColorSheep;
+        sheepTransform.localScale = originalScale;
+
     }
 
     private void FlashAnimation(Color targetColor, Color originColor, int loops)
     {
         tween?.Kill(true);
         tween = DOTween.Sequence()
-            .Append(sheepRenderer.DOColor(targetColor, toColorDuration).SetEase(Ease.OutBack))
+            .Append(sheepRenderer.DOColor(targetColor, toColorDuration).SetEase(scaleEaseIn))
             .Join(sheepTransform.DOScale(originalScale*1.5f,toColorDuration))
-            .Append(sheepRenderer.DOColor(originColor, fromColorDuration).SetEase(Ease.OutBack))
+            .Append(sheepRenderer.DOColor(originColor, fromColorDuration).SetEase(scaleEaseIn))
             .Join(sheepTransform.DOScale(originalScale,toColorDuration))
             .SetLoops(loops);
     }
@@ -81,5 +82,7 @@ public class MinimapIcons : MonoBehaviour
     public void DoneEclipse(object o)
     {
         tween?.Kill();
+        sheepRenderer.color = originColorSheep;
+        sheepTransform.localScale = originalScale;
     }
 }

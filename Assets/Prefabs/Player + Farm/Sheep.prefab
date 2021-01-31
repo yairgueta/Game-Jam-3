@@ -182,6 +182,7 @@ MonoBehaviour:
   collectionParticle: {fileID: 1380875590584609813}
   sleepingParticle: {fileID: 1574934340766785120}
   onSheepDeath: {fileID: 11400000, guid: bd7ec884f05dcf845b3e7e162042db41, type: 2}
+  onShake: {fileID: 11400000, guid: 28a6e3522c36597419240cd89282ecba, type: 2}
   intensityRange: {x: 0.6, y: 1.5}
   flickerSpeed: 0.8
 --- !u!114 &934456885316928754

@@ -11,15 +11,13 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float time = .15f;
     private CinemachineVirtualCamera mainCam;
     private float shakeTimer = 0f;
-    [SerializeField] private GameEvent onWallDestroy;
-    [SerializeField] private GameEvent onSheepDeath;
+    [SerializeField] private GameEvent onShake;
     
     
     void Start()
     {
         mainCam = GetComponent<CinemachineVirtualCamera>();
-        onWallDestroy.Register(gameObject, arg0 => Shake());
-        onSheepDeath.Register(gameObject, arg0 => Shake());
+        onShake.Register(gameObject, arg0 => Shake());
     }
 
     private void Update()

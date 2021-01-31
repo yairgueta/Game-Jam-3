@@ -19,6 +19,7 @@ namespace Sheep
         [SerializeField] private ParticleSystem collectionParticle;
         [SerializeField] private ParticleSystem sleepingParticle;
         [SerializeField] private GameEvent onSheepDeath;
+        [SerializeField] private GameEvent onShake;
         
         [Header("Light Settings")]
         [SerializeField] private Vector2 intensityRange = new Vector2(.3f, .6f);
@@ -189,6 +190,7 @@ namespace Sheep
         private void Die()
         {
             onSheepDeath.Raise();
+            onShake.Raise();
             gameObject.SetActive(false);
         }
     }

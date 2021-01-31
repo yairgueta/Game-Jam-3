@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Selections;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ namespace Player
         {
             Animate();
         }
-    
+
         private void Animate()
         {
             anim.SetFloat(AnimMoveX, playerController.MoveDirection.x);

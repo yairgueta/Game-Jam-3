@@ -16,6 +16,7 @@ namespace Player
         public Vector2 MoveDirection { get; private set; }
         public Vector2 LastMoveDirection { get; set; }
         private Rigidbody2D rb;
+        private bool isStart = true;
 
         private void OnEnable()
         {
@@ -49,6 +50,7 @@ namespace Player
         private void PlayerMovement()
         {
             var moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            if (isStart) moveInput = Vector2.right; isStart= false;
             if ((moveInput.x == 0 && moveInput.y == 0) && MoveDirection.x != 0 || MoveDirection.y !=0)
             {
                 LastMoveDirection = MoveDirection;

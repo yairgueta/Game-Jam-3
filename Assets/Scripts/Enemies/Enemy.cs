@@ -4,6 +4,7 @@ using Cycles;
 using DG.Tweening;
 using Events;
 using Pathfinding;
+using Player;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -45,7 +46,8 @@ namespace Enemies
         private bool shouldAttack = false;
         private float fadeSpeed = 0.35f;
         private float maxFadeValue = 0.65f;
-        
+        private static readonly int EdgeID = Shader.PropertyToID("edge");
+
         private void Start()
         {
             soundController = FindObjectOfType<SoundController>();
@@ -123,17 +125,16 @@ namespace Enemies
             if (mode == Mode.Attacking || mode == Mode.Dying) return;
             mode = Mode.Attacking;
             animator.SetTrigger(attackAnimationID);
-            if(!canRoar) return;
-            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
-            StartCoroutine(AttackSoundDelay());
+            // if(!canRoar) return;
+            // StartCoroutine(AttackSoundDelay());
         }
 
-        private IEnumerator AttackSoundDelay()
-        {
-            canRoar = false;
-            yield return new WaitForSeconds(soundController.soundSettings.monsterAttack.length * 3f);
-            canRoar = true;
-        }
+        // private IEnumerator AttackSoundDelay()
+        // {
+        //     canRoar = false;
+        //     yield return new WaitForSeconds(soundController.soundSettings.monsterAttack.length * 3f);
+        //     canRoar = true;
+        // }
 
         private void WalkMode()
         {
@@ -145,17 +146,12 @@ namespace Enemies
         
         private void Attack()
         {
+            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
             currentAttacked?.TakeDamage(enemySettings.attackPower);
+            
+            if (currentAttacked as Sheep.Sheep) Die();
         }
-
-        // private void LateUpdate()
-        // {
-        //     if (Input.GetKeyDown(KeyCode.Space))
-        //     {
-        //         TakeDamage(0);
-        //     }
-        // }
-
+        
         public void TakeDamage(float damage)
         {
             curHealth -= damage;
@@ -172,17 +168,10 @@ namespace Enemies
 
         private void ManageDeath()
         {
-            // dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
             dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
-            dieMaterial.SetFloat("edge", dieMaterialEdge);
-            // aiPath.canMove = false;
-            // enemyCollider.enabled = false;
-            // light2D.intensity = 0;
+            dieMaterial.SetFloat(EdgeID, dieMaterialEdge);
 
-            if (dieMaterialEdge >= maxFadeValue)
-            {
-                SetDead();
-            }
+            if (dieMaterialEdge >= maxFadeValue) SetDead();
         }
         
         public void Die()
@@ -194,8 +183,6 @@ namespace Enemies
             tween?.Kill();
             light2D.intensity = 0;
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            // animator.SetTrigger(dieAnimationID);
-            // spriteRenderer.material = dieMaterial;
             spriteRenderer.material = dieMaterial;
         }
 
@@ -206,7 +193,7 @@ namespace Enemies
             aiPath.canMove = true;
             enemyCollider.enabled = true;
             bulletCollider.enabled = true;
-            dieMaterial.SetFloat("edge", 0f);
+            dieMaterial.SetFloat(EdgeID, 0f);
             dieMaterialEdge = 0f;
             light2D.intensity = 1;
             rb.constraints = originalConstraints;
@@ -240,7 +227,6 @@ namespace Enemies
         {
             if (mode == Mode.Dying) return;
             if (other.gameObject.GetComponent<IEnemyDamage>() != currentAttacked) return;
-            if (currentAttacked as Sheep.Sheep != null) gameObject.SetActive(false);
             currentAttacked = null;
             WalkMode();
         }

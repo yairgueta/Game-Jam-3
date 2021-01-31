@@ -10,6 +10,7 @@ public class ShearPopUp : MonoBehaviour
 {
     [SerializeField] private SheepSettings sheepSettings;
     [SerializeField] private GameEvent onShear;
+    [SerializeField] private GameEvent onSheepDeath;
     [SerializeField] private float duration;
     [SerializeField] private Ease ease;
     private Transform popUpTransform;
@@ -29,6 +30,7 @@ public class ShearPopUp : MonoBehaviour
         CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, PopUpShearMe);
         CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject, TakePopUpDown);
     }
+    
 
     private void PopUpShearMe(object o)
     {

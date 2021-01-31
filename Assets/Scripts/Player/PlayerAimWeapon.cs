@@ -82,14 +82,21 @@ namespace Player
             if (!ableToShoot) return;
             if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)) return;
             AnimateTowardsShoot(mousePosition);
-            StartCoroutine(ShootDelay(mousePosition));
+            StartCoroutine(ShootDelay(mousePosition, true));
         }
 
-        private IEnumerator ShootDelay(Vector2 mousePosition)
+        private IEnumerator ShootDelay(Vector2 mousePosition, bool shouldWait)
         {
-            yield return null;
-            onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
-            BulletAnimation();
+            yield return new WaitForSeconds(0.05f);
+            if (shouldWait)
+            {
+                StartCoroutine(ShootDelay(mousePosition, false));
+            }
+            else
+            {
+                onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
+                BulletAnimation();
+            }
         }
         
         private void AnimateTowardsShoot(Vector2 mousePosition)

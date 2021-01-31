@@ -11,21 +11,21 @@ namespace Spawners
         
         internal List<GraphNode> takenNodes;
         internal int spawnerIndex = -1;
-        private Spawner spawner;
+        private Action<Spawnable> onThisDeath;
 
         private void Awake()
         {
             if(!physicsCollider) physicsCollider = GetComponent<Collider2D>();
         }
 
-        internal void Init(Spawner spawnerParent)
+        internal void Init(Action<Spawnable> deathAction)
         {
-            this.spawner = spawnerParent;
+            onThisDeath = deathAction;
         }
 
         protected virtual void OnDisable()
         {
-            spawner?.SpawnableDeath(this);
+            onThisDeath?.Invoke(this);
         }
     }
 }

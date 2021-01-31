@@ -29,6 +29,7 @@ namespace Walls
             fixable.onDeath += OnDestroyed;
             fixable.onFixed += OnFixed;
             fixable.onHalfHealth += () => sr.sprite = upgradable.CrackedSprite;
+
         }
 
         private void OnFixed()

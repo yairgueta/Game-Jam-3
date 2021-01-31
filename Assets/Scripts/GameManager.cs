@@ -72,6 +72,7 @@ public class GameManager : Singleton<GameManager>
     public void Lose()
     {
         Time.timeScale = 0; // TODO slow down slowly until 0??
+        RaiseDeathWindow();
         onLose.Raise();
     }
     
@@ -94,6 +95,7 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject tutorial;
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject deathWindow;
     
     [Header("UI Triggers")]
     [SerializeField] private GameEvent triggerBlur;
@@ -132,6 +134,13 @@ public class GameManager : Singleton<GameManager>
         mainUI.SetActive(!mainUI.activeSelf);
         Time.timeScale = pauseMenu.activeSelf ? 0 : 1;
         trigger.Raise();
+    }
+
+    private void RaiseDeathWindow()
+    {
+        mainUI.SetActive(false);
+        triggerBlur.Raise();
+        deathWindow.SetActive(true);
     }
 
     #endregion

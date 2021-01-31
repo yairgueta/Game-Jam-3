@@ -15,11 +15,12 @@ namespace Enemies
         [SerializeField] private EnemySettings enemySettings;
         [SerializeField] private GameObject enemyGFX;
         [SerializeField] private float stuckTimeThreshold = 2.5f;
-        [SerializeField] private Material dieMaterial;
+        [SerializeField] private Shader dieShader;
+        private Material dieMaterial;
         [SerializeField] private Light2D light2D;
         
         private Material defaultMaterial;
-        private float dieMaterialEdge;
+        private float dieMaterialEdge = 0f;
         private SpriteRenderer spriteRenderer;
         private SoundController soundController;
         private Mode mode;
@@ -52,7 +53,8 @@ namespace Enemies
             curHealth = enemySettings.health;
             spriteRenderer = enemyGFX.GetComponent<SpriteRenderer>();
             defaultMaterial = spriteRenderer.material;
-            dieMaterialEdge = dieMaterial.GetFloat("edge");
+            // dieMaterialEdge = dieMaterial.GetFloat("edge");
+            dieMaterial = new Material(dieShader);
             bulletCollider = GetComponent<BoxCollider2D>();
             enemyCollider = transform.GetChild(0).GetComponent<Collider2D>();
             CyclesManager.Instance.NightSettings.OnCycleEnd.Register(gameObject, o => Die());
@@ -162,6 +164,7 @@ namespace Enemies
 
         private void ManageDeath()
         {
+            // dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
             dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
             dieMaterial.SetFloat("edge", dieMaterialEdge);
             // aiPath.canMove = false;
@@ -173,7 +176,7 @@ namespace Enemies
                 SetDead();
             }
         }
-
+        
         public void Die()
         {
             mode = Mode.Dying;
@@ -183,12 +186,12 @@ namespace Enemies
             tween?.Kill();
             light2D.intensity = 0;
             // animator.SetTrigger(dieAnimationID);
+            // spriteRenderer.material = dieMaterial;
             spriteRenderer.material = dieMaterial;
         }
 
         public void SetDead()
         {
-            Debug.Log("set dead");
             spriteRenderer.material = defaultMaterial;
             mode = Mode.Walking;
             aiPath.canMove = true;

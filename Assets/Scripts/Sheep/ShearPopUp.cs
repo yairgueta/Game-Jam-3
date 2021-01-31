@@ -35,9 +35,10 @@ public class ShearPopUp : MonoBehaviour
         if (!notYetSheared) return;
         renderer.enabled = true;
         transform.position = sheepSettings.sheeps[0].transform.position;
+        float pos = transform.position.y;
         tween = DOTween.Sequence()
-            .Append(transform.DOScale(originalScale*1.2f, duration).SetEase(ease))
-            .Append(transform.DOScale(originalScale, duration).SetEase(ease))
+            .Append(transform.DOMoveY(pos*1.2f, duration).SetEase(ease))
+            .Append(transform.DOMoveY(pos, duration).SetEase(ease))
             .SetLoops(-1);
     }
 

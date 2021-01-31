@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
     public GameEvent ONFinishLoading => onFinishLoading;
     public GameEvent ONStartGame => onStartGame;
     public bool IsPlaying { get; private set; }
+    public int cyclesNum { get; private set; }
     
     [SerializeField] private GameEvent onFinishLoading;
     [SerializeField] private GameEvent onStartGame;
@@ -145,7 +146,10 @@ public class GameManager : Singleton<GameManager>
 
     #endregion
 
-
+    private void AddCycle(object o)
+    {
+        cyclesNum++;
+    }
 
     // private void OnGUI()
     // {

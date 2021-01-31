@@ -151,7 +151,6 @@ public class GameManager : Singleton<GameManager>
     private void AddCycle(object o)
     {
         cyclesNum++;
-        Debug.Log(cyclesNum);
     }
 
     // private void OnGUI()

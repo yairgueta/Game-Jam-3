@@ -25,10 +25,12 @@ namespace Player
 
         [SerializeField] private GameEvent onOutOfResources;
         [SerializeField] private List<int> quantityMap;
+        [SerializeField] private List<int> collectedThroughGameMap;
 
         public void Setup()
         {
             quantityMap = new List<int> {initWood, initRock};
+            collectedThroughGameMap = new List<int> {initWood, initRock};
             onChange.Raise();
         }
 
@@ -44,6 +46,10 @@ namespace Player
                 }
 
                 var difference = value - quantityMap[(int) t];
+                if (difference > 0)
+                {
+                    collectedThroughGameMap[(int) t] += difference;
+                }
                 quantityMap[(int) t] = value;
                 onChange.Raise(new CollectingArgs(t, difference, difference));
             }

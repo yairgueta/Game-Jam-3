@@ -162,6 +162,7 @@ namespace Enemies
 
         private void ManageDeath()
         {
+            // dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
             dieMaterialEdge += Time.deltaTime * enemySettings.fadeSpeed;
             dieMaterial.SetFloat("edge", dieMaterialEdge);
             // aiPath.canMove = false;

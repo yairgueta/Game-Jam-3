@@ -33,6 +33,9 @@ namespace Enemies
         private Vector3 gfxScale;
         private Tween tween;
         private Animator animator;
+        private Rigidbody2D rb;
+        private RigidbodyConstraints2D originalConstraints;
+        
         private readonly int attackAnimationID = Animator.StringToHash("Attack");
         private readonly int moveAnimationID = Animator.StringToHash("Move");
         private readonly int dieAnimationID = Animator.StringToHash("Die");
@@ -58,6 +61,9 @@ namespace Enemies
             bulletCollider = GetComponent<BoxCollider2D>();
             enemyCollider = transform.GetChild(0).GetComponent<Collider2D>();
             CyclesManager.Instance.NightSettings.OnCycleEnd.Register(gameObject, o => Die());
+
+            rb = GetComponent<Rigidbody2D>();
+            originalConstraints = rb.constraints;
         }
 
         private void Update()
@@ -140,13 +146,13 @@ namespace Enemies
             currentAttacked?.TakeDamage(enemySettings.attackPower);
         }
 
-        private void LateUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                TakeDamage(0);
-            }
-        }
+        // private void LateUpdate()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.Space))
+        //     {
+        //         TakeDamage(0);
+        //     }
+        // }
 
         public void TakeDamage(float damage)
         {
@@ -185,6 +191,7 @@ namespace Enemies
             bulletCollider.enabled = false;
             tween?.Kill();
             light2D.intensity = 0;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
             // animator.SetTrigger(dieAnimationID);
             // spriteRenderer.material = dieMaterial;
             spriteRenderer.material = dieMaterial;
@@ -197,10 +204,10 @@ namespace Enemies
             aiPath.canMove = true;
             enemyCollider.enabled = true;
             bulletCollider.enabled = true;
-
             dieMaterial.SetFloat("edge", 0f);
             dieMaterialEdge = 0f;
             light2D.intensity = 1;
+            rb.constraints = originalConstraints;
             gameObject.SetActive(false);
         }
 

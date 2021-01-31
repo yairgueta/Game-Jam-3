@@ -137,6 +137,7 @@ namespace Enemies
 
         private void WalkMode()
         {
+            animator.SetTrigger(moveAnimationID);
             if (mode == Mode.Walking) return;
             mode = Mode.Walking;
             animator.SetTrigger(moveAnimationID);
@@ -242,19 +243,6 @@ namespace Enemies
             if (currentAttacked as Sheep.Sheep != null) gameObject.SetActive(false);
             currentAttacked = null;
             WalkMode();
-
         }
-
-        // private IEnumerator ChangeToWalkDelay()
-        // {
-        //     yield return new WaitForSeconds(0.1f);
-        //     Debug.Log(shouldAttack);
-        //     if (!shouldAttack)
-        //     {
-        //         currentAttacked = null;
-        //         shouldAttack = false;
-        //         WalkMode();
-        //     }
-        // }
     }
 }

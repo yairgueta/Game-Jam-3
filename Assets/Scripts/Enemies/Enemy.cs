@@ -188,7 +188,6 @@ namespace Enemies
 
         public void SetDead()
         {
-            Debug.Log("set dead");
             spriteRenderer.material = defaultMaterial;
             mode = Mode.Walking;
             aiPath.canMove = true;

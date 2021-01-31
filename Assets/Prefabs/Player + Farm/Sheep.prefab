@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsCollider: {fileID: 934456885316928750}
+  radius: 0.1
 --- !u!114 &934456885316928751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5380,7 +5381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overMaterial: {fileID: 2100000, guid: 68a0f8fdde790494eb2f7de42a2773c2, type: 2}
+  overMaterial: {fileID: 0}
   clickedDownMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   spriteRenderer: {fileID: 934456885316928744}
 --- !u!1 &8168792148115109427

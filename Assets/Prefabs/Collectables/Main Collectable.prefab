@@ -70,8 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
-  clickedDownMaterial: {fileID: 0}
+  overMaterial: {fileID: 2100000, guid: 8b1a3e046afa84786b361755836b9ab7, type: 2}
+  clickedDownMaterial: {fileID: 2100000, guid: 8b1a3e046afa84786b361755836b9ab7, type: 2}
   spriteRenderer: {fileID: 4437600841816292468}
 --- !u!1 &4437600841816292470
 GameObject:
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c5f21cad21b4119928c5e9ac37b224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableObject: {fileID: 11400000, guid: 28e0846f0cbe34332a4d0cfc007bfcac, type: 2}
+  collectableObject: {fileID: 0}
 --- !u!114 &6971838700855060363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsCollider: {fileID: 0}
+  radius: 0.5
 --- !u!212 &4437600841816292468
 SpriteRenderer:
   m_ObjectHideFlags: 0

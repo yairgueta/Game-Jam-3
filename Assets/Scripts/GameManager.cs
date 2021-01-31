@@ -50,7 +50,7 @@ public class GameManager : Singleton<GameManager>
     {
         onSheepDeath.Register(gameObject, o =>
         {
-            if (sheepSettings.sheeps.Count == 0) Lose();
+            if (sheepSettings.sheeps.Count == 1) Lose();
         });
         onPlayerDeath.Register(gameObject, o => Lose());
         

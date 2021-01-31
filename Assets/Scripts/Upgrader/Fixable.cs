@@ -10,7 +10,8 @@ namespace Upgrader
         public Action onDeath, onHalfHealth, onFixed, onHealthChange;
         [SerializeField] private float curHealth;
         [SerializeField] private float crackedPercentage = .5f;
-        
+        private Animator anim;
+
         private float maxHealth;
         private int maxRequiredWoods;
         private int maxRequiredRocks;
@@ -19,8 +20,13 @@ namespace Upgrader
         public bool ShouldFix => curHealth < maxHealth;
         public int RequiredWood => Mathf.CeilToInt((1 - curHealth / maxHealth) * maxRequiredWoods);
         public int RequiredRock => Mathf.CeilToInt((1 - curHealth / maxHealth) * maxRequiredRocks);
-        
-        
+
+        private void Start()
+        {
+            anim = GetComponent<Animator>();
+
+        }
+
         public void SetUp(float health, int requiredWood, int requiredRock)
         {
             maxHealth = health;
@@ -41,6 +47,7 @@ namespace Upgrader
     
         public void TakeDamage(float damage)
         {
+            anim.SetBool("IsAttacked", true);
             onHealthChange?.Invoke();
             curHealth -= damage;
             if (curHealth / maxHealth <= crackedPercentage && !halfHealthEventThrew)
@@ -51,6 +58,11 @@ namespace Upgrader
 
             if (curHealth <= 0)
                 onDeath?.Invoke();
+        }
+
+        public void DoneAttack()
+        {
+            anim.SetBool("IsAttacked", false);
         }
 
         // private static int i;

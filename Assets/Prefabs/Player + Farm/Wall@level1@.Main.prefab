@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6206620531621183856}
   - component: {fileID: 4310957693348009089}
   - component: {fileID: 7257060498752397568}
+  - component: {fileID: 7923078772994065686}
   m_Layer: 6
   m_Name: Wall@level1@.Main
   m_TagString: Untagged
@@ -245,6 +246,25 @@ PolygonCollider2D:
       - {x: 0.59439933, y: -0.7606083}
       - {x: 0.66401076, y: 0.52063286}
       - {x: -0.6909796, y: 1.2827724}
+--- !u!95 &7923078772994065686
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4310957693348009093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6430465675487971896
 GameObject:
   m_ObjectHideFlags: 0

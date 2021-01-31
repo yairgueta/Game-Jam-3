@@ -1674,11 +1674,11 @@ namespace Pathfinding {
 			Vector3 min = bounds.min;
 			Vector3 max = bounds.max;
 
-			int minX = Mathf.RoundToInt(min.x-0.5F);
-			int maxX = Mathf.RoundToInt(max.x-0.5F);
+			int minX = Mathf.FloorToInt(min.x-0.5F);
+			int maxX = Mathf.CeilToInt(max.x+0.5F);
 
-			int minZ = Mathf.RoundToInt(min.z-0.5F);
-			int maxZ = Mathf.RoundToInt(max.z-0.5F);
+			int minZ = Mathf.FloorToInt(min.z-0.5F);
+			int maxZ = Mathf.CeilToInt(max.z+0.5F);
 
 			var originalRect = new IntRect(minX, minZ, maxX, maxZ);
 

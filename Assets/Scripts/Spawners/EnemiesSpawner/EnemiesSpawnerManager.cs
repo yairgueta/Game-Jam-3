@@ -24,20 +24,12 @@ namespace Spawners.EnemiesSpawner
                 var spnr = child.GetComponent<EnemiesSpawner>();
                 if(spnr) enemiesSpawners.Add(spnr);
             }
+            CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, o => GetNextRoundActiveSpawners());
             CyclesManager.Instance.NightSettings.OnCycleStart.Register(gameObject, o => SpawnCurrentRound());
         }
 
         private void SpawnCurrentRound()
         {
-            print(currentRoundIndex);
-            currentActiveSpawners.Clear();
-
-            for (int i = 0; i < enemiesSpawners.Count; i++)
-            {
-                if (((1 << i) & CurrentRound.activeSpawners) != 0)
-                    currentActiveSpawners.Add(enemiesSpawners[i]);
-            }
-            
             var count = CurrentRound.enemiesCount / currentActiveSpawners.Count;
 
             switch (CurrentRound.spawnType)
@@ -48,13 +40,30 @@ namespace Spawners.EnemiesSpawner
                     break;
                 case SpawnType.AllTogether:
                     
-                    currentActiveSpawners.ForEach( spnr => spnr.SpawnMany(count, CurrentRound.timeToSpawn));
+                    currentActiveSpawners.ForEach(spnr => spnr.SpawnMany(count, CurrentRound.timeToSpawn));
                     break;
             }
-
-            currentRoundIndex = Math.Min(enemiesRounds.rounds.Count, currentRoundIndex + 1);
+            
+            GetNextRoundActiveSpawners();
+            
         }
 
+        private void GetNextRoundActiveSpawners()
+        {
+            currentActiveSpawners.Clear();
+
+            for (int i = 0; i < enemiesSpawners.Count; i++)
+            {
+                if (((1 << i) & CurrentRound.activeSpawners) != 0)
+                {
+                    var enemiesSpawner = enemiesSpawners[i];
+                    enemiesSpawner.minimapIcon.AnimateEnemiesWarning();
+                    currentActiveSpawners.Add(enemiesSpawner);
+                }
+            }
+            currentRoundIndex = Math.Min(enemiesRounds.rounds.Count, currentRoundIndex + 1);
+        }
+        
         IEnumerator SpawnOneAfterOne(int count, float time)
         {
             var delay = new WaitForSeconds(time);

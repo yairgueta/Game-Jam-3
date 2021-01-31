@@ -117,13 +117,13 @@ namespace Sheep
 
         private void GetCollected()
         {
-            Debug.Log(gameObject.name);
             PlayerController.PlayerSettings.UpdateMana(sheepSettings.manaAddition);
             status |= Status.Empty;
             RefreshSprite();
             collectionParticle.Stop();
             collectionDisplay.fillAmount = 0;
             selectable.enabled = false;
+            sheepSettings.OnShear.Raise();
             StartCoroutine(WaitWhileShearing());
         }
         
@@ -133,11 +133,14 @@ namespace Sheep
             yield return waitWhileShearing;
             Refill();
         }
+
+        public bool IsSheared => (status & Status.Empty) != 0;
         
 
         public void Refill()
         {
             status &= ~Status.Empty;
+            sheepSettings.OnRefill.Raise();
             RefreshSprite();
         }
 

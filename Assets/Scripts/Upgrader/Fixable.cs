@@ -1,5 +1,6 @@
 using System;
 using Enemies;
+using Events;
 using Player;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Upgrader
         public Action onDeath, onHalfHealth, onFixed, onHealthChange;
         [SerializeField] private float curHealth;
         [SerializeField] private float crackedPercentage = .5f;
+        [SerializeField] private GameEvent onWallAttacked;
         private Animator anim;
 
         private float maxHealth;
@@ -48,6 +50,7 @@ namespace Upgrader
         public void TakeDamage(float damage)
         {
             anim.SetBool("IsAttacked", true);
+            onWallAttacked.Raise();
             onHealthChange?.Invoke();
             curHealth -= damage;
             if (curHealth / maxHealth <= crackedPercentage && !halfHealthEventThrew)

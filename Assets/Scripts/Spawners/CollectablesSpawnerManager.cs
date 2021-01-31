@@ -9,22 +9,21 @@ namespace Spawners
     public class CollectablesSpawnerManager : MonoBehaviour
     {
         [SerializeField] private float baseRespawnTime = 10f;
-        [SerializeField] private AnimationCurve spawningCurve;
-        [SerializeField] private float softenFactor = 1f;
+        [SerializeField] private AnimationCurve spawningSpeedCurve;
+        [SerializeField] private float respawnSpeed = 1f;
         private SpawnersManager spawnersManager;
         private float timer;
 
         private void Start()
         {
-            SheepSettings sheepSettings = AssetBundle.FindObjectOfType<SheepSettings>();
             spawnersManager = GetComponent<SpawnersManager>();
         }
 
         private void Update()
         {
-            var f = spawningCurve.Evaluate(spawnersManager.CurrentSpawned / (float) spawnersManager.TotalPool);
-            f = Mathf.Clamp(f, 0, 2);
-            timer -= Time.deltaTime * Mathf.Pow(f, softenFactor);
+            var f = spawningSpeedCurve.Evaluate(spawnersManager.CurrentSpawned / (float) spawnersManager.TotalPool);
+            f = Mathf.Clamp(f, 0, 1);
+            timer -= Time.deltaTime * respawnSpeed * f;
             if (timer > 0) return;
             timer = baseRespawnTime;
             spawnersManager.SpawnMany(1);

@@ -61,42 +61,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254f91bb26d7c48abadc9b98e8f635b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseRespawnTime: 10
-  spawningCurve:
+  baseRespawnTime: 0.34
+  spawningSpeedCurve:
     serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0083351135
-      value: 1.0117798
-      inSlope: -0.0026434101
-      outSlope: -0.0026434101
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.31318963
-    - serializedVersion: 3
-      time: 0.71116126
-      value: 0.67686576
-      inSlope: -1.3422489
-      outSlope: -1.3422489
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.32737306
-    - serializedVersion: 3
-      time: 0.9887085
-      value: -0.01210022
-      inSlope: 0.010076026
-      outSlope: 0.010076026
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.5744376
-      outWeight: 0
+    m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  softenFactor: 1
-  respawnMethod: 0
+  respawnSpeed: 1
 --- !u!1 &6251090807918292630
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +81,7 @@ GameObject:
   - component: {fileID: 6251090807918292628}
   - component: {fileID: 6251090807918292626}
   - component: {fileID: 6251090807918292629}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +115,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -20.830002, y: -0.18751526}
+  m_Offset: {x: -40.97341, y: -1.911766}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -154,7 +126,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 22.682106, y: 44.233376}
+  m_Size: {x: 48.537247, y: 71.71477}
   m_EdgeRadius: 0
 --- !u!114 &6251090807918292626
 MonoBehaviour:
@@ -186,12 +158,14 @@ MonoBehaviour:
   - {fileID: 7408568662195309065, guid: 45eb40fe04f7c400fa777e1c8ab9ee22, type: 3}
   - {fileID: 962801463186907189, guid: 424c960cccdac4649907119b6b788d96, type: 3}
   - {fileID: 2235701822541872045, guid: ce832a0df268a43eda078a02e0454e52, type: 3}
-  totalPoolAmount: 50
-  startingAmount: 20
+  totalPoolAmount: 2000
+  useOverFrameSpawning: 1
+  overFrameTimeout: 0.5
+  startingAmount: 200
   usePerlinNoise: 0
   percentageToSpawn:
-  - 0.763
-  - 0.187
+  - 0.79
+  - 0.16000003
   - 0.049999952
 --- !u!1 &6251090808038020029
 GameObject:
@@ -205,7 +179,7 @@ GameObject:
   - component: {fileID: 6251090808038020025}
   - component: {fileID: 6251090808038020024}
   - component: {fileID: 6251090808038020027}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +213,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -41.180958, y: 15.001103}
+  m_Offset: {x: -2.4742126, y: -2.681553}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -250,7 +224,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20.551054, y: 13.856138}
+  m_Size: {x: 51.829575, y: 71.3567}
   m_EdgeRadius: 0
 --- !u!114 &6251090808038020024
 MonoBehaviour:
@@ -281,12 +255,14 @@ MonoBehaviour:
   pooledPrefab:
   - {fileID: 962801463186907189, guid: 424c960cccdac4649907119b6b788d96, type: 3}
   - {fileID: 2235701822541872045, guid: ce832a0df268a43eda078a02e0454e52, type: 3}
-  totalPoolAmount: 50
-  startingAmount: 14
+  totalPoolAmount: 700
+  useOverFrameSpawning: 1
+  overFrameTimeout: 0.5
+  startingAmount: 120
   usePerlinNoise: 0
   percentageToSpawn:
-  - 0.832
-  - 0.16799998
+  - 0.73
+  - 0.26999998
 --- !u!1 &6251090808280525903
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +275,7 @@ GameObject:
   - component: {fileID: 6251090808280525899}
   - component: {fileID: 6251090808280525898}
   - component: {fileID: 6251090808280525901}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +309,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -17.042822, y: -0.520484}
+  m_Offset: {x: -38.82878, y: 20.093208}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -344,7 +320,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 21.377293, y: 44.899315}
+  m_Size: {x: 64.94922, y: 26.663849}
   m_EdgeRadius: 0
 --- !u!114 &6251090808280525898
 MonoBehaviour:
@@ -375,12 +351,14 @@ MonoBehaviour:
   pooledPrefab:
   - {fileID: 7408568662195309065, guid: 45eb40fe04f7c400fa777e1c8ab9ee22, type: 3}
   - {fileID: 962801463186907189, guid: 424c960cccdac4649907119b6b788d96, type: 3}
-  totalPoolAmount: 50
-  startingAmount: 16
+  totalPoolAmount: 500
+  useOverFrameSpawning: 1
+  overFrameTimeout: 0.5
+  startingAmount: 100
   usePerlinNoise: 0
   percentageToSpawn:
-  - 0.822
-  - 0.17799997
+  - 0.73
+  - 0.26999998
 --- !u!1 &6251090808469314650
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +371,7 @@ GameObject:
   - component: {fileID: 6251090808469314630}
   - component: {fileID: 6251090808469314649}
   - component: {fileID: 6251090808469314648}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +405,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 28.483585, y: -8.26265}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -438,7 +416,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 20.551054, y: 13.856138}
+  m_Size: {x: 69.30414, y: 30.381435}
   m_EdgeRadius: 0
 --- !u!114 &6251090808469314649
 MonoBehaviour:
@@ -469,9 +447,11 @@ MonoBehaviour:
   pooledPrefab:
   - {fileID: 7408568662195309065, guid: 45eb40fe04f7c400fa777e1c8ab9ee22, type: 3}
   - {fileID: 962801463186907189, guid: 424c960cccdac4649907119b6b788d96, type: 3}
-  totalPoolAmount: 50
-  startingAmount: 20
+  totalPoolAmount: 700
+  useOverFrameSpawning: 1
+  overFrameTimeout: 0.5
+  startingAmount: 200
   usePerlinNoise: 0
   percentageToSpawn:
-  - 0.961
-  - 0.038999975
+  - 0.73
+  - 0.26999998

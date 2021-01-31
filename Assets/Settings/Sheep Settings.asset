@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46280fa37532416b928b74934e7d0fe, type: 3}
   m_Name: Sheep Settings
   m_EditorClassIdentifier: 
+  OnShear: {fileID: 11400000, guid: 31243d07fa1c4214d9aa1af4585e2710, type: 2}
+  OnRefill: {fileID: 11400000, guid: c36dffefe3a31564baee20f1af8d21ca, type: 2}
   sheeps: []
-  awake: {fileID: -2548003363665265101, guid: e39124e06e8d04084af83165f44841a9, type: 3}
-  sleep: {fileID: -7611891846122961728, guid: e39124e06e8d04084af83165f44841a9, type: 3}
-  emptyAwake: {fileID: 768730410249273722, guid: e39124e06e8d04084af83165f44841a9, type: 3}
-  emptySleep: {fileID: 7640251648590994544, guid: e39124e06e8d04084af83165f44841a9, type: 3}
-  glowSheep: {fileID: -8403577120292615673, guid: e39124e06e8d04084af83165f44841a9, type: 3}
   timeToCollect: 1.5
   manaAddition: 15
   fillTime: 93

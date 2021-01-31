@@ -4936,6 +4936,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5211568865569893879, guid: dfd160921c0510d47b6587743a054fbc, type: 3}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 6685382947906862516, guid: dfd160921c0510d47b6587743a054fbc, type: 3}
       propertyPath: m_Layer
       value: 14

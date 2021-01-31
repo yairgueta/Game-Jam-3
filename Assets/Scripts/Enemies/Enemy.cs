@@ -42,6 +42,7 @@ namespace Enemies
 
         private float stuckTimer;
         private bool canRoar = true;
+        private bool shouldAttack = false;
         private float fadeSpeed = 0.35f;
         private float maxFadeValue = 0.65f;
         
@@ -231,6 +232,7 @@ namespace Enemies
             if (hit == null) return;
             AttackMode();
             currentAttacked = hit;
+            shouldAttack = true;
         }
 
         private void OnCollisionExit2D(Collision2D other)
@@ -240,6 +242,19 @@ namespace Enemies
             if (currentAttacked as Sheep.Sheep != null) gameObject.SetActive(false);
             currentAttacked = null;
             WalkMode();
+
         }
+
+        // private IEnumerator ChangeToWalkDelay()
+        // {
+        //     yield return new WaitForSeconds(0.1f);
+        //     Debug.Log(shouldAttack);
+        //     if (!shouldAttack)
+        //     {
+        //         currentAttacked = null;
+        //         shouldAttack = false;
+        //         WalkMode();
+        //     }
+        // }
     }
 }

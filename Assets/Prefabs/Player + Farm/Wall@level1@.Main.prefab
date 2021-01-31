@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: 0
   crackedPercentage: 0.5
+  onWallAttacked: {fileID: 11400000, guid: f620e40fd63f17b4eb63c76aee158346, type: 2}
 --- !u!114 &6206620531621183856
 MonoBehaviour:
   m_ObjectHideFlags: 0

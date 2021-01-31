@@ -80,7 +80,6 @@ namespace Player
                 Disable();
                 return;
             }
-            Debug.Log(other);
             enemy.TakeDamage(power);
             Disable();
         }

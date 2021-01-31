@@ -53,11 +53,9 @@ namespace Upgrader
 
             if (MouseInputHandler.Instance.currentSelected == previousWindowRaised) return;  // Do nothing when selected the same!
 
-            // var fixable = MouseInputHandler.Instance.currentSelected.GetComponentInChildren<Fixable>();
             var fixable = MouseInputHandler.Instance.currentSelected.GetComponentInParent<Fixable>();
             if (fixable != null)
             {
-                Debug.Log("fix");
 
                 void FixableHealthChange()
                 {
@@ -80,7 +78,6 @@ namespace Upgrader
                 return;
             }
 
-            Debug.Log("upgrade");
             if (upgradable.IsMaxGrade)
             {
                 SetUpMaxPanel();

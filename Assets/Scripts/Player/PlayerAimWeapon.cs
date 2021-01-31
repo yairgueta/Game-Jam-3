@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using Selections;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Player
@@ -20,7 +21,7 @@ namespace Player
         private bool ableToShoot = true;
         // private Vector3 mousePosition;
         public Action<Vector3, Vector3> onSoot;
-        
+
         private void Awake()
         {
             // aimTransform = transform.Find("Aim");
@@ -82,14 +83,21 @@ namespace Player
             if (!ableToShoot) return;
             if (!PlayerController.PlayerSettings.UpdateMana(-PlayerController.PlayerSettings.bulletManaCost)) return;
             AnimateTowardsShoot(mousePosition);
-            StartCoroutine(ShootDelay(mousePosition));
+            StartCoroutine(ShootDelay(mousePosition, true));
         }
 
-        private IEnumerator ShootDelay(Vector2 mousePosition)
+        private IEnumerator ShootDelay(Vector2 mousePosition, bool shouldWait)
         {
-            yield return null;
-            onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
-            BulletAnimation();
+            yield return new WaitForSeconds(0.05f);
+            if (shouldWait)
+            {
+                StartCoroutine(ShootDelay(mousePosition, false));
+            }
+            else
+            {
+                onSoot?.Invoke(aimGunEndPoinTransform.position, mousePosition);
+                BulletAnimation();
+            }
         }
         
         private void AnimateTowardsShoot(Vector2 mousePosition)

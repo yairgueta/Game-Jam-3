@@ -241,28 +241,21 @@ namespace Enemies
             if (mode == Mode.Dying) return;
             if (other.gameObject.GetComponent<IEnemyDamage>() != currentAttacked) return;
             if (currentAttacked as Sheep.Sheep != null) gameObject.SetActive(false);
-            if (other.gameObject.CompareTag("Bullet"))
-            {
-                StartCoroutine(ChangeToWalkDelay());
-                shouldAttack = false;
-            }
-            else
-            {
-                WalkMode();
-            }
+            currentAttacked = null;
+            WalkMode();
 
         }
 
-        private IEnumerator ChangeToWalkDelay()
-        {
-            yield return new WaitForSeconds(0.1f);
-            Debug.Log(shouldAttack);
-            if (!shouldAttack)
-            {
-                currentAttacked = null;
-                shouldAttack = false;
-                WalkMode();
-            }
-        }
+        // private IEnumerator ChangeToWalkDelay()
+        // {
+        //     yield return new WaitForSeconds(0.1f);
+        //     Debug.Log(shouldAttack);
+        //     if (!shouldAttack)
+        //     {
+        //         currentAttacked = null;
+        //         shouldAttack = false;
+        //         WalkMode();
+        //     }
+        // }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using Selections;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Player
@@ -20,7 +21,7 @@ namespace Player
         private bool ableToShoot = true;
         // private Vector3 mousePosition;
         public Action<Vector3, Vector3> onSoot;
-        
+
         private void Awake()
         {
             // aimTransform = transform.Find("Aim");

@@ -67,6 +67,8 @@ namespace Cycles
             sb.Append(currentCycle.name).Append(": ").Append(Math.Round(timer, 2));
             GUI.Label(r, sb.ToString());
         }
+        
+
 
         public float TimePercentage => 1 - timer / currentCycle.Duration;
     }

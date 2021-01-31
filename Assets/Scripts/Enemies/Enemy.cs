@@ -69,7 +69,6 @@ namespace Enemies
 
         private void Update()
         {
-            Debug.Log(mode);
             if (mode == Mode.Dying)
             {
                 ManageDeath();

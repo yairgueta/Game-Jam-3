@@ -11,12 +11,14 @@ namespace Player
         private Rigidbody2D rb2d;
         private GameEvent onExplosionEvent;
         private float power;
+        private Collider2D collider;
         [SerializeField] private ParticleSystem particle;
         [SerializeField] private GameObject circle;
 
         private void Awake()
         {
             rb2d = GetComponent<Rigidbody2D>();
+            collider = GetComponent<Collider2D>();
             gameObject.SetActive(false);
         }
 
@@ -43,10 +45,12 @@ namespace Player
         {
             particle.Play();
             circle.SetActive(false);
+            collider.enabled = false;
             yield return new WaitForSeconds(0.4f);
             rb2d.velocity = Vector2.zero;
             particle.Stop();
             circle.SetActive(true);
+            collider.enabled = true;
             gameObject.SetActive(false);
         }
 
@@ -55,18 +59,18 @@ namespace Player
             CancelInvoke();
         }
         
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            var enemy = other.GetComponent<Enemy>();
-            if (enemy == null)
-            { 
-                // Disable();
-                return;
-            }
-
-            enemy.TakeDamage(power);
-            Disable();
-        }
+        // private void OnTriggerEnter2D(Collider2D other)
+        // {
+        //     var enemy = other.GetComponent<Enemy>();
+        //     if (enemy == null)
+        //     { 
+        //         Disable();
+        //         return;
+        //     }
+        //
+        //     enemy.TakeDamage(power);
+        //     Disable();
+        // }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
@@ -76,7 +80,6 @@ namespace Player
                 Disable();
                 return;
             }
-
             enemy.TakeDamage(power);
             Disable();
         }

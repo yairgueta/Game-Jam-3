@@ -146,17 +146,16 @@ namespace Enemies
             currentAttacked?.TakeDamage(enemySettings.attackPower);
         }
 
-        private void LateUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                TakeDamage(0);
-            }
-        }
+        // private void LateUpdate()
+        // {
+        //     if (Input.GetKeyDown(KeyCode.Space))
+        //     {
+        //         TakeDamage(0);
+        //     }
+        // }
 
         public void TakeDamage(float damage)
         {
-            // Debug.Log(curHealth);
             curHealth -= damage;
             tween?.Kill(true);
             tween = DOTween.Sequence()

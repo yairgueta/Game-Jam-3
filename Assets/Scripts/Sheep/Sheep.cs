@@ -118,12 +118,12 @@ namespace Sheep
         private void GetCollected()
         {
             PlayerController.PlayerSettings.UpdateMana(sheepSettings.manaAddition);
-            sheepSettings.OnShear.Raise();
             status |= Status.Empty;
             RefreshSprite();
             collectionParticle.Stop();
             collectionDisplay.fillAmount = 0;
             selectable.enabled = false;
+            sheepSettings.OnShear.Raise();
             StartCoroutine(WaitWhileShearing());
         }
         

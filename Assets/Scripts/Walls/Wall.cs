@@ -7,6 +7,7 @@ namespace Walls
     public class Wall : MonoBehaviour
     {
         [SerializeField] private GameEvent onWallDestroy;
+        [SerializeField] private GameEvent onShake;
         [SerializeField] private GameObject shadowSprite;
         private Collider2D wallCollider;
         private Upgradable upgradable;
@@ -39,6 +40,7 @@ namespace Walls
         private void OnDestroyed()
         {
             onWallDestroy.Raise();
+            onShake.Raise();
             upgradable.ReduceToGrade(1);
             wallCollider.enabled = false;
             sr.sprite = upgradable.DestroyedSprite;

@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onWallDestroy: {fileID: 11400000, guid: c5d43385e4ff9a84883ca6a064af7377, type: 2}
+  onShake: {fileID: 11400000, guid: 28a6e3522c36597419240cd89282ecba, type: 2}
   shadowSprite: {fileID: 3690371882177848775}
 --- !u!212 &4310957693348009089
 SpriteRenderer:

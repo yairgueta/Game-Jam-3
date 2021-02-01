@@ -3869,6 +3869,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: '**Resources**'
       objectReference: {fileID: 0}
+    - target: {fileID: 6251090807918292629, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
+      propertyPath: pooledPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 2235701822541872045, guid: ce832a0df268a43eda078a02e0454e52, type: 3}
+    - target: {fileID: 6251090807918292629, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
+      propertyPath: percentageToSpawn.Array.data[1]
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251090807918292629, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
+      propertyPath: percentageToSpawn.Array.data[2]
+      value: 0.02700001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
 --- !u!4 &677609298317390662 stripped

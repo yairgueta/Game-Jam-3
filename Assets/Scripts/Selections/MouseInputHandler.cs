@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
+using Debug = UnityEngine.Debug;
 
 namespace Selections
 {
@@ -123,6 +124,7 @@ namespace Selections
                 // if(currentMouseOver && !IsOverCurrentSelected) currentMouseOver.MouseExit();
                 if (currentMouseOver)
                 {
+
                     // currentMouseOver.onThisEnabled = null;
                     currentMouseOver.MouseExit();
                 }
@@ -190,7 +192,11 @@ namespace Selections
         {
             if (overType != OverType.Other)
             {
+                // Debug.Log("her3"+overType);
+
                 if (currentSelected) currentSelected.Deselect();
+                // Debug.Log("her4");
+
                 currentSelected = currentDragged = currentMouseOver;
                 currentSelected?.MouseDown();
                 onSelectionChangeEvent.Raise();

@@ -30,6 +30,7 @@ namespace UI
             image.color = Color.white;
             tween = DOTween.Sequence()
                 .Append(rt.DOAnchorPosY(0, enterDuration).From().SetEase(ease))
+                .Join(image.DOFade(0, enterDuration).From().SetEase(ease))
                 .Append(image.DOFade(0f, exitDuration).SetDelay(onScreenDuration));
         }
     }

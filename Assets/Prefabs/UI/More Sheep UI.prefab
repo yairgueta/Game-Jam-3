@@ -88,9 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82ecd7025f5e45478704d9be4bed88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterDuration: 1
+  enterDuration: 1.5
   exitDuration: 0.4
   onScreenDuration: 2.5
   mushroomCollectedEvent: {fileID: 11400000, guid: f8d05cb569127174b8ffafca05f47631, type: 2}
-  ease: 20
-  f: 0
+  ease: 21

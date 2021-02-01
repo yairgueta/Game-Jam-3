@@ -162,8 +162,8 @@ public class GameManager : Singleton<GameManager>
         triggerBlur.Raise();
         deathWindow.SetActive(true);
         numOfCycles.text = cyclesNum.ToString();
-        numOfRocks.text = PlayerController.CurrentInventory.GetFinalRocks.ToString();
-        numOfWoods.text = PlayerController.CurrentInventory.GetFinalWoods.ToString();
+        // numOfRocks.text = PlayerController.CurrentInventory.GetFinalRocks.ToString();
+        // numOfWoods.text = PlayerController.CurrentInventory.GetFinalWoods.ToString();
     }
 
     #endregion

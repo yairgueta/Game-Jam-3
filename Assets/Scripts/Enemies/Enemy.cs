@@ -70,6 +70,7 @@ namespace Enemies
 
         private void Update()
         {
+            Debug.Log(mode);
             if (mode == Mode.Dying)
             {
                 ManageDeath();
@@ -145,9 +146,9 @@ namespace Enemies
         
         private void Attack()
         {
-            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
             currentAttacked?.TakeDamage(enemySettings.attackPower);
-            
+            if (mode == Mode.Dying) return;
+            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
             if (currentAttacked as Sheep.Sheep) Die();
         }
         

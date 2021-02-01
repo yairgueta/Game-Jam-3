@@ -11,9 +11,11 @@ namespace UI
         [SerializeField] private Image outerFill;
         [SerializeField] private Image innerFill;
         [SerializeField] private Image activeImage;
+        [SerializeField] private GameObject pointer;
         [SerializeField] private float[] fillThreshold = new float[3];
         private float allPercentage;
         private int currentCycle = 0;
+        
         private void Start()
         {
             foreach (var cycle in CyclesManager.Instance.CyclesSettings)
@@ -33,6 +35,8 @@ namespace UI
         {
             outerFill.fillAmount =  CyclesManager.Instance.TimePercentage*allPercentage + fillThreshold[currentCycle];
             innerFill.fillAmount =  CyclesManager.Instance.TimePercentage*allPercentage + fillThreshold[currentCycle];
+            pointer.transform.eulerAngles = new Vector3(0, 0, -(CyclesManager.Instance.TimePercentage*allPercentage+ 
+                                                              fillThreshold[currentCycle])*360);
         }
         
     }

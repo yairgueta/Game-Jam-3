@@ -49,6 +49,7 @@ namespace Upgrader
     
         public void TakeDamage(float damage)
         {
+            if (curHealth <= 0) return;
             anim.SetBool("IsAttacked", true);
             onWallAttacked.Raise();
             onHealthChange?.Invoke();

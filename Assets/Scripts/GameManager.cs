@@ -175,7 +175,7 @@ public class GameManager : Singleton<GameManager>
         msg.text = message;
         tween = DOTween.Sequence()
         .Append(msg.transform.DOScale(originScale, duration).SetEase(ease))
-        .Append(msg.transform.DOScale(0, duration).SetDelay(0.7f));
+        .Append(msg.transform.DOScale(0, duration).SetDelay(2f));
     }
 
     // private void OnGUI()

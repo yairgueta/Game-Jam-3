@@ -3,6 +3,7 @@ using Cycles;
 using DG.Tweening;
 using Events;
 using Player;
+using TMPro;
 using UI;
 using UnityEditor;
 using UnityEngine;
@@ -99,6 +100,10 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject mainUI;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject deathWindow;
+    [SerializeField] private TMP_Text numOfCycles;
+    [SerializeField] private TMP_Text numOfWoods;
+    [SerializeField] private TMP_Text numOfRocks;
+    
     
     [Header("UI Triggers")]
     [SerializeField] private GameEvent triggerBlur;
@@ -144,6 +149,9 @@ public class GameManager : Singleton<GameManager>
         mainUI.SetActive(false);
         triggerBlur.Raise();
         deathWindow.SetActive(true);
+        numOfCycles.text = cyclesNum.ToString();
+        numOfRocks.text = PlayerController.CurrentInventory.GetFinalRocks.ToString();
+        numOfWoods.text = PlayerController.CurrentInventory.GetFinalWoods.ToString();
     }
 
     #endregion

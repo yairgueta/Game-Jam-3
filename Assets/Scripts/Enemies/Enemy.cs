@@ -70,7 +70,6 @@ namespace Enemies
 
         private void Update()
         {
-            Debug.Log(mode);
             if (mode == Mode.Dying)
             {
                 ManageDeath();
@@ -138,7 +137,6 @@ namespace Enemies
 
         private void WalkMode()
         {
-            animator.SetTrigger(moveAnimationID);
             if (mode == Mode.Walking) return;
             mode = Mode.Walking;
             animator.SetTrigger(moveAnimationID);

@@ -6,8 +6,10 @@ using UnityEngine;
 
 namespace Spawners.EnemiesSpawner
 {
-    public class EnemiesSpawnerManager : Singleton<EnemiesSpawnerManager>
+    public class EnemiesSpawnerManager : MonoBehaviour
     {
+        public static EnemiesSpawnerManager Instance { get; private set; }
+        
         public List<EnemiesSpawner> enemiesSpawners { get; private set; }
         [SerializeField] private EnemiesRounds enemiesRounds;
         
@@ -15,6 +17,17 @@ namespace Spawners.EnemiesSpawner
         private List<EnemiesSpawner> currentActiveSpawners;
         
         public Round CurrentRound => enemiesRounds[currentRoundIndex];
+
+        private void OnEnable()
+        {
+            Instance = this;
+        }
+
+        private void OnDisable()
+        {
+            Instance = null;
+        }
+
         private void Start()
         {
             currentActiveSpawners = new List<EnemiesSpawner>();
@@ -43,9 +56,6 @@ namespace Spawners.EnemiesSpawner
                     currentActiveSpawners.ForEach(spnr => spnr.SpawnMany(count, CurrentRound.timeToSpawn));
                     break;
             }
-            
-            GetNextRoundActiveSpawners();
-            
         }
 
         private void GetNextRoundActiveSpawners()

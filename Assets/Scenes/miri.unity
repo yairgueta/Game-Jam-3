@@ -1752,6 +1752,14 @@ PrefabInstance:
       propertyPath: pointer
       value: 
       objectReference: {fileID: 1202971857}
+    - target: {fileID: 6073185722664028906, guid: bcef744c80dfe459782567567fe7ed73, type: 3}
+      propertyPath: fillThreshold.Array.data[1]
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073185722664028906, guid: bcef744c80dfe459782567567fe7ed73, type: 3}
+      propertyPath: fillThreshold.Array.data[2]
+      value: 0.66
+      objectReference: {fileID: 0}
     - target: {fileID: 6073185722664028908, guid: bcef744c80dfe459782567567fe7ed73, type: 3}
       propertyPath: m_Name
       value: Cycles UI
@@ -2142,22 +2150,22 @@ PrefabInstance:
     - target: {fileID: 2063425240650535640, guid: 123c03cb584341146995c091b23e4b27, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2591aec3a8e3a8e42822c56bd6cdaed5, type: 3}
+      objectReference: {fileID: 21300000, guid: d822caacbb9cdef4084811d5978d79f8, type: 3}
     - target: {fileID: 2063425240650535654, guid: 123c03cb584341146995c091b23e4b27, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 422
+      value: 246.913
       objectReference: {fileID: 0}
     - target: {fileID: 2063425240650535654, guid: 123c03cb584341146995c091b23e4b27, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 210
+      value: 185.06
       objectReference: {fileID: 0}
     - target: {fileID: 2063425240650535654, guid: 123c03cb584341146995c091b23e4b27, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 35
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2063425240650535654, guid: 123c03cb584341146995c091b23e4b27, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 70.498
+      value: 67
       objectReference: {fileID: 0}
     - target: {fileID: 2063425240983485889, guid: 123c03cb584341146995c091b23e4b27, type: 3}
       propertyPath: m_IsActive

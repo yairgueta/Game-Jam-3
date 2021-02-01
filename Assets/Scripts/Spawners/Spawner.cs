@@ -6,7 +6,6 @@ using System.Linq;
 using Pathfinding;
 using Pathfinding.Util;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
 namespace Spawners
@@ -14,79 +13,69 @@ namespace Spawners
     [RequireComponent(typeof(Collider2D), typeof(SpawnerRandomizer))]
     public class Spawner : MonoBehaviour
     {
-        [HideInInspector][SerializeField] private GameObject[] pooledPrefab;
-        [SerializeField] private int totalPoolAmount;
-        [HideInInspector][SerializeField] private bool useOverFrameSpawning = true;
-        [HideInInspector][SerializeField] private float overFrameTimeout = .5f;
-        [HideInInspector][SerializeField] private int startingAmount;
-        [HideInInspector][SerializeField] private bool usePerlinNoise;
-        [HideInInspector][SerializeField] private float[] percentageToSpawn;
-        
+        [SerializeField] private GameObject[] pooledPrefabs;
+        [SerializeField] private int maxAmount;
+        [SerializeField] private bool useOverFrameSpawning = true;
+        [SerializeField] private float overFrameTimeout = .5f;
+        [SerializeField] private int startingAmount;
+        [SerializeField] private bool usePerlinNoise;
+        [SerializeField] private float[] percentageToSpawn;
+
+        private ObjectPool[] objectPools;
+        private HashSet<Spawnable> currentSpawned; 
         private SpawnerRandomizer randomizer;
-        private Queue<int> queuePool;
-        private Spawnable[] pooledObjects;
         private Action gameManagerWaitingListOnFinishTask;
-        public int CurrentPooled => totalPoolAmount - queuePool?.Count ?? 0;
-        public int TotalPool => totalPoolAmount;
-        public bool IsFull => CurrentPooled == totalPoolAmount;
 
         private void Awake()
         {
+            currentSpawned = new HashSet<Spawnable>();
             randomizer = GetComponent<SpawnerRandomizer>();
-            queuePool = new Queue<int>();
-            pooledObjects = new Spawnable[totalPoolAmount];
             gameObject.layer = LayerMask.NameToLayer("Spawner");
         }
 
-        public GameObject GetRandomPrefab()
-        {
-            var ran = Random.Range(0f, 1f);
-            var total = 0f;
-            for (var i = 0; i< pooledPrefab.Length; i++)
-            {
-                if (ran >= total && ran < total + percentageToSpawn[i]) return pooledPrefab[i];
-                total += percentageToSpawn[i];
-            }
-            return null;
-        }
-        
         private void Start()
         {
-            InstatiateRemainingPoolObjects();
+            objectPools = new ObjectPool[pooledPrefabs.Length];
+            for (int i = 0; i < pooledPrefabs.Length; i++)
+                objectPools[i] = ObjectPoolManager.Instance.GetObjectPool(pooledPrefabs[i]);
+            
             Spawn(startingAmount, useOverFrameSpawning);
             if (useOverFrameSpawning)
                 gameManagerWaitingListOnFinishTask = GameManager.Instance.RegisterToWaitingList();
         }
 
-        private void InstatiateRemainingPoolObjects()
+        private Spawnable PoolRandomPrefab()
         {
-            int i = 0;
-            foreach (Transform child in transform)
+            var ran = Random.Range(0f, 1f);
+            var total = 0f;
+            for (var i = 0; i < pooledPrefabs.Length; i++)
             {
-                var p = child.GetComponent<Spawnable>();
-                if (p == null) continue;
-                p.spawnerIndex = i;
-                pooledObjects[i] = p;
-                if (child.gameObject.activeSelf)
-                    child.gameObject.SetActive(false);
-                else
-                    queuePool.Enqueue(i);
-                i++;
+                if (ran >= total && ran < total + percentageToSpawn[i])
+                {
+                    var p = objectPools[i].Pool();
+                    currentSpawned.Add(p);
+                    p.onThisDeath += SpawnableDeath;
+                    return p;
+                }
+                total += percentageToSpawn[i];
             }
+            return null;
+        }
 
-            for (; i < totalPoolAmount; i++)
+        private void OnDisable()
+        {
+            var list = currentSpawned.ToList();
+            for (int i = list.Count - 1; i >= 0; i--)
             {
-                var p = Instantiate(GetRandomPrefab(), transform).GetComponent<Spawnable>();
-                p.Init(SpawnableDeath);
-                p.spawnerIndex = i;
-                pooledObjects[i] = p;
-                p.gameObject.SetActive(false);
+                list[i].gameObject.SetActive(false);
             }
         }
 
-        internal void SpawnableDeath(Spawnable spawnable)
+        private void SpawnableDeath(Spawnable spawnable)
         {
-            queuePool.Enqueue(spawnable.spawnerIndex);
+            spawnable.onThisDeath -= SpawnableDeath;
+            currentSpawned.Remove(spawnable);
+            
             if (spawnable.takenNodes == null) return;
             if (AstarData.active == null) return;
             foreach (var g in spawnable.takenNodes.TakeWhile(g => g != null)) g.Walkable = true;
@@ -96,15 +85,9 @@ namespace Spawners
 
         private void SpawnRandom_Method(Action<Spawnable> randomMethod)
         {
-            if (queuePool.Count == 0)
-            {
-                Debug.LogWarning(name + ": Pool spawner is Out of objects, None was spawned");
-                return;
-            }
-            var p = pooledObjects[queuePool.Dequeue()];
+            var p = PoolRandomPrefab();
             p.gameObject.SetActive(true);
-            randomMethod(p);
-            // bs = p.physicsCollider;
+            randomMethod.Invoke(p);
             p.takenNodes.ForEach(g => g.Walkable = false);
         }
 
@@ -140,8 +123,10 @@ namespace Spawners
 
         public void DespawnAll()
         {
-            foreach (var p in pooledObjects)
-                p.gameObject.SetActive(false);
+            for (int i = 0; i < objectPools.Length; i++)
+            {
+                objectPools[i].UnpoolAll();
+            }
         }
 
         public void Spawn(int n, bool useMultiFrame)
@@ -151,10 +136,5 @@ namespace Spawners
         }
 
         public void Spawn(int n) => Spawn(n, false);
-        
-        public void SpawnAll()
-        {
-            Spawn(totalPoolAmount - CurrentPooled);
-        }
     }
 }

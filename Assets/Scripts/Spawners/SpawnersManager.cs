@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,23 +12,10 @@ namespace Spawners
         [Tooltip("% of spawned Objects to spawn in a random spawner")][SerializeField][Range(0,1)] private float randomPercentage;
         private List<Spawner> spawners;
 
-        public int CurrentSpawned => spawners.Sum(s => s.CurrentPooled);
-        public int TotalPool => spawners.Sum(s => s.TotalPool);
-
         private void Start()
         {
             spawners = transform.GetComponentsInChildren<Spawner>().ToList();
         }
-        
-        public void RespawnAll()
-        {
-            spawners.ForEach(s =>
-            {
-                s.DespawnAll();
-                s.SpawnAll();
-            });
-        }
-        
         public void SpawnMany(int n)
         {
             var randomCount = Mathf.FloorToInt(randomPercentage * n);
@@ -59,7 +47,6 @@ namespace Spawners
             for (int i = 0; i < n; i++)
             {
                 var spnr = spawners[Random.Range(0, spawners.Count)];
-                while (spnr.IsFull) spnr = spawners[Random.Range(0, spawners.Count)];
                 spnr.Spawn(1);
             }
         }

@@ -9,8 +9,9 @@ namespace UI
         public UnityAction onClickedPlay;
         private void Start()
         {
-            var initVol = SoundController.Instance.soundSettings.initialVolumes;
-            foreach (var slider in GetComponentsInChildren<Slider>()) slider.value = initVol;
+            var sliders = GetComponentsInChildren<Slider>();
+            sliders[0].value = SoundController.Instance.soundSettings.BGMVolume;
+            sliders[1].value = SoundController.Instance.soundSettings.sfxVolume;
         }
 
         public void Play()

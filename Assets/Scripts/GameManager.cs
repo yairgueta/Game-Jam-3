@@ -27,12 +27,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameEvent onSheepDeath;
     [SerializeField] private GameEvent onPlayerDeath;
     public int cyclesNum { get; private set; }
+    
     [SerializeField] private TMP_Text msg;
-    private Vector3 originScale;
     [SerializeField] private Ease ease;
     [SerializeField] private float duration;
+    [SerializeField] private Color targetColor;
+    [SerializeField] private Color originColor;
     private Tween tween;
-    
+    private Vector3 originScale;
+
     
     private WaitingList waitingList;
     
@@ -173,9 +176,15 @@ public class GameManager : Singleton<GameManager>
     public void DisplayMsg(String message)
     {
         msg.text = message;
+        tween?.Kill(true);
         tween = DOTween.Sequence()
-        .Append(msg.transform.DOScale(originScale, duration).SetEase(ease))
-        .Append(msg.transform.DOScale(0, duration).SetDelay(2f));
+            // .Append(msg.DOFade(1, duration).SetDelay(2f)).Append(msg.DOFade(0, duration));
+            .Append(msg.transform.DOScale(originScale, duration).SetEase(ease))
+            // .Append(msg.DOColor(targetColor, duration).SetEase(ease))
+            // .Append(msg.DOColor(originColor, duration).SetDelay(2f));
+            .Append(msg.transform.DOScale(0, duration).SetDelay(1.3f));
+
+        // tween = DOTween.To(msg.alpha, value => msg.alpha = value, 0, duration);
     }
 
     // private void OnGUI()

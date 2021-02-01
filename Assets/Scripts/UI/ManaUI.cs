@@ -47,9 +47,7 @@ public class ManaUI : MonoBehaviour
         tween?.Kill(true);
         tween = DOTween.Sequence()
             .Append(heart.DOColor(targetColor, toColorDuration).SetEase(scaleEaseIn))
-            // .Join(sheepTransform.DOScale(originalScale*1.5f,toColorDuration))
             .Append(heart.DOColor(originColor, fromColorDuration).SetEase(scaleEaseIn))
-            // .Join(sheepTransform.DOScale(originalScale,toColorDuration))
             .SetLoops(loops);
     }
 

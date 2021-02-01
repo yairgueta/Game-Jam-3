@@ -146,7 +146,7 @@ namespace Enemies
         {
             if (mode == Mode.Dying) return;
             currentAttacked?.TakeDamage(enemySettings.attackPower);
-            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
+            soundController.PlayBoundedSoundEffect(soundController.soundSettings.monsterAttack, 2);
         }
         
         public void TakeDamage(float damage)

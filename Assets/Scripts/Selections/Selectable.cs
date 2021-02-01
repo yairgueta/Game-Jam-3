@@ -8,9 +8,11 @@ namespace Selections
     [RequireComponent(typeof(Collider2D))]
     public class Selectable : MonoBehaviour
     {
+        public Action onThisMouseEnter, onThisMouseExit;
         public Action onThisSelected;
         public Action onThisEnabled;
         public float DragTime { get; private set; }
+        public bool IsMouseOver { get; private set; }
         [Tooltip("keep null for default")] [SerializeField] private Material overMaterial = null;
         [Tooltip("keep null for default")] [SerializeField] private Material clickedDownMaterial = null;
         [SerializeField] private SpriteRenderer spriteRenderer;
@@ -18,8 +20,6 @@ namespace Selections
 
         private float startDragTime;
 
-
-        
 
         private void Awake()
         {
@@ -36,12 +36,16 @@ namespace Selections
         public void MouseEnter()
         {
             spriteRenderer.material = overMaterial;
+            onThisMouseEnter?.Invoke();
+            IsMouseOver = true;
         }
 
         public void MouseExit()
         {
             spriteRenderer.material = originalMaterial;
             DragTime = -1;
+            IsMouseOver = false;
+            onThisMouseExit?.Invoke();
         }
 
         public void MouseDown()

@@ -13,26 +13,44 @@ public class ManaUI : MonoBehaviour
 {
     [SerializeField] private Image manaFiller;
     [SerializeField] private Image heart;
-    
+    private Tween tween;
+    [SerializeField] private Ease scaleEaseIn;
+    [SerializeField] private float toColorDuration;
+    [SerializeField] private float fromColorDuration;
+    [SerializeField] private Color originalColor;
+    [SerializeField] private Color noManaColor;
     public void RefreshManaFill()
     {
         manaFiller.fillAmount = PlayerController.PlayerSettings.curMana / PlayerController.PlayerSettings.maxMana;
         PlayerController.PlayerSettings.onOutOfMana.Register(gameObject, arg0 => OutOfMana());
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            OutOfMana();
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.A))
+    //     {
+    //         OutOfMana();
+    //     }
+    // }
 
 
     private void OutOfMana()
     {
-
-        StartCoroutine(Flicker(2, 0.2f, 0.2f));
+        FlashAnimation(noManaColor, originalColor,2);
+        // StartCoroutine(Flicker(2, 0.2f, 0.2f));
+    }
+    
+    
+    
+    private void FlashAnimation(Color targetColor, Color originColor, int loops)
+    {
+        tween?.Kill(true);
+        tween = DOTween.Sequence()
+            .Append(heart.DOColor(targetColor, toColorDuration).SetEase(scaleEaseIn))
+            // .Join(sheepTransform.DOScale(originalScale*1.5f,toColorDuration))
+            .Append(heart.DOColor(originColor, fromColorDuration).SetEase(scaleEaseIn))
+            // .Join(sheepTransform.DOScale(originalScale,toColorDuration))
+            .SetLoops(loops);
     }
 
     IEnumerator Flicker(int nTimes, float timeOn, float timeOff)

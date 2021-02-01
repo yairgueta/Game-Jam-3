@@ -24,11 +24,8 @@ public class GameManager : Singleton<GameManager>
     public UIManager UIManagerInstance;
     public int cyclesNum { get; private set; }
     
-    [SerializeField] private TMP_Text msg;
     [SerializeField] private Ease ease;
     [SerializeField] private float duration;
-    [SerializeField] private Color targetColor;
-    [SerializeField] private Color originColor;
     private Tween tween;
     private Vector3 originScale;
 

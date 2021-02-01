@@ -35,6 +35,8 @@ public class SoundController : Singleton<SoundController>
     }
     private void InitializeSettings()
     {
+        soundSettings.SetBGMVolume(soundSettings.initialVolumes);
+        soundSettings.SetSFXVolume(soundSettings.initialVolumes);
         if (soundSettings != null) return;
         var soundSetts = AssetBundle.FindObjectsOfType<SoundSettings>();
         if (soundSetts.Length > 1)

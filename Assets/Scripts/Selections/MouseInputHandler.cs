@@ -1,19 +1,15 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Events;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
 using UnityEngine.UIElements;
-using Debug = UnityEngine.Debug;
 
 namespace Selections
 {
-    public class MouseInputHandler : Singleton<MouseInputHandler>
+    public class MouseInputHandler : MonoBehaviour
     {
+        public static MouseInputHandler Instance { get; private set; }
+        
         private static readonly int MAX_HIT = 10;
         
         public Action<Vector2> onRightClick, onLeftClick;
@@ -73,13 +69,15 @@ namespace Selections
             set => __currentDragged = value;
         }
         #endregion
-        
-        
-        
-        protected override void Awake()
+
+        private void OnEnable()
         {
-            base.Awake();
-            DontDestroyOnLoad(gameObject);
+            Instance = this;
+        }
+
+        private void OnDisable()
+        {
+            Instance = null;
         }
 
         private void Start()

@@ -63,11 +63,11 @@ PolygonCollider2D:
       - {x: -47.2175, y: -38.49664}
       - {x: 80.712654, y: -36.64372}
       - {x: 80.00043, y: 34.634014}
-      - {x: 24.37435, y: 5.398834}
-      - {x: 28.085861, y: -4.1842766}
+      - {x: 24.135632, y: 6.0354204}
+      - {x: 29.364922, y: -4.7527475}
       - {x: 11.802674, y: -2.7452757}
       - {x: 9.228763, y: 8.668056}
-      - {x: 24.473013, y: 5.6115446}
+      - {x: 24.205805, y: 6.1230416}
 --- !u!114 &4934242365942484708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,9 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a63a30364d6748648eefccfe2301b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledPrefab:
+  pooledPrefabs:
   - {fileID: 2823448820945319993, guid: 315e8164702dc457f8450e0bbf439b07, type: 3}
-  totalPoolAmount: 300
+  maxAmount: 0
   useOverFrameSpawning: 0
   overFrameTimeout: 0.5
   startingAmount: 0
@@ -165,8 +165,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.0083351135
-      value: 1.0117798
+      time: -0.016643524
+      value: 0.649559
       inSlope: -0.0026434101
       outSlope: -0.0026434101
       tangentMode: 0
@@ -174,8 +174,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.31318963
     - serializedVersion: 3
-      time: 0.71116126
-      value: 0.67686576
+      time: 0.7942483
+      value: 0.33396256
       inSlope: -1.3422489
       outSlope: -1.3422489
       tangentMode: 0
@@ -194,5 +194,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  randomnessFacter: 2
+  randomnessFacter: 3
   sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}

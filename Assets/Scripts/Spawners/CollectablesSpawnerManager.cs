@@ -21,9 +21,9 @@ namespace Spawners
 
         private void Update()
         {
-            var f = spawningSpeedCurve.Evaluate(spawnersManager.CurrentSpawned / (float) spawnersManager.TotalPool);
-            f = Mathf.Clamp(f, 0, 1);
-            timer -= Time.deltaTime * respawnSpeed * f;
+            // var f = spawningSpeedCurve.Evaluate(spawnersManager.CurrentSpawned / (float) spawnersManager.TotalPool);
+            // f = Mathf.Clamp(f, 0, 1);
+            // timer -= Time.deltaTime * respawnSpeed * f;
             if (timer > 0) return;
             timer = baseRespawnTime;
             spawnersManager.SpawnMany(1);

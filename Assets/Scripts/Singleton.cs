@@ -1,6 +1,7 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+ using UnityEditor;
+ using UnityEngine;
 
 public abstract class Singleton<T> : MonoBehaviour where T : Component
 {
@@ -29,9 +30,17 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
 				instance = FindObjectOfType<T> ();
 				if ( instance == null )
 				{
-					GameObject obj = new GameObject ();
-					obj.name = typeof ( T ).Name;
-					instance = obj.AddComponent<T> ();
+					var t = Resources.Load<T>(typeof(T).Name);
+					if (!t)
+					{
+						GameObject obj = new GameObject();
+						obj.name = typeof(T).Name;
+						instance = obj.AddComponent<T>();
+					}
+					else
+					{
+						instance = Instantiate(t);
+					}
 				}
 			}
 			return instance;
@@ -50,7 +59,7 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
 		if ( instance == null )
 		{
 			instance = this as T;
-			// DontDestroyOnLoad ( gameObject );
+			DontDestroyOnLoad ( gameObject );
 		}
 		else
 		{

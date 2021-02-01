@@ -10,6 +10,8 @@ namespace Player
     {
         public static InventoryObject CurrentInventory { get; private set; }
         public static PlayerSettingsObject PlayerSettings { get; private set; }
+        public static PlayerController Instance { get; private set; }
+        
         [SerializeField] private InventoryObject inventory;
         [SerializeField] private PlayerSettingsObject playerSettings;
 
@@ -23,12 +25,14 @@ namespace Player
             CurrentInventory = inventory;
             PlayerSettings = playerSettings;
             inventory.Setup();
+            Instance = this;
         }
 
         private void OnDisable()
         {
             CurrentInventory = null;
             PlayerSettings = null;
+            Instance = null;
         }
 
 

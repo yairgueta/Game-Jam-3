@@ -7,20 +7,24 @@ namespace Enemies
 {
     public class EnemyState : MonoBehaviour
     {
-        private static Transform _playerTransform ;
         private static Transform _wallsPosition;
         
         [SerializeField] private EnemySettings enemySettings;
+        [SerializeField] private SheepSettings sheepSettings;
 
         private AIDestinationSetter destinationSetter;
         private AIPath aiPath;
         private bool updateTarget = true;
-        [SerializeField] private SheepSettings sheepSettings;
+        
+        private Transform PlayerTransform => PlayerController.Instance.transform;
 
         private void Awake()
         {
-            if (_playerTransform == null) _playerTransform = FindObjectOfType<PlayerController>().gameObject.transform;
-            if (_wallsPosition == null) _wallsPosition = GameObject.FindGameObjectWithTag("WallCenter").transform;
+            if (_wallsPosition == null)
+            {
+                _wallsPosition = GameObject.FindGameObjectWithTag("WallCenter").transform;
+                DontDestroyOnLoad(_wallsPosition);
+            }
         }
 
         void Start()
@@ -66,9 +70,9 @@ namespace Enemies
                 return;
             }
             var enemyPos = transform.position;
-            var distanceFromPlayer = Vector2.Distance(_playerTransform.position, enemyPos);
+            var distanceFromPlayer = Vector2.Distance(PlayerTransform.position, enemyPos);
             var distanceFromWalls = Vector2.Distance(_wallsPosition.position, enemyPos);
-            destinationSetter.target = distanceFromPlayer < distanceFromWalls ? _playerTransform : _wallsPosition;
+            destinationSetter.target = distanceFromPlayer < distanceFromWalls ? PlayerTransform : _wallsPosition;
             StartCoroutine(DelayChange());
         }
     }

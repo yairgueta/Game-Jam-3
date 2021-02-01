@@ -32,6 +32,7 @@ namespace Sheep
         private Light2D sheepLight;
         private float health;
         private Status status;
+        private bool isDead;
 
         private static readonly int StatusAnimatorID = Animator.StringToHash("Status");
         private WaitForSeconds waitWhileShearing;
@@ -92,7 +93,7 @@ namespace Sheep
         private void OnEnable()
         {
             sheepSettings.sheeps.Add(this);
-            
+            isDead = false;
             health = sheepSettings.maxHealth;
             status = Status.None;
             switch (CyclesManager.Instance.CurrentCycle)
@@ -190,7 +191,7 @@ namespace Sheep
         public void TakeDamage(float damage)
         {
             health -= damage;
-            if (health <= 0)
+            if (health <= 0 && ! isDead)
             {
                 Die();
             }
@@ -198,6 +199,7 @@ namespace Sheep
 
         private void Die()
         {
+            isDead = true;
             onSheepDeath.Raise();
             onShake.Raise();
             gameObject.SetActive(false);

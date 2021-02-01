@@ -192,11 +192,7 @@ namespace Selections
         {
             if (overType != OverType.Other)
             {
-                // Debug.Log("her3"+overType);
-
-                if (currentSelected) currentSelected.Deselect();
-                // Debug.Log("her4");
-
+                // if (currentSelected) currentSelected.Deselect();
                 currentSelected = currentDragged = currentMouseOver;
                 currentSelected?.MouseDown();
                 onSelectionChangeEvent.Raise();

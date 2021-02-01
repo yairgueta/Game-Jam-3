@@ -28,11 +28,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameEvent onPlayerDeath;
     public int cyclesNum { get; private set; }
     
-    [SerializeField] private TMP_Text msg;
     [SerializeField] private Ease ease;
     [SerializeField] private float duration;
-    [SerializeField] private Color targetColor;
-    [SerializeField] private Color originColor;
     private Tween tween;
     private Vector3 originScale;
 
@@ -113,9 +110,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject deathWindow;
     [SerializeField] private TMP_Text numOfCycles;
-    [SerializeField] private TMP_Text numOfWoods;
-    [SerializeField] private TMP_Text numOfRocks;
-    
+    [SerializeField] private TMP_Text msg;
+
     
     [Header("UI Triggers")]
     [SerializeField] private GameEvent triggerBlur;
@@ -162,8 +158,6 @@ public class GameManager : Singleton<GameManager>
         triggerBlur.Raise();
         deathWindow.SetActive(true);
         numOfCycles.text = cyclesNum.ToString();
-        // numOfRocks.text = PlayerController.CurrentInventory.GetFinalRocks.ToString();
-        // numOfWoods.text = PlayerController.CurrentInventory.GetFinalWoods.ToString();
     }
 
     #endregion

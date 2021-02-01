@@ -84,6 +84,11 @@ MonoBehaviour:
   sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
   onSheepDeath: {fileID: 11400000, guid: bd7ec884f05dcf845b3e7e162042db41, type: 2}
   onPlayerDeath: {fileID: 11400000, guid: ce7896d81791f41a5a2433c723a31a3e, type: 2}
+  msg: {fileID: 0}
+  ease: 33
+  duration: 0.1
+  targetColor: {r: 1, g: 1, b: 1, a: 1}
+  originColor: {r: 1, g: 1, b: 1, a: 0}
   mainMenu: {fileID: 0}
   tutorial: {fileID: 0}
   mainUI: {fileID: 0}

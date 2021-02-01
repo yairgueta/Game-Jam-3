@@ -17,6 +17,7 @@ public class GameManager : Singleton<GameManager>
     public GameEvent ONStartGame => onStartGame;
     public bool IsPlaying { get; private set; }
     
+    
     [SerializeField] private GameEvent onFinishLoading;
     [SerializeField] private GameEvent onStartGame;
     [SerializeField] private GameEvent onLose;
@@ -26,10 +27,15 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameEvent onSheepDeath;
     [SerializeField] private GameEvent onPlayerDeath;
     public int cyclesNum { get; private set; }
-
+    [SerializeField] private TMP_Text msg;
+    private Vector3 originScale;
+    [SerializeField] private Ease ease;
+    [SerializeField] private float duration;
+    private Tween tween;
+    
     
     private WaitingList waitingList;
-
+    
     protected override void Awake()
     {
         base.Awake();
@@ -64,6 +70,9 @@ public class GameManager : Singleton<GameManager>
         InitializeUI();
         Time.timeScale = 0;
         CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, AddCycle);
+        originScale = msg.transform.localScale;
+        msg.transform.localScale = Vector3.zero;
+        
     }
 
     public void StartGame()
@@ -159,6 +168,14 @@ public class GameManager : Singleton<GameManager>
     private void AddCycle(object o)
     {
         cyclesNum++;
+    }
+
+    public void DisplayMsg(String message)
+    {
+        msg.text = message;
+        tween = DOTween.Sequence()
+        .Append(msg.transform.DOScale(originScale, duration).SetEase(ease))
+        .Append(msg.transform.DOScale(0, duration).SetDelay(0.7f));
     }
 
     // private void OnGUI()

@@ -131,16 +131,24 @@ namespace Upgrader
             woodAmount.color = Color.black;
             rockAmount.color = Color.black;
 
+            bool outOfResources = false;
             if (inventory[ResourceType.Wood] < woods)
             {
                 woodAmount.color = Color.red;
                 btn.interactable = false;
+                outOfResources = true;
             }
 
             if (inventory[ResourceType.Rock] < rocks)
             {
                 rockAmount.color = Color.red;
                 btn.interactable = false;
+                outOfResources = true;
+            }
+
+            if (outOfResources)
+            {
+                GameManager.Instance.DisplayMsg("out of resources");
             }
         }
 

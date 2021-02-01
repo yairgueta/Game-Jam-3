@@ -5381,7 +5381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870ea9dd08e274687923bdedce8dd3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overMaterial: {fileID: 0}
+  overMaterial: {fileID: 2100000, guid: 9b98a4e46b6d7475a8dba8536bcabf1e, type: 2}
   clickedDownMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   spriteRenderer: {fileID: 934456885316928744}
 --- !u!1 &8168792148115109427

@@ -157,8 +157,8 @@ namespace Enemies
             curHealth -= damage;
             tween?.Kill(true);
             tween = DOTween.Sequence()
-                .Append(DOTween.To(() => light2D.intensity, f => light2D.intensity = f, 0.2f, 0.05f))
-                .Append(DOTween.To(() => light2D.intensity, f => light2D.intensity = f, 1.24F, 0.2f).SetDelay(0.1f));
+                .Append(DOTween.To(() => light2D.intensity, f => light2D.intensity = f, 0.001f, 0.1f))
+                .Append(DOTween.To(() => light2D.intensity, f => light2D.intensity = f, 1.24f, 0.2f).SetDelay(0.1f));
             if (curHealth <= 0)
             {
                 curHealth = enemySettings.health;

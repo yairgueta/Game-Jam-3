@@ -43,7 +43,6 @@ namespace Enemies
 
         private float stuckTimer;
         private bool canRoar = true;
-        private bool shouldAttack = false;
         private float fadeSpeed = 0.35f;
         private float maxFadeValue = 0.65f;
         private static readonly int EdgeID = Shader.PropertyToID("edge");
@@ -220,7 +219,14 @@ namespace Enemies
             if (hit == null) return;
             AttackMode();
             currentAttacked = hit;
-            shouldAttack = true;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            StartCoroutine(DelayMovement());
+        }
+
+        private IEnumerator DelayMovement()
+        {
+            yield return null;
+            rb.constraints = originalConstraints;
         }
 
         private void OnCollisionExit2D(Collision2D other)
@@ -230,5 +236,6 @@ namespace Enemies
             currentAttacked = null;
             WalkMode();
         }
+
     }
 }

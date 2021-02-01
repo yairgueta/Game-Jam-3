@@ -43,7 +43,6 @@ namespace Enemies
 
         private float stuckTimer;
         private bool canRoar = true;
-        private bool shouldAttack = false;
         private float fadeSpeed = 0.35f;
         private float maxFadeValue = 0.65f;
         private static readonly int EdgeID = Shader.PropertyToID("edge");
@@ -71,6 +70,7 @@ namespace Enemies
 
         private void Update()
         {
+            Debug.Log(mode);
             if (mode == Mode.Dying)
             {
                 ManageDeath();
@@ -146,9 +146,9 @@ namespace Enemies
         
         private void Attack()
         {
-            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
             currentAttacked?.TakeDamage(enemySettings.attackPower);
-            
+            if (mode == Mode.Dying) return;
+            soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
             if (currentAttacked as Sheep.Sheep) Die();
         }
         
@@ -220,7 +220,14 @@ namespace Enemies
             if (hit == null) return;
             AttackMode();
             currentAttacked = hit;
-            shouldAttack = true;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            StartCoroutine(DelayMovement());
+        }
+
+        private IEnumerator DelayMovement()
+        {
+            yield return null;
+            rb.constraints = originalConstraints;
         }
 
         private void OnCollisionExit2D(Collision2D other)
@@ -230,5 +237,6 @@ namespace Enemies
             currentAttacked = null;
             WalkMode();
         }
+
     }
 }

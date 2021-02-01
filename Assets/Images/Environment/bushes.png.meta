@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b35ebb42722fa924b8ddbbfcb5f11e8d
+guid: bce819410c5cd2341993e6b5987747ea
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -73,7 +73,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,18 +126,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -150,7 +138,7 @@ TextureImporter:
         width: 632
         height: 350
       alignment: 9
-      pivot: {x: 0.4774236, y: 0.044773605}
+      pivot: {x: 0.49267858, y: 0.063728854}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,11 +155,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 915
-        y: 141
+        y: 139
         width: 767
         height: 421
       alignment: 9
-      pivot: {x: 0.50310045, y: 0.04246568}
+      pivot: {x: 0.4969836, y: 0.038387343}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -179,48 +167,6 @@ TextureImporter:
       bones: []
       spriteID: 19eebefdf573511b0800000000000000
       internalID: -5686578069567181167
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bushes_2
-      rect:
-        serializedVersion: 2
-        x: 2216
-        y: 328
-        width: 62
-        height: 69
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 06eb8e9cb4c14b660800000000000000
-      internalID: 7400571199512165984
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bushes_3
-      rect:
-        serializedVersion: 2
-        x: 2276
-        y: 369
-        width: 11
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ff42557c54bfd390800000000000000
-      internalID: -7791310521129349128
       vertices: []
       indices: 
       edges: []
@@ -234,7 +180,7 @@ TextureImporter:
         width: 333
         height: 223
       alignment: 9
-      pivot: {x: 0.4714348, y: 0.094772205}
+      pivot: {x: 0.5069474, y: 0.13688536}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -242,90 +188,6 @@ TextureImporter:
       bones: []
       spriteID: 6cab982521225dc90800000000000000
       internalID: -7145767771663910202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bushes_5
-      rect:
-        serializedVersion: 2
-        x: 2142
-        y: 351
-        width: 10
-        height: 9
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6643f0ddcbb67820800000000000000
-      internalID: 2915724301417268847
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bushes_6
-      rect:
-        serializedVersion: 2
-        x: 2371
-        y: 311
-        width: 16
-        height: 31
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1d3412a43468b140800000000000000
-      internalID: 4735645185400388891
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bushes_7
-      rect:
-        serializedVersion: 2
-        x: 2410
-        y: 282
-        width: 25
-        height: 47
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e22d002d7443377a0800000000000000
-      internalID: -6380698763983269330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bushes_8
-      rect:
-        serializedVersion: 2
-        x: 2365
-        y: 223
-        width: 28
-        height: 55
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 074dbb34c22927bd0800000000000000
-      internalID: -2633882113245719440
       vertices: []
       indices: 
       edges: []

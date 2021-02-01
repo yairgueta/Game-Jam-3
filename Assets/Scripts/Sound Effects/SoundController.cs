@@ -53,7 +53,7 @@ public class SoundController : Singleton<SoundController>
         soundSettings.onEclipseStart.Register(gameObject, o => PlayBGMusic(eclipseMusicSource));
         soundSettings.onNightStart.Register(gameObject, o => PlayBGMusic(nightMusicSource));
         soundSettings.onEnemyDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.enemyDeath));
-        soundSettings.onPlayerDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.playerDeath));
+        // soundSettings.onPlayerDeath.Register(gameObject, o => PlaySoundEffect(soundSettings.playerDeath));
         soundSettings.onOutOfResources.Register(gameObject, o => PlaySoundEffect(soundSettings.outOfResources));
         soundSettings.onMushroomCollected.Register(gameObject, o => PlaySoundEffect(soundSettings.mushroomCollected));
         soundSettings.onBulletExplode.Register(gameObject, o => PlaySoundEffect(soundSettings.bulletExploded));

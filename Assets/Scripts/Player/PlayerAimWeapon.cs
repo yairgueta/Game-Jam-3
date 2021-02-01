@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using Selections;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Player

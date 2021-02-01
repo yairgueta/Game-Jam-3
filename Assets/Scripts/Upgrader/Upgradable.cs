@@ -41,6 +41,7 @@ namespace Upgrader
             curGrade = grade;
             UpgradableObject current = grades[curGrade];
             spriteIndex = Random.Range(0, current.completeSprites.Length);
+            Debug.Log(curGrade);
         }
 
         public UpgradableObject GetCurGradeAttributes()
@@ -55,7 +56,7 @@ namespace Upgrader
         
         public UpgradableObject GetPreviousGradeAttributes()
         {
-            return curGrade == 0 ? grades[curGrade] : grades[curGrade-1];
+            return curGrade == 1 ? grades[curGrade] : grades[curGrade-1];
         }
 
         public int NextGradeRequiredWood => GetNextGradeAttributes().requiredWoods;

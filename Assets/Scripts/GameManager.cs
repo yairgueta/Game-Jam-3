@@ -29,6 +29,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         waitingList = new WaitingList(()=>onFinishLoading.Raise());
+        // SceneManager.LoadScene(2);
     }
     
     private void Start()

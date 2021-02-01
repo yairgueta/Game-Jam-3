@@ -28,6 +28,7 @@ namespace Spawners
 
         private void Awake()
         {
+            currentSpawned = new HashSet<Spawnable>();
             randomizer = GetComponent<SpawnerRandomizer>();
             gameObject.layer = LayerMask.NameToLayer("Spawner");
         }
@@ -59,6 +60,15 @@ namespace Spawners
                 total += percentageToSpawn[i];
             }
             return null;
+        }
+
+        private void OnDisable()
+        {
+            var list = currentSpawned.ToList();
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                list[i].gameObject.SetActive(false);
+            }
         }
 
         private void SpawnableDeath(Spawnable spawnable)

@@ -2396,6 +2396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78fe952f5cc01a240b13b41c5adb79a0, type: 3}
+--- !u!60 &1108652252 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1161223798, guid: 78fe952f5cc01a240b13b41c5adb79a0, type: 3}
+  m_PrefabInstance: {fileID: 1108652251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1119026856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3109,29 +3114,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 994456563}
     m_Modifications:
-    - target: {fileID: 8030378330082793926, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
-      propertyPath: m_AmplitudeGain
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 1145123426, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 1108652252}
     - target: {fileID: 8030378330339064274, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 38928019}
-    - target: {fileID: 8030378330339064274, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
-      propertyPath: m_Lens.FarClipPlane
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8030378330339064274, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
-      propertyPath: m_Lens.NearClipPlane
-      value: 0.001
-      objectReference: {fileID: 0}
     - target: {fileID: 8030378330339064275, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
       propertyPath: m_Name
       value: CM vcam1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8030378330339064275, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8030378330339064277, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
       propertyPath: m_RootOrder
@@ -3176,10 +3169,6 @@ PrefabInstance:
     - target: {fileID: 8030378330339064277, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8030378330339064279, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ade16bafe2e424bbf2f4935624adfb, type: 3}

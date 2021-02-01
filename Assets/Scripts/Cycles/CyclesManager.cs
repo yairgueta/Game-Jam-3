@@ -21,7 +21,7 @@ namespace Cycles
         [HideInInspector][SerializeField] private CycleObject[] cyclesSettings;
         private CycleObject currentCycle;
         private Queue<CycleObject> cyclesQueue;
-        private float timer;
+        public float timer;
 
         private void OnEnable()
         {

@@ -128,5 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheepSettings: {fileID: 11400000, guid: aaaedfe3a422a4fe992d737662eb2079, type: 2}
   onShear: {fileID: 11400000, guid: 31243d07fa1c4214d9aa1af4585e2710, type: 2}
+  onSheepDeath: {fileID: 11400000, guid: bd7ec884f05dcf845b3e7e162042db41, type: 2}
   duration: 0.7
   ease: 5

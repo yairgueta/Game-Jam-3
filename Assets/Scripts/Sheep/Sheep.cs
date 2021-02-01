@@ -14,21 +14,20 @@ namespace Sheep
 {
     public class Sheep : MonoBehaviour, IEnemyDamage
     {
+        public Selectable ThisSelectable { get; private set; }
+        public SheepSettings SheepSettings => sheepSettings;
+        
         [SerializeField] private SheepSettings sheepSettings;
-        [SerializeField] private Image collectionDisplay;
-        [SerializeField] private ParticleSystem collectionParticle;
         [SerializeField] private ParticleSystem sleepingParticle;
         [SerializeField] private GameEvent onSheepDeath;
         [SerializeField] private GameEvent onShake;
-        
+
         [Header("Light Settings")]
         [SerializeField] private Vector2 intensityRange = new Vector2(.3f, .6f);
         [SerializeField] private float flickerSpeed = 5f;
         private Vector2 noiseVar;
 
         private Animator animator;
-        private SpriteRenderer sr;
-        private Selectable selectable;
         private Light2D sheepLight;
         private float health;
         private Status status;
@@ -50,25 +49,18 @@ namespace Sheep
         
         private void Awake()
         {
-            noiseVar = new Vector2(Random.value, Random.value);
-
             animator = GetComponent<Animator>();
-            RandomizeAnimationSpeed();
-            sr = GetComponent<SpriteRenderer>();
-            if (sr == null) sr = GetComponentInParent<SpriteRenderer>();
-            selectable = GetComponent<Selectable>() ?? GetComponentInChildren<Selectable>();
+            ThisSelectable = GetComponentInChildren<Selectable>();
             sheepLight = GetComponentInChildren<Light2D>();
-            sheepLight.enabled = false;
-            PlayerController.PlayerSettings.onManaChange.Register(gameObject, RefreshSelectableInteractable);
             
             waitWhileShearing = new WaitForSeconds(sheepSettings.fillTime);
-
+            noiseVar = new Vector2(Random.value, Random.value);
+            sheepLight.enabled = false;
+            PlayerController.PlayerSettings.onManaChange.Register(gameObject, RefreshSelectableInteractable);
+            RandomizeAnimationSpeed();
         }
 
-        private void RandomizeAnimationSpeed()
-        {
-            animator.speed = Random.Range(0.5f, 1f);
-        }
+        private void RandomizeAnimationSpeed() => animator.speed = Random.Range(0.5f, 1f);
         
         private void Update()
         {
@@ -78,16 +70,14 @@ namespace Sheep
                 var noise = Mathf.PerlinNoise(Time.time*flickerSpeed + noiseVar.x, noiseVar.y);
                 sheepLight.intensity = Mathf.Lerp(intensityRange.x, intensityRange.y, noise);
             }
-            if (selectable.DragTime < 0) collectionParticle.Stop();
-            if (selectable.DragTime >= 0) DisplayBeingCollected();
-            else collectionDisplay.fillAmount = 0;
-            if (selectable.DragTime >= sheepSettings.timeToCollect) GetCollected();
         }
+
+        
 
         private void RefreshSelectableInteractable(object o)
         {
-            if (selectable.enabled && PlayerMaxMana) selectable.enabled = false;
-            if (!selectable.enabled && !PlayerMaxMana) selectable.enabled = true & (status & Status.Glow) != 0;
+            if (ThisSelectable.enabled && PlayerMaxMana) ThisSelectable.enabled = false;
+            if (!ThisSelectable.enabled && !PlayerMaxMana) ThisSelectable.enabled = true & (status & Status.Glow) != 0;
         }
 
         private void OnEnable()
@@ -116,14 +106,14 @@ namespace Sheep
             sheepSettings.sheeps.Remove(this);
         }
 
-        private void GetCollected()
+        public void GetCollected()
         {
             PlayerController.PlayerSettings.UpdateMana(sheepSettings.manaAddition);
             status |= Status.Empty;
             RefreshSprite();
-            collectionParticle.Stop();
-            collectionDisplay.fillAmount = 0;
-            selectable.enabled = false;
+            // collectionParticle.Stop();
+            // collectionDisplay.fillAmount = 0;
+            ThisSelectable.enabled = false;
             sheepSettings.OnShear.Raise();
             StartCoroutine(WaitWhileShearing());
         }
@@ -145,11 +135,7 @@ namespace Sheep
             RefreshSprite();
         }
 
-        private void DisplayBeingCollected()
-        {
-            collectionDisplay.fillAmount = selectable.DragTime / sheepSettings.timeToCollect;
-            if (!collectionParticle.isPlaying) collectionParticle.Play();
-        }
+        
 
         private void RefreshSprite()
         {
@@ -160,7 +146,7 @@ namespace Sheep
             else sleepingParticle.Stop();
             if ((status & Status.Empty) == 0 && (status & Status.Glow) != 0) sheepLight.enabled = true;
 
-            selectable.enabled = (status & Status.Glow) != 0 && (status & Status.Empty) == 0;
+            ThisSelectable.enabled = (status & Status.Glow) != 0 && (status & Status.Empty) == 0;
         }
 
         public void SetGlow(bool toGlow)

@@ -144,10 +144,9 @@ namespace Enemies
         
         private void Attack()
         {
-            currentAttacked?.TakeDamage(enemySettings.attackPower);
             if (mode == Mode.Dying) return;
+            currentAttacked?.TakeDamage(enemySettings.attackPower);
             soundController.PlaySoundEffect(soundController.soundSettings.monsterAttack);
-            if (currentAttacked as Sheep.Sheep) Die();
         }
         
         public void TakeDamage(float damage)
@@ -232,6 +231,11 @@ namespace Enemies
         {
             if (mode == Mode.Dying) return;
             if (other.gameObject.GetComponent<IEnemyDamage>() != currentAttacked) return;
+            if (currentAttacked as Sheep.Sheep != null && !other.gameObject.activeInHierarchy)
+            {
+                Die();
+                return;
+            }
             currentAttacked = null;
             WalkMode();
         }

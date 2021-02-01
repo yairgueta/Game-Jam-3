@@ -55,6 +55,10 @@ namespace Player
             }
         }
 
+        public int GetFinalWoods => collectedThroughGameMap[0];
+        public int GetFinalRocks => collectedThroughGameMap[1];
+
+
         #region Classes
 
         public class InventoryOutOfResourceException : Exception

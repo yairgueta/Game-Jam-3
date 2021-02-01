@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationDuration: 0.5
+  fireflyParticlePrefab: {fileID: 7415927655766870848, guid: b67b843930ae447d9be7ee6dbeb176af, type: 3}
 --- !u!114 &8265862186904806057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +88,10 @@ MonoBehaviour:
   tutorial: {fileID: 0}
   mainUI: {fileID: 0}
   pauseMenu: {fileID: 0}
+  deathWindow: {fileID: 0}
+  numOfCycles: {fileID: 0}
+  numOfWoods: {fileID: 0}
+  numOfRocks: {fileID: 0}
   triggerBlur: {fileID: 11400000, guid: e7687571e06804262862ab5b1e6fb98a, type: 2}
   triggerUnblur: {fileID: 11400000, guid: 30673a6d43ed542e39b147a931e42d91, type: 2}
 --- !u!114 &8536212987877226201

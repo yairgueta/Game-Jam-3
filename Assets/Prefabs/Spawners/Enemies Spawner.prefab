@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3646905531961547780}
   - component: {fileID: 4265378925653844394}
   - component: {fileID: 5643727899979791869}
+  - component: {fileID: 5758768348016822235}
+  - component: {fileID: 6399862977950577698}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4565451717462665147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.98, y: 3.84, z: 0}
+  m_LocalPosition: {x: -4.04, y: 0.25, z: 0}
   m_LocalScale: {x: 0.6521, y: 0.6521, z: 0.6521}
   m_Children:
   - {fileID: 5719547379295692285}
@@ -83,7 +85,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!70 &5643727899979791869
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -97,9 +99,41 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6056942, y: -1.8042854}
-  m_Size: {x: 13.659814, y: 5.447367}
+  m_Offset: {x: 0.32402146, y: 2.5800004}
+  m_Size: {x: 13.096481, y: 5.4473863}
   m_Direction: 1
+--- !u!58 &5758768348016822235
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565451717462665147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -6.035226, y: 3.79644}
+  serializedVersion: 2
+  m_Radius: 1.9699334
+--- !u!58 &6399862977950577698
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565451717462665147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 6.2330375, y: 5.0483007}
+  serializedVersion: 2
+  m_Radius: 1.9073427
 --- !u!1 &5348176395332998922
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5901757062776475410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: -1.18, z: 0}
+  m_LocalPosition: {x: -0.34, y: 6.68, z: 0}
   m_LocalScale: {x: 4.4165993, y: 4.4165993, z: 1.4721998}
   m_Children: []
   m_Father: {fileID: 3646905531961547780}

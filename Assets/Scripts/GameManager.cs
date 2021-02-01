@@ -1,4 +1,6 @@
 using System;
+using Cycles;
+using DG.Tweening;
 using Events;
 using Player;
 using UI;
@@ -51,9 +53,9 @@ public class GameManager : Singleton<GameManager>
         // TODO: Check if things still good without this line ^^^^^^
         
         Time.timeScale = 0;
-        CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, AddCycle);
-        originScale = msg.transform.localScale;
-        msg.transform.localScale = Vector3.zero;
+        // CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, AddCycle);
+        // originScale = msg.transform.localScale;
+        // msg.transform.localScale = Vector3.zero;
     }
     
     private void Update()

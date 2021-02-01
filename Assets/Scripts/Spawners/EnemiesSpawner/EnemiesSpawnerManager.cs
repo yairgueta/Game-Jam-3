@@ -43,9 +43,6 @@ namespace Spawners.EnemiesSpawner
                     currentActiveSpawners.ForEach(spnr => spnr.SpawnMany(count, CurrentRound.timeToSpawn));
                     break;
             }
-            
-            GetNextRoundActiveSpawners();
-            
         }
 
         private void GetNextRoundActiveSpawners()

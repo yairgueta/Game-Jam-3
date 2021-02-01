@@ -148,7 +148,7 @@ namespace Upgrader
 
             if (outOfResources)
             {
-                GameManager.Instance.DisplayMsg("out of resources");
+                // GameManager.Instance.DisplayMsg("out of resources");
             }
         }
 

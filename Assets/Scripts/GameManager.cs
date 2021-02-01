@@ -1,4 +1,6 @@
 using System;
+using Cycles;
+using DG.Tweening;
 using Events;
 using Player;
 using UI;
@@ -24,11 +26,8 @@ public class GameManager : Singleton<GameManager>
     public UIManager UIManagerInstance;
     public int cyclesNum { get; private set; }
     
-    [SerializeField] private TMP_Text msg;
     [SerializeField] private Ease ease;
     [SerializeField] private float duration;
-    [SerializeField] private Color targetColor;
-    [SerializeField] private Color originColor;
     private Tween tween;
     private Vector3 originScale;
 
@@ -54,9 +53,9 @@ public class GameManager : Singleton<GameManager>
         // TODO: Check if things still good without this line ^^^^^^
         
         Time.timeScale = 0;
-        CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, AddCycle);
-        originScale = msg.transform.localScale;
-        msg.transform.localScale = Vector3.zero;
+        // CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, AddCycle);
+        // originScale = msg.transform.localScale;
+        // msg.transform.localScale = Vector3.zero;
     }
     
     private void Update()

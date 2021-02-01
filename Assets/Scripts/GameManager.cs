@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     public GameEvent ONStartGame => onStartGame;
     public bool IsPlaying { get; private set; }
     
+    
     [SerializeField] private GameEvent onFinishLoading;
     [SerializeField] private GameEvent onStartGame;
     [SerializeField] private GameEvent onLose;
@@ -19,12 +20,20 @@ public class GameManager : Singleton<GameManager>
     [Header("Lose Cases Events")]
     [SerializeField] private GameEvent onSheepDeath;
     [SerializeField] private GameEvent onPlayerDeath;
-    // public int cyclesNum { get; private set; }
 
     public UIManager UIManagerInstance;
+    public int cyclesNum { get; private set; }
+    
+    [SerializeField] private TMP_Text msg;
+    [SerializeField] private Ease ease;
+    [SerializeField] private float duration;
+    [SerializeField] private Color targetColor;
+    [SerializeField] private Color originColor;
+    private Tween tween;
+    private Vector3 originScale;
 
     private WaitingList waitingList;
-
+    
     protected override void Awake()
     {
         base.Awake();
@@ -45,6 +54,9 @@ public class GameManager : Singleton<GameManager>
         // TODO: Check if things still good without this line ^^^^^^
         
         Time.timeScale = 0;
+        CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, AddCycle);
+        originScale = msg.transform.localScale;
+        msg.transform.localScale = Vector3.zero;
     }
     
     private void Update()

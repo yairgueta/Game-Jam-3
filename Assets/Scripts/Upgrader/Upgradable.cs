@@ -41,7 +41,6 @@ namespace Upgrader
             curGrade = grade;
             UpgradableObject current = grades[curGrade];
             spriteIndex = Random.Range(0, current.completeSprites.Length);
-            Debug.Log(curGrade);
         }
 
         public UpgradableObject GetCurGradeAttributes()

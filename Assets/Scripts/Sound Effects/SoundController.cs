@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Cycles;
 using DG.Tweening;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class SoundController : Singleton<SoundController>
     private AudioSource changeTo;
     private bool shouldChangeBG;
     private bool bgMusicChanged;
+    private int boundedEffectCounter = 0;
 
     protected override void Awake()
     {
@@ -134,5 +136,19 @@ public class SoundController : Singleton<SoundController>
     {
         if (audioClip == null) return;
         soundEffectsSource.PlayOneShot(audioClip, soundSettings.sfxVolume);
+    }
+
+    public void PlayBoundedSoundEffect(AudioClip audioClip, int bound)
+    {
+        if (boundedEffectCounter > bound) return;
+        boundedEffectCounter++;
+        soundEffectsSource.PlayOneShot(audioClip, soundSettings.sfxVolume);
+        StartCoroutine(DelayRoar(audioClip));
+    }
+
+    private IEnumerator DelayRoar(AudioClip audioClip)
+    {
+        yield return new WaitForSeconds(audioClip.length);
+        boundedEffectCounter--;
     }
 }

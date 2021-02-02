@@ -762,15 +762,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7275858794836873495, guid: 38dd84ee759d9499c93a8dbca4493ff7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7275858794836873495, guid: 38dd84ee759d9499c93a8dbca4493ff7, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275858794836873495, guid: 38dd84ee759d9499c93a8dbca4493ff7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.84765625
       objectReference: {fileID: 0}
     - target: {fileID: 7275858794836873495, guid: 38dd84ee759d9499c93a8dbca4493ff7, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1.1235352
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38dd84ee759d9499c93a8dbca4493ff7, type: 3}
@@ -1029,6 +1033,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4310957693348009150, guid: 30837691f612e42db884a98441b4c850, type: 3}
   m_PrefabInstance: {fileID: 454875493}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &545438766 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7275858795336643439, guid: 38dd84ee759d9499c93a8dbca4493ff7, type: 3}
+  m_PrefabInstance: {fileID: 319373281}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &546588335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,6 +3725,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4583978824210871438, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583978824707575362, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4583978824794404653, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
       propertyPath: m_Name
       value: Sound Controller
@@ -4072,6 +4095,7 @@ MonoBehaviour:
   mainUI: {fileID: 736480359}
   pauseMenu: {fileID: 1330911231}
   loseScreen: {fileID: 140072490}
+  numOfCycles: {fileID: 545438766}
   msg: {fileID: 2111482034}
   duration: 0.1
   triggerBlur: {fileID: 11400000, guid: e7687571e06804262862ab5b1e6fb98a, type: 2}
@@ -6189,6 +6213,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 24a8b63a4494e483aa5d40adc8d20b50, type: 2}
   - {fileID: 11400000, guid: d2783c2e4e1a54004ac8cbcdbf7f9942, type: 2}
   - {fileID: 11400000, guid: f3aa03adc7e24465eb0349623e4b4fdb, type: 2}
+  cyclesCount: 0
 --- !u!114 &8265862187203439403
 MonoBehaviour:
   m_ObjectHideFlags: 0

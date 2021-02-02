@@ -13,63 +13,63 @@ MonoBehaviour:
   m_Name: rounds
   m_EditorClassIdentifier: 
   rounds:
-  - activeSpawners: 2
-    enemiesCount: 6
-    timeToSpawn: 30
-    spawnType: 0
-  - activeSpawners: 2
-    enemiesCount: 6
-    timeToSpawn: 60
-    spawnType: 0
-  - activeSpawners: 5
-    enemiesCount: 4
-    timeToSpawn: 3
-    spawnType: 0
-  - activeSpawners: 2
-    enemiesCount: 8
-    timeToSpawn: 13
-    spawnType: 0
   - activeSpawners: 7
-    enemiesCount: 10
+    enemiesCount: 1
     timeToSpawn: 10
     spawnType: 0
+  - activeSpawners: 2
+    enemiesCount: 6
+    timeToSpawn: 13
+    spawnType: 0
+  - activeSpawners: 5
+    enemiesCount: 7
+    timeToSpawn: 20
+    spawnType: 0
+  - activeSpawners: 2
+    enemiesCount: 9
+    timeToSpawn: 20
+    spawnType: 0
   - activeSpawners: 7
-    enemiesCount: 15
-    timeToSpawn: 4
+    enemiesCount: 9
+    timeToSpawn: 15
+    spawnType: 0
+  - activeSpawners: 7
+    enemiesCount: 13
+    timeToSpawn: 20
     spawnType: 0
   - activeSpawners: 3
-    enemiesCount: 8
-    timeToSpawn: 3
+    enemiesCount: 16
+    timeToSpawn: 15
     spawnType: 0
-  - activeSpawners: 3
-    enemiesCount: 8
-    timeToSpawn: 3
+  - activeSpawners: 7
+    enemiesCount: 16
+    timeToSpawn: 25
     spawnType: 1
   - activeSpawners: 6
     enemiesCount: 8
-    timeToSpawn: 2
+    timeToSpawn: 10
     spawnType: 0
   - activeSpawners: 5
-    enemiesCount: 9
+    enemiesCount: 10
     timeToSpawn: 1.6
     spawnType: 0
-  - activeSpawners: 7
-    enemiesCount: 9
-    timeToSpawn: 1.6
+  - activeSpawners: 2
+    enemiesCount: 16
+    timeToSpawn: 20
     spawnType: 0
   - activeSpawners: 7
-    enemiesCount: 9
-    timeToSpawn: 2
+    enemiesCount: 14
+    timeToSpawn: 20
     spawnType: 1
   - activeSpawners: 7
-    enemiesCount: 13
-    timeToSpawn: 2
+    enemiesCount: 15
+    timeToSpawn: 15
     spawnType: 0
   - activeSpawners: 7
-    enemiesCount: 19
-    timeToSpawn: 5
+    enemiesCount: 18
+    timeToSpawn: 20
     spawnType: 0
   - activeSpawners: 7
-    enemiesCount: 19
-    timeToSpawn: 3
+    enemiesCount: 20
+    timeToSpawn: 20
     spawnType: 1

@@ -3548,6 +3548,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 509003261, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
+      propertyPath: percentageToSpawn.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 670603308, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3592,9 +3596,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 1530064694, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
+      propertyPath: percentageToSpawn.Array.data[2]
+      value: 0.060000002
+      objectReference: {fileID: 0}
     - target: {fileID: 1549421996, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549421997, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
+      propertyPath: percentageToSpawn.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1710385903, guid: 833c80c8adf5449d68f21d3f09e25b77, type: 3}
       propertyPath: m_RootOrder

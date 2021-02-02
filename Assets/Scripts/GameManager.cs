@@ -74,6 +74,7 @@ public class GameManager : Singleton<GameManager>
         SoundController.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         waitingList.Clear();
+        IsPlaying = false;
     }
     
     // Return a function to run when finished the task!

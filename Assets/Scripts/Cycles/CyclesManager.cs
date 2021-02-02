@@ -59,7 +59,6 @@ namespace Cycles
             currentCycle = cyclesQueue.Dequeue();
             cyclesQueue.Enqueue(currentCycle);
             timer = currentCycle.Duration;
-            print(currentCycle.name);
             currentCycle.OnCycleStart.Raise();
         }
 

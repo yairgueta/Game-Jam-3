@@ -32,7 +32,7 @@ public class LoadScreen : MonoBehaviour
         while (!asyncLoadInitScene.isDone || !asyncLoadMainScene.isDone)
         {
             yield return null;
-            var factor = Mathf.FloorToInt((asyncLoadInitScene.progress + asyncLoadMainScene.progress) * 0.5f * 5);
+            var factor = Mathf.FloorToInt((asyncLoadInitScene.progress * asyncLoadMainScene.progress) * 5);
             if (factor >= counter)
             {
                 sb.Append(dot);

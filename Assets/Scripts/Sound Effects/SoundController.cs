@@ -18,6 +18,8 @@ public class SoundController : Singleton<SoundController>
     private AudioSource changeTo;
     private bool shouldChangeBG;
     private bool bgMusicChanged;
+    private Tween currentTween;
+    private Tween changeTween;
 
     protected override void Awake()
     {
@@ -28,7 +30,7 @@ public class SoundController : Singleton<SoundController>
         RegisterToEvents();
         // PlayAmbient();
         PlayMenuMusic();
-        soundSettings.onVolumeChange += ()=> ChangeBGVolume();
+        soundSettings.onVolumeChange += ChangeBGVolume;
         base.Awake();
         
     }
@@ -84,13 +86,17 @@ public class SoundController : Singleton<SoundController>
 
     private void ChangeBGVolume()
     {
-        mainMenuSource.volume = soundSettings.BGMVolume;
+        if(mainMenuSource != null) mainMenuSource.volume = soundSettings.BGMVolume;
         if (changeTo != null)
         {
+            changeTween.Kill();
+            currentTween.Kill();
+            currentBGMusic.volume = 0f;
             changeTo.volume = soundSettings.BGMVolume;
         }
         else if (currentBGMusic != null)
         {
+            currentTween.Kill();
             currentBGMusic.volume = soundSettings.BGMVolume;
         }
     }
@@ -101,7 +107,7 @@ public class SoundController : Singleton<SoundController>
         changeTo = source;
         currentBGMusic.volume = 0f;
         currentBGMusic.Play();
-        changeTo.DOFade(soundSettings.BGMVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
+        changeTween = changeTo.DOFade(soundSettings.BGMVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
     private void PlayBGMusic(AudioSource source)
@@ -122,9 +128,9 @@ public class SoundController : Singleton<SoundController>
         changeTo = source;
         changeTo.volume = 0f;
         changeTo.Play();
-        currentBGMusic.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
+        currentTween = currentBGMusic.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
         // StartCoroutine(StopMusicDelay(currentBGMusic.clip.length));
-        changeTo.DOFade(soundSettings.BGMVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
+        changeTween = changeTo.DOFade(soundSettings.BGMVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
     private void PlayAmbient()

@@ -94,11 +94,11 @@ namespace UI
         public void DisplayMsg(String message)
         {
             msg.text = message;
-            tween?.Kill(true);
+            tween?.Kill();
             msg.color = originalColor;
             msg.rectTransform.anchoredPosition = originalAnchor;
             var onScreenDuration = 1f;
-            DOTween.Sequence()
+            tween = DOTween.Sequence()
                 .Append(msg.rectTransform.DOAnchorPosY(-30, onScreenDuration))
                 .Join(DOTween.ToAlpha(()=>msg.color, c => msg.color = c, 0, duration).SetDelay(onScreenDuration-duration));
 

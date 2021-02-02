@@ -46,7 +46,7 @@ public class GameManager : Singleton<GameManager>
         
         Time.timeScale = 0;
     }
-    
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager>
             UIManagerInstance.SetPauseMenu();
         }
     }
-    
+
     public void StartGame()
     {
         onStartGame.Raise();
@@ -72,7 +72,9 @@ public class GameManager : Singleton<GameManager>
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        waitingList.Clear();
+        print(waitingList);
+        print(waitingList.AreAllDone);
+        // waitingList.Clear();
     }
     
     // Return a function to run when finished the task!

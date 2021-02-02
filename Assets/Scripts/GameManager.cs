@@ -88,6 +88,7 @@ public class GameManager : Singleton<GameManager>
     
     public void RestartGame()
     {
+        SoundController.Instance.StopMusic();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         waitingList.Clear();
     }

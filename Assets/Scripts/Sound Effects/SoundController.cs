@@ -18,7 +18,6 @@ public class SoundController : Singleton<SoundController>
     private AudioSource changeTo;
     private bool shouldChangeBG;
     private bool bgMusicChanged;
-    private int boundedEffectCounter = 0;
 
     protected override void Awake()
     {
@@ -29,7 +28,7 @@ public class SoundController : Singleton<SoundController>
         RegisterToEvents();
         // PlayAmbient();
         PlayMenuMusic();
-        soundSettings.onVolumeChange += ()=> mainMenuSource.volume = soundSettings.BGMVolume;
+        soundSettings.onVolumeChange += ()=> ChangeBGVolume();
         base.Awake();
         
     }
@@ -83,6 +82,15 @@ public class SoundController : Singleton<SoundController>
         eclipseMusicSource.clip = soundSettings.eclipseMusic;
     }
 
+    private void ChangeBGVolume()
+    {
+        mainMenuSource.volume = soundSettings.BGMVolume;
+        dayMusicSource.volume = soundSettings.BGMVolume;
+        nightMusicSource.volume = soundSettings.BGMVolume;
+        eclipseMusicSource.volume = soundSettings.BGMVolume;
+        ambientMusicSource.volume = soundSettings.BGMVolume;
+    }
+
     private void StartMusic(AudioSource source)
     {
         currentBGMusic = source;
@@ -111,6 +119,7 @@ public class SoundController : Singleton<SoundController>
         changeTo.volume = 0f;
         changeTo.Play();
         currentBGMusic.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
+        // StartCoroutine(StopMusicDelay(currentBGMusic.clip.length));
         changeTo.DOFade(soundSettings.BGMVolume, soundSettings.fadeInTime).SetEase(Ease.OutQuad);
     }
 
@@ -128,27 +137,32 @@ public class SoundController : Singleton<SoundController>
         mainMenuSource.Play();
     }
 
-    public void TurnMenuMusicOff() =>
-        mainMenuSource.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
-   
-    
+    public void TurnMenuMusicOff()
+    {
+        mainMenuSource.volume = 0f;
+        mainMenuSource.Pause();
+        // mainMenuSource.DOFade(0f, soundSettings.fadeoutTime).SetEase(Ease.OutQuad);
+        // StopMusicDelay(soundSettings.fadeoutTime);
+    }
+
     public void PlaySoundEffect(AudioClip audioClip)
     {
         if (audioClip == null) return;
         soundEffectsSource.PlayOneShot(audioClip, soundSettings.sfxVolume);
     }
 
-    public void PlayBoundedSoundEffect(AudioClip audioClip, int bound)
+    public void StopMusic()
     {
-        if (boundedEffectCounter > bound) return;
-        boundedEffectCounter++;
-        soundEffectsSource.PlayOneShot(audioClip, soundSettings.sfxVolume);
-        StartCoroutine(DelayRoar(audioClip));
+        mainMenuSource.Play();
+        dayMusicSource.Pause();
+        nightMusicSource.Pause();
+        eclipseMusicSource.Pause();
+        ambientMusicSource.Pause();
     }
 
-    private IEnumerator DelayRoar(AudioClip audioClip)
+    private IEnumerator StopMusicDelay(float waitTime)
     {
-        yield return new WaitForSeconds(audioClip.length);
-        boundedEffectCounter--;
+        yield return new WaitForSeconds(waitTime);
+        mainMenuSource.Pause();
     }
 }

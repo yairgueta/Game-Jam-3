@@ -43,6 +43,7 @@ namespace Enemies
 
         private float stuckTimer;
         private bool canRoar = true;
+        private int roarSFXCounter = 0;
         private float fadeSpeed = 0.35f;
         private float maxFadeValue = 0.65f;
         private static readonly int EdgeID = Shader.PropertyToID("edge");
@@ -146,7 +147,21 @@ namespace Enemies
         {
             if (mode == Mode.Dying) return;
             currentAttacked?.TakeDamage(enemySettings.attackPower);
-            soundController.PlayBoundedSoundEffect(soundController.soundSettings.monsterAttack, 2);
+            PlayBoundedSoundEffect(soundController.soundSettings.monsterAttack);
+        }
+        
+        private void PlayBoundedSoundEffect(AudioClip audioClip)
+        {
+            if (roarSFXCounter > 2) return;
+            roarSFXCounter++;
+            soundController.PlaySoundEffect(audioClip);
+            StartCoroutine(DelayRoar(audioClip));
+        }
+        
+        private IEnumerator DelayRoar(AudioClip audioClip)
+        {
+            yield return new WaitForSeconds(audioClip.length);
+            roarSFXCounter--;
         }
         
         public void TakeDamage(float damage)

@@ -24,20 +24,12 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameEvent onPlayerDeath;
 
     public UIManager UIManagerInstance;
-    public int cyclesNum { get; private set; }
-    
-    [SerializeField] private Ease ease;
-    [SerializeField] private float duration;
-    private Tween tween;
-    private Vector3 originScale;
-
     private WaitingList waitingList;
     
     protected override void Awake()
     {
         base.Awake();
         waitingList = new WaitingList(()=>onFinishLoading.Raise());
-        // SceneManager.LoadScene(2);
     }
     
     private void Start()
@@ -53,25 +45,16 @@ public class GameManager : Singleton<GameManager>
         // TODO: Check if things still good without this line ^^^^^^
         
         Time.timeScale = 0;
-        // CyclesManager.Instance.DaySettings.OnCycleStart.Register(gameObject, AddCycle);
-        // originScale = msg.transform.localScale;
-        // msg.transform.localScale = Vector3.zero;
     }
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RestartGame();
-        }
-
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             UIManagerInstance.SetPauseMenu();
         }
     }
-
-
+    
     public void StartGame()
     {
         onStartGame.Raise();
@@ -81,9 +64,9 @@ public class GameManager : Singleton<GameManager>
 
     public void Lose()
     {
-        Time.timeScale = 0; // TODO slow down slowly until 0??
-        UIManagerInstance.RaiseDeathWindow();
         onLose.Raise();
+        Time.timeScale = 0; // TODO slow down slowly until 0??
+        UIManagerInstance.RaiseLoseScreen();
     }
     
     public void RestartGame()

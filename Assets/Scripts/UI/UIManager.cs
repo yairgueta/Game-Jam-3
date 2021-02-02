@@ -99,7 +99,7 @@ namespace UI
             msg.rectTransform.anchoredPosition = originalAnchor;
             var onScreenDuration = 1f;
             tween = DOTween.Sequence()
-                .Append(msg.rectTransform.DOAnchorPosY(-30, onScreenDuration).SetDelay(1f))
+                .Append(msg.rectTransform.DOAnchorPosY(originalAnchor.y * .4f, onScreenDuration).SetDelay(1f))
                 .Join(DOTween.ToAlpha(()=>msg.color, c => msg.color = c, 0, duration).SetDelay(onScreenDuration-duration));
 
         }

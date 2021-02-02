@@ -10,7 +10,7 @@ namespace Selections
     {
         public Action onThisMouseEnter, onThisMouseExit;
         public Action onThisSelected;
-        public Action onThisEnabled;
+        public Action onThisEnabled, onThisDisabled;
         public float DragTime { get; private set; }
         public bool IsMouseOver { get; private set; }
         [Tooltip("keep null for default")] [SerializeField] private Material overMaterial = null;
@@ -71,6 +71,7 @@ namespace Selections
         {
             spriteRenderer.material = originalMaterial;
             DragTime = -1;
+            onThisDisabled?.Invoke();
         }
 
         private void OnEnable()

@@ -29,6 +29,7 @@ namespace Sheep
             sheepSelectable.onThisMouseEnter += () => collectionDisplayBG.enabled = true;
             sheepSelectable.onThisMouseExit += () => collectionDisplayBG.enabled = false;
             sheepSelectable.onThisSelected += () => StartCoroutine(BeingCollectedCoroutine());
+            sheepSelectable.onThisDisabled += () => collectionDisplayBG.enabled = false;
         }
         
         

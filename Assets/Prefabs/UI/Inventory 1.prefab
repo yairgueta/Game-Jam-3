@@ -554,7 +554,7 @@ PrefabInstance:
     - target: {fileID: 5820594419815318817, guid: a55d85d3b577a490ab829914db1e86e8, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: ded759be7ebff438e84d31e2e95ec7b8, type: 2}
+      objectReference: {fileID: 11400000, guid: 292182d5d9676450cb895a1a1845ecb1, type: 2}
     - target: {fileID: 5820594419815318817, guid: a55d85d3b577a490ab829914db1e86e8, type: 3}
       propertyPath: m_sharedMaterial
       value: 

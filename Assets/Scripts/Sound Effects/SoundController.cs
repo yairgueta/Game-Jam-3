@@ -85,10 +85,14 @@ public class SoundController : Singleton<SoundController>
     private void ChangeBGVolume()
     {
         mainMenuSource.volume = soundSettings.BGMVolume;
-        dayMusicSource.volume = soundSettings.BGMVolume;
-        nightMusicSource.volume = soundSettings.BGMVolume;
-        eclipseMusicSource.volume = soundSettings.BGMVolume;
-        ambientMusicSource.volume = soundSettings.BGMVolume;
+        if (changeTo != null)
+        {
+            changeTo.volume = soundSettings.BGMVolume;
+        }
+        else if (currentBGMusic != null)
+        {
+            currentBGMusic.volume = soundSettings.BGMVolume;
+        }
     }
 
     private void StartMusic(AudioSource source)
@@ -102,7 +106,7 @@ public class SoundController : Singleton<SoundController>
 
     private void PlayBGMusic(AudioSource source)
     {
-        if (currentBGMusic == null)
+        if (currentBGMusic == null || !currentBGMusic.isPlaying)
         {
             StartMusic(source);
             return;

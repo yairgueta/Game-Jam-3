@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: LeaderSheep
-  defaultCursor: {fileID: 2800000, guid: dcf75be042f41544d8c5357f02dffd52, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 5248550e4aa4e466eb22e80172fc4497, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
@@ -261,7 +261,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: e344fde4541907241b938ff63473324c, type: 3}
+      m_Icon: {fileID: 2800000, guid: a6f38cc6d022243bb84bad59dd2829ee, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

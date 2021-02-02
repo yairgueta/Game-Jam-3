@@ -18,18 +18,18 @@ namespace UI
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private GameObject loseScreen;
         
-        private TMP_Text numOfCycles;
+        [SerializeField] private TMP_Text numOfCycles;
         private Tween tween;
         [SerializeField] private TMP_Text msg;
         [SerializeField] private float duration;
-        private Vector3 originalScale;
-
+        private Color originalColor;
+        private Vector2 originalAnchor;
 
         [Header("UI Triggers")] [SerializeField]
         private GameEvent triggerBlur;
 
         [SerializeField] private GameEvent triggerUnblur;
-
+        
 
         private void OnEnable()
         {
@@ -44,8 +44,6 @@ namespace UI
 
         private void Start()
         {
-            numOfCycles = GetComponentInChildren<TMP_Text>();
-            
             mainMenu.SetActive(true);
             tutorial.SetActive(false);
             mainUI.SetActive(false);
@@ -67,9 +65,12 @@ namespace UI
             
             loseScreen.GetComponent<LoseScreen>().InitButtons(GameManager.Instance.RestartGame);
             pauseMenu.GetComponent<PauseMenu>().InitReferences(GameManager.Instance.RestartGame, SetPauseMenu);
-            originalScale = msg.transform.localScale;
-            msg.transform.localScale = Vector3.zero;
-            
+            // originalScale = msg.transform.localScale;
+            originalColor = msg.color;
+            originalAnchor = msg.rectTransform.anchoredPosition;
+            var color = originalColor;
+            color.a = 0;
+            msg.color = color;
         }
 
         public void SetPauseMenu()
@@ -87,16 +88,20 @@ namespace UI
             mainUI.SetActive(false);
             triggerBlur.Raise();
             loseScreen.SetActive(true);
-            numOfCycles.text = CyclesManager.Instance.DaysCount.ToString();
+            numOfCycles.text = (CyclesManager.Instance.cyclesCount/3).ToString();
         }
 
         public void DisplayMsg(String message)
         {
             msg.text = message;
             tween?.Kill(true);
-            tween = DOTween.Sequence()
-                .Append(msg.transform.DOScale(originalScale, duration))
-                .Append(msg.transform.DOScale(Vector3.zero, duration).SetDelay(1f));
+            msg.color = originalColor;
+            msg.rectTransform.anchoredPosition = originalAnchor;
+            var onScreenDuration = 1f;
+            DOTween.Sequence()
+                .Append(msg.rectTransform.DOAnchorPosY(-30, onScreenDuration))
+                .Join(DOTween.ToAlpha(()=>msg.color, c => msg.color = c, 0, duration).SetDelay(onScreenDuration-duration));
+
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Cycles
         private CycleObject currentCycle;
         private Queue<CycleObject> cyclesQueue;
         private float timer;
-        private int cyclesCount;
+        public int cyclesCount = -1;
 
         private void OnEnable()
         {
@@ -59,7 +59,6 @@ namespace Cycles
             currentCycle = cyclesQueue.Dequeue();
             cyclesQueue.Enqueue(currentCycle);
             timer = currentCycle.Duration;
-            print(currentCycle.name);
             currentCycle.OnCycleStart.Raise();
         }
 

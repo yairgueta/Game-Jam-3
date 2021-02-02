@@ -3,6 +3,7 @@ using Cycles;
 using DG.Tweening;
 using Events;
 using Player;
+using Sound_Effects;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;

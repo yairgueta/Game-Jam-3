@@ -1,3 +1,4 @@
+using Sound_Effects;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,8 +13,6 @@ namespace UI
             var sliders = GetComponentsInChildren<Slider>();
             sliders[0].value = SoundController.Instance.soundSettings.BGMVolume;
             sliders[1].value = SoundController.Instance.soundSettings.sfxVolume;
-            // sliders[0].value = SoundController.Instance.soundSettings.initialVolumes;
-            // sliders[1].value = SoundController.Instance.soundSettings.initialVolumes;
         }
 
         public void Play()

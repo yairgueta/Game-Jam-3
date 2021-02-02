@@ -18,7 +18,7 @@ namespace UI
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private GameObject loseScreen;
         
-        private TMP_Text numOfCycles;
+        [SerializeField] private TMP_Text numOfCycles;
         private Tween tween;
         [SerializeField] private TMP_Text msg;
         [SerializeField] private float duration;
@@ -29,7 +29,7 @@ namespace UI
         private GameEvent triggerBlur;
 
         [SerializeField] private GameEvent triggerUnblur;
-
+        
 
         private void OnEnable()
         {
@@ -44,8 +44,6 @@ namespace UI
 
         private void Start()
         {
-            numOfCycles = GetComponentInChildren<TMP_Text>();
-            
             mainMenu.SetActive(true);
             tutorial.SetActive(false);
             mainUI.SetActive(false);
@@ -90,7 +88,7 @@ namespace UI
             mainUI.SetActive(false);
             triggerBlur.Raise();
             loseScreen.SetActive(true);
-            numOfCycles.text = CyclesManager.Instance.DaysCount.ToString();
+            numOfCycles.text = (CyclesManager.Instance.cyclesCount/3).ToString();
         }
 
         public void DisplayMsg(String message)

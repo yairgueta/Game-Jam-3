@@ -15,7 +15,7 @@ MonoBehaviour:
   rounds:
   - activeSpawners: 7
     enemiesCount: 7
-    timeToSpawn: 20
+    timeToSpawn: 15
     spawnType: 0
   - activeSpawners: 2
     enemiesCount: 8

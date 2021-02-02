@@ -23,7 +23,7 @@ namespace Cycles
         private CycleObject currentCycle;
         private Queue<CycleObject> cyclesQueue;
         private float timer;
-        private int cyclesCount;
+        public int cyclesCount = -1;
 
         private void OnEnable()
         {

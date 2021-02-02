@@ -25,7 +25,6 @@ namespace Cycles
         }
 
         public Sprite UIActiveSprite => uiActiveSprite;
-        public float UIFillerThreshold => fillerThreshold;
 
         [Header("General Settings")]
         [SerializeField] private float duration;
@@ -44,7 +43,6 @@ namespace Cycles
 
         [Header("UI")] 
         [SerializeField] private Sprite uiActiveSprite;
-        [SerializeField] private float fillerThreshold;
     }
     public enum CyclesType
     {

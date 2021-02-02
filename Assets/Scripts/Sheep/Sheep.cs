@@ -36,7 +36,8 @@ namespace Sheep
         private static readonly int StatusAnimatorID = Animator.StringToHash("Status");
         private WaitForSeconds waitWhileShearing;
 
-        private bool PlayerMaxMana => PlayerController.PlayerSettings.maxMana - PlayerController.PlayerSettings.curMana < Mathf.Epsilon;
+        private bool PlayerMaxMana =>
+            PlayerController.PlayerSettings.maxMana == PlayerController.PlayerSettings.curMana;
         
         [Flags] private enum Status
         {
@@ -56,7 +57,7 @@ namespace Sheep
             waitWhileShearing = new WaitForSeconds(sheepSettings.fillTime);
             noiseVar = new Vector2(Random.value, Random.value);
             sheepLight.enabled = false;
-            PlayerController.PlayerSettings.onManaChange.Register(gameObject, RefreshSelectableInteractable);
+            PlayerController.PlayerSettings.onManaChange.Register(gameObject, o => RefreshSelectable());
             RandomizeAnimationSpeed();
         }
 
@@ -70,14 +71,6 @@ namespace Sheep
                 var noise = Mathf.PerlinNoise(Time.time*flickerSpeed + noiseVar.x, noiseVar.y);
                 sheepLight.intensity = Mathf.Lerp(intensityRange.x, intensityRange.y, noise);
             }
-        }
-
-        
-
-        private void RefreshSelectableInteractable(object o)
-        {
-            if (ThisSelectable.enabled && PlayerMaxMana) ThisSelectable.enabled = false;
-            if (!ThisSelectable.enabled && !PlayerMaxMana) ThisSelectable.enabled = true & (status & Status.Glow) != 0;
         }
 
         private void OnEnable()
@@ -111,8 +104,6 @@ namespace Sheep
             PlayerController.PlayerSettings.UpdateMana(sheepSettings.manaAddition);
             status |= Status.Empty;
             RefreshSprite();
-            // collectionParticle.Stop();
-            // collectionDisplay.fillAmount = 0;
             ThisSelectable.enabled = false;
             sheepSettings.OnShear.Raise();
             StartCoroutine(WaitWhileShearing());
@@ -134,9 +125,12 @@ namespace Sheep
             sheepSettings.OnRefill.Raise();
             RefreshSprite();
         }
-
         
-
+        private void RefreshSelectable()
+        {
+            ThisSelectable.enabled = (!PlayerMaxMana) && (status & Status.Glow) != 0 && (status & Status.Empty) == 0;
+        }
+        
         private void RefreshSprite()
         {
             animator.SetInteger(StatusAnimatorID, (int) status);
@@ -145,8 +139,8 @@ namespace Sheep
             if ((status & Status.Awake) == 0) sleepingParticle.Play();
             else sleepingParticle.Stop();
             if ((status & Status.Empty) == 0 && (status & Status.Glow) != 0) sheepLight.enabled = true;
-
-            ThisSelectable.enabled = (status & Status.Glow) != 0 && (status & Status.Empty) == 0;
+            
+            RefreshSelectable();
         }
 
         public void SetGlow(bool toGlow)

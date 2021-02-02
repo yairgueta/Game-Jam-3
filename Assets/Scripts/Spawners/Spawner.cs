@@ -35,13 +35,18 @@ namespace Spawners
 
         private void Start()
         {
+            if (useOverFrameSpawning)
+            {
+                gameManagerWaitingListOnFinishTask = GameManager.Instance.RegisterToWaitingList();
+                // print(name);
+            }
+            
             objectPools = new ObjectPool[pooledPrefabs.Length];
             for (int i = 0; i < pooledPrefabs.Length; i++)
                 objectPools[i] = ObjectPoolManager.Instance.GetObjectPool(pooledPrefabs[i]);
             
+            
             Spawn(startingAmount, useOverFrameSpawning);
-            if (useOverFrameSpawning)
-                gameManagerWaitingListOnFinishTask = GameManager.Instance.RegisterToWaitingList();
         }
 
         private Spawnable PoolRandomPrefab()

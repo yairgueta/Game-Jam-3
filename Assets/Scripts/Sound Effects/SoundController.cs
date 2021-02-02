@@ -30,7 +30,6 @@ namespace Sound_Effects
             InitializeAudioSources();
             InitializeBGClips();
             RegisterToEvents();
-            // PlayAmbient();
             PlayMenuMusic();
             soundSettings.onVolumeChange += ChangeBGVolume;
             base.Awake();
@@ -176,11 +175,6 @@ namespace Sound_Effects
         {
             yield return new WaitForSeconds(waitTime);
             mainMenuSource.Pause();
-        }
-
-        private void OnGUI()
-        {
-            GUILayout.Label($"sfx:{soundSettings.sfxVolume} bgm: {soundSettings.BGMVolume}");
         }
     }
 }

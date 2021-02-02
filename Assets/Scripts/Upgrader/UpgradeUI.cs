@@ -7,6 +7,7 @@ using Selections;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Selectable = Selections.Selectable;
 
@@ -36,9 +37,11 @@ namespace Upgrader
         
         private TMP_Text woodAmount;
         private TMP_Text rockAmount;
-        
+
+        private bool canUpgrade;
         private void Start()
         {
+            canUpgrade = true;
             GetComponent<Canvas>().worldCamera = Camera.main;
             btnText = btn.GetComponentInChildren<TMP_Text>();
 
@@ -104,6 +107,11 @@ namespace Upgrader
             
             void BtnOnClick()
             {
+                if (!canUpgrade)
+                {
+                    GameManager.Instance.DisplayMsg("out of resources");
+                    return;
+                }
                 onClick();
                 btn.onClick.RemoveListener(BtnOnClick);
                 ClosePanel();
@@ -131,26 +139,20 @@ namespace Upgrader
 
             woodAmount.color = Color.black;
             rockAmount.color = Color.black;
-
-            bool outOfResources = false;
+            canUpgrade = true;
+            
             if (inventory[ResourceType.Wood] < woods)
             {
                 woodAmount.color = Color.red;
-                btn.interactable = false;
-                outOfResources = true;
+                canUpgrade = false;
             }
 
             if (inventory[ResourceType.Rock] < rocks)
             {
                 rockAmount.color = Color.red;
-                btn.interactable = false;
-                outOfResources = true;
+                canUpgrade = false;
             }
 
-            if (outOfResources)
-            {
-                GameManager.Instance.DisplayMsg("out of resources");
-            }
         }
 
         

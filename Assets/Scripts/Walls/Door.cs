@@ -20,13 +20,11 @@ namespace Walls
         private float overallDistance;
 
         private Tween tween;
-        private SoundController soundController;
         
         private void Start()
         {
             startY = innerDoor.position.y;
             overallDistance = startY - endY;
-            soundController = FindObjectOfType<SoundController>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -58,7 +56,7 @@ namespace Walls
 
         private void PlaySounds()
         {
-            soundController.PlaySoundEffect(soundController.soundSettings.gate);
+            SoundController.Instance.PlaySoundEffect(SoundController.Instance.soundSettings.gate);
         }
     }
 }

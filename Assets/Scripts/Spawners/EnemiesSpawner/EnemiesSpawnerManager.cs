@@ -48,11 +48,11 @@ namespace Spawners.EnemiesSpawner
             switch (CurrentRound.spawnType)
             {
                 case SpawnType.OneAfterOne:
-                    var time = CurrentRound.timeToSpawn / currentActiveSpawners.Count;
+                    // var time = CurrentRound.timeToSpawn / currentActiveSpawners.Count;
+                    var time = CurrentRound.timeToSpawn;
                     StartCoroutine(SpawnOneAfterOne(count, time));
                     break;
                 case SpawnType.AllTogether:
-                    
                     currentActiveSpawners.ForEach(spnr => spnr.SpawnMany(count, CurrentRound.timeToSpawn));
                     break;
             }

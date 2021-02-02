@@ -37,8 +37,9 @@ namespace Spawners.EnemiesSpawner
             WaitForSeconds delayBetweenEachSpawn = new WaitForSeconds(totalTimeToSpawn / (count - 1));
             for (var i = 0; i < count; i++)
             {
-                Spawn();
                 yield return delayBetweenEachSpawn;
+                Spawn();
+                Debug.Log("1");
             }
         }
         public void SpawnMany(int count, float totalTimeToSpawn)

@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28f9d7eca624c12830ccaeeda4d7365, type: 3}
+  m_Name: rounds
+  m_EditorClassIdentifier: 
+  rounds:
+  - activeSpawners: 2
+    enemiesCount: 6
+    timeToSpawn: 30
+    spawnType: 0
+  - activeSpawners: 2
+    enemiesCount: 6
+    timeToSpawn: 60
+    spawnType: 0
+  - activeSpawners: 5
+    enemiesCount: 4
+    timeToSpawn: 3
+    spawnType: 0
+  - activeSpawners: 2
+    enemiesCount: 8
+    timeToSpawn: 13
+    spawnType: 0
+  - activeSpawners: 7
+    enemiesCount: 10
+    timeToSpawn: 10
+    spawnType: 0
+  - activeSpawners: 7
+    enemiesCount: 15
+    timeToSpawn: 4
+    spawnType: 0
+  - activeSpawners: 3
+    enemiesCount: 8
+    timeToSpawn: 3
+    spawnType: 0
+  - activeSpawners: 3
+    enemiesCount: 8
+    timeToSpawn: 3
+    spawnType: 1
+  - activeSpawners: 6
+    enemiesCount: 8
+    timeToSpawn: 2
+    spawnType: 0
+  - activeSpawners: 5
+    enemiesCount: 9
+    timeToSpawn: 1.6
+    spawnType: 0
+  - activeSpawners: 7
+    enemiesCount: 9
+    timeToSpawn: 1.6
+    spawnType: 0
+  - activeSpawners: 7
+    enemiesCount: 9
+    timeToSpawn: 2
+    spawnType: 1
+  - activeSpawners: 7
+    enemiesCount: 13
+    timeToSpawn: 2
+    spawnType: 0
+  - activeSpawners: 7
+    enemiesCount: 19
+    timeToSpawn: 5
+    spawnType: 0
+  - activeSpawners: 7
+    enemiesCount: 19
+    timeToSpawn: 3
+    spawnType: 1

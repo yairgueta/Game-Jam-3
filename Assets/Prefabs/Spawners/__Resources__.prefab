@@ -190,7 +190,7 @@ MonoBehaviour:
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 16
+  startingAmount: 25
   usePerlinNoise: 0
   percentageToSpawn:
   - 0.76
@@ -389,9 +389,9 @@ MonoBehaviour:
   startingAmount: 15
   usePerlinNoise: 0
   percentageToSpawn:
-  - 0
-  - 0.73
-  - 0.26999998
+  - 0.05
+  - 0.53999996
+  - 0.41000003
 --- !u!1 &907137168
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +778,7 @@ MonoBehaviour:
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 55
+  startingAmount: 65
   usePerlinNoise: 0
   percentageToSpawn:
   - 0.86
@@ -876,7 +876,7 @@ MonoBehaviour:
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 25
+  startingAmount: 30
   usePerlinNoise: 0
   percentageToSpawn:
   - 0.77
@@ -1068,14 +1068,16 @@ MonoBehaviour:
   pooledPrefabs:
   - {fileID: 2235701822541872045, guid: ce832a0df268a43eda078a02e0454e52, type: 3}
   - {fileID: 962801463186907189, guid: 424c960cccdac4649907119b6b788d96, type: 3}
+  - {fileID: 7408568662195309065, guid: 45eb40fe04f7c400fa777e1c8ab9ee22, type: 3}
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 20
+  startingAmount: 10
   usePerlinNoise: 0
   percentageToSpawn:
-  - 0.1
-  - 0.9
+  - 0.11
+  - 0.61
+  - 0.27999997
 --- !u!1 &1822563993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,7 +1170,7 @@ MonoBehaviour:
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 20
+  startingAmount: 30
   usePerlinNoise: 0
   percentageToSpawn:
   - 0
@@ -1364,7 +1366,7 @@ MonoBehaviour:
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 16
+  startingAmount: 25
   usePerlinNoise: 0
   percentageToSpawn:
   - 0.77
@@ -1462,7 +1464,7 @@ MonoBehaviour:
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 70
+  startingAmount: 80
   usePerlinNoise: 0
   percentageToSpawn:
   - 0.84
@@ -1560,7 +1562,7 @@ MonoBehaviour:
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 50
+  startingAmount: 70
   usePerlinNoise: 0
   percentageToSpawn:
   - 0.82

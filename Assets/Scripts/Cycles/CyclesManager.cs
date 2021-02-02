@@ -59,6 +59,7 @@ namespace Cycles
             currentCycle = cyclesQueue.Dequeue();
             cyclesQueue.Enqueue(currentCycle);
             timer = currentCycle.Duration;
+            print(currentCycle.name);
             currentCycle.OnCycleStart.Raise();
         }
 
@@ -70,7 +71,7 @@ namespace Cycles
         //     sb.Append(currentCycle.name).Append(": ").Append(Math.Round(timer, 2));
         //     GUI.Label(r, sb.ToString());
         // }
-        
+        //
 
 
         public float TimePercentage => 1 - timer / currentCycle.Duration;

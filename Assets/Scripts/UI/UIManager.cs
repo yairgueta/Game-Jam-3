@@ -66,7 +66,6 @@ namespace UI
             };
             
             loseScreen.GetComponent<LoseScreen>().InitButtons(GameManager.Instance.RestartGame);
-
             pauseMenu.GetComponent<PauseMenu>().InitReferences(GameManager.Instance.RestartGame, SetPauseMenu);
             originalScale = msg.transform.localScale;
             msg.transform.localScale = Vector3.zero;

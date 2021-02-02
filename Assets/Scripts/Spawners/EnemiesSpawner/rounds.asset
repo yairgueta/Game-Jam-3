@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rounds:
   - activeSpawners: 7
-    enemiesCount: 1
-    timeToSpawn: 10
+    enemiesCount: 6
+    timeToSpawn: 20
     spawnType: 0
   - activeSpawners: 2
     enemiesCount: 6
@@ -38,7 +38,7 @@ MonoBehaviour:
     timeToSpawn: 20
     spawnType: 0
   - activeSpawners: 3
-    enemiesCount: 16
+    enemiesCount: 3
     timeToSpawn: 15
     spawnType: 0
   - activeSpawners: 7

@@ -1,5 +1,6 @@
 using System;
 using Cycles;
+using DG.Tweening;
 using Events;
 using Player;
 using TMPro;
@@ -18,6 +19,10 @@ namespace UI
         [SerializeField] private GameObject loseScreen;
         
         private TMP_Text numOfCycles;
+        private Tween tween;
+        [SerializeField] private TMP_Text msg;
+        [SerializeField] private float duration;
+        private Vector3 originalScale;
 
 
         [Header("UI Triggers")] [SerializeField]
@@ -61,8 +66,10 @@ namespace UI
             };
             
             loseScreen.GetComponent<LoseScreen>().InitButtons(GameManager.Instance.RestartGame);
-
             pauseMenu.GetComponent<PauseMenu>().InitReferences(GameManager.Instance.RestartGame, SetPauseMenu);
+            originalScale = msg.transform.localScale;
+            msg.transform.localScale = Vector3.zero;
+            
         }
 
         public void SetPauseMenu()
@@ -81,6 +88,15 @@ namespace UI
             triggerBlur.Raise();
             loseScreen.SetActive(true);
             numOfCycles.text = CyclesManager.Instance.DaysCount.ToString();
+        }
+
+        public void DisplayMsg(String message)
+        {
+            msg.text = message;
+            tween?.Kill(true);
+            tween = DOTween.Sequence()
+                .Append(msg.transform.DOScale(originalScale, duration))
+                .Append(msg.transform.DOScale(Vector3.zero, duration).SetDelay(1f));
         }
     }
 }

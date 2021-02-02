@@ -930,7 +930,7 @@ MonoBehaviour:
   BGMSlider: {fileID: 5654815889696334741}
   SFXSlider: {fileID: 4416371397734325375}
   mainMenuButton: {fileID: 4137061631546253531}
-  bgMenuButton: {fileID: 0}
+  bgMenuButton: {fileID: 2753361622496696957}
   exitPauseMenu: {fileID: 808516937935986255}
 --- !u!1 &4137061632271477897
 GameObject:

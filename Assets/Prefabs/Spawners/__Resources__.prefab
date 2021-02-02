@@ -1769,7 +1769,7 @@ MonoBehaviour:
   maxAmount: 0
   useOverFrameSpawning: 1
   overFrameTimeout: 0.5
-  startingAmount: 20
+  startingAmount: 40
   usePerlinNoise: 0
   percentageToSpawn:
   - 0.743

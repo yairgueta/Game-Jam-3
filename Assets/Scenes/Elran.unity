@@ -3923,6 +3923,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bushes Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 2587891287981481740, guid: b221c3529c02f4945a7b810718473f77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b221c3529c02f4945a7b810718473f77, type: 3}
 --- !u!1001 &3040298473286772277
@@ -4044,6 +4048,10 @@ PrefabInstance:
     - target: {fileID: 4399592865015884429, guid: 74eb9bce5fe984f458ed4fe785488957, type: 3}
       propertyPath: m_Name
       value: Tree Spawner1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4399592865015884429, guid: 74eb9bce5fe984f458ed4fe785488957, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74eb9bce5fe984f458ed4fe785488957, type: 3}

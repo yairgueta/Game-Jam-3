@@ -215,6 +215,50 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 1987, y: 3}
+  - name: 4_back
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1976
+      height: 1480
+    spriteID: 7391ea0c1cfd840bb94925fe2cc21f9c
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -762, y: -496}
+  - name: 3_Next
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1492
+      width: 1976
+      height: 1480
+    spriteID: b53453db814994058bf9c9e4b8d4ddcf
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -762, y: 992}
   rigSpriteImportData:
   - name: 4_Play
     originalName: 
@@ -608,14 +652,14 @@ ScriptedImporter:
     spriteName: 4_back
     isGroup: 0
     parentIndex: -1
-    spriteID: b782fe22a375846fc82e98632e25420a
+    spriteID: 7391ea0c1cfd840bb94925fe2cc21f9c
     layerID: 60
     mosaicPosition: {x: 4, y: 4}
   - name: 3_Next
     spriteName: 3_Next
     isGroup: 0
     parentIndex: -1
-    spriteID: 9e74c74aa482648a9ae06613b9982258
+    spriteID: b53453db814994058bf9c9e4b8d4ddcf
     layerID: 91
     mosaicPosition: {x: 4, y: 1492}
   - name: 2_back

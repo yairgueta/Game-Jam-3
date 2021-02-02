@@ -26,7 +26,6 @@ namespace UI
                     activeImage.sprite = cycle.UIActiveSprite;
                     currentCycle = (int)cycle.CycleType;
                     allPercentage = (currentCycle == 2 ? 1 : fillThreshold[currentCycle + 1]) - fillThreshold[currentCycle];
-                    print(allPercentage);
                 });
             }
         }

@@ -106,7 +106,7 @@ public class SoundController : Singleton<SoundController>
 
     private void PlayBGMusic(AudioSource source)
     {
-        if (currentBGMusic == null)
+        if (currentBGMusic == null || !currentBGMusic.isPlaying)
         {
             StartMusic(source);
             return;

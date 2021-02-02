@@ -2553,7 +2553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_RootOrder
@@ -2561,7 +2561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2569,7 +2569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_AnchorMin.y
@@ -2577,11 +2577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 93.102
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2613,11 +2613,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -142
+      value: -185.68
       objectReference: {fileID: 0}
     - target: {fileID: 1250260700884803812, guid: 309afb279efe8e64bb97ed5e5753ddf3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3028,6 +3028,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2128080347, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583978824210871438, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583978824707575362, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4583978824794404653, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
       propertyPath: m_Name
       value: Sound Controller
@@ -3074,6 +3086,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4583978824794404654, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583978825106099758, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
+      propertyPath: m_Volume
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5901980020295050244, guid: 60cb8ab49046aea49a5cd6e8f69871e2, type: 3}
@@ -3360,7 +3376,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1330911231}
   loseScreen: {fileID: 140072490}
   msg: {fileID: 531358464}
-  duration: 0.1
+  duration: 0.6
   triggerBlur: {fileID: 11400000, guid: e7687571e06804262862ab5b1e6fb98a, type: 2}
   triggerUnblur: {fileID: 11400000, guid: 30673a6d43ed542e39b147a931e42d91, type: 2}
 --- !u!1001 &2024106063

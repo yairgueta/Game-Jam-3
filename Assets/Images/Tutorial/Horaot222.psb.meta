@@ -1,7 +1,22 @@
 fileFormatVersion: 2
 guid: 1137db27530981b49bdad6236b29a8a0
 ScriptedImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2983536017070771527
+    second: Horaot222_0
+  - first:
+      213: -873650059436076891
+    second: Horaot222_1
+  - first:
+      213: -3955081662271525522
+    second: Horaot222_2
+  - first:
+      213: 1286037292904326516
+    second: Horaot222_3
+  - first:
+      213: 728086471429869688
+    second: Horaot222_4
   externalObjects: {}
   serializedVersion: 2
   userData: 
@@ -89,7 +104,117 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
-  mosaicSpriteImportData: []
+  mosaicSpriteImportData:
+  - name: Horaot222_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3
+      y: 2979
+      width: 274
+      height: 170
+    spriteID: 9b2b9e7ccc95896d0800000000000000
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3, y: 2979}
+  - name: Horaot222_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3
+      y: 1491
+      width: 1978
+      height: 1482
+    spriteID: 5a0505556eb20e3f0800000000000000
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3, y: 1491}
+  - name: Horaot222_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1987
+      y: 1491
+      width: 1978
+      height: 1482
+    spriteID: e6de4aede2abc19c0800000000000000
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1987, y: 1491}
+  - name: Horaot222_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3
+      y: 3
+      width: 1978
+      height: 1482
+    spriteID: 475a77baa1ce8d110800000000000000
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3, y: 3}
+  - name: Horaot222_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1987
+      y: 3
+      width: 1978
+      height: 1482
+    spriteID: 8705857c9ceaa1a00800000000000000
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1987, y: 3}
   rigSpriteImportData:
   - name: 4_Play
     originalName: 
@@ -421,12 +546,45 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 1173, y: -533}
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
-  importedTextureWidth: 1024
+  importedTextureWidth: 2048
   importedTextureHeight: 2048
   documentSize: {x: 3508, y: 2480}
   paperDollMode: 0
@@ -434,11 +592,46 @@ ScriptedImporter:
   spriteCategoryList:
     categories: []
   textureActualWidth: 4096
-  textureActualHeight: 8192
+  textureActualHeight: 4096
   spritePackingTag: 
   resliceFromLayer: 0
-  characterMode: 1
-  mosaicPSDLayers: []
+  characterMode: 0
+  mosaicPSDLayers:
+  - name: 4_Play
+    spriteName: 4_Play
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5d7f87aa032ec4d769059c1b758428e3
+    layerID: 58
+    mosaicPosition: {x: 4, y: 2980}
+  - name: 4_back
+    spriteName: 4_back
+    isGroup: 0
+    parentIndex: -1
+    spriteID: b782fe22a375846fc82e98632e25420a
+    layerID: 60
+    mosaicPosition: {x: 4, y: 4}
+  - name: 3_Next
+    spriteName: 3_Next
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9e74c74aa482648a9ae06613b9982258
+    layerID: 91
+    mosaicPosition: {x: 4, y: 1492}
+  - name: 2_back
+    spriteName: 2_back
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 501d3fc4e52b2422486ea5cc710f1cb9
+    layerID: 65
+    mosaicPosition: {x: 1988, y: 4}
+  - name: 1_next
+    spriteName: 1_next
+    isGroup: 0
+    parentIndex: -1
+    spriteID: dab94a661b154407ea92a76d1fc7f085
+    layerID: 17
+    mosaicPosition: {x: 1988, y: 1492}
   rigPSDLayers:
   - name: 4_Play
     spriteName: 4_Play

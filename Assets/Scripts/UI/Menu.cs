@@ -8,11 +8,11 @@ namespace UI
     public class Menu : MonoBehaviour
     {
         public UnityAction onClickedPlay;
+        [SerializeField] private Slider BGMSlider, SFXSlider;
         private void Start()
         {
-            var sliders = GetComponentsInChildren<Slider>();
-            sliders[0].value = SoundController.Instance.soundSettings.BGMVolume;
-            sliders[1].value = SoundController.Instance.soundSettings.sfxVolume;
+            BGMSlider.value = SoundController.Instance.soundSettings.BGMVolume;
+            SFXSlider.value = SoundController.Instance.soundSettings.sfxVolume;
         }
 
         public void Play()

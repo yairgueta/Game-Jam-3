@@ -5,6 +5,7 @@ using DG.Tweening;
 using Events;
 using Pathfinding;
 using Player;
+using Sound_Effects;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 

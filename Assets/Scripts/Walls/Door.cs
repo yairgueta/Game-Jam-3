@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using Player;
+using Sound_Effects;
 using UnityEngine;
 
 namespace Walls

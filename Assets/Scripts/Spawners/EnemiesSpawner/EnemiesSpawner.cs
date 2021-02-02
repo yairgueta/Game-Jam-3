@@ -39,7 +39,6 @@ namespace Spawners.EnemiesSpawner
             {
                 yield return delayBetweenEachSpawn;
                 Spawn();
-                Debug.Log("1");
             }
         }
         public void SpawnMany(int count, float totalTimeToSpawn)

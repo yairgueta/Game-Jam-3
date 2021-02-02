@@ -40,5 +40,5 @@ MonoBehaviour:
   initialVolumes: 0.8
   sfxVolume: 0
   ambientVolume: 0.03
-  fadeoutTime: 6
+  fadeoutTime: 4
   fadeInTime: 8

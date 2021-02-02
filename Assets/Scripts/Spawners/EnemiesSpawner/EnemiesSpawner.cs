@@ -10,11 +10,11 @@ namespace Spawners.EnemiesSpawner
     {
 
         [SerializeField] private GameObject enemyPrefab;
-        private ObjectPool enemiesPool;
+        private static ObjectPool _enemiesPool;
 
-        private void OnDisable()
+        private void OnDestroy()
         {
-            enemiesPool.UnpoolAll();
+            _enemiesPool.UnpoolAll();
         }
 
         public EnemiesSpawnerMinimapIcon minimapIcon { get; private set; }
@@ -22,12 +22,12 @@ namespace Spawners.EnemiesSpawner
         {
             minimapIcon = GetComponentInChildren<EnemiesSpawnerMinimapIcon>();
 
-            enemiesPool = ObjectPoolManager.Instance.GetObjectPool(enemyPrefab);
+            if (_enemiesPool == null) _enemiesPool = ObjectPoolManager.Instance.GetObjectPool(enemyPrefab);
         }
 
         private void Spawn()
         {
-            var spnble = enemiesPool.Pool();
+            var spnble = _enemiesPool.Pool();
             spnble.transform.position = transform.position;
             spnble.gameObject.SetActive(true);
         }

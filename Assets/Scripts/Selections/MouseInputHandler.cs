@@ -155,7 +155,11 @@ namespace Selections
         private Selectable GetSelectableFromHit()
         {
 
-            if (currentEventSystem.IsPointerOverGameObject(-1)) return null;
+            if (currentEventSystem.IsPointerOverGameObject(-1))
+            {
+                overType = OverType.Other;
+                return null;
+            }
             var hitCount = Physics2D.OverlapPointNonAlloc(mousePosition, hits, layerMask);
 
             if (hitCount == 0)

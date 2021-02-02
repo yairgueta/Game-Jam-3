@@ -86,7 +86,8 @@ namespace Spawners
             for (int i = 0; i < pooledObjects.Length ; i++)
             {
                 var p = pooledObjects[i];
-                if (!p.gameObject.activeSelf) p.gameObject.SetActive(false);
+                if (p.gameObject.activeInHierarchy)
+                    p.gameObject.SetActive(false);
             }
         }
     }

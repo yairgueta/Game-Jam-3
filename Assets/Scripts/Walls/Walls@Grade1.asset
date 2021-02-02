@@ -21,5 +21,5 @@ MonoBehaviour:
   - {fileID: 5054844319376093338, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
   - {fileID: -4401582580983228226, guid: d0b86d06d4b354e79a504e33d0796769, type: 3}
   healthPoints: 150
-  requiredWoods: 8
+  requiredWoods: 5
   requiredRocks: 0

@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5643727899979791869}
   - component: {fileID: 5758768348016822235}
   - component: {fileID: 6399862977950577698}
+  - component: {fileID: 762314621844526799}
   m_Layer: 0
   m_Name: GFX
   m_TagString: Untagged
@@ -217,6 +218,42 @@ CircleCollider2D:
   m_Offset: {x: 6.2330375, y: 5.0483007}
   serializedVersion: 2
   m_Radius: 1.9073427
+--- !u!68 &762314621844526799
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565451717462665147}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -6.971351, y: 5.6659427}
+  - {x: -8.239647, y: 4.5354905}
+  - {x: -8.230954, y: 3.4842875}
+  - {x: -8.767445, y: 1.8126388}
+  - {x: -8.449833, y: 1.113492}
+  - {x: -6.9485345, y: -0.21733487}
+  - {x: -5.963558, y: -0.3703264}
+  - {x: -3.9005728, y: -0.6426319}
+  - {x: -2.8849318, y: -0.4657552}
+  - {x: 2.9500282, y: -0.21292695}
+  - {x: 4.1297584, y: 0.6887655}
+  - {x: 5.5442095, y: 0.18245077}
+  - {x: 5.618286, y: -0.1879158}
+  - {x: 7.3973827, y: 0.4060151}
+  - {x: 8.246104, y: 2.431145}
+  - {x: 8.877473, y: 6.256399}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &5348176395332998922
 GameObject:
   m_ObjectHideFlags: 0

@@ -89,7 +89,271 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 0, y: 0}
-  mosaicSpriteImportData: []
+  mosaicSpriteImportData:
+  - name: Dial
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1733
+      y: 4
+      width: 258
+      height: 219
+    spriteID: 3404a107b3b5c4763a61333c7575787d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 1361, y: -492}
+  - name: Inside_Frame
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1015
+      y: 4
+      width: 710
+      height: 703
+    spriteID: 7b539a064da4a40d9825b65baeda1abe
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 765, y: -183}
+  - name: Outside_Fill
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2917
+      width: 832
+      height: 744
+    spriteID: c34e7578ffb144f5f94ef07d2946cc3b
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -221, y: 2751}
+  - name: Eclipse_Off
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 591
+      y: 3669
+      width: 332
+      height: 377
+    spriteID: 50cdfa37d31a34c95a517f0688a63c14
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 311, y: 3173}
+  - name: Eclipse_On
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1015
+      y: 2145
+      width: 332
+      height: 377
+    spriteID: 87bc6dffeefb94520802bea55fbe2bb3
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 735, y: 1649}
+  - name: Night_Off
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 3669
+      width: 579
+      height: 316
+    spriteID: 148ccee2f38ee4f069fd8cd7824da6df
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -278, y: 3468}
+  - name: Night_On
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1015
+      y: 715
+      width: 579
+      height: 316
+    spriteID: 98f7edaf589924f039895f54f4eb9e7d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 733, y: 514}
+  - name: Day_Off
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1015
+      y: 1039
+      width: 320
+      height: 545
+    spriteID: bbae8a15313454f97830f27114a32f9d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 411, y: 712}
+  - name: Day_On
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1015
+      y: 1592
+      width: 320
+      height: 545
+    spriteID: 6ca93671203c54b4bb75e13e2e9f3fdf
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 411, y: 1265}
+  - name: Rays_Frame
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 1003
+      height: 1053
+    spriteID: 03a53790a6c0f4b49953c26b921f435e
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -143, y: -33}
+  - name: Rays_fill
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1065
+      width: 980
+      height: 1031
+    spriteID: fcdb439771720427aad8014198acaff9
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -149, y: 1013}
+  - name: Background
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2104
+      width: 821
+      height: 805
+    spriteID: 115d7ee4a7f98448fb9ccec2d701f152
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -191, y: 1972}
   rigSpriteImportData:
   - name: Dial
     originalName: 
@@ -389,6 +653,17 @@ ScriptedImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     androidETC2FallbackOverride: 0
+  - name: WebGL
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
@@ -404,8 +679,92 @@ ScriptedImporter:
   textureActualHeight: 4096
   spritePackingTag: 
   resliceFromLayer: 0
-  characterMode: 1
-  mosaicPSDLayers: []
+  characterMode: 0
+  mosaicPSDLayers:
+  - name: Dial
+    spriteName: Dial
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 3404a107b3b5c4763a61333c7575787d
+    layerID: 39
+    mosaicPosition: {x: 1733, y: 4}
+  - name: Inside_Frame
+    spriteName: Inside_Frame
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7b539a064da4a40d9825b65baeda1abe
+    layerID: 18
+    mosaicPosition: {x: 1015, y: 4}
+  - name: Outside_Fill
+    spriteName: Outside_Fill
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c34e7578ffb144f5f94ef07d2946cc3b
+    layerID: 23
+    mosaicPosition: {x: 4, y: 2917}
+  - name: Eclipse_Off
+    spriteName: Eclipse_Off
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 50cdfa37d31a34c95a517f0688a63c14
+    layerID: 30
+    mosaicPosition: {x: 591, y: 3669}
+  - name: Eclipse_On
+    spriteName: Eclipse_On
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 87bc6dffeefb94520802bea55fbe2bb3
+    layerID: 29
+    mosaicPosition: {x: 1015, y: 2145}
+  - name: Night_Off
+    spriteName: Night_Off
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 148ccee2f38ee4f069fd8cd7824da6df
+    layerID: 32
+    mosaicPosition: {x: 4, y: 3669}
+  - name: Night_On
+    spriteName: Night_On
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 98f7edaf589924f039895f54f4eb9e7d
+    layerID: 27
+    mosaicPosition: {x: 1015, y: 715}
+  - name: Day_Off
+    spriteName: Day_Off
+    isGroup: 0
+    parentIndex: -1
+    spriteID: bbae8a15313454f97830f27114a32f9d
+    layerID: 34
+    mosaicPosition: {x: 1015, y: 1039}
+  - name: Day_On
+    spriteName: Day_On
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 6ca93671203c54b4bb75e13e2e9f3fdf
+    layerID: 28
+    mosaicPosition: {x: 1015, y: 1592}
+  - name: Rays_Frame
+    spriteName: Rays_Frame
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 03a53790a6c0f4b49953c26b921f435e
+    layerID: 6
+    mosaicPosition: {x: 4, y: 4}
+  - name: Rays_fill
+    spriteName: Rays_fill
+    isGroup: 0
+    parentIndex: -1
+    spriteID: fcdb439771720427aad8014198acaff9
+    layerID: 35
+    mosaicPosition: {x: 4, y: 1065}
+  - name: Background
+    spriteName: Background
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 115d7ee4a7f98448fb9ccec2d701f152
+    layerID: 26
+    mosaicPosition: {x: 4, y: 2104}
   rigPSDLayers:
   - name: Dial
     spriteName: Dial

@@ -1,7 +1,6 @@
-using System.Runtime.InteropServices;
+using System.Collections.Generic;
 using Cycles;
 using Events;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +13,9 @@ namespace UI
         [SerializeField] private Image innerFill;
         [SerializeField] private Image activeImage;
         [SerializeField] private GameObject pointer;
-        [SerializeField] private float[] fillThreshold = new float[3];
+        [SerializeField] private List<float> fillThreshold;
         private float allPercentage;
         private int currentCycle = 0;
-        
         
         private void Start()
         {
@@ -32,13 +30,15 @@ namespace UI
             }
         }
         
+        
+
         private void Update()
         {
             outerFill.fillAmount =  CyclesManager.Instance.TimePercentage*allPercentage + fillThreshold[currentCycle];
             innerFill.fillAmount =  CyclesManager.Instance.TimePercentage*allPercentage + fillThreshold[currentCycle];
             pointer.transform.eulerAngles = new Vector3(0, 0, -(CyclesManager.Instance.TimePercentage*allPercentage+ 
-                                                              fillThreshold[currentCycle]) * 360f);
+                                                              fillThreshold[currentCycle])*360);
         }
-
+        
     }
 }

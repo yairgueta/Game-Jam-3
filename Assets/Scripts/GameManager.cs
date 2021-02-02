@@ -96,6 +96,10 @@ public class GameManager : Singleton<GameManager>
     public Action RegisterToWaitingList() => waitingList.Register();
     
     public bool FinishedLoading => waitingList.AreAllDone;
-    
+
+    public void DisplayMsg(String msg)
+    {
+        UIManagerInstance.DisplayMsg(msg);
+    }
     
 }

@@ -72,9 +72,7 @@ public class GameManager : Singleton<GameManager>
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        print(waitingList);
-        print(waitingList.AreAllDone);
-        // waitingList.Clear();
+        waitingList.Clear();
     }
     
     // Return a function to run when finished the task!

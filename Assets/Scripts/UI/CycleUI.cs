@@ -17,7 +17,7 @@ namespace UI
         private float allPercentage;
         private int currentCycle = 0;
         
-        private void Start()
+        private void Awake()
         {
             foreach (var cycle in CyclesManager.Instance.CyclesSettings)
             {
@@ -26,6 +26,7 @@ namespace UI
                     activeImage.sprite = cycle.UIActiveSprite;
                     currentCycle = (int)cycle.CycleType;
                     allPercentage = (currentCycle == 2 ? 1 : fillThreshold[currentCycle + 1]) - fillThreshold[currentCycle];
+                    print(allPercentage);
                 });
             }
         }
@@ -34,10 +35,10 @@ namespace UI
 
         private void Update()
         {
-            outerFill.fillAmount =  CyclesManager.Instance.TimePercentage*allPercentage + fillThreshold[currentCycle];
-            innerFill.fillAmount =  CyclesManager.Instance.TimePercentage*allPercentage + fillThreshold[currentCycle];
-            pointer.transform.eulerAngles = new Vector3(0, 0, -(CyclesManager.Instance.TimePercentage*allPercentage+ 
-                                                              fillThreshold[currentCycle])*360);
+            outerFill.fillAmount = CyclesManager.Instance.TimePercentage * allPercentage + fillThreshold[currentCycle];
+            innerFill.fillAmount = CyclesManager.Instance.TimePercentage * allPercentage + fillThreshold[currentCycle];
+            pointer.transform.eulerAngles = new Vector3(0, 0, -(CyclesManager.Instance.TimePercentage * allPercentage +
+                                                                fillThreshold[currentCycle]) * 360);
         }
         
     }

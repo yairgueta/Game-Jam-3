@@ -14,7 +14,6 @@ namespace Spawners.EnemiesSpawner
 
         private void OnDestroy()
         {
-            print(name);
             _enemiesPool.UnpoolAll();
         }
 

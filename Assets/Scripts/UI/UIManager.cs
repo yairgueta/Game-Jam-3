@@ -16,7 +16,7 @@ namespace UI
         [SerializeField] private GameObject tutorial;
         [SerializeField] private GameObject mainUI;
         [SerializeField] private GameObject pauseMenu;
-        [SerializeField] private GameObject deathWindow;
+        [SerializeField] private GameObject loseScreen;
         
         private TMP_Text numOfCycles;
         private Tween tween;
@@ -64,6 +64,8 @@ namespace UI
                 triggerUnblur.Raise();
                 GameManager.Instance.StartGame();
             };
+            
+            loseScreen.GetComponent<LoseScreen>().InitButtons(GameManager.Instance.RestartGame);
 
             pauseMenu.GetComponent<PauseMenu>().InitReferences(GameManager.Instance.RestartGame, SetPauseMenu);
             originalScale = msg.transform.localScale;
@@ -81,11 +83,11 @@ namespace UI
             trigger.Raise();
         }
 
-        public void RaiseDeathWindow()
+        public void RaiseLoseScreen()
         {
             mainUI.SetActive(false);
             triggerBlur.Raise();
-            deathWindow.SetActive(true);
+            loseScreen.SetActive(true);
             numOfCycles.text = CyclesManager.Instance.DaysCount.ToString();
         }
 

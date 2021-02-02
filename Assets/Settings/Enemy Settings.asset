@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackPower: 15
   health: 5
-  speed: 1
+  speed: 2
+  fadeSpeed: 0.5
   nextWaypointDistance: 3
   pathRepeatRate: 0.5
   targetRefreshTime: 5

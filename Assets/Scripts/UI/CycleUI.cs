@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cycles;
 using Events;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace UI
         [SerializeField] private Image innerFill;
         [SerializeField] private Image activeImage;
         [SerializeField] private GameObject pointer;
-        [SerializeField] private float[] fillThreshold = new float[3];
+        [SerializeField] private List<float> fillThreshold;
         private float allPercentage;
         private int currentCycle = 0;
         

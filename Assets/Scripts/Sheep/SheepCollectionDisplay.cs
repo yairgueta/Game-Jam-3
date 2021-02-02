@@ -45,7 +45,11 @@ namespace Sheep
 
             hasResetedCollectionDisplay = false;
             if (sheepSelectable.DragTime >= 0 && !isBeingCollectedCoroutinPlaying) DisplayBeingCollected();
-            if (sheepSelectable.DragTime >= sheep.SheepSettings.timeToCollect) sheep.GetCollected();
+            if (sheepSelectable.DragTime >= sheep.SheepSettings.timeToCollect)
+            {
+                collectionDisplayBG.enabled = false;
+                sheep.GetCollected();
+            }
         }
 
         IEnumerator BeingCollectedCoroutine()

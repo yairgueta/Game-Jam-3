@@ -13,7 +13,7 @@ namespace Spawners.EnemiesSpawner
         public List<EnemiesSpawner> enemiesSpawners { get; private set; }
         [SerializeField] private EnemiesRounds enemiesRounds;
         
-        private int currentRoundIndex;
+        private int currentRoundIndex = -1;
         private List<EnemiesSpawner> currentActiveSpawners;
         
         public Round CurrentRound => enemiesRounds[currentRoundIndex];
@@ -61,6 +61,7 @@ namespace Spawners.EnemiesSpawner
         private void GetNextRoundActiveSpawners()
         {
             currentActiveSpawners.Clear();
+            currentRoundIndex = Math.Min(enemiesRounds.rounds.Count, currentRoundIndex + 1);
 
             for (int i = 0; i < enemiesSpawners.Count; i++)
             {
@@ -71,7 +72,6 @@ namespace Spawners.EnemiesSpawner
                     currentActiveSpawners.Add(enemiesSpawner);
                 }
             }
-            currentRoundIndex = Math.Min(enemiesRounds.rounds.Count, currentRoundIndex + 1);
         }
         
         IEnumerator SpawnOneAfterOne(int count, float time)

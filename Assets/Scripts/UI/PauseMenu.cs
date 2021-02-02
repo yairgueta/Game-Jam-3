@@ -8,7 +8,7 @@ namespace UI
     public class PauseMenu : MonoBehaviour
     {
         [SerializeField] private Slider BGMSlider, SFXSlider;
-        [SerializeField] private Button mainMenuButton, exitPauseMenu;
+        [SerializeField] private Button mainMenuButton, bgMenuButton, exitPauseMenu;
         private void OnEnable()
         {
             BGMSlider.value = SoundController.Instance.soundSettings.BGMVolume;
@@ -25,6 +25,7 @@ namespace UI
         {
             mainMenuButton.onClick.AddListener(mainMenuButtonClick);
             exitPauseMenu.onClick.AddListener(exitPauseMenuClick);
+            bgMenuButton.onClick.AddListener(exitPauseMenuClick);
         }
     }
 }

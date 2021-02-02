@@ -1,4 +1,5 @@
 using System;
+using Cycles;
 using Events;
 using Player;
 using TMPro;
@@ -15,9 +16,8 @@ namespace UI
         [SerializeField] private GameObject mainUI;
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private GameObject deathWindow;
-        // [SerializeField] private TMP_Text numOfCycles;
-        [SerializeField] private TMP_Text numOfWoods;
-        [SerializeField] private TMP_Text numOfRocks;
+        
+        private TMP_Text numOfCycles;
 
 
         [Header("UI Triggers")] [SerializeField]
@@ -39,6 +39,8 @@ namespace UI
 
         private void Start()
         {
+            numOfCycles = GetComponentInChildren<TMP_Text>();
+            
             mainMenu.SetActive(true);
             tutorial.SetActive(false);
             mainUI.SetActive(false);
@@ -76,9 +78,7 @@ namespace UI
             mainUI.SetActive(false);
             triggerBlur.Raise();
             deathWindow.SetActive(true);
-            // numOfCycles.text = cyclesNum.ToString();
-            numOfRocks.text = PlayerController.CurrentInventory.GetFinalRocks.ToString();
-            numOfWoods.text = PlayerController.CurrentInventory.GetFinalWoods.ToString();
+            numOfCycles.text = CyclesManager.Instance.DaysCount.ToString();
         }
     }
 }

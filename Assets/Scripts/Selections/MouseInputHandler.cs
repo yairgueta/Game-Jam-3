@@ -152,6 +152,49 @@ namespace Selections
             }
         }
 
+        // private Selectable GetSelectableFromHit()
+        // {
+        //
+        //     if (currentEventSystem.IsPointerOverGameObject(-1))
+        //     {
+        //         overType = OverType.Other;
+        //         return null;
+        //     }
+        //     
+        //     var hitCount = Physics2D.OverlapPointNonAlloc(mousePosition, hits, layerMask);
+        //     if (hitCount == 0)
+        //     {
+        //         overType = OverType.None;
+        //         return null;
+        //     }
+        //
+        //     var bestHit = hits[0];
+        //     if (bestHit.gameObject.layer == UILayer)
+        //     {
+        //         overType = OverType.Other;
+        //         return null;
+        //     }
+        //
+        //     for (int i = 1; i < hitCount; i++)
+        //     {
+        //         if (hits[i].gameObject.layer == UILayer)
+        //         {
+        //             overType = OverType.Other;
+        //             return null;
+        //         }
+        //
+        //         if (bestHit.transform.position.y > hits[i].transform.position.y)
+        //         {
+        //             var sHit = hits[i].GetComponent<Selectable>();
+        //             bestHit = hits[i];
+        //         }
+        //     }
+        //
+        //     var s = bestHit.GetComponent<Selectable>();
+        //     overType = s ? OverType.Selectable : OverType.Other;
+        //     return s;
+        // }
+        
         private Selectable GetSelectableFromHit()
         {
 
@@ -160,34 +203,37 @@ namespace Selections
                 overType = OverType.Other;
                 return null;
             }
+            
             var hitCount = Physics2D.OverlapPointNonAlloc(mousePosition, hits, layerMask);
-
             if (hitCount == 0)
             {
                 overType = OverType.None;
                 return null;
             }
 
-            var bestHit = hits[0];
-            if (bestHit.gameObject.layer == UILayer)
-            {
-                overType = OverType.Other;
-                return null;
-            }
-
-            for (int i = 1; i < hitCount; i++)
+            var bestY = Mathf.Infinity;
+            Selectable bestSelectable = null;
+            for (int i = 0; i < hitCount; i++)
             {
                 if (hits[i].gameObject.layer == UILayer)
                 {
                     overType = OverType.Other;
                     return null;
                 }
-                if (bestHit.transform.position.y > hits[i].transform.position.y) bestHit = hits[i];
+
+                if (hits[i].transform.position.y < bestY)
+                {
+                    var hitSelectable = hits[i].GetComponent<Selectable>();
+                    if (hitSelectable && hitSelectable.enabled)
+                    {
+                        bestSelectable = hitSelectable;
+                        bestY = hits[i].transform.position.y;
+                    }
+                }
             }
 
-            var s = bestHit.GetComponent<Selectable>();
-            overType = s ? OverType.Selectable : OverType.Other;
-            return s;
+            overType = bestSelectable ? OverType.Selectable : OverType.Other;
+            return bestSelectable;
         }
 
         private void LeftClickDownHandle()

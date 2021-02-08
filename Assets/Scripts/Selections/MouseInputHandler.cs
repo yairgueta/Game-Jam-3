@@ -84,6 +84,9 @@ namespace Selections
         {
             mainCamera = Camera.main;
             currentEventSystem = EventSystem.current;
+            if (!currentEventSystem)
+                currentEventSystem = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule)).GetComponent<EventSystem>();
+            
             UILayer = LayerMask.NameToLayer("UI");
             layerMask = 1 << LayerMask.NameToLayer("Selectable") | 1 << UILayer;
 
@@ -152,49 +155,6 @@ namespace Selections
             }
         }
 
-        // private Selectable GetSelectableFromHit()
-        // {
-        //
-        //     if (currentEventSystem.IsPointerOverGameObject(-1))
-        //     {
-        //         overType = OverType.Other;
-        //         return null;
-        //     }
-        //     
-        //     var hitCount = Physics2D.OverlapPointNonAlloc(mousePosition, hits, layerMask);
-        //     if (hitCount == 0)
-        //     {
-        //         overType = OverType.None;
-        //         return null;
-        //     }
-        //
-        //     var bestHit = hits[0];
-        //     if (bestHit.gameObject.layer == UILayer)
-        //     {
-        //         overType = OverType.Other;
-        //         return null;
-        //     }
-        //
-        //     for (int i = 1; i < hitCount; i++)
-        //     {
-        //         if (hits[i].gameObject.layer == UILayer)
-        //         {
-        //             overType = OverType.Other;
-        //             return null;
-        //         }
-        //
-        //         if (bestHit.transform.position.y > hits[i].transform.position.y)
-        //         {
-        //             var sHit = hits[i].GetComponent<Selectable>();
-        //             bestHit = hits[i];
-        //         }
-        //     }
-        //
-        //     var s = bestHit.GetComponent<Selectable>();
-        //     overType = s ? OverType.Selectable : OverType.Other;
-        //     return s;
-        // }
-        
         private Selectable GetSelectableFromHit()
         {
 

@@ -11,14 +11,14 @@ namespace Player
         private Rigidbody2D rb2d;
         private GameEvent onExplosionEvent;
         private float power;
-        private Collider2D collider;
+        private Collider2D bulletCollider;
         [SerializeField] private ParticleSystem particle;
         [SerializeField] private GameObject circle;
 
         private void Awake()
         {
             rb2d = GetComponent<Rigidbody2D>();
-            collider = GetComponent<Collider2D>();
+            bulletCollider = GetComponent<Collider2D>();
             gameObject.SetActive(false);
         }
 
@@ -45,12 +45,12 @@ namespace Player
         {
             particle.Play();
             circle.SetActive(false);
-            collider.enabled = false;
+            bulletCollider.enabled = false;
             yield return new WaitForSeconds(0.4f);
             rb2d.velocity = Vector2.zero;
             particle.Stop();
             circle.SetActive(true);
-            collider.enabled = true;
+            bulletCollider.enabled = true;
             gameObject.SetActive(false);
         }
 

@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "05442994ffb7f6c679f648d702cdf888bd8c01dc"
     },
+    "com.h8man.2d.navmeshplus": {
+      "version": "https://github.com/h8man/NavMeshPlus.git#master",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "86ceea0dfe7bcd8db2a486bd68c4c095ae4299e0"
+    },
     "com.unity.2d.animation": {
       "version": "5.0.3",
       "depth": 1,
@@ -72,6 +79,12 @@
         "com.unity.modules.physics2d": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.unity.2d.tilemap": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.cinemachine": {
       "version": "2.6.3",

@@ -10,7 +10,6 @@ namespace Spawners
     {
         [SerializeField] private float baseRespawnTime = 10f;
         [SerializeField] private AnimationCurve spawningSpeedCurve;
-        [SerializeField] private float respawnSpeed = 1f;
         private SpawnersManager spawnersManager;
         private float timer;
 

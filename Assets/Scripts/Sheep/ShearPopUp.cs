@@ -15,17 +15,17 @@ public class ShearPopUp : MonoBehaviour
     [SerializeField] private Ease ease;
     private Transform popUpTransform;
     private Vector3 originalScale; 
-    private SpriteRenderer renderer;
+    private SpriteRenderer spriteRenderer;
     private bool notYetSheared;
     private Tween tween; 
     
     private void Start()
     {
-        renderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         popUpTransform = GetComponentInChildren<Transform>();
         originalScale = popUpTransform.localScale;
         notYetSheared = true;
-        renderer.enabled = false;
+        spriteRenderer.enabled = false;
         onShear.Register(gameObject, PopOff);
         CyclesManager.Instance.EclipseSettings.OnCycleStart.Register(gameObject, PopUpShearMe);
         CyclesManager.Instance.EclipseSettings.OnCycleEnd.Register(gameObject, TakePopUpDown);
@@ -35,7 +35,7 @@ public class ShearPopUp : MonoBehaviour
     private void PopUpShearMe(object o)
     {
         if (!notYetSheared) return;
-        renderer.enabled = true;
+        spriteRenderer.enabled = true;
         transform.position = sheepSettings.sheeps[0].transform.position;
         float pos = transform.position.y;
         tween = DOTween.Sequence()
@@ -46,7 +46,7 @@ public class ShearPopUp : MonoBehaviour
 
     private void TakePopUpDown(object o)
     {
-        renderer.enabled = false;
+        spriteRenderer.enabled = false;
         tween.Kill();
     }
 
@@ -54,7 +54,7 @@ public class ShearPopUp : MonoBehaviour
     private void PopOff(object o)
     {
         notYetSheared = false;
-        renderer.enabled = false;
+        spriteRenderer.enabled = false;
         tween.Kill();
     }
     

@@ -43,9 +43,7 @@ namespace Enemies
         private readonly int dieAnimationID = Animator.StringToHash("Die");
 
         private float stuckTimer;
-        private bool canRoar = true;
         private int roarSFXCounter = 0;
-        private float fadeSpeed = 0.35f;
         private float maxFadeValue = 0.65f;
         private static readonly int EdgeID = Shader.PropertyToID("edge");
 

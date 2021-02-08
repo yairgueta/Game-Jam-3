@@ -42,6 +42,12 @@ namespace UI
         }
 
 
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            if (!pauseStatus) return;
+            if (!pauseMenu.activeSelf) SetPauseMenu();
+        }
+
         private void Start()
         {
             mainMenu.SetActive(true);

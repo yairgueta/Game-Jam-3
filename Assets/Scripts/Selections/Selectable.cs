@@ -1,11 +1,12 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 namespace Selections
 {
-    [RequireComponent(typeof(Collider2D))]
+    [AddComponentMenu("")]
     public class Selectable : MonoBehaviour
     {
         public Action onThisMouseEnter, onThisMouseExit;
@@ -15,12 +16,11 @@ namespace Selections
         public bool IsMouseOver { get; private set; }
         [Tooltip("keep null for default")] [SerializeField] private Material overMaterial = null;
         [Tooltip("keep null for default")] [SerializeField] private Material clickedDownMaterial = null;
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        public SpriteRenderer spriteRenderer;
         private Material originalMaterial;
 
         private float startDragTime;
-
-
+        
         private void Awake()
         {
             spriteRenderer ??= GetComponent<SpriteRenderer>();
